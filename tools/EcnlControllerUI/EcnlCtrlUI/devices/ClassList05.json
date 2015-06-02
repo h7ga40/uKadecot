@@ -1,0 +1,30 @@
+[
+	{
+		"classCode": 252,
+		"description": "セキュア通信用共有鍵設定ノード",
+		"name": "SECURE_COMMUNICATION_SHARED_KEY_SETUP_NODE_EOBJ",
+		"define": "EOJ_X2_SECURE_COMMUNICATION_SHARED_KEY_SETUP_NODE",
+		"type": "secure_communication_shared_key_setup_mode_t"
+	},
+	{
+		"classCode": 253,
+		"description": "スイッチ（JEMA/HA端子対応）",
+		"name": "SWITCH_EOBJ",
+		"define": "EOJ_X2_SWITCH",
+		"type": "switch_t"
+	},
+	{
+		"classCode": 254,
+		"description": "携帯端末",
+		"name": "PORTABLE_TERMINAL_EOBJ",
+		"define": "EOJ_X2_PORTABLE_TERMINAL",
+		"type": "portable_terminal_t"
+	},
+	{
+		"classCode": 255,
+		"description": "コントローラ",
+		"name": "CONTROLLER_EOBJ",
+		"define": "EOJ_X2_CONTROLLER",
+		"type": "controller_t"
+	}
+]

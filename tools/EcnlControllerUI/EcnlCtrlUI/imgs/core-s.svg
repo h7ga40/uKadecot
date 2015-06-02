@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Microsoft Visio 11.0、SVG Export v1.0 により生成 core-s_.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="0.678893in" height="0.19685in"
+		viewBox="0 0 48.8803 14.1732" xml:space="preserve" color-interpolation-filters="sRGB" class="st2">
+	<v:documentProperties v:langID="1041" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#000000;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Page-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<g id="group2-1" v:mID="2" v:groupContext="group">
+			<title>シート.2</title>
+			<g id="shape9-2" v:mID="9" v:groupContext="shape" transform="translate(-2.9976E-015,-0.475439)">
+				<title>シート.9</title>
+				<path d="M11.65 1.94 L10.74 6.54 L10.01 6.53 C10.02 6.3 10.01 6.01 10.01 5.65 C10.01 3.38 8.52 2.29 7.2 2.29 C4.07
+							 2.29 2.69 7 2.69 9.89 C2.69 10.29 2.75 13.21 5.81 13.21 C7.93 13.21 8.93 11.56 9.53 10.04 L10.27 10.41
+							 C9.44 12.59 7.81 14.17 5.1 14.17 C2.38 14.17 -0 12.67 0 9.39 C0 4.15 3.62 1.43 6.55 1.43 C8.72 1.43
+							 9.56 2.34 10.18 2.89 C10.54 2.63 10.76 2.33 10.95 1.94 L11.65 1.94 Z" class="st1"/>
+			</g>
+			<g id="shape10-4" v:mID="10" v:groupContext="shape" transform="translate(11.6161,-0.616786)">
+				<title>シート.10</title>
+				<path d="M4.82 5.8 C6.17 5.8 8.44 6.82 8.44 9.33 C8.44 11.58 6.84 14.17 3.6 14.17 C0.77 14.17 0 12.12 0 10.74 C-0
+							 6.44 3.92 5.8 4.82 5.8 ZM4.82 6.53 C3.03 6.53 2.18 11 2.18 11.8 C2.18 13.07 2.89 13.59 3.53 13.59 C4.95
+							 13.59 6.23 10.74 6.23 8.26 C6.23 6.57 5.27 6.53 4.82 6.53 Z" class="st1"/>
+			</g>
+			<g id="shape11-6" v:mID="11" v:groupContext="shape" transform="translate(21.7674,-0.770983)">
+				<title>シート.11</title>
+				<path d="M0.55 6.44 L3.66 6.28 L2.96 9.69 C3.5 8.49 4.39 6.12 6.33 6.12 C7.68 6.12 8.03 7.03 8.03 7.52 C8.03 8.26
+							 7.62 8.84 6.87 8.84 C6.63 8.84 5.85 8.62 5.85 7.98 C5.85 7.65 5.99 7.66 5.99 7.26 C5.99 7.12 5.72 7.12
+							 5.69 7.12 C3.94 7.12 2.54 12.54 2.21 14.17 L0 14.17 C0 14.17 1.57 8.71 1.57 8.03 C1.57 7.21 0.66 7.08
+							 0.33 7.08 L0.55 6.44 Z" class="st1"/>
+			</g>
+			<g id="shape12-8" v:mID="12" v:groupContext="shape" transform="translate(30.184,-0.668185)">
+				<title>シート.12</title>
+				<path d="M2.42 10.96 C2.42 11.56 2.2 13.3 3.94 13.3 C5.11 13.3 5.94 12.5 6.49 11.92 L7.04 12.28 C5.91 13.45 4.92
+							 14.17 3.35 14.17 C2.08 14.17 -0 13.61 0 11.18 C-0 7.84 2.69 5.81 5.29 5.81 C7.07 5.81 7.54 6.9 7.54
+							 7.8 C7.54 9.95 3.39 10.79 2.42 10.96 ZM2.45 10.29 C5.05 9.71 5.4 8.13 5.4 7.74 C5.4 7.31 5.38 6.51 4.65
+							 6.51 C3.43 6.51 2.92 8.38 2.45 10.29 Z" class="st1"/>
+			</g>
+			<g id="shape13-10" v:mID="13" v:groupContext="shape" transform="translate(37.1485,2.84217E-014)">
+				<title>シート.13</title>
+				<path d="M1.26 11.38 C1.26 13.42 4.12 13.51 4.38 13.51 C7.5 13.48 8.28 11.68 8.28 10.61 C8.28 9.53 7.79 8.98 6.24
+							 8.46 C5.5 8.2 4.25 7.94 4.25 7.12 C4.25 6.18 5.67 5.76 6.08 5.76 C6.72 5.76 7.08 5.9 7.08 6.22 C7.08
+							 6.46 6.78 6.5 6.78 7.23 C6.78 7.81 7.38 8.01 7.75 8.01 C8.11 8.01 8.79 7.75 8.79 6.98 C8.79 5.82 7.57
+							 5.11 6.12 5.11 C4.24 5.11 2.29 5.83 2.29 7.95 C2.29 9.39 3.33 9.68 4.61 10.14 C5.15 10.33 6.24 10.59
+							 6.24 11.47 C6.24 12.35 5.23 12.76 4.32 12.77 C3.47 12.79 2.75 12.31 3.01 11.99 C3.25 11.68 3.35 11.49
+							 3.37 11.19 C3.38 10.72 3.16 10.16 2.42 10.16 C1.53 10.16 1.26 10.77 1.26 11.38 ZM7.9 14.17 L0 14.17
+							 L3.83 -0 L11.73 -0 L7.9 14.17 Z" class="st1"/>
+			</g>
+		</g>
+	</g>
+</svg>

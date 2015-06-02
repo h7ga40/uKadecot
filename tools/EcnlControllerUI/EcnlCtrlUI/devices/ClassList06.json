@@ -1,0 +1,16 @@
+[
+	{
+		"classCode":1,
+		"description":"ディスプレー",
+		"name":"DISPLAY_EOBJ",
+		"define":"EOJ_X2_DISPLAY",
+		"type":"display_t"
+	},
+	{
+		"classCode":2,
+		"description":"テレビ",
+		"name":"TELEVISION_EOBJ",
+		"define":"EOJ_X2_TELEVISION",
+		"type":"television_t"
+	}
+]

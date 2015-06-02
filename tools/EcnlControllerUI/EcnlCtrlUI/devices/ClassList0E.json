@@ -1,0 +1,9 @@
+[
+	{
+		"classCode":240,
+		"description":"ノードプロファイルオブジェクト",
+		"name":"NODE_PROFILE_EOBJ",
+		"define":"EOJ_X2_NODE_PROFILE",
+		"type":"node_profile_object_t"
+	}
+]

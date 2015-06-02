@@ -1,0 +1,28 @@
+[
+	{
+		"title": "TOPPERS/ECNL コントローラー",
+		"version": "1.A.0 α版",
+		"note": "APPENDIX ECHONET機器オブジェクト詳細規定 Release C"
+	},
+	{
+		"title": "jQuery",
+		"version": "1.10.2",
+		"link": "http://jquery.com"
+	},
+	{
+		"title": "jQuery Mobile",
+		"version": "1.4.5",
+		"link": "http://jquerymobile.com"
+	},
+	{
+		"title": "Saltarelle C# to JavaScript Compiler",
+		"version": "2.6.2",
+		"link": "http://www.saltarelle-compiler.com"
+	},
+	{
+		"title": "Unity用Kadecot WAMPライブラリ",
+		"version": "2014/11/28版",
+		"link": "http://kadecot.net/blog/2842/",
+		"note": "「Kadecot」は株式会社ソニーコンピュータサイエンス研究所の商標です。"
+	}
+]

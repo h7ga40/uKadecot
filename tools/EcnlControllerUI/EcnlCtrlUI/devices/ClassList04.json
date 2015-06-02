@@ -1,0 +1,37 @@
+[
+	{
+		"classCode":1,
+		"description":"体重計",
+		"name":"WEIGHING_MACHINE_EOBJ",
+		"define":"EOJ_X2_WEIGHING_MACHINE",
+		"type":"weighing_machine_t"
+	},
+	{
+		"classCode":2,
+		"description":"体温計",
+		"name":"CLINICAL_THERMOMETER_EOBJ",
+		"define":"EOJ_X2_CLINICAL_THERMOMETER",
+		"type":"clinical_thermometer_t"
+	},
+	{
+		"classCode":3,
+		"description":"血圧計",
+		"name":"BLOOD_PRESSURE_METER_EOBJ",
+		"define":"EOJ_X2_BLOOD_PRESSURE_METER",
+		"type":"blood_pressure_meter_t"
+	},
+	{
+		"classCode":4,
+		"description":"血糖値計",
+		"name":"BLOOD_SUGAR_METER_EOBJ",
+		"define":"EOJ_X2_BLOOD_SUGAR_METER",
+		"type":"blood_sugar_meter_t"
+	},
+	{
+		"classCode":5,
+		"description":"体脂肪計",
+		"name":"BODY_FAT_METER_EOBJ",
+		"define":"EOJ_X2_BODY_FAT_METER",
+		"type":"body_fat_meter_t"
+	}
+]
