@@ -15,6 +15,16 @@ TOPPERS/ECNLについては以下のWebページをお読みください．
 この版では，TOPPERS/ASP＋TINETではなく，TOPPERS/SSP＋uIPを使用していま
 す．
 
+Kadecotについては以下のWebページをお読みください．
+
+	http://kadecot.net/
+
+「Kadecot」は株式会社ソニーコンピュータサイエンス研究所の商標です．
+
+GR-SAKURAへの書き込みイメージのファイルは以下のフォルダにあります．
+
+	csp\flash\ukadecot_20150603105310.mot
+
 【利用条件】
 
 TOPPERS/uKadecotの利用条件は，各ファイルの先頭に表示されているTOPPERSラ
@@ -48,8 +58,6 @@ TOPPERS/uKadecotの利用条件は，各ファイルの先頭に表示されているTOPPERSラ
 	http://linqjs.codeplex.com/
 ・Unity用Kadecot WAMPライブラリ
 	http://kadecot.net/blog/2842/
-
-「Kadecot」は株式会社ソニーコンピュータサイエンス研究所の商標です．
 
 また，実行ファイル作成に使用するツールには，以下のソフトウェアを含んで
 います．
