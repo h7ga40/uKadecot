@@ -5,6 +5,37 @@
 		"note": "APPENDIX ECHONET機器オブジェクト詳細規定 Release C"
 	},
 	{
+		"title": "Unity用Kadecot WAMPライブラリ",
+		"version": "2014/11/28版",
+		"link": "http://kadecot.net/blog/2842/",
+		"note": "「Kadecot」は株式会社ソニーコンピュータサイエンス研究所の商標です。"
+	},
+	{
+		"title": "uIP",
+		"version": "1.0",
+		"link": "https://github.com/adamdunkels/uip"
+	},
+	{
+		"title": "Petit FAT File System Module",
+		"version": "R0.03",
+		"link": "http://elm-chan.org/fsw/ff/00index_p.html"
+	},
+	{
+		"title": "http-parser",
+		"version": "(2015/1/14 master)",
+		"link": "https://github.com/joyent/http-parser"
+	},
+	{
+		"title": "mod_websocket（base64,sha1を使用）",
+		"version": "(2013/1/13 master)",
+		"link": "https://github.com/nori0428/mod_websocket"
+	},
+	{
+		"title": "JSONSL",
+		"version": "(2015/3/11 master)",
+		"link": "https://github.com/mnunberg/jsonsl"
+	},
+	{
 		"title": "jQuery",
 		"version": "1.10.2",
 		"link": "http://jquery.com"
@@ -15,14 +46,18 @@
 		"link": "http://jquerymobile.com"
 	},
 	{
+		"title": "jQueryMobile - DateBox",
+		"version": "1.4.5",
+		"link": "http://dev.jtsage.com/jQM-DateBox/"
+	},
+	{
 		"title": "Saltarelle C# to JavaScript Compiler",
 		"version": "2.6.2",
 		"link": "http://www.saltarelle-compiler.com"
 	},
 	{
-		"title": "Unity用Kadecot WAMPライブラリ",
-		"version": "2014/11/28版",
-		"link": "http://kadecot.net/blog/2842/",
-		"note": "「Kadecot」は株式会社ソニーコンピュータサイエンス研究所の商標です。"
+		"title": "linq.js - LINQ for JavaScript",
+		"version": "3.0.3-Beta4 (Oct. 9th, 2012)",
+		"link": "http://linqjs.codeplex.com/"
 	}
 ]
