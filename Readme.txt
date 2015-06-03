@@ -1,144 +1,144 @@
-
-	TOPPERS/uKadecot�iRelease 1.0.0�j
+﻿
+	TOPPERS/uKadecot（Release 1.0.0）
 		TOPPERS ECHONET Lite Communication Middleware
 		Sample Application for WebApp Contoller
 
-�y�͂��߂Ɂz
+【はじめに】
 
-TOPPERS/uKadecot�́CECHONET Lite�̋@������ʐM�~�h���E�F�ATOPPERS/ECNL
-�́C���J�O�̃R���g���[���Ή����̔ł��g�p���CKadecot API�𕔕�����������
-�d�T�[�o�̃T���v���v���O�����ł��D
-TOPPERS/ECNL�ɂ��Ă͈ȉ���Web�y�[�W�����ǂ݂��������D
+TOPPERS/uKadecotは，ECHONET Liteの機器向け通信ミドルウェアTOPPERS/ECNL
+の，公開前のコントローラ対応中の版を使用し，Kadecot APIを部分実装した家
+電サーバのサンプルプログラムです．
+TOPPERS/ECNLについては以下のWebページをお読みください．
 
 	https://www.toppers.jp/ecnl.html
 
-���̔łł́CTOPPERS/ASP�{TINET�ł͂Ȃ��CTOPPERS/SSP�{uIP���g�p���Ă���
-���D
+この版では，TOPPERS/ASP＋TINETではなく，TOPPERS/SSP＋uIPを使用していま
+す．
 
-Kadecot�ɂ��Ă͈ȉ���Web�y�[�W�����ǂ݂��������D
+Kadecotについては以下のWebページをお読みください．
 
 	http://kadecot.net/
 
-�uKadecot�v�͊�����Ѓ\�j�[�R���s���[�^�T�C�G���X�������̏��W�ł��D
+「Kadecot」は株式会社ソニーコンピュータサイエンス研究所の商標です．
 
-GR-SAKURA�ւ̏������݃C���[�W�̃t�@�C���͈ȉ��̃t�H���_�ɂ���܂��D
+GR-SAKURAへの書き込みイメージのファイルは以下のフォルダにあります．
 
 	csp\flash\ukadecot_20150603105310.mot
 
-�y���p�����z
+【利用条件】
 
-TOPPERS/uKadecot�̗��p�����́C�e�t�@�C���̐擪�ɕ\������Ă���TOPPERS��
-�C�Z���X�ł��DTOPPERS���C�Z���X�Ɋւ���FAQ���C�ȉ��̃y�[�W�ɂ���܂��D
+TOPPERS/uKadecotの利用条件は，各ファイルの先頭に表示されているTOPPERSラ
+イセンスです．TOPPERSライセンスに関するFAQが，以下のページにあります．
 
 	http://www.toppers.jp/faq/faq_ct12.html
 
-���̃p�b�P�[�W�ɂ́C�T���v���v���O�����ɕK�v��TOPPERS/SSP�̑��C�ȉ��̃\
-�t�g�E�F�A���܂܂�Ă���C�g�p����ꍇ�͂��ꂼ��̗��p�����ɏ]���Ă���
-�����D
+このパッケージには，サンプルプログラムに必要なTOPPERS/SSPの他，以下のソ
+フトウェアが含まれており，使用する場合はそれぞれの利用条件に従ってくだ
+さい．
 
-�EuIP�FIP�X�^�b�N
+・uIP：IPスタック
 	https://github.com/adamdunkels/uip
-�EPetit FAT File System Module�FWeb�T�[�o�p�t�@�C���V�X�e��
+・Petit FAT File System Module：Webサーバ用ファイルシステム
 	http://elm-chan.org/fsw/ff/00index_p.html
-�Ehttp-parser�FHTTP�p�[�T�[
+・http-parser：HTTPパーサー
 	https://github.com/joyent/http-parser
-�Emod_websocket�FWebSocket�ibase64,sha1���g�p�j
+・mod_websocket：WebSocket（base64,sha1を使用）
 	https://github.com/nori0428/mod_websocket
-�EJSONSL�FJSON�p�[�T�[
+・JSONSL：JSONパーサー
 	https://github.com/mnunberg/jsonsl
-�EjQuery
+・jQuery
 	http://jquery.com
-�EjQuery Mobile
+・jQuery Mobile
 	http://jquerymobile.com
-�EjQueryMobile - DateBox
+・jQueryMobile - DateBox
 	http://dev.jtsage.com/jQM-DateBox/
-�ESaltarelle C# to JavaScript Compiler
+・Saltarelle C# to JavaScript Compiler
 	http://www.saltarelle-compiler.com
-�Elinq.js - LINQ for JavaScript
+・linq.js - LINQ for JavaScript
 	http://linqjs.codeplex.com/
-�EUnity�pKadecot WAMP���C�u����
+・Unity用Kadecot WAMPライブラリ
 	http://kadecot.net/blog/2842/
 
-�܂��C���s�t�@�C���쐬�Ɏg�p����c�[���ɂ́C�ȉ��̃\�t�g�E�F�A���܂��
-���܂��D
+また，実行ファイル作成に使用するツールには，以下のソフトウェアを含んで
+います．
 
-�EDynamicJson
+・DynamicJson
 	http://dynamicjson.codeplex.com/
-�EFatFs - Generic FAT File System Module
+・FatFs - Generic FAT File System Module
 	http://elm-chan.org/fsw/ff/00index_e.html
-�Ezlib
+・zlib
 	http://zlib.net/
-�EJSMin�FThe JavaScript Minifier
+・JSMin：The JavaScript Minifier
 	http://www.crockford.com/javascript/jsmin.html
-�ESRecord
+・SRecord
 	http://srecord.sourceforge.net/
 
-�y�R���p�C�����@�z
+【コンパイル方法】
 
-GR-SAKURA�̎��s�t�@�C���̃R���p�C���ɁCRenesas CubeSuite+���g�p���܂��D
-�c�[���̃R���p�C���ɂ́CVisual Studio 2012�ȍ~���g�p���܂��D
-�A�v���P�[�V�����ƁCKadecot�Ŏg�p���閼�̃e�[�u���CWeb�A�v���P�[�V����
-�̃t�@�C���V�X�e���́C�R�̃t�@�C�����������āC�������݃C���[�W���쐬
-���܂��D
+GR-SAKURAの実行ファイルのコンパイルに，Renesas CubeSuite+を使用します．
+ツールのコンパイルには，Visual Studio 2012以降を使用します．
+アプリケーションと，Kadecotで使用する名称テーブル，Webアプリケーション
+のファイルシステムの，３つのファイルを結合して，書き込みイメージを作成
+します．
 
-�ETOPPERS/SSP���C�u�����̃R���p�C��
+・TOPPERS/SSPライブラリのコンパイル
 	csp\libssp\libssp.mtpj
-��libssp.a
+→libssp.a
 
-�E�A�v���P�[�V�����̃R���p�C��
+・アプリケーションのコンパイル
 	csp\ukadecot\ukadecot.mtpj
-��ukadecot.mod
+→ukadecot.mod
 
-�E�R���g���[��Web�A�v���P�[�V�����̃R���p�C��
+・コントローラWebアプリケーションのコンパイル
 	tools\EcnlControllerUI\EcnlControllerUI.sln
-��ctrlui.js
+→ctrlui.js
 
-�EWeb�A�v���P�[�V�����̃R�s�[/minify
+・Webアプリケーションのコピー/minify
 	tools\EcnlControllerUI\EcnlCtrlUI\copy_httpd-fs.bat
-��httpd-fs\*
+→httpd-fs\*
 
-�EWeb�A�v���P�[�V�����̃t�@�C���V�X�e����
+・Webアプリケーションのファイルシステム化
 	uip\apps\webserver\makefsdata.exe
-��httpd-fs.bin
+→httpd-fs.bin
 
-�EKadecot API�p���̃e�[�u���쐬�c�[���̃R���p�C���C���s
+・Kadecot API用名称テーブル作成ツールのコンパイル，実行
 	tools\KadecotNames\KadecotNames.sln
-��KadecotNames.bin
+→KadecotNames.bin
 
-�EKadecot API�p���̃e�[�u���̃R�s�[
+・Kadecot API用名称テーブルのコピー
 	tools\KadecotNames\copy_kadecot_names.bat
-��kadecot_names.bin
+→kadecot_names.bin
 
-�E�R�̃t�@�C���iukadecot.mod,httpd-fs.bin,kadecot_names.bin�j������
+・３つのファイル（ukadecot.mod,httpd-fs.bin,kadecot_names.bin）を結合
 	csp\flash\ukadecot_cat.bat
-��ukadecot_YYMMDDhhmmss.mod
+→ukadecot_YYMMDDhhmmss.mod
 
-�Ō�́uukadecot_YYMMDDhhmmss.mod�v���CGR-SAKURA�ւ̏������݃C���[�W��
-�Ȃ�܂��D
-�e�菇�͕ύX�����Ƃ��낾�����s���C�Ō�̎菇���s���΁C�������݃C���[�W
-���쐬���邱�Ƃ��o���܂��D
+最後の「ukadecot_YYMMDDhhmmss.mod」が，GR-SAKURAへの書き込みイメージに
+なります．
+各手順は変更したところだけ実行し，最後の手順を行えば，書き込みイメージ
+を作成することが出来ます．
 
-�R���g���[��Web�A�v���P�[�V�����ł́CNuGet�p�b�P�[�W���g�p���Ă��܂����C
-�܂܂�Ă��܂���DVisual Studio 2012�ł́C�r���h���Ƀ_�E�����[�h�����
-����̂ŁC�ȉ��̑�����s���Ă��������D
-Visual Studio�ŁuEcnlControllerUI.sln�v���J���C�u�\�����[�V���� �G�N�X
-�v���[���[�v�́u�\�����[�V���� 'EcnlControllerUI'�v���E�N���b�N���āC
-�uNuGet �p�b�P�[�W�̕����̗L�����v��I�����C�\�����ꂽ�_�C�A���O��OK��
-�����܂��D
-�ݒ肪��������ƁC�r���h����NuGet�p�b�P�[�W���_�E�����[�h�����悤�ɂ�
-��܂��D
+コントローラWebアプリケーションでは，NuGetパッケージを使用していますが，
+含まれていません．Visual Studio 2012では，ビルド時にダウンロードされま
+せんので，以下の操作を行ってください．
+Visual Studioで「EcnlControllerUI.sln」を開き，「ソリューション エクス
+プローラー」の「ソリューション 'EcnlControllerUI'」を右クリックして，
+「NuGet パッケージの復元の有効化」を選択し，表示されたダイアログでOKを
+押します．
+設定が完了すると，ビルド時にNuGetパッケージがダウンロードされるようにな
+ります．
 
-�y����E�o�O���|�[�g�E�ӌ����̑��t��z
+【質問・バグレポート・意見等の送付先】
 
-TOPPERS/ECNL�����ǂ����̂ɂ��邽�߂̂��ӌ��������}���܂��DTOPPERS/ECNL
-�Ɋւ��鎿���o�O���|�[�g�C���ӌ����́CTOPPERS�v���W�F�N�g�̉����
-TOPPERS�J���҃��[�����O���X�g�idev@toppers.jp�j���܂���TOPPERS/ECNL�̃o
-�O�g���b�L���O�V�X�e���iTrac�j�ɁC���̑��̕���TOPPERS���[�U�[�Y���[����
-�O���X�g�iusers@toppers.jp�j���ɂ��肢���܂��D
+TOPPERS/ECNLをより良いものにするためのご意見等を歓迎します．TOPPERS/ECNL
+に関する質問やバグレポート，ご意見等は，TOPPERSプロジェクトの会員は
+TOPPERS開発者メーリングリスト（dev@toppers.jp）宛またはTOPPERS/ECNLのバ
+グトラッキングシステム（Trac）に，その他の方はTOPPERSユーザーズメーリン
+グリスト（users@toppers.jp）宛にお願いします．
 
-TOPPERS���[�U�[�Y���[�����O���X�g�ւ̓o�^���@�ɂ��ẮC�ȉ��̃y�[�W��
-����������܂��D
+TOPPERSユーザーズメーリングリストへの登録方法については，以下のページに
+説明があります．
 
 	http://www.toppers.jp/community.html
 
-�ȏ�
+以上
