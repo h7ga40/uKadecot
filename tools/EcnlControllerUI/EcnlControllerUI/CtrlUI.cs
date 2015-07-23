@@ -98,7 +98,7 @@ public class CtrlUI
 	/// <summary>現在選択中のノード</summary>
 	DeviceController.DeviceInfo m_CurrentNode
 	{
-		get		{			return _m_CurrentNode;		}
+		get { return _m_CurrentNode; }
 		set
 		{
 			bool flag = (_m_CurrentNode != value) || (_m_CurrentNode == null && value == null);
@@ -117,7 +117,7 @@ public class CtrlUI
 		m_WampClient = new WampClient();
 		m_WampClient.addOpenCallback(WampClientConnected);
 		m_WampClient.addCloseCallback(WampClientDisconnected);
-		m_WampClient.connect("ws://" + Window.Location.Host + "/webapi.ashx");
+		m_WampClient.connect("ws://" + Window.Location.Host + "/webapi");
 	}
 
 	/// <summary>
@@ -159,6 +159,7 @@ public class CtrlUI
 		KadecotBtn.Click(KadecotClick);
 		PropertyList.Change(PropertyChange);
 		SetInitParamsBtn.Click(SetInitParams);
+		GetInitParamsBtn.Click(GetInitParams);
 	}
 
 	/// <summary>
@@ -505,7 +506,7 @@ public class CtrlUI
 		//接続スイッチがOn && m_WampClient.isConnecting() == false
 		if (connect && !m_WampClient.isConnecting()) {
 			Debug.WriteLine("m_WampClient.isConnecting():" + m_WampClient.isConnecting().ToString());
-			m_WampClient.connect("ws://" + Window.Location.Host + "/webapi.ashx");
+			m_WampClient.connect("ws://" + Window.Location.Host + "/webapi");
 		}
 		//接続スイッチがOff && m_WampClient.isConnecting() ==true
 		else if (!connect && m_WampClient.isConnecting()) {
@@ -910,20 +911,56 @@ public class CtrlUI
 	private void SetInitParams(Element elem, jQueryEvent e)
 	{
 		var macaddrfrm = new Regex("([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2})");
+		var ipaddrfrm = new Regex("([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})");
 
 		var m = macaddrfrm.Exec(MacAddrTxt.GetValue());
 		if (m == null)
 			return;
 
-		var ma1 = Byte.Parse(m[1], 16);
-		var ma2 = Byte.Parse(m[2], 16);
-		var ma3 = Byte.Parse(m[3], 16);
-		var ma4 = Byte.Parse(m[4], 16);
-		var ma5 = Byte.Parse(m[5], 16);
-		var ma6 = Byte.Parse(m[6], 16);
+		var macAddr = "\"macAddr\":["
+			+ Byte.Parse(m[1], 16) + ","
+			+ Byte.Parse(m[2], 16) + ","
+			+ Byte.Parse(m[3], 16) + ","
+			+ Byte.Parse(m[4], 16) + ","
+			+ Byte.Parse(m[5], 16) + ","
+			+ Byte.Parse(m[6], 16) + "]";
+
+		var dhcpEnable = "\"dhcpEnable\":" + DhcpEnableCb.Prop("checked").ToString();
+
+		m = ipaddrfrm.Exec(IpAddrTxt.GetValue());
+		if (m == null)
+			return;
+
+		var ipAddr = "\"ipAddr\":["
+			+ Byte.Parse(m[1]) + ","
+			+ Byte.Parse(m[2]) + ","
+			+ Byte.Parse(m[3]) + ","
+			+ Byte.Parse(m[4]) + "]";
+
+
+		m = ipaddrfrm.Exec(NetmaskTxt.GetValue());
+		if (m == null)
+			return;
+
+		var netmask = "\"netmask\":["
+			+ Byte.Parse(m[1]) + ","
+			+ Byte.Parse(m[2]) + ","
+			+ Byte.Parse(m[3]) + ","
+			+ Byte.Parse(m[4]) + "]";
+
+
+		m = ipaddrfrm.Exec(GatewayTxt.GetValue());
+		if (m == null)
+			return;
+
+		var gateway = "\"gateway\":["
+			+ Byte.Parse(m[1]) + ","
+			+ Byte.Parse(m[2]) + ","
+			+ Byte.Parse(m[3]) + ","
+			+ Byte.Parse(m[4]) + "]";
 
 		m_WampClient.sendCall("{}", "jp.toppers.ecnl.procedure.setInitParams", "[]",
-			"{\"macAddr\":[" + ma1 + "," + ma2 + "," + ma3 + "," + ma4 + "," + ma5 + "," + ma6 + "]}", SetInitParamsRes);
+			"{" + macAddr + "," + dhcpEnable + "," + ipAddr + "," + netmask + "," + gateway + "}", SetInitParamsRes);
 	}
 
 	public void SetInitParamsRes(object args)
@@ -964,9 +1001,25 @@ public class CtrlUI
 			return;
 		}
 
-		var macaddr = (byte[])(((dynamic[])args)[4].macAddr);
+		dynamic param = ((dynamic[])args)[4];
+		var macaddr = (byte[])(param.macAddr);
 		MacAddrTxt.Value(String.Format("{0:X02}:{1:X02}:{2:X02}:{3:X02}:{4:X02}:{5:X02}",
 			macaddr[0], macaddr[1], macaddr[2], macaddr[3], macaddr[4], macaddr[5]));
+
+		var dhcpEnable = (bool)(param.dhcpEnable);
+		DhcpEnableCb.Prop("checked", dhcpEnable).CheckboxRadio("refresh");
+
+		var ipaddr = (byte[])(param.ipAddr);
+		IpAddrTxt.Value(String.Format("{0}:{1}:{2}:{3}",
+			ipaddr[0], ipaddr[1], ipaddr[2], ipaddr[3]));
+
+		var netmask = (byte[])(param.netmask);
+		NetmaskTxt.Value(String.Format("{0}:{1}:{2}:{3}",
+			netmask[0], netmask[1], netmask[2], netmask[3]));
+
+		var gateway = (byte[])(param.gateway);
+		GatewayTxt.Value(String.Format("{0}:{1}:{2}:{3}",
+			gateway[0], gateway[1], gateway[2], gateway[3]));
 	}
 
 	/// <summary>設定ボタン</summary>
@@ -1004,6 +1057,18 @@ public class CtrlUI
 
 	/// <summary>MACアドレス入力</summary>
 	public jQueryObject MacAddrTxt { get { return jQuery.Select("#txt_mac_addr", page); } }
+
+	/// <summary>DHCP有効／無効</summary>
+	public jQueryObject DhcpEnableCb { get { return jQuery.Select("#cb_dhcp_enable", page); } }
+
+	/// <summary>IPアドレス入力</summary>
+	public jQueryObject IpAddrTxt { get { return jQuery.Select("#txt_ip_addr", page); } }
+
+	/// <summary>サブネットマスク入力</summary>
+	public jQueryObject NetmaskTxt { get { return jQuery.Select("#txt_netmask", page); } }
+
+	/// <summary>デフォルトゲートウェイ入力</summary>
+	public jQueryObject GatewayTxt { get { return jQuery.Select("#txt_gateway", page); } }
 
 	public void pinMode_Change(UIFieldSet fieldset, int pin)
 	{

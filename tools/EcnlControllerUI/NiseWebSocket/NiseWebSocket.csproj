@@ -20,6 +20,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <NoStdLib>True</NoStdLib>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,6 +100,7 @@
     <PostBuildEvent>copy "$(ProjectDir)$(OutDir)$(TargetName).js" "$(SolutionDir)EcnlCtrlUI\js\nisews.js"
 $(SolutionDir)tools\jsmin &lt; "$(ProjectDir)$(OutDir)$(TargetName).js" &gt; "$(SolutionDir)EcnlCtrlUI\js\nisews.min.js" "Copyright (C) 2015 by TOPPERS Project, Inc., JAPAN"</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

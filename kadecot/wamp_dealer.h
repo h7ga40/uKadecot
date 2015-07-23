@@ -52,6 +52,10 @@ typedef enum wamp_dealer_state
 	WAMP_DEALER_STATE_DIGITAL_VALUE,
 	WAMP_DEALER_STATE_ANALOG_VALUE,
 	WAMP_DEALER_STATE_MAC_ADDR_VALUE,
+	WAMP_DEALER_STATE_DHCP_ENABLE_VALUE,
+	WAMP_DEALER_STATE_IP_ADDR_VALUE,
+	WAMP_DEALER_STATE_NETMASK_VALUE,
+	WAMP_DEALER_STATE_GATEWAY_VALUE,
 } wamp_dealer_state_t;
 
 typedef enum wamp_dealer_procedure
@@ -109,7 +113,11 @@ typedef struct wamp_dealer_arduino_params{
 
 typedef struct wamp_dealer_init_params{
 	int pos;
-	uint8_t mac_addr[32]; /* DATA FLASH‚ÌƒTƒCƒY•ª */
+	uint8_t mac_addr[6];
+	bool_t dhcp_enable;
+	uint8_t ip_addr[4];
+	uint8_t netmask[4];
+	uint8_t gateway[4];
 } wamp_dealer_init_params_t;
 
 typedef struct echonetlite_device

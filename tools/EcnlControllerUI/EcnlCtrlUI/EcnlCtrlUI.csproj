@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Intelligencia.UrlRewriter">
+      <HintPath>..\packages\Intelligencia.UrlRewriter.2.0.0.9\lib\net40\Intelligencia.UrlRewriter.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
@@ -60,7 +65,7 @@
   <ItemGroup>
     <Content Include="css\ecn_gen.css" />
     <Content Include="imgs\core-s.svg" />
-    <Content Include="imgs\logo.gif" />
+    <Content Include="imgs\logo.png" />
     <Content Include="js\ctrlui.js" />
     <Content Include="js\ctrlui.min.js" />
     <Content Include="js\images\ajax-loader.gif" />
@@ -528,6 +533,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

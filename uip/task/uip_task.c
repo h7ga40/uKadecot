@@ -81,13 +81,14 @@ typedef struct _uip_out_buf_t
 UIP_OUT_BUF_T uip_out_buf[UIP_BUF_COUNT];
 int uip_out_wpos = 0;
 int uip_out_rpos = 0;
-const u8_t my_ip[4] = { IPV4_ADDR_LOCAL };
-const u8_t my_netmask[4] = { IPV4_ADDR_LOCAL_MASK };
-const u8_t my_default_router[4] = { IPV4_ADDR_DEFAULT_GW };
+u8_t my_ip[4] = { IPV4_ADDR_LOCAL };
+u8_t my_netmask[4] = { IPV4_ADDR_LOCAL_MASK };
+u8_t my_default_router[4] = { IPV4_ADDR_DEFAULT_GW };
 int ws_out_req;
 int ws_out_res;
 #ifdef __DHCPC_H__
 struct dhcpc_state *dhcpc;
+extern bool_t dhcp_enable;
 #endif
 
 /*---------------------------------------------------------------------------*/
@@ -112,7 +113,9 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 
 	uip_init();
 #ifdef __DHCPC_H__
-	dhcpc = dhcpc_init(uip_ethaddr.addr, sizeof(uip_ethaddr.addr));
+	if(dhcp_enable){
+		dhcpc = dhcpc_init(uip_ethaddr.addr, sizeof(uip_ethaddr.addr));
+	}
 #endif
 	uip_task_init((intptr_t)uiptsk);
 
@@ -131,17 +134,22 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 				bool_t cng = ic->link_pre != ic->link_now;
 				ic->link_pre = ic->link_now;
 				if(cng && ic->link_pre){
-					sil_wrb_mem((uint8_t *)0x0008C02A, sil_reb_mem((uint8_t *)0x0008C02A) | 0x04);
 #ifdef __DHCPC_H__
-					uip_buf = uiptsk->uip_buf;
-					uip_len = 0;
-					dhcpc_request(dhcpc);
-					/* If the above function invocation resulted in data that
-						should be sent out on the network, the global variable
-						uip_len is set to a value > 0. */
-					if (uip_len > 0) {
-						uip_arp_out();
-						IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+					if(dhcp_enable){
+						sil_wrb_mem((uint8_t *)0x0008C02A, sil_reb_mem((uint8_t *)0x0008C02A) | 0x04);
+						uip_buf = uiptsk->uip_buf;
+						uip_len = 0;
+						dhcpc_request(dhcpc);
+						/* If the above function invocation resulted in data that
+							should be sent out on the network, the global variable
+							uip_len is set to a value > 0. */
+						if (uip_len > 0) {
+							uip_arp_out();
+							IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+						}
+					}
+					else{
+						DHCP4_CLI_SET_ADDR_CALLBACK();
 					}
 #else
 					DHCP4_CLI_SET_ADDR_CALLBACK();

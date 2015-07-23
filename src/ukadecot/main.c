@@ -64,6 +64,7 @@
 #include "data_flash.h"
 
 uint8_t mac_addr[6] = { 0x12, 0x34, 0x56, 0x78, 0x9A, 0xB8 };
+bool_t dhcp_enable = true;
 
 #define MAKER_CODE	0x00, 0x00, 0xB3	/* TOPPERSプロジェクト */
 
@@ -338,7 +339,7 @@ PT_THREAD(main_task_pt(void))
 		}
 		/* 応答電文待ちの割り込みの場合 */
 		else if (ret == E_BRK) {
-			ECN_FBS_ID msg = { (T_ECN_FST_BLK	*)esv };
+			ECN_FBS_ID msg = { (T_ECN_FST_BLK *)esv };
 			bool_t rel_msg = true;
 			switch (msg.ptr->hdr.type) {
 			case 0: 
@@ -432,6 +433,9 @@ wamp_state_t wamp;
  */
 static void main_initialize()
 {
+	extern u8_t my_ip[4];
+	extern u8_t my_netmask[4];
+	extern u8_t my_default_router[4];
 	uint8_t btn1, btn2;
 	uint8_t data[32], c;
 	int i, j;
@@ -442,7 +446,6 @@ static void main_initialize()
 	sil_wrb_mem((uint8_t *)0x0008C02A, 0x00);
 
 	ret = data_flash_init();
-
 	while(ret == E_OK){
 		ret = data_flash_read(0, data);
 		if(ret != E_OK){
@@ -451,6 +454,10 @@ static void main_initialize()
 
 		dflt_addr = false;
 		memcpy(mac_addr, data, sizeof(mac_addr));
+		dhcp_enable = data[sizeof(mac_addr)] != 0;
+		memcpy(my_ip, &data[sizeof(mac_addr) + 1], sizeof(my_ip));
+		memcpy(my_netmask, &data[sizeof(mac_addr) + 5], sizeof(my_netmask));
+		memcpy(my_default_router, &data[sizeof(mac_addr) + 9], sizeof(my_default_router));
 		break;
 	}
 
@@ -463,7 +470,7 @@ static void main_initialize()
 	}
 	data[--j] = '\0';
 
-	syslog(LOG_INFO, "mac_addr %s %s", data, dflt_addr ? "default" : "flash-rom");
+	syslog(LOG_INFO, "mac_addr %s %s %s", data, dflt_addr ? "default" : "flash-rom", dhcp_enable ? "dhcp" : "static");
 
 	/* uIPを開始 */
 	uip_start();

@@ -29,7 +29,7 @@
 		<div data-role="header">
 			<h1 id="header_logo" style="margin: 0px; text-align: left; background-color: white;">
 				<a target='_blank' href="http://www.toppers.jp/index.html">
-					<img src="./imgs/logo.gif" width="353" height="74" border="0" alt="TOPPERS LOGO">
+					<img src="./imgs/logo.png" width="353" height="74" border="0" alt="TOPPERS LOGO">
 				</a>
 			</h1>
 			<a data-role="button" href="#information" data-rel="popup" data-icon="info" class="ui-btn-right"
@@ -94,6 +94,14 @@
 			<h3>設定</h3>
 			<label for="txt_mac_addr">MACアドレス</label>
 			<input name="txt_mac_addr" id="txt_mac_addr" value="12:34:56:78:9A:BC" type="text">
+			<label for="cb_dhcp_enable">DHCP有効</label>
+			<input name="cb_dhcp_enable" id="cb_dhcp_enable" type="checkbox">
+			<label for="txt_ip_addr">IPアドレス</label>
+			<input name="txt_ip_addr" id="txt_ip_addr" value="192.168.2.103" type="text">
+			<label for="txt_netmask">サブネットマスク</label>
+			<input name="txt_netmask" id="txt_netmask" value="255.255.255.0" type="text">
+			<label for="txt_gateway">デフォルトゲートウェイ</label>
+			<input name="txt_gateway" id="txt_gateway" value="192.168.2.1" type="text">
 			<button id="bt_set_init_params" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-c">
 				設定
 			</button>

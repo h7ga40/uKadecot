@@ -17,7 +17,7 @@
 		this.$m_WampClient = new $Kadecot_WampClient();
 		this.$m_WampClient.addOpenCallback(ss.mkdel(this, this.$wampClientConnected));
 		this.$m_WampClient.addCloseCallback(ss.mkdel(this, this.$wampClientDisconnected));
-		this.$m_WampClient.connect('ws://' + window.location.host + '/webapi.ashx');
+		this.$m_WampClient.connect('ws://' + window.location.host + '/webapi');
 	};
 	$CtrlUI.__typeName = 'CtrlUI';
 	$CtrlUI.main = function() {
@@ -2616,6 +2616,7 @@
 			this.get_kadecotBtn().click(ss.thisFix(ss.mkdel(this, this.kadecotClick)));
 			this.get_propertyList().change(ss.thisFix(ss.mkdel(this, this.propertyChange)));
 			this.get_setInitParamsBtn().click(ss.thisFix(ss.mkdel(this, this.$setInitParams)));
+			this.get_getInitParamsBtn().click(ss.thisFix(ss.mkdel(this, this.$getInitParams)));
 		},
 		$initClassGroups: function(data) {
 			var classGroups = $control_UI.toJSClassGroupInfoList(data);
@@ -2807,7 +2808,7 @@
 			var connect = $(ele).prop('checked');
 			//接続スイッチがOn && m_WampClient.isConnecting() == false
 			if (connect && !this.$m_WampClient.isConnecting()) {
-				this.$m_WampClient.connect('ws://' + window.location.host + '/webapi.ashx');
+				this.$m_WampClient.connect('ws://' + window.location.host + '/webapi');
 			}
 			else if (!connect && this.$m_WampClient.isConnecting()) {
 				this.$m_WampClient.disconnect();
@@ -3040,17 +3041,29 @@
 		},
 		$setInitParams: function(elem, e) {
 			var macaddrfrm = new RegExp('([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2}):([0-9A-Fa-f]{2})');
+			var ipaddrfrm = new RegExp('([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3}).([0-9]{1,3})');
 			var m = macaddrfrm.exec(this.get_macAddrTxt().val());
 			if (ss.isNullOrUndefined(m)) {
 				return;
 			}
-			var ma1 = parseInt(m[1], 16);
-			var ma2 = parseInt(m[2], 16);
-			var ma3 = parseInt(m[3], 16);
-			var ma4 = parseInt(m[4], 16);
-			var ma5 = parseInt(m[5], 16);
-			var ma6 = parseInt(m[6], 16);
-			this.$m_WampClient.sendCall('{}', 'jp.toppers.ecnl.procedure.setInitParams', '[]', '{"macAddr":[' + ma1 + ',' + ma2 + ',' + ma3 + ',' + ma4 + ',' + ma5 + ',' + ma6 + ']}', ss.mkdel(this, this.setInitParamsRes));
+			var macAddr = '"macAddr":[' + parseInt(m[1], 16) + ',' + parseInt(m[2], 16) + ',' + parseInt(m[3], 16) + ',' + parseInt(m[4], 16) + ',' + parseInt(m[5], 16) + ',' + parseInt(m[6], 16) + ']';
+			var dhcpEnable = '"dhcpEnable":' + this.get_dhcpEnableCb().prop('checked').toString();
+			m = ipaddrfrm.exec(this.get_ipAddrTxt().val());
+			if (ss.isNullOrUndefined(m)) {
+				return;
+			}
+			var ipAddr = '"ipAddr":[' + parseInt(m[1]) + ',' + parseInt(m[2]) + ',' + parseInt(m[3]) + ',' + parseInt(m[4]) + ']';
+			m = ipaddrfrm.exec(this.get_netmaskTxt().val());
+			if (ss.isNullOrUndefined(m)) {
+				return;
+			}
+			var netmask = '"netmask":[' + parseInt(m[1]) + ',' + parseInt(m[2]) + ',' + parseInt(m[3]) + ',' + parseInt(m[4]) + ']';
+			m = ipaddrfrm.exec(this.get_gatewayTxt().val());
+			if (ss.isNullOrUndefined(m)) {
+				return;
+			}
+			var gateway = '"gateway":[' + parseInt(m[1]) + ',' + parseInt(m[2]) + ',' + parseInt(m[3]) + ',' + parseInt(m[4]) + ']';
+			this.$m_WampClient.sendCall('{}', 'jp.toppers.ecnl.procedure.setInitParams', '[]', '{' + macAddr + ',' + dhcpEnable + ',' + ipAddr + ',' + netmask + ',' + gateway + '}', ss.mkdel(this, this.setInitParamsRes));
 		},
 		setInitParamsRes: function(args) {
 			var cmd = ss.unbox(ss.cast(ss.cast(args, Array)[0], ss.Int32));
@@ -3078,8 +3091,17 @@
 				$('#popup_dialog').popup('open', { transition: 'slidedown' });
 				return;
 			}
-			var macaddr = ss.cast(ss.cast(args, Array)[4].macAddr, Array);
+			var param = ss.cast(args, Array)[4];
+			var macaddr = ss.cast(param.macAddr, Array);
 			this.get_macAddrTxt().val(ss.formatString('{0:X02}:{1:X02}:{2:X02}:{3:X02}:{4:X02}:{5:X02}', macaddr[0], macaddr[1], macaddr[2], macaddr[3], macaddr[4], macaddr[5]));
+			var dhcpEnable = !!param.dhcpEnable;
+			this.get_dhcpEnableCb().prop('checked', dhcpEnable).checkboxradio('refresh');
+			var ipaddr = ss.cast(param.ipAddr, Array);
+			this.get_ipAddrTxt().val(ss.formatString('{0}:{1}:{2}:{3}', ipaddr[0], ipaddr[1], ipaddr[2], ipaddr[3]));
+			var netmask = ss.cast(param.netmask, Array);
+			this.get_netmaskTxt().val(ss.formatString('{0}:{1}:{2}:{3}', netmask[0], netmask[1], netmask[2], netmask[3]));
+			var gateway = ss.cast(param.gateway, Array);
+			this.get_gatewayTxt().val(ss.formatString('{0}:{1}:{2}:{3}', gateway[0], gateway[1], gateway[2], gateway[3]));
 		},
 		get_setPropertyBtn: function() {
 			return $('#bt_set_property', $CtrlUI.$page);
@@ -3116,6 +3138,18 @@
 		},
 		get_macAddrTxt: function() {
 			return $('#txt_mac_addr', $CtrlUI.$page);
+		},
+		get_dhcpEnableCb: function() {
+			return $('#cb_dhcp_enable', $CtrlUI.$page);
+		},
+		get_ipAddrTxt: function() {
+			return $('#txt_ip_addr', $CtrlUI.$page);
+		},
+		get_netmaskTxt: function() {
+			return $('#txt_netmask', $CtrlUI.$page);
+		},
+		get_gatewayTxt: function() {
+			return $('#txt_gateway', $CtrlUI.$page);
 		},
 		pinMode_Change: function(fieldset, pin) {
 			var value = fieldset.checkdValue();

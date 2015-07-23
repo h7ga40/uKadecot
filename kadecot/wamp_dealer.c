@@ -568,6 +568,10 @@ static void wamp_dealer_call_init_params_param(wamp_dealer_t *dealer,
 	jsonsl_action_t action, struct jsonsl_state_st *state, const char *buf)
 {
 	static const char macAddr[] = "macAddr";
+	static const char dhcpEnable[] = "dhcpEnable";
+	static const char ipAddr[] = "ipAddr";
+	static const char netmask[] = "netmask";
+	static const char gateway[] = "gateway";
 
 	switch (state->level) {
 	case 3:
@@ -578,7 +582,34 @@ static void wamp_dealer_call_init_params_param(wamp_dealer_t *dealer,
 			case JSONSL_T_HKEY:
 				if(strcmp(macAddr, dealer->s->jsn_buf) == 0){
 					dealer->state = WAMP_DEALER_STATE_MAC_ADDR_VALUE;
-					memset(&dealer->init_params, 0, sizeof(dealer->init_params));
+					dealer->init_params.pos = 0;
+					memset(&dealer->init_params.mac_addr, 0, sizeof(dealer->init_params.mac_addr));
+				}
+				if(strcmp(dhcpEnable, dealer->s->jsn_buf) == 0){
+					dealer->state = WAMP_DEALER_STATE_DHCP_ENABLE_VALUE;
+					dealer->init_params.dhcp_enable = false;
+				}
+				if(strcmp(ipAddr, dealer->s->jsn_buf) == 0){
+					dealer->state = WAMP_DEALER_STATE_IP_ADDR_VALUE;
+					dealer->init_params.pos = 0;
+					memset(&dealer->init_params.ip_addr, 0, sizeof(dealer->init_params.ip_addr));
+				}
+				if(strcmp(netmask, dealer->s->jsn_buf) == 0){
+					dealer->state = WAMP_DEALER_STATE_NETMASK_VALUE;
+					dealer->init_params.pos = 0;
+					memset(&dealer->init_params.netmask, 0, sizeof(dealer->init_params.netmask));
+				}
+				if(strcmp(gateway, dealer->s->jsn_buf) == 0){
+					dealer->state = WAMP_DEALER_STATE_GATEWAY_VALUE;
+					dealer->init_params.pos = 0;
+					memset(&dealer->init_params.gateway, 0, sizeof(dealer->init_params.gateway));
+				}
+				break;
+			case JSONSL_T_SPECIAL:
+				switch(dealer->state){
+				case WAMP_DEALER_STATE_DHCP_ENABLE_VALUE:
+					dealer->init_params.dhcp_enable = strcmp("true", dealer->s->jsn_buf) == 0;
+					break;
 				}
 				break;
 			default:
@@ -596,6 +627,15 @@ static void wamp_dealer_call_init_params_param(wamp_dealer_t *dealer,
 				switch(dealer->state){
 				case WAMP_DEALER_STATE_MAC_ADDR_VALUE:
 					dealer->init_params.mac_addr[dealer->init_params.pos++] = atoi(dealer->s->jsn_buf);
+					break;
+				case WAMP_DEALER_STATE_IP_ADDR_VALUE:
+					dealer->init_params.ip_addr[dealer->init_params.pos++] = atoi(dealer->s->jsn_buf);
+					break;
+				case WAMP_DEALER_STATE_NETMASK_VALUE:
+					dealer->init_params.netmask[dealer->init_params.pos++] = atoi(dealer->s->jsn_buf);
+					break;
+				case WAMP_DEALER_STATE_GATEWAY_VALUE:
+					dealer->init_params.gateway[dealer->init_params.pos++] = atoi(dealer->s->jsn_buf);
 					break;
 				}
 				break;
@@ -1776,8 +1816,16 @@ static void wamp_dealer_set_init_params_close(struct wamp_dealer *dealer)
 	ECN_FBS_ID buf;
 	ECN_FBS_SSIZE_T pos = 0;
 	ER ret;
+	uint8_t data[32];
 
-	ret = data_flash_write(0, dealer->init_params.mac_addr);
+	memset(data, 0, sizeof(data));
+	memcpy(&data[0], dealer->init_params.mac_addr, sizeof(dealer->init_params.mac_addr));
+	data[6] = dealer->init_params.dhcp_enable ? 1 : 0;
+	memcpy(&data[7], dealer->init_params.ip_addr, sizeof(dealer->init_params.ip_addr));
+	memcpy(&data[11], dealer->init_params.netmask, sizeof(dealer->init_params.netmask));
+	memcpy(&data[15], dealer->init_params.gateway, sizeof(dealer->init_params.gateway));
+
+	ret = data_flash_write(0, data);
 	if (ret != E_OK) {
 		syslog(LOG_WARNING, "data_flash_write() result = %d", ret);
 		return;
@@ -1805,6 +1853,36 @@ static void wamp_dealer_set_init_params_close(struct wamp_dealer *dealer)
 	dealer->error = NULL;
 }
 
+static ER wamp_dealer_write_ip_addr(struct wamp_dealer *dealer, ECN_FBS_ID buf,
+	ECN_FBS_SSIZE_T *pos, uint8_t *ip_addr, char *name)
+{
+	ER ret;
+	int i;
+
+	/* IPアドレス */
+	ret = fbs_printf(buf, pos, "\"%s\":[", name);
+	if (ret != E_OK) {
+		return ret;
+	}
+
+	for (i = 0; i < 4; i++) {
+		ret = fbs_printf(buf, pos, "%d,", ip_addr[i]);
+		if (ret != E_OK) {
+			return ret;
+		}
+	}
+
+	/* 最後の","を消す */
+	*pos = *pos - 1;
+
+	ret = fbs_printf(buf, pos, "],");
+	if (ret != E_OK) {
+		return ret;
+	}
+
+	return E_OK;
+}
+
 static void wamp_dealer_get_init_params_close(struct wamp_dealer *dealer)
 {
 	wamp_state_t *s = dealer->s;
@@ -1812,12 +1890,19 @@ static void wamp_dealer_get_init_params_close(struct wamp_dealer *dealer)
 	ECN_FBS_SSIZE_T pos = 0;
 	ER ret;
 	int i;
+	uint8_t data[32];
 
-	ret = data_flash_read(0, dealer->init_params.mac_addr);
+	ret = data_flash_read(0, data);
 	if (ret != E_OK) {
 		syslog(LOG_WARNING, "data_flash_read() result = %d", ret);
 		return;
 	}
+
+	memcpy(dealer->init_params.mac_addr, &data[0], sizeof(dealer->init_params.mac_addr));
+	dealer->init_params.dhcp_enable = data[6] != 0;
+	memcpy(dealer->init_params.ip_addr, &data[7], sizeof(dealer->init_params.ip_addr));
+	memcpy(dealer->init_params.netmask, &data[11], sizeof(dealer->init_params.netmask));
+	memcpy(dealer->init_params.gateway, &data[15], sizeof(dealer->init_params.gateway));
 
 	ret = _ecn_fbs_cre(1, &buf);
 	if (ret != E_OK) {
@@ -1825,7 +1910,15 @@ static void wamp_dealer_get_init_params_close(struct wamp_dealer *dealer)
 		return;
 	}
 
-	ret = fbs_printf(buf, &pos, "[50,%d,{},[],{\"macAddr\":[", dealer->requestId);
+	ret = fbs_printf(buf, &pos, "[50,%d,{},[],{", dealer->requestId);
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	/* MACアドレス */
+	ret = fbs_printf(buf, &pos, "\"macAddr\":[");
 	if (ret != E_OK) {
 		syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
 		_ecn_fbs_del(buf);
@@ -1844,7 +1937,49 @@ static void wamp_dealer_get_init_params_close(struct wamp_dealer *dealer)
 	/* 最後の","を消す */
 	pos--;
 
-	ret = fbs_printf(buf, &pos, "]}]");
+	ret = fbs_printf(buf, &pos, "],");
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	/* DHCP有効／無効 */
+	ret = fbs_printf(buf, &pos, "\"dhcpEnable\":%s,", dealer->init_params.dhcp_enable ? "true" : "false");
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	/* IPアドレス */
+	ret = wamp_dealer_write_ip_addr(dealer, buf, &pos, dealer->init_params.ip_addr, "ipAddr");
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "wamp_dealer_write_ip_addr() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	/* サブネットマスク */
+	ret = wamp_dealer_write_ip_addr(dealer, buf, &pos, dealer->init_params.netmask, "netmask");
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "wamp_dealer_write_ip_addr() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	/* デフォルトゲートウェイ */
+	ret = wamp_dealer_write_ip_addr(dealer, buf, &pos, dealer->init_params.gateway, "gateway");
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "wamp_dealer_write_ip_addr() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	/* 最後の","を消す */
+	pos--;
+
+	ret = fbs_printf(buf, &pos, "}]");
 	if (ret != E_OK) {
 		syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
 		_ecn_fbs_del(buf);

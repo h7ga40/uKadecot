@@ -1,145 +1,153 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>コントローラWebアプリケーション</title>
-    <link rel="shortcut icon" href="favicon.ico">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>コントローラWebアプリケーション</title>
+	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.icons-1.4.5.min.css">
-    <link rel="stylesheet" href="themes/ecn-theme.min.css">
+	<link rel="stylesheet" href="themes/ecn-theme.min.css">
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css">
 	<link rel="stylesheet" href="http://cdn.jtsage.com/datebox/1.4.5/jqm-datebox-1.4.5.css" />
-    <link rel="stylesheet" href="css/ecn_gen.css">
+	<link rel="stylesheet" href="css/ecn_gen.css">
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-    <script src="js/mscorlib.min.js"></script>
-    <script src="js/linq.min.js"></script>
+	<script src="js/mscorlib.min.js"></script>
+	<script src="js/linq.min.js"></script>
 	<script src="http://cdn.jtsage.com/datebox/1.4.5/jqm-datebox-1.4.5.core.min.js"></script>
 	<script src="http://cdn.jtsage.com/datebox/1.4.5/jqm-datebox-1.4.5.mode.calbox.min.js"></script>
 	<script src="http://cdn.jtsage.com/datebox/1.4.5/jqm-datebox-1.4.5.mode.datebox.min.js"></script>
 	<script src="http://cdn.jtsage.com/datebox/i18n/jqm-datebox.lang.utf8.js"></script>
-    <script src="js/nisews.js"></script>
-    <script src="js/ctrlui.js"></script>
-    <script type="text/javascript">
-        if (typeof window.external.CreateXMLHttpRequest != "undefined") {
-            window.XMLHttpRequest = function () {
-                return window.external.CreateXMLHttpRequest();
-            }
-            global.WebSocket = function (url, protocol) {
-                return window.external.CreateWebSocket(url, protocol);
-            }
-            window.onerror = function (msg, src, line, column, _exc) {
-                var exc = window.external.new_object();
-                for (m in _exc) {
-                    window.external.object_add(exc, m, _exc[m]);
-                }
-                window.external.onerror(msg, src, line, column, exc);
-            }
-            window.external.Error = window.Error;
-            window.Error = function () {
-                var nullPtr = null;
-                nullPtr(); // スタックトレースを表示するためnull参照
-                return window.external.new_error();
-            }
-            ss.Debug.writeln = function (text) {
-                window.external.output_debug_string(text);
-            }
-            console.log = function (text) {
-                window.external.output_debug_string(text);
-            }
-        }
-        else {
-            global.WebSocket = function (url, protocol) {
-                return new NiseWebSocket(url, protocol);
-            }
-        }
-        CtrlUI.main();
-    </script>
+	<script src="js/nisews.js"></script>
+	<script src="js/ctrlui.js"></script>
+	<script type="text/javascript">
+		if (typeof window.external.CreateXMLHttpRequest != "undefined") {
+			window.XMLHttpRequest = function () {
+				return window.external.CreateXMLHttpRequest();
+			}
+			global.WebSocket = function (url, protocol) {
+				return window.external.CreateWebSocket(url, protocol);
+			}
+			window.onerror = function (msg, src, line, column, _exc) {
+				var exc = window.external.new_object();
+				for (m in _exc) {
+					window.external.object_add(exc, m, _exc[m]);
+				}
+				window.external.onerror(msg, src, line, column, exc);
+			}
+			window.external.Error = window.Error;
+			window.Error = function () {
+				var nullPtr = null;
+				nullPtr(); // スタックトレースを表示するためnull参照
+				return window.external.new_error();
+			}
+			ss.Debug.writeln = function (text) {
+				window.external.output_debug_string(text);
+			}
+			console.log = function (text) {
+				window.external.output_debug_string(text);
+			}
+		}
+		else {
+			global.WebSocket = function (url, protocol) {
+				return new NiseWebSocket(url, protocol);
+			}
+		}
+		CtrlUI.main();
+	</script>
 </head>
 <body>
-    <div data-role="page" id="index">
-        <div data-role="header">
-            <h1 id="header_logo" style="margin: 0px; text-align: left; background-color: white;">
-                <a target='_blank' href="http://www.toppers.jp/index.html">
-                    <img src="./imgs/logo.gif" width="353" height="74" border="0" alt="TOPPERS LOGO">
-                </a>
-            </h1>
-            <a data-role="button" href="#information" data-rel="popup" data-icon="info" class="ui-btn-right"
-               style="-webkit-border-radius: 6em; border-radius: 6em;"
-               onclick="CtrlUI.info.update(this, 'information');">情報
-            </a>
-        </div>
-        <h2><strong>TOPPERS/ECNL</strong>コントローラWebアプリケーション</h2>
-        <div data-role="panel" class="ecn-navmenu-panel" data-position="left" data-display="overlay" style="background-color: #f9f9f9;">
-            <div class="ui-field-contain" id="fs_connection_ctn">
-                <label for="fs_connection">接続</label>
-                <input type="checkbox" name="fs_connection" id="fs_connection" data-role="flipswitch" data-on-text="On" data-off-text="Off">
-            </div>
-            <button id="bt_search" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-alert ui-btn-c"
-                    onclick="CtrlUI.page.search(this);">
-                機器検索
-            </button>
-            <h2>インスタンス</h2>
-            <div id="node_list" data-role="collapsibleset" data-inset="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
-            </div>
-            <button id="bt_set_property" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-star ui-btn-c">
-                設定
-            </button>
-            <button id="bt_get_property" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-eye ui-btn-c">
-                取得
-            </button>
-            <button id="bt_set_get_property" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-recycle ui-btn-c">
-                設定と取得
-            </button>
-            <button id="bt_kadecot" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-action ui-btn-b">
-                Kadecot App list
-            </button>
-        </div>
-        <div role="main" class="ui-content ecn-content">
-            <ul id="lv_property_list" data-role="listview" data-inset="true"></ul>
-        </div>
-        <div data-role="footer" data-position="fixed">
-            <p style="padding-left: 1em">
-                Copyright &copy; 2015 by TOPPERS Project, Inc. All Rights Reserved.
-            </p>
-            <a data-role="button" href="#setting_panel" data-icon="gear" class="ui-btn-right"
-               style="-webkit-border-radius: 6em; border-radius: 6em;">設定
-            </a>
-        </div>
-        <div data-role="popup" id="popup_dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
-            <div data-role="header" data-theme="a">
-                <h1 id="popup_dialog_caption">エラー</h1>
-            </div>
-            <div role="main" class="ui-content">
-                <h3 id="popup_dialog_title" class="ui-title">エラー</h3>
-                <p id="popup_dialog_text">エラー</p>
-                <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back">OK</a>
-            </div>
-        </div>
-        <div id="information-screen"></div>
-        <div id="information-popup">
-            <div data-role="popup" id="information" data-theme="b">
-                <img src="js/images/ajax-loader.gif" />
-            </div>
-        </div>
-        <div data-role="panel" id="setting_panel" data-position="right" data-display="overlay" data-theme="b">
-            <h3>設定</h3>
+	<div data-role="page" id="index">
+		<div data-role="header">
+			<h1 id="header_logo" style="margin: 0px; text-align: left; background-color: white;">
+				<a target='_blank' href="http://www.toppers.jp/index.html">
+					<img src="./imgs/logo.png" width="353" height="74" border="0" alt="TOPPERS LOGO">
+				</a>
+			</h1>
+			<a data-role="button" href="#information" data-rel="popup" data-icon="info" class="ui-btn-right"
+				style="-webkit-border-radius: 6em; border-radius: 6em;"
+				onclick="CtrlUI.info.update(this, 'information');">情報
+			</a>
+		</div>
+		<h2><strong>TOPPERS/ECNL</strong>コントローラWebアプリケーション</h2>
+		<div data-role="panel" class="ecn-navmenu-panel" data-position="left" data-display="overlay" style="background-color: #f9f9f9;">
+			<div class="ui-field-contain" id="fs_connection_ctn">
+				<label for="fs_connection">接続</label>
+				<input type="checkbox" name="fs_connection" id="fs_connection" data-role="flipswitch" data-on-text="On" data-off-text="Off">
+			</div>
+			<button id="bt_search" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-alert ui-btn-c"
+				onclick="CtrlUI.page.search(this);">
+				機器検索
+			</button>
+			<h2>インスタンス</h2>
+			<div id="node_list" data-role="collapsibleset" data-inset="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+			</div>
+			<button id="bt_set_property" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-star ui-btn-c">
+				設定
+			</button>
+			<button id="bt_get_property" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-eye ui-btn-c">
+				取得
+			</button>
+			<button id="bt_set_get_property" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-recycle ui-btn-c">
+				設定と取得
+			</button>
+			<button id="bt_kadecot" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-action ui-btn-b">
+				Kadecot App list
+			</button>
+		</div>
+		<div role="main" class="ui-content ecn-content">
+			<ul id="lv_property_list" data-role="listview" data-inset="true"></ul>
+		</div>
+		<div data-role="footer" data-position="fixed">
+			<p style="padding-left: 1em">
+				Copyright &copy; 2015 by TOPPERS Project, Inc. All Rights Reserved.
+			</p>
+			<a data-role="button" href="#setting_panel" data-icon="gear" class="ui-btn-right"
+				style="-webkit-border-radius: 6em; border-radius: 6em;">設定
+			</a>
+		</div>
+		<div data-role="popup" id="popup_dialog" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width: 400px;">
+			<div data-role="header" data-theme="a">
+				<h1 id="popup_dialog_caption">エラー</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<h3 id="popup_dialog_title" class="ui-title">エラー</h3>
+				<p id="popup_dialog_text">エラー</p>
+				<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back">OK</a>
+			</div>
+		</div>
+		<div id="information-screen"></div>
+		<div id="information-popup">
+			<div data-role="popup" id="information" data-theme="b">
+				<img src="js/images/ajax-loader.gif" />
+			</div>
+		</div>
+		<div data-role="panel" id="setting_panel" data-position="right" data-display="overlay" data-theme="b">
+			<h3>設定</h3>
 			<label for="txt_mac_addr">MACアドレス</label>
-            <input name="txt_mac_addr" id="txt_mac_addr" value="12:34:56:78:9A:BC" type="text">
-            <button id="bt_set_init_params" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-c">
-                設定
-            </button>
+			<input name="txt_mac_addr" id="txt_mac_addr" value="12:34:56:78:9A:BC" type="text">
+			<label for="cb_dhcp_enable">DHCP有効</label>
+			<input name="cb_dhcp_enable" id="cb_dhcp_enable" type="checkbox">
+			<label for="txt_ip_addr">IPアドレス</label>
+			<input name="txt_ip_addr" id="txt_ip_addr" value="192.168.2.103" type="text">
+			<label for="txt_netmask">サブネットマスク</label>
+			<input name="txt_netmask" id="txt_netmask" value="255.255.255.0" type="text">
+			<label for="txt_gateway">デフォルトゲートウェイ</label>
+			<input name="txt_gateway" id="txt_gateway" value="192.168.2.1" type="text">
+			<button id="bt_set_init_params" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-c">
+				設定
+			</button>
 			<button id="bt_get_init_params" class="ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-check ui-btn-c">
 				取得
 			</button>
-            <h3>ライセンス</h3>
-            <p>
-                このサイトは<a target='_blank' href="http://www.toppers.jp/license.html">TOPPERSライセンス</a>で公開しています。<br>
-                このサイトは、いくつかのJavaScriptライブラリを使用しています。サイト右上のソフトウェア情報をご覧ください。
-            </p>
-            <a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">閉じる</a>
-        </div>
-    </div>
+			<h3>ライセンス</h3>
+			<p>
+				このサイトは<a target='_blank' href="http://www.toppers.jp/license.html">TOPPERSライセンス</a>で公開しています。<br>
+				このサイトは、いくつかのJavaScriptライブラリを使用しています。サイト右上のソフトウェア情報をご覧ください。
+			</p>
+			<a href="#" data-rel="close" class="ui-btn ui-shadow ui-corner-all ui-btn-a ui-icon-delete ui-btn-icon-left ui-btn-inline">閉じる</a>
+		</div>
+	</div>
 </body>
 </html>

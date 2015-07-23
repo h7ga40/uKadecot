@@ -109,7 +109,7 @@ mkdir ..\..\..\uip\apps\webserver\httpd-fs\devices
 
 mkdir ..\..\..\uip\apps\webserver\httpd-fs\imgs
 copy /Y imgs\core-s.svg ..\..\..\uip\apps\webserver\httpd-fs\imgs\core-s.svg
-copy /Y imgs\logo.gif ..\..\..\uip\apps\webserver\httpd-fs\imgs\logo.gif
+copy /Y imgs\logo.png ..\..\..\uip\apps\webserver\httpd-fs\imgs\logo.png
 
 mkdir ..\..\..\uip\apps\webserver\httpd-fs\js
 copy /Y js\ctrlui.min.js ..\..\..\uip\apps\webserver\httpd-fs\js\ctrlui.min.js

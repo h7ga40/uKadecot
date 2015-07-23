@@ -40,9 +40,10 @@
 #include "pt.h"
 
 #define STATE_INITIAL         0
-#define STATE_SENDING         1
-#define STATE_OFFER_RECEIVED  2
-#define STATE_CONFIG_RECEIVED 3
+#define STATE_REQUEST         1
+#define STATE_SENDING         2
+#define STATE_OFFER_RECEIVED  3
+#define STATE_CONFIG_RECEIVED 4
 
 #ifdef __RX
 #pragma pack
@@ -260,14 +261,18 @@ PT_THREAD(handle_dhcp(struct dhcpc_state *s))
   int ret;
   PT_BEGIN(&s->pt);
 
+  if(s->state != STATE_REQUEST)
+    PT_YIELD(&s->pt);
+
   /* try_again:*/
   s->state = STATE_SENDING;
   s->ticks = 5 * CLOCK_SECOND;
 
-  send_discover(s);
-  timer_set(&s->timer, s->ticks);
-
   do {
+    printf("send_discover(%d)\n", s->timer);
+    send_discover(s);
+    timer_set(&s->timer, s->ticks);
+
     PT_WAIT_UNTIL(&s->pt, (ret = uip_newdata() ? 1 : (timer_expired(&s->timer) ? 2 : 0)) != 0);
 
     if((ret == 1) && parse_msg(s) == DHCPOFFER) {
@@ -287,10 +292,11 @@ PT_THREAD(handle_dhcp(struct dhcpc_state *s))
 
   PT_YIELD(&s->pt);
 
-  send_request(s);
-  timer_set(&s->timer, s->ticks);
-
   do {
+    printf("send_request(%d)\n", s->timer);
+    send_request(s);
+    timer_set(&s->timer, s->ticks);
+
     PT_WAIT_UNTIL(&s->pt, (ret = uip_newdata() ? 1 : (timer_expired(&s->timer) ? 2 : 0)) != 0);
 
     if((ret == 1) && parse_msg(s) == DHCPACK) {
@@ -381,7 +387,7 @@ dhcpc_request(struct dhcpc_state *s)
 {
   u16_t ipaddr[2];
 
-  s->state = STATE_INITIAL;
+  s->state = STATE_REQUEST;
   uip_ipaddr(ipaddr, 0,0,0,0);
   uip_sethostaddr(ipaddr);
   uip_udp_conn = s->conn;

@@ -156,17 +156,17 @@ static uint16_t _ecn_tsk_new_tid(void);
 static void _ecn_tsk_int_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id);
 static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id);
 
-static void _ecn_tsk_eoj_set(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_update,
+static void _ecn_tsk_eoj_set(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp, bool_t fa_update,
 	ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv, ECN_SRV_CODE fa_sna_esv,
 	ECN_FBS_ID *fa_fbs_anno);
 static void _ecn_tsk_eoj_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_forward, ATR fa_access,
 	ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv, ECN_SRV_CODE fa_sna_esv);
 static void _ecn_tsk_eoj_res(ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv,
 	ECN_SRV_CODE fa_sna_esv);
-static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr,
+static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp,
 	ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv, ECN_SRV_CODE fa_sna_esv,
 	ECN_FBS_ID *fa_fbs_anno);
-static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr,
+static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp,
 	ECN_FBS_ID fa_fbs_id, ECN_FBS_ID *fa_fbs_anno);
 
 /* モジュール初期化フラグ */
@@ -774,10 +774,17 @@ static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 		/* ノードプロファイルの場合 */
 		if ((p_eoj->eojx1 == EOJ_X1_PROFILE)
 			&& (p_eoj->eojx2 == EOJ_X2_NODE_PROFILE)) {
-			/* 電文処理実行 */
-			if (_ecn_tsk_ecn_msg_main(fa_fbs_id, p_nod->profile, eobjatr, p_sobj, sobjatr) == 1)
-				a_fwd = true;
-			a_prc = true;
+			if ((p_eoj->eojx3 == p_nod->profile->eojx3)
+				|| (p_eoj->eojx3 == 0)) {
+				/* 電文処理実行 */
+				if (_ecn_tsk_ecn_msg_main(fa_fbs_id, p_nod->profile, eobjatr, p_sobj, sobjatr) == 1)
+					a_fwd = true;
+				a_prc = true;
+			}
+			/* 0x74 プロパティ値通知（応答要）の場合処理したことにする */
+			else if (p_esv->edata.esv == ESV_INFC) {
+				a_prc = true;
+			}
 		}
 		/* 機器オブジェクトの場合 */
 		else {
@@ -842,6 +849,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	int result;
 	T_ECN_EDT_HDR	*p_esv;
 	ECN_FBS_ID		a_fbs_anno = { NULL };
+	bool_t fromapp = sobjatr == EOBJ_LOCAL_NODE;
 
 	p_esv = &((T_EDATA *)fa_fbs_id.ptr)->hdr;
 
@@ -854,7 +862,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		_ecn_tsk_eoj_set(p_obj, eobjatr, false, fa_fbs_id, ESV_NOP, ESV_SET_I_SNA, &a_fbs_anno);	/* 0; 0x50 */
+		_ecn_tsk_eoj_set(p_obj, eobjatr, fromapp, false, fa_fbs_id, ESV_NOP, ESV_SET_I_SNA, &a_fbs_anno);	/* 0; 0x50 */
 		result = 0;
 		break;
 
@@ -866,7 +874,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		_ecn_tsk_eoj_set(p_obj, eobjatr, false, fa_fbs_id, ESV_SET_RES, ESV_SET_C_SNA, &a_fbs_anno); /* 0x71; 0x51 */
+		_ecn_tsk_eoj_set(p_obj, eobjatr, fromapp, false, fa_fbs_id, ESV_SET_RES, ESV_SET_C_SNA, &a_fbs_anno); /* 0x71; 0x51 */
 		result = 0;
 		break;
 
@@ -903,7 +911,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		_ecn_tsk_eoj_set_get(p_obj, eobjatr, fa_fbs_id, ESV_SET_GET_RES, ESV_SET_GET_SNA, &a_fbs_anno); /* 0x7E; 0x5E */
+		_ecn_tsk_eoj_set_get(p_obj, eobjatr, fromapp, fa_fbs_id, ESV_SET_GET_RES, ESV_SET_GET_SNA, &a_fbs_anno); /* 0x7E; 0x5E */
 		result = 0;
 		break;
 
@@ -911,10 +919,10 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	case ESV_INFC:
 		if (!p_sobj)
 			_ecn_tsk_eoj_res(fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES); /* 0x74; 0 */
-		else if (sobjatr == EOBJ_LOCAL_NODE)
+		else if (fromapp)
 			_ecn_tsk_eoj_get(p_sobj, sobjatr, true, (EPC_RULE_GET|EPC_RULE_ANNO), fa_fbs_id, ESV_INFC, ESV_NOP); /* 0x74; 0 */
 		else
-			_ecn_tsk_eoj_set(p_sobj, sobjatr, true, fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES, &a_fbs_anno); /* 0x7A; 0 */
+			_ecn_tsk_eoj_set(p_sobj, sobjatr, fromapp, true, fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES, &a_fbs_anno); /* 0x7A; 0 */
 		result = 0;
 		break;
 
@@ -938,7 +946,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		_ecn_tsk_eoj_set(p_sobj, sobjatr, true, fa_fbs_id, ESV_NOP, ESV_NOP, &a_fbs_anno); /* 0; 0 */
+		_ecn_tsk_eoj_set(p_sobj, sobjatr, fromapp, true, fa_fbs_id, ESV_NOP, ESV_NOP, &a_fbs_anno); /* 0; 0 */
 		result = 1;
 		break;
 
@@ -951,7 +959,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		_ecn_tsk_eoj_set(p_sobj, sobjatr, true, fa_fbs_id, ESV_NOP, ESV_NOP, &a_fbs_anno); /* 0; 0 */
+		_ecn_tsk_eoj_set(p_sobj, sobjatr, fromapp, true, fa_fbs_id, ESV_NOP, ESV_NOP, &a_fbs_anno); /* 0; 0 */
 		result = 1;
 		break;
 
@@ -964,7 +972,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		_ecn_tsk_eoj_set_get_res(p_sobj, sobjatr, fa_fbs_id, &a_fbs_anno); /* 0x7A; 0 */
+		_ecn_tsk_eoj_set_get_res(p_sobj, sobjatr, fromapp, fa_fbs_id, &a_fbs_anno); /* 0x7A; 0 */
 		result = 1;
 		break;
 
@@ -1115,11 +1123,11 @@ lb_except:
 	return 0;	/* 0:NG */
 }
 
-static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_update,
+static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp, bool_t fa_update,
 	ECN_FBS_ID fa_fbs_id, ECN_FBS_ID a_fbs_res, ECN_FBS_ID *fa_fbs_anno, int a_count,
 	int *p_sw_ok);
 /* プロパティ値書き込み実行 */
-static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_update,
+static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp, bool_t fa_update,
 	ECN_FBS_ID fa_fbs_id, ECN_FBS_ID a_fbs_res, ECN_FBS_ID *fa_fbs_anno, int a_count,
 	int *p_sw_ok)
 {
@@ -1146,7 +1154,7 @@ static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 		/* obj,epcに対応するset関数を呼ぶ */
 		a_eprp = _ecn_tsk_eoj_get_property(fp_obj, a_prp.epc);
 		if ((a_eprp != NULL)
-			&& (fa_update || (((a_eprp->eprpatr & EPC_RULE_SET) != 0) || (fa_eobjatr == EOBJ_LOCAL_NODE)))) {
+			&& (fa_update || (((a_eprp->eprpatr & EPC_RULE_SET) != 0) || fa_fromapp))) {
 			a_anno = (fa_eobjatr == EOBJ_LOCAL_NODE) && ((a_eprp->eprpatr & EPC_ANNOUNCE) != 0);
 			a_update = a_anno;
 			a_ans = _ecn_tsk_eoj_set_edt(a_eprp, p_edt->payload, a_size, &a_update);
@@ -1425,7 +1433,7 @@ static void _ecn_tsk_set_rsp_fbs(ECN_FBS_ID fa_rsp_fbs, T_ECN_FST_BLK const *fp_
 }
 
 /* プロパティ値書き込み要求	*/
-static void _ecn_tsk_eoj_set(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_update,
+static void _ecn_tsk_eoj_set(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp, bool_t fa_update,
 	ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv, ECN_SRV_CODE fa_sna_esv,
 	ECN_FBS_ID *fa_fbs_anno)
 {
@@ -1478,7 +1486,7 @@ static void _ecn_tsk_eoj_set(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_u
 	_ecn_tsk_set_rsp_fbs(a_fbs_res, fa_fbs_id.ptr);
 
 	/* プロパティ値書き込み実行 */
-	a_ret = _ecn_tsk_eoj_set_main(fp_obj, fa_eobjatr, fa_update, fa_fbs_id, a_fbs_res,
+	a_ret = _ecn_tsk_eoj_set_main(fp_obj, fa_eobjatr, fa_fromapp, fa_update, fa_fbs_id, a_fbs_res,
 		fa_fbs_anno, p_req_esv->edata.opc, &a_sw_ok);
 	if (a_ret)
 		goto lb_except;
@@ -1694,7 +1702,7 @@ lb_finally:
 	return;
 }
 
-static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr,
+static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_fromapp,
 	ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv, ECN_SRV_CODE fa_sna_esv,
 	ECN_FBS_ID *fa_fbs_anno)
 {
@@ -1744,7 +1752,7 @@ static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr,
 	_ecn_tsk_set_rsp_fbs(a_fbs_res, fa_fbs_id.ptr);
 
 	/* プロパティ値書き込み実行 */
-	a_ret = _ecn_tsk_eoj_set_main(fp_obj, fa_eobjatr, false, fa_fbs_id, a_fbs_res,
+	a_ret = _ecn_tsk_eoj_set_main(fp_obj, fa_eobjatr, fa_fromapp, false, fa_fbs_id, a_fbs_res,
 		fa_fbs_anno, a_count, &a_sw_ok);
 	if (a_ret) {
 		syslog(LOG_WARNING, "_ecn_tsk_eoj_set_get() eoj:%06X _ecn_tsk_eoj_set_main() fault. result = %d",
@@ -1818,7 +1826,7 @@ lb_finally:
 }
 
 static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr,
-	ECN_FBS_ID fa_fbs_id, ECN_FBS_ID *fa_fbs_anno)
+	bool_t fa_fromapp, ECN_FBS_ID fa_fbs_id, ECN_FBS_ID *fa_fbs_anno)
 {
 	T_ECN_EDT_HDR	const *p_req_esv = &((T_EDATA *)fa_fbs_id.ptr)->hdr;
 	T_ECN_EDT_HDR	a_ecn_hdp;
@@ -1871,7 +1879,7 @@ static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr,
 	a_count = *(uint8_t *)&i;
 
 	/* プロパティ値読み出し応答の書き込み実行 */
-	a_ret = _ecn_tsk_eoj_set_main(fp_obj, fa_eobjatr, true, fa_fbs_id, a_fbs_dmy,
+	a_ret = _ecn_tsk_eoj_set_main(fp_obj, fa_eobjatr, fa_fromapp, true, fa_fbs_id, a_fbs_dmy,
 								  fa_fbs_anno, a_count, &a_sw_ok);
 	if (a_ret) {
 		syslog(LOG_WARNING, "_ecn_tsk_eoj_set_get_res() eoj:%06X _ecn_tsk_eoj_get_main() fault. result = %d",
