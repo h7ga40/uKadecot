@@ -89,6 +89,8 @@ void wamp_broker_subscribe_topic(wamp_broker_t *broker, const char *value)
 		return;
 
 	subscription = wamp_broker_new_subscription(broker);
+	if(subscription == NULL)
+		return;
 
 	subscription->deviceName[0] = '\0';
 	strcpy_s(subscription->deviceName, sizeof(subscription->deviceName), &value[sizeof(topic) - 1]);

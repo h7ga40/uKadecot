@@ -97,6 +97,7 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 {
 	T_IF_SOFTC	*ic = IF_ETHER_NIC_GET_SOFTC();
 	int ret;
+	bool_t tx;
 
 	PT_BEGIN(&uiptsk->pt);
 
@@ -123,10 +124,10 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 		sil_wrb_mem((uint8_t *)0x0008C02A, sil_reb_mem((uint8_t *)0x0008C02A) & ~0x03);
 
 		PT_WAIT_UNTIL(&uiptsk->pt, (ret = ic->link_pre != ic->link_now ? 1 :
-			(ic->rxb_read != ic->rxb_write ? 2 :
 			(uip_out_buf[uip_out_rpos].len > 0 ? 3 :
 			(ws_out_req != ws_out_res ? 4 :
-			(timer_expired(&uiptsk->periodic_timer) ? 5 : 0))))) != 0);
+			(timer_expired(&uiptsk->periodic_timer) ? 5 :
+			(ic->rxb_read != ic->rxb_write ? 2 : 0))))) != 0);
 
 		if(ret == 1){
 			sil_wrb_mem((uint8_t *)0x0008C02A, sil_reb_mem((uint8_t *)0x0008C02A) | 0x01);
@@ -145,7 +146,12 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 							uip_len is set to a value > 0. */
 						if (uip_len > 0) {
 							uip_arp_out();
-							IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+							for (;;) {
+								tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+								if (tx)
+									break;
+								PT_YIELD(&uiptsk->pt);
+							}
 						}
 					}
 					else{
@@ -173,7 +179,12 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 					   uip_len is set to a value > 0. */
 					if (uip_len > 0) {
 						uip_arp_out();
-						IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+						for (;;) {
+							tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+							if (tx)
+								break;
+							PT_YIELD(&uiptsk->pt);
+						}
 						PT_YIELD(&uiptsk->pt);
 						continue;
 					}
@@ -184,7 +195,12 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 					   should be sent out on the network, the global variable
 					   uip_len is set to a value > 0. */
 					if (uip_len > 0) {
-						IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+						for (;;) {
+							tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+							if (tx)
+								break;
+							PT_YIELD(&uiptsk->pt);
+						}
 						PT_YIELD(&uiptsk->pt);
 						continue;
 					}
@@ -203,17 +219,24 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 			uip_buf = buf->data;
 			uip_udp_send(buf->len);
 
-			buf->len = 0;
-			uip_out_rpos++;
-			if (uip_out_rpos >= UIP_BUF_COUNT)
-				uip_out_rpos = 0;
-
 			uip_udp_conn = cepid;
 			uip_process(UIP_UDP_SEND_CONN);
 			uip_ipaddr(cepid->ripaddr, 0, 0, 0, 0);
 			cepid->rport = 0;
 			uip_arp_out();
-			IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+			for (;;) {
+				tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+				if (tx)
+					break;
+				PT_YIELD(&uiptsk->pt);
+			}
+
+			buf = &uip_out_buf[uip_out_rpos];
+			uip_out_rpos++;
+			if (uip_out_rpos >= UIP_BUF_COUNT)
+				uip_out_rpos = 0;
+			buf->len = 0;
+
 			PT_YIELD(&uiptsk->pt);
 			continue;
 		}
@@ -230,7 +253,12 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 				   uip_len is set to a value > 0. */
 				if (uip_len > 0) {
 					uip_arp_out();
-					IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+					for (;;) {
+						tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+						if (tx)
+							break;
+						PT_YIELD(&uiptsk->pt);
+					}
 					PT_YIELD(&uiptsk->pt);
 				}
 			}
@@ -246,7 +274,12 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 				   uip_len is set to a value > 0. */
 				if (uip_len > 0) {
 					uip_arp_out();
-					IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+					for (;;) {
+						tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+						if (tx)
+							break;
+						PT_YIELD(&uiptsk->pt);
+					}
 					PT_YIELD(&uiptsk->pt);
 				}
 			}
@@ -260,7 +293,12 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 				   uip_len is set to a value > 0. */
 				if (uip_len > 0) {
 					uip_arp_out();
-					IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+					for (;;) {
+						tx = IF_ETHER_NIC_START(ic, uip_buf, uip_len);
+						if (tx)
+							break;
+						PT_YIELD(&uiptsk->pt);
+					}
 					PT_YIELD(&uiptsk->pt);
 				}
 			}

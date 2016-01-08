@@ -490,11 +490,16 @@ namespace Kadecot
 			//decrypt data
 
 			//deserialize
-			if (msg.data != null) {
-				data = WampDeserializer.Parse(msg.data);
+			try {
+				if (msg.data != null) {
+					data = WampDeserializer.Parse(msg.data);
+				}
+				else {
+					data = WampDeserializer.Parse((string)msg);
+				}
 			}
-			else {
-				data = WampDeserializer.Parse((string)msg);
+			catch {
+				data = null;
 			}
 			if (data == null) {
 				System.Diagnostics.Debug.WriteLine("[wamp perser] Syntax error");

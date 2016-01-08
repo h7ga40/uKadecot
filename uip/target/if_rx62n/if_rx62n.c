@@ -377,7 +377,7 @@ rx62n_read (T_IF_SOFTC *ic, void **input)
  * rx62n_start -- 送信フレームをバッファリングする。
  */
 
-void
+bool_t
 rx62n_start (T_IF_SOFTC *ic, void *output, int size)
 {
 	T_RX62N_SOFTC *sc = ic->sc;
@@ -390,7 +390,7 @@ rx62n_start (T_IF_SOFTC *ic, void *output, int size)
 		desc = sc->tx_write;
 
 		if (desc->tact != 0) {
-			break;
+			return false;
 		}
 
 		buf = (uint8_t *)desc->tba;
@@ -422,6 +422,8 @@ rx62n_start (T_IF_SOFTC *ic, void *output, int size)
 	if (sil_rew_mem(EDMAC_EDTRR) == 0) {
 		sil_wrw_mem(EDMAC_EDTRR, EDMAC_EDTRR_TR);
 	}
+
+	return true;
 }
 
 /*
@@ -434,7 +436,7 @@ if_rx62n_trx_handler (void)
 	T_IF_SOFTC *ic;
 	T_RX62N_SOFTC *sc;
 	uint32_t ecsr, eesr, psr;
-	bool_t acttsk;
+	bool_t acttsk = false;
 
 	i_begin_int(INTNO_IF_RX62N_TRX);
 

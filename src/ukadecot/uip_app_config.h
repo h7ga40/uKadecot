@@ -44,7 +44,7 @@
  *  RX62N Ethernet Controler ‚ÉŠÖ‚·‚é’è‹`
  */
 
-#define UIP_TASK_PRIORITY	3
+#define UIP_TASK_PRIORITY	7
 #define UIP_TASK_STACK_SIZE	256
 
 /* IPv4 ‚ÉŠÖ‚·‚é’è‹` */

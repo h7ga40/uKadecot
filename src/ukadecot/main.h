@@ -54,7 +54,7 @@
  *  各タスクの優先度の定義
  */
 
-#define MAIN_PRIORITY	7		/* メインタスクの優先度 */
+#define MAIN_PRIORITY	3		/* メインタスクの優先度 */
 #define INIT_PRIORITY		1	/* 初期化タスクの優先度 */
 #define LOGTASK_PRIORITY	8	/* ログタスクの優先度 */
 

@@ -5313,11 +5313,16 @@
 			var callback = null;
 			//decrypt data
 			//deserialize
-			if (!!ss.isValue(msg.data)) {
-				data = $Kadecot_WampDeserializer.parse(ss.cast(msg.data, String));
+			try {
+				if (!!ss.isValue(msg.data)) {
+					data = $Kadecot_WampDeserializer.parse(ss.cast(msg.data, String));
+				}
+				else {
+					data = $Kadecot_WampDeserializer.parse(ss.cast(msg, String));
+				}
 			}
-			else {
-				data = $Kadecot_WampDeserializer.parse(ss.cast(msg, String));
+			catch ($t1) {
+				data = null;
 			}
 			if (ss.isNullOrUndefined(data)) {
 				return;

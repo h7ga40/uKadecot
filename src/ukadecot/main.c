@@ -273,6 +273,13 @@ static void main_ecnl_get_res(T_EDATA *esv);
 static void main_ecnl_setget_res(T_EDATA *esv);
 static void main_publish(T_EDATA *esv);
 
+enum main_state_t {
+	main_state_start,
+	main_state_idle,
+};
+
+TMO main_timer = TMO_FEVR;
+enum main_state_t main_state = main_state_start;
 struct pt main_pt;
 struct uip_timer main_pt_timer;
 T_ECN_FBS_QUEUE wbs_queue;
@@ -293,7 +300,8 @@ PT_THREAD(main_task_pt(void))
 	PT_BEGIN(&main_pt);
 
 	/* ‰Šú‰» */
-	main_initialize();
+	if (main_state == main_state_start)
+		main_initialize();
 
 	ret2 = get_tim(&now);
 	if (ret2 != E_OK){
@@ -333,7 +341,7 @@ PT_THREAD(main_task_pt(void))
 			/* —Ìˆæ‰ð•ú */
 			ret = ecn_rel_esv(esv);
 			if (ret != E_OK){
-				syslog(LOG_ERROR, "ecn_rel_esv");
+				syslog(LOG_ERROR, "ECNL ecn_rel_esv result = %d", ret);
 				PT_EXIT(&main_pt);
 			}
 		}
@@ -365,7 +373,7 @@ PT_THREAD(main_task_pt(void))
 			if (rel_msg) {
 				ret = ecn_rel_esv(esv);
 				if (ret != E_OK){
-					syslog(LOG_ERROR, "ecn_rel_esv");
+					syslog(LOG_ERROR, "BRK ecn_rel_esv msg = %p, type = %d, result = %d", esv, msg.ptr->hdr.type, ret);
 					PT_EXIT(&main_pt);
 				}
 			}
@@ -391,13 +399,6 @@ void main_task_cychdr(intptr_t exinf)
 	(void)iact_tsk((ID)exinf);
 }
 
-enum main_state_t {
-	main_state_start,
-	main_state_idle,
-};
-
-TMO main_timer = TMO_FEVR;
-enum main_state_t main_state = main_state_start;
 bool_t main_btn1_state;
 int main_btn1_count = 0;
 bool_t main_btn2_state;

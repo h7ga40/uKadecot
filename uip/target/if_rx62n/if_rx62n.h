@@ -59,7 +59,7 @@
  *  RX62N Ethernet Controler に関する定義
  */
 
-#define NUM_IF_RX62N_TXBUF		8	/* 送信バッファ数			*/
+#define NUM_IF_RX62N_TXBUF		2	/* 送信バッファ数			*/
 #define NUM_IF_RX62N_RXBUF		8	/* 受信バッファ数			*/
 #define IF_RX62N_BUF_PAGE_SIZE	1518	/* バッファサイズ */
 
@@ -119,7 +119,7 @@ extern void rx62n_init(T_IF_SOFTC *ic);
 extern void rx62n_reset(T_IF_SOFTC *ic);
 extern bool_t rx62n_link(T_IF_SOFTC *ic);
 extern int rx62n_read(T_IF_SOFTC *ic, void **input);
-extern void rx62n_start(T_IF_SOFTC *ic, void *output, int size);
+extern bool_t rx62n_start(T_IF_SOFTC *ic, void *output, int size);
 extern ER rx62n_addmulti(T_IF_SOFTC *ic);
 extern void if_rx62n_trx_handler(void);
 

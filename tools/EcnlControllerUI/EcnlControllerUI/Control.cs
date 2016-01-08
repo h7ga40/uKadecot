@@ -763,6 +763,7 @@ namespace control
 		}
 
 		private Type InputType { get { return FieldContain.Input.GetType(); } }
+
 		private byte[] ToByteValue()
 		{
 			string Value = FieldContain.Input.Value;
@@ -934,6 +935,7 @@ namespace control
 		/// 値が変わった時true
 		/// </summary>
 		public bool Changed { get { return !FieldContain.Input.Value.Equals(ToText(GetValue)); } }
+
 		public void GrpBoxChange(Element ele, jQueryEvent ev)
 		{
 			BackButton.Toggle(Changed);
@@ -945,6 +947,7 @@ namespace control
 		}
 
 		public EventHandlerDevicePropertyInfo KadecotSet;
+
 		public void SetGetValue(byte[] data)
 		{
 			RemoveClass();
@@ -1109,6 +1112,7 @@ namespace control
 		public bool CornerAll { get { return base.Object.HasClass("ui-corner-all"); } set { base.Object.ToggleClass("ui-corner-all", value); } }
 		public Icon ButtonIcon { get { return getIcon(); } set { base.Object.ToggleClass(getClass(value), true); } }
 		public string Href { get { return base.Object.GetAttribute("href"); } set { base.Object.Attribute("href", value); } }
+
 		public enum Icon
 		{
 			delete,
@@ -1236,6 +1240,7 @@ namespace control
 
 		public List<RadioInput> RadioList;
 		private bool _ControlGroup;
+
 		public bool ControlGroup
 		{
 			get
@@ -1255,6 +1260,7 @@ namespace control
 		}
 
 		private bool _Horizontal;
+
 		public bool Horizontal
 		{
 			get { return _Horizontal; }
@@ -1274,6 +1280,7 @@ namespace control
 		{
 			public UIRadioInput Radio;
 			public UILabel Label;
+
 			public RadioInput(UILabel Label, UIRadioInput Radio)
 			{
 				this.Radio = Radio;
@@ -1412,6 +1419,7 @@ namespace control
 		}
 
 		public string Placeholder { get { return base.GetAttribute("placeholder"); } set { base.Attribute("placeholder", value); } }
+
 		public JsDictionary DataOptions
 		{
 			get
@@ -1571,7 +1579,6 @@ namespace control
 		public UIListviewItem()
 			: base("<li>")
 		{
-
 		}
 
 		public UIListviewItem(UIObject uiobject)
@@ -1633,7 +1640,6 @@ namespace control
 		public UIAnchor()
 			: base("<a>")
 		{
-
 		}
 
 		public UIAnchor(string text)
@@ -1662,7 +1668,6 @@ namespace control
 		public UIH(int i)
 			: base("<h" + i.ToString() + ">")
 		{
-
 		}
 
 		public UIH(int i, string text)
@@ -1677,7 +1682,6 @@ namespace control
 		public UIImg()
 			: base("<img>")
 		{
-
 		}
 
 		public UIImg(JsDictionary attr)
@@ -1825,6 +1829,7 @@ namespace control
 	public class UIDeviceController
 	{
 		public DeviceController DeviceController;
+
 		public class UIDeviceInfo
 		{
 			protected CtrlUI Page;
@@ -1999,12 +2004,13 @@ namespace control
 		{
 			info = new UIDiv();
 			string identifer = "";
-			foreach (var node in NodeList) {
 
+			foreach (var node in NodeList) {
 				var profile = node.Profile;
 
 				if (jQuery.Select("#" + "cl_node_" + identifer).Length > 0)
 					continue;
+
 				UICollapsibleset col = new UICollapsibleset(node.Data.ToString());
 				col.Id = "cl_node_" + identifer;
 				col.DataInset = true;
@@ -2012,8 +2018,8 @@ namespace control
 				UIListview listview = new UIListview("id", "lv_node_" + identifer);
 
 				col.Append(listview);
-				foreach (var item in node.Devices) {
 
+				foreach (var item in node.Devices) {
 					if (item.Profile)
 						continue;
 
@@ -2062,25 +2068,15 @@ namespace control
 		public static string CurrentNodeChange = "currentnode.change";
 		public static string LoadingShow = "loading.show";
 		public static string LoadingHide = "loading.hide";
-		/// <summary>
-		/// 機器検索開始
-		/// </summary>
+		/// <summary>機器検索開始</summary>
 		public static string SearchStart = "search.start";
-		/// <summary>
-		/// 機器検索終了
-		/// </summary>
+		/// <summary>機器検索終了</summary>
 		public static string SearchEnd = "search.end";
-		/// <summary>
-		/// 機器検索エラー
-		/// </summary>
+		/// <summary>機器検索エラー</summary>
 		public static string SearchError = "search.error";
-		/// <summary>
-		/// 入力画面作成開始
-		/// </summary>
+		/// <summary>入力画面作成開始</summary>
 		public static string PropertyWriteStart = "propertywrite.start";
-		/// <summary>
-		/// 入力画面作成終了
-		/// </summary>
+		/// <summary>入力画面作成終了</summary>
 		public static string PropertyWriteEnd = "propertywrite.end";
 	}
 

@@ -126,17 +126,21 @@ int websocket_input(struct websocket *ws, const void *data, int len)
 			break;
 		// Payload buffer
 		default:
-			_ecn_fbs_poke(ws->cur_in_msg, s->data_pos, *pos ^ s->masking_key[s->data_pos % 4]);
+			if(ws->cur_in_msg.ptr != NULL)
+				_ecn_fbs_poke(ws->cur_in_msg, s->data_pos, *pos ^ s->masking_key[s->data_pos % 4]);
 
 			s->data_pos++;
 			if (s->data_pos >= s->payload_len) {
 				ER ret;
 				s->state = 0;
-				((ID *)ws->cur_in_msg.ptr->_gap)[0] = ws->wbsid;
-				ret = psnd_dtq(ecn_api_mailboxid, (intptr_t)ws->cur_in_msg.ptr);
-				if (ret != E_OK) {
-					syslog(LOG_WARNING, "websocket_input() : psnd_dtq(%d) result = %d", ecn_api_mailboxid, ret);
-					_ecn_fbs_del(ws->cur_in_msg);
+
+				if (ws->cur_in_msg.ptr != NULL) {
+					((ID *)ws->cur_in_msg.ptr->_gap)[0] = ws->wbsid;
+					ret = psnd_dtq(ecn_api_mailboxid, (intptr_t)ws->cur_in_msg.ptr);
+					if (ret != E_OK) {
+						syslog(LOG_WARNING, "websocket_input() : psnd_dtq(%d) result = %d", ecn_api_mailboxid, ret);
+						_ecn_fbs_del(ws->cur_in_msg);
+					}
 				}
 				memset(&ws->cur_in_msg, 0, sizeof(ws->cur_in_msg));
 			}
