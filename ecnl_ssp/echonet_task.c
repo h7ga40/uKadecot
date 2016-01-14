@@ -140,12 +140,12 @@ ER _ecn_tsk_snd_mbx(ECN_FBS_ID fa_rsp_fbs, bool_t from_app)
 		}
 	}
 #ifdef ECN_DBG_PUT_ENA
-	ECN_DBG_PUT "psnd_dtq(%d, 0x%08X-0x%08X)", mbxid, (intptr_t)msg, a_fbs_sub1 ECN_DBG_END;
+	ECN_DBG_PUT("psnd_dtq(%d, 0x%08X-0x%08X)", mbxid, (intptr_t)msg, a_fbs_sub1);
 	_ecn_dbg_bindmp((const uint8_t *)msg, 256);
 #endif
 	a_ret = psnd_dtq(mbxid, msg);
 #ifdef ECN_DBG_PUT_ENA
-	ECN_DBG_PUT "psnd_dtq(%d, 0x%08X-0x%08X) result = %d:%s", mbxid, (intptr_t)msg, a_fbs_sub1, a_ret, itron_strerror(a_ret) ECN_DBG_END;
+	ECN_DBG_PUT("psnd_dtq(%d, 0x%08X-0x%08X) result = %d:%s", mbxid, (intptr_t)msg, a_fbs_sub1, a_ret, itron_strerror(a_ret));
 #endif
 	return a_ret;
 }
@@ -192,7 +192,7 @@ static void _ecn_tsk_int_module_init(intptr_t exinf)
 	if (!m_eobjlist_need_init)
 		return;
 
-	/* ECN_DBG_PUT "[ECHONET MainTask:%d] started", tskid ECN_DBG_END; */
+	/* ECN_DBG_PUT("[ECHONET MainTask:%d] started", tskid); */
 	syslog(LOG_NOTICE, "[ECHONET MainTask] started");
 
 	m_eobjlist_need_init = 0;
@@ -224,7 +224,7 @@ PT_THREAD(echonet_task_pt(intptr_t fa_exinf))
 
 	a_ret = sta_cyc(ecn_svc_cychdrid);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "sta_cyc() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("sta_cyc() result = %d:%s", a_ret, itron_strerror(a_ret));
 		PT_EXIT(&s.pt);
 	}
 
@@ -232,7 +232,7 @@ PT_THREAD(echonet_task_pt(intptr_t fa_exinf))
 
 	a_ret2 = get_tim(&a_now);
 	if (a_ret2 != E_OK) {
-		ECN_DBG_PUT "get_tim() result = %d:%s", a_ret2, itron_strerror(a_ret2) ECN_DBG_END;
+		ECN_DBG_PUT("get_tim() result = %d:%s", a_ret2, itron_strerror(a_ret2));
 		PT_EXIT(&s.pt);
 	}
 
@@ -255,13 +255,13 @@ PT_THREAD(echonet_task_pt(intptr_t fa_exinf))
 		PT_WAIT_UNTIL(&s.pt, (((a_ret = prcv_dtq(ecn_svc_mailboxid, &a_mdt.p_msg)) == E_OK)
 			|| ((a_ret = timer_expired(&s.timer) ? E_TMOUT : E_WBLK) == E_TMOUT)));
 		if ((a_ret != E_OK) && (a_ret != E_TMOUT)) {
-			ECN_DBG_PUT "trcv_dtq() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("trcv_dtq() result = %d:%s", a_ret, itron_strerror(a_ret));
 			PT_EXIT(&s.pt);
 		}
 
 		a_ret2 = get_tim(&a_now);
 		if (a_ret2 != E_OK) {
-			ECN_DBG_PUT "get_tim() result = %d:%s", a_ret2, itron_strerror(a_ret2) ECN_DBG_END;
+			ECN_DBG_PUT("get_tim() result = %d:%s", a_ret2, itron_strerror(a_ret2));
 			PT_EXIT(&s.pt);
 		}
 
@@ -272,7 +272,7 @@ PT_THREAD(echonet_task_pt(intptr_t fa_exinf))
 #endif
 
 		if (a_ret == E_OK) {
-			ECN_DBG_PUT "trcv_dtq() mbx recv (%d byte)", _ecn_fbs_get_datalen(a_mdt.fbs_id) ECN_DBG_END;
+			ECN_DBG_PUT("trcv_dtq() mbx recv (%d byte)", _ecn_fbs_get_datalen(a_mdt.fbs_id));
 			g_release_esv = true;
 
 			switch (a_mdt.fbs_id.ptr->hdr.type) {
@@ -375,9 +375,9 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 	/* 要求電文用メモリの取得 */
 	a_ret = _ecn_fbs_cre(a_size, &a_fbs_id);
 	if (a_ret != E_OK || !a_fbs_id.ptr) { /* 確保失敗 */
-		ECN_DBG_PUT "_ecn_fbs_cre(%d) result = %d:%s",
+		ECN_DBG_PUT("_ecn_fbs_cre(%d) result = %d:%s",
 			a_size,
-			a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			a_ret, itron_strerror(a_ret));
 		return E_NOMEM;
 	}
 
@@ -395,23 +395,23 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 	/* 要求電文用メモリにデータ追加 */
 	a_ret = _ecn_fbs_add_data_ex(a_fbs_id, &a_ecn_hdp, a_size);
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_fbs_add_data_ex(*, ecn_hdp{esv:0x%02X,epc:0x%02X}, %d) result = %d:%s",
+		ECN_DBG_PUT("_ecn_fbs_add_data_ex(*, ecn_hdp{esv:0x%02X,epc:0x%02X}, %d) result = %d:%s",
 			a_ecn_hdp.edata.esv, a_ecn_hdp.ecn_prp.epc, a_size,
-			a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	if (0 < fa_pdc) {
 		/* 付随データ追加 */
 		a_ret = _ecn_fbs_add_data_ex(a_fbs_id, p_edt, fa_pdc);
 		if (a_ret) {
-			ECN_DBG_PUT "_ecn_fbs_add_data_ex(*, ecn_hdp{esv:0x%02X,epc:0x%02X} edt, %d) result = %d:%s",
+			ECN_DBG_PUT("_ecn_fbs_add_data_ex(*, ecn_hdp{esv:0x%02X,epc:0x%02X} edt, %d) result = %d:%s",
 				a_ecn_hdp.edata.esv, a_ecn_hdp.ecn_prp.epc, fa_pdc,
-				a_ret, itron_strerror(a_ret) ECN_DBG_END;
+				a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 	}
 	if (fa_deoj == 0) {
-		ECN_DBG_PUT "%s", "マルチキャスト" ECN_DBG_END;
+		ECN_DBG_PUT("%s", "マルチキャスト");
 		/* fa_deoj == 0 : マルチキャスト */
 		((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1 = EOJ_X1_PROFILE;
 		((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx2 = EOJ_X2_NODE_PROFILE;
@@ -419,7 +419,7 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 		a_fbs_id.ptr->hdr.target = ENOD_MULTICAST_ID;
 	}
 	else if (fa_deoj <= tmax_eobjid) {
-		ECN_DBG_PUT "fa_deoj = %d", fa_deoj ECN_DBG_END;
+		ECN_DBG_PUT("fa_deoj = %d", fa_deoj);
 		/* if (fa_deoj < 1 || tmax_eobjid < fa_deoj) …の異常系は関数冒頭で除外済みとする */
 		a_eobj = &eobjinib_table[fa_deoj - 1];
 		memcpy(&((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj, &a_eobj->eojx1,
@@ -445,18 +445,18 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 		}
 		if (a_fbs_id.ptr->hdr.target == ENOD_NOT_MATCH_ID) {
 			goto lb_except;
-			ECN_DBG_PUT "deoj = %02X %02X %02x : enod not match",
+			ECN_DBG_PUT("deoj = %02X %02X %02x : enod not match",
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1,
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx2,
-				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3 ECN_DBG_END;
+				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3);
 		}
 #ifdef ECN_DBG_PUT_ENA
 		else {
-			ECN_DBG_PUT "deoj = %02X %02X %02x : %s",
+			ECN_DBG_PUT("deoj = %02X %02X %02x : %s",
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1,
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx2,
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3,
-				_ecn_dbg_enod2str(a_fbs_id.ptr->hdr.target) ECN_DBG_END;
+				_ecn_dbg_enod2str(a_fbs_id.ptr->hdr.target));
 		}
 #endif
 	}
@@ -464,7 +464,7 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 	else{
 		T_ECN_EOJ eoj;
 		ECN_ENOD_ID enodid;
-		ECN_DBG_PUT "fa_deoj = %d", fa_deoj ECN_DBG_END;
+		ECN_DBG_PUT("fa_deoj = %d", fa_deoj);
 		/* オブジェクトIDからEOJとノードIDを取得 */
 		if(ecn_agent_get_eoj_enodid(fa_deoj, &eoj, &enodid)){
 			memcpy(&((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj, &eoj,
@@ -473,18 +473,18 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 		}
 		else {
 			goto lb_except;
-			ECN_DBG_PUT "deoj = %02X %02X %02x : enod not match",
+			ECN_DBG_PUT("deoj = %02X %02X %02x : enod not match",
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1,
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx2,
-				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3 ECN_DBG_END;
+				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3);
 		}
 #ifdef ECN_DBG_PUT_ENA
 		else {
-			ECN_DBG_PUT "deoj = %02X %02X %02x : %s",
+			ECN_DBG_PUT("deoj = %02X %02X %02x : %s",
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1,
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx2,
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3,
-				_ecn_dbg_enod2str(a_fbs_id.ptr->hdr.target) ECN_DBG_END;
+				_ecn_dbg_enod2str(a_fbs_id.ptr->hdr.target));
 		}
 #endif
 	}
@@ -528,7 +528,7 @@ static void _ecn_tsk_int_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 
 	switch (a_im.command) {
 	case ECN_INM_NOTIFY_INSTANCELIST:
-		ECN_DBG_PUT "do _ecn_tsk_int_startup()" ECN_DBG_END;
+		ECN_DBG_PUT("do _ecn_tsk_int_startup()");
 		_ecn_tsk_int_startup(fa_exinf);
 		break;
 	default:
@@ -536,7 +536,7 @@ static void _ecn_tsk_int_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 		if(ecn_agent_proc_int_msg(fa_fbs_id, a_im.command))
 			break;
 #endif
-		ECN_DBG_PUT "recv: unefined internal-msg: %d", a_im.command ECN_DBG_END;
+		ECN_DBG_PUT("recv: unefined internal-msg: %d", a_im.command);
 		break;
 	}
 }
@@ -577,7 +577,7 @@ ER _ecn_tsk_ntf_inl(intptr_t fa_exinf)
 	const EOBJCB	*enod = &eobjcb_table[0];	/* ローカルノード */
 	const EOBJINIB *eobj;
 
-	ECN_DBG_PUT "do _ecn_tsk_ntf_inl()" ECN_DBG_END;
+	ECN_DBG_PUT("do _ecn_tsk_ntf_inl()");
 
 	memset(&a_hdr, 0, sizeof(a_hdr));
 	a_hdr.ecn_hdr.ehd1 = ECN_EDH1_ECHONET_LITE;
@@ -829,8 +829,8 @@ static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 	{
 		g_release_esv = false;
 
-		ECN_CAP_PUT "redirect ecn_svc_mailboxid → ecn_api_mailboxid (esv:0x%02X)",
-			p_esv->edata.esv ECN_CAP_END;
+		ECN_CAP_PUT("redirect ecn_svc_mailboxid → ecn_api_mailboxid (esv:0x%02X)",
+			p_esv->edata.esv);
 		fa_fbs_id.ptr->hdr.target = ENOD_API_ID;
 		a_ret = psnd_dtq(ecn_api_mailboxid, (intptr_t)fa_fbs_id.ptr);
 		if (a_ret != E_OK) {
@@ -857,8 +857,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	/* 0x60 プロパティ値書き込み要求（応答不要） */
 	case ESV_SET_I:
 		if (!p_obj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -869,8 +869,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	/* 0x61 プロパティ値書き込み要求（応答要） */
 	case ESV_SET_C:
 		if (!p_obj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -881,8 +881,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	/* 0x62 プロパティ値読み出し要求 */
 	case ESV_GET:
 		if (!p_obj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -893,8 +893,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	/* 0x63 プロパティ値通知要求 */
 	case ESV_INF_REQ:
 		if (!p_obj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -906,8 +906,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	/* 0x6E プロパティ値書き込み・読み出し要求 */
 	case ESV_SET_GET:
 		if (!p_obj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -941,8 +941,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	case ESV_GET_RES:		/* 0x72 プロパティ値読み出し応答 */
 	case ESV_GET_SNA:		/* 0x52 プロパティ値読み出し不可応答 */
 		if (!p_sobj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -954,8 +954,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	case ESV_INF:			/* 0x73 プロパティ値通知 */
 	case ESV_INF_SNA:		/* 0x53 プロパティ値通知不可応答 */
 		if (!p_sobj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -967,8 +967,8 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	case ESV_SET_GET_RES:	/* 0x7E プロパティ値書き込み・読み出し応答 */
 	case ESV_SET_GET_SNA:	/* 0x5E プロパティ値書き込み・読み出し不可応答 */
 		if (!p_sobj) {
-			ECN_DBG_PUT "_ecn_tsk_ecn_msg_main() eoj %06X not found.",
-				p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3 ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_ecn_msg_main() eoj %06X not found.",
+				p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3);
 			result = -1;
 			break;
 		}
@@ -1003,10 +1003,10 @@ static void f_put_fbs_eoj(const char *fp_fncnm, const char *fp_varnm,
 static void f_put_fbs_eoj(const char *fp_fncnm, const char *fp_varnm,
 	ECN_FBS_ID fa_fbs_id)
 {
-	ECN_DBG_PUT "%s() %s eoj src:%06X dest:%06X",
+	ECN_DBG_PUT("%s() %s eoj src:%06X dest:%06X",
 		fp_fncnm, fp_varnm,
 		((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.seoj.eojx1 << 16 | ((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.seoj.eojx2 << 8 | ((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.seoj.eojx3,
-		((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.deoj.eojx1 << 16 | ((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.deoj.eojx2 << 8 | ((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.deoj.eojx3 ECN_DBG_END;
+		((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.deoj.eojx1 << 16 | ((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.deoj.eojx2 << 8 | ((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.deoj.eojx3);
 }
 #else
 #define f_put_fbs_eoj(f,v,r)
@@ -1028,9 +1028,9 @@ static const EPRPINIB *_ecn_tsk_eoj_get_property(const EOBJINIB *fp_obj, uint8_t
 
 		return p;
 	}
-	ECN_DBG_PUT "_ecn_tsk_eoj_get_property(0x%02X-0x%02X-0x%02X, epc:0x%02X) not found.",
+	ECN_DBG_PUT("_ecn_tsk_eoj_get_property(0x%02X-0x%02X-0x%02X, epc:0x%02X) not found.",
 		fp_obj->eojx1, fp_obj->eojx2, fp_obj->eojx3,
-		fa_epc ECN_DBG_END;
+		fa_epc);
 
 	return NULL;
 }
@@ -1043,8 +1043,8 @@ static int _ecn_tsk_eoj_set_edt(const EPRPINIB *fp_prp, void *fp_src, int fa_src
 	if (!fp_prp->eprpset)
 		return -1;
 
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_edt(epc:0x%02X) call eprpset()",
-		fp_prp->eprpcd ECN_DBG_END;
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_edt(epc:0x%02X) call eprpset()",
+		fp_prp->eprpcd);
 
 	return fp_prp->eprpset(fp_prp, fp_src, fa_srcsz, fa_anno);
 }
@@ -1057,8 +1057,8 @@ static int _ecn_tsk_eoj_get_edt(const EPRPINIB *fp_prp, void *fp_dst, int fa_dst
 	if (!fp_prp->eprpget)
 		return -1;
 
-	ECN_DBG_PUT "_ecn_tsk_eoj_get_edt(epc:0x%02X) call eprpget()",
-		fp_prp->eprpcd ECN_DBG_END;
+	ECN_DBG_PUT("_ecn_tsk_eoj_get_edt(epc:0x%02X) call eprpget()",
+		fp_prp->eprpcd);
 
 	return fp_prp->eprpget(fp_prp, fp_dst, fp_prp->eprpsz);
 }
@@ -1089,7 +1089,7 @@ static T_ECN_SUB_BLK *_ecn_tsk_get_prp_pce(ECN_FBS_ID fa_fbs_id, T_ECN_PRP *fp_p
 	else {
 		p_blk = (T_ECN_SUB_BLK *)_ecn_fbs_mbx_get(sizeof(*p_blk));
 		if (!p_blk) {
-			ECN_DBG_PUT "_ecn_fbs_mbx_get() fault." ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_mbx_get() fault.");
 			return 0;	/* メモリ不足 */
 		}
 	}
@@ -1099,7 +1099,7 @@ static T_ECN_SUB_BLK *_ecn_tsk_get_prp_pce(ECN_FBS_ID fa_fbs_id, T_ECN_PRP *fp_p
 	a_size = 0;
 	a_ret = _ecn_fbs_get_data(fa_fbs_id, fp_prp, sizeof(*fp_prp), &a_size);
 	if (a_ret || a_size < (int)sizeof(*fp_prp)) {
-		ECN_DBG_PUT "_ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
@@ -1108,7 +1108,7 @@ static T_ECN_SUB_BLK *_ecn_tsk_get_prp_pce(ECN_FBS_ID fa_fbs_id, T_ECN_PRP *fp_p
 		a_size = 0;
 		a_ret = _ecn_fbs_get_data(fa_fbs_id, p_blk, fp_prp->pdc, &a_size);
 		if (a_ret || a_size < (int)fp_prp->pdc) {
-			ECN_DBG_PUT "_ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 	}
@@ -1145,7 +1145,7 @@ static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 		/* ECN_FBS_IDからT_ECN_PRP1件とその付随データを抽出し、そのポインタを返す */
 		p_edt = _ecn_tsk_get_prp_pce(fa_fbs_id, &a_prp, p_edt);
 		if (!p_edt) {
-			ECN_DBG_PUT "_ecn_tsk_eoj_set_main(): _ecn_tsk_get_prp_pce() fault." ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_eoj_set_main(): _ecn_tsk_get_prp_pce() fault.");
 			goto lb_except;
 		}
 
@@ -1165,14 +1165,14 @@ static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 			a_ans = -1;
 		}
 		if (a_ans == a_size) {
-			ECN_DBG_PUT "_ecn_tsk_eoj_set_edt(0x%06X, 0x%02x, 0x%02X..., %u) ok.",
+			ECN_DBG_PUT("_ecn_tsk_eoj_set_edt(0x%06X, 0x%02x, 0x%02X..., %u) ok.",
 				fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3,
-				a_prp.epc, p_edt->payload[0], a_size ECN_DBG_END;
+				a_prp.epc, p_edt->payload[0], a_size);
 			a_prp.pdc = 0;
 		} else {
-			ECN_DBG_PUT "_ecn_tsk_eoj_set_edt(0x%06X, 0x%02x, 0x%02X..., %u) fault.",
+			ECN_DBG_PUT("_ecn_tsk_eoj_set_edt(0x%06X, 0x%02x, 0x%02X..., %u) fault.",
 				fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3,
-				a_prp.epc, p_edt->payload[0], a_size ECN_DBG_END;
+				a_prp.epc, p_edt->payload[0], a_size);
 			*p_sw_ok = 0;	/* プロパティ設定失敗 */
 			/* 応答処理の場合EDTは設定しない */
 			if (fa_update)
@@ -1182,7 +1182,7 @@ static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 		/* 応答電文用メモリにデータ追加(epc,pdcの2byte) */
 		a_ret = _ecn_fbs_add_data_ex(a_fbs_res, &a_prp, sizeof(a_prp));
 		if (a_ret) {
-			ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 
@@ -1190,7 +1190,7 @@ static ER _ecn_tsk_eoj_set_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 			/* 応答電文用メモリにデータ追加(edt n-byte) */
 			a_ret = _ecn_fbs_add_data_ex(a_fbs_res, p_edt->payload, a_prp.pdc);
 			if (a_ret) {
-				ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+				ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 				goto lb_except;
 			}
 		}
@@ -1239,7 +1239,7 @@ static ER _ecn_tsk_eoj_get_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 	/* 作業領域確保 */
 	p_prp_buf = _ecn_fbs_mbx_get(ECHONET_MEMPOOL_BLOCK_SIZE);
 	if (!p_prp_buf) {
-		ECN_DBG_PUT "_ecn_fbs_mbx_get() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_mbx_get() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;	/* メモリ不足 */
 	}
 
@@ -1247,7 +1247,7 @@ static ER _ecn_tsk_eoj_get_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 		/* ECN_FBS_IDからT_ECN_PRP1件とその付随データを抽出 */
 		p_edt = _ecn_tsk_get_prp_pce(fa_fbs_id, &a_prp, p_edt);
 		if (!p_edt) {
-			ECN_DBG_PUT "_ecn_tsk_eoj_get_main(): _ecn_tsk_get_prp_pce() fault." ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_eoj_get_main(): _ecn_tsk_get_prp_pce() fault.");
 			goto lb_except;
 		}
 
@@ -1272,14 +1272,14 @@ static ER _ecn_tsk_eoj_get_main(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t f
 		/* 応答電文用メモリにデータ追加(epc,pdcの2byte) */
 		a_ret = _ecn_fbs_add_data_ex(a_fbs_res, &a_prp, sizeof(a_prp));
 		if (a_ret) {
-			ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 		if (0 < a_ans) {
 			/* 付随データ追加 */
 			a_ret = _ecn_fbs_add_data_ex(a_fbs_res, p_prp_buf, a_ans);
 			if (a_ret) {
-				ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+				ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 				goto lb_except;
 			}
 		}
@@ -1318,7 +1318,7 @@ static ER _ecn_tsk_eoj_res_main(ECN_FBS_ID fa_fbs_id, ECN_FBS_ID a_fbs_res, int 
 	/* 作業領域確保 */
 	p_prp_buf = _ecn_fbs_mbx_get(ECHONET_MEMPOOL_BLOCK_SIZE);
 	if (!p_prp_buf) {
-		ECN_DBG_PUT "_ecn_fbs_mbx_get() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_mbx_get() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;	/* メモリ不足 */
 	}
 
@@ -1326,7 +1326,7 @@ static ER _ecn_tsk_eoj_res_main(ECN_FBS_ID fa_fbs_id, ECN_FBS_ID a_fbs_res, int 
 		/* ECN_FBS_IDからT_ECN_PRP1件とその付随データを抽出 */
 		p_edt = _ecn_tsk_get_prp_pce(fa_fbs_id, &a_prp, p_edt);
 		if (!p_edt) {
-			ECN_DBG_PUT "_ecn_tsk_eoj_get_main(): _ecn_tsk_get_prp_pce() fault." ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_tsk_eoj_get_main(): _ecn_tsk_get_prp_pce() fault.");
 			goto lb_except;
 		}
 
@@ -1335,7 +1335,7 @@ static ER _ecn_tsk_eoj_res_main(ECN_FBS_ID fa_fbs_id, ECN_FBS_ID a_fbs_res, int 
 		/* 応答電文用メモリにデータ追加(epc,pdcの2byte) */
 		a_ret = _ecn_fbs_add_data_ex(a_fbs_res, &a_prp, sizeof(a_prp));
 		if (a_ret) {
-			ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 		((T_EDATA *)a_fbs_res.ptr)->hdr.edata.opc++;
@@ -1373,14 +1373,14 @@ static ER _ecn_tsk_eoj_skip_main(const EOBJINIB *fp_obj, ECN_FBS_ID fa_fbs_id,
 		a_size = 0;
 		a_ret = _ecn_fbs_get_data(fa_fbs_id, &a_prp, sizeof(a_prp), &a_size);
 		if (a_ret || a_size < (int)sizeof(a_prp)) {
-			ECN_DBG_PUT "_ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 
 		/* pdc分読み飛ばし */
 		a_ret = _ecn_fbs_seek_rpos(fa_fbs_id, a_prp.pdc);
 		if (a_ret) {
-			ECN_DBG_PUT "_ecn_fbs_seek_rpos() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_seek_rpos() result = %d:%s", a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 	}
@@ -1542,7 +1542,7 @@ static void _ecn_tsk_eoj_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_f
 	/* 応答電文用メモリの取得 */
 	a_ret = _ecn_fbs_cre(a_size, &a_fbs_res);
 	if (a_ret != E_OK || !a_fbs_res.ptr) { /* 確保失敗 */
-		ECN_DBG_PUT "_ecn_fbs_cre() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_cre() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_finally;
 	}
 
@@ -1558,14 +1558,14 @@ static void _ecn_tsk_eoj_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_f
 	a_ret = _ecn_fbs_add_data_ex(a_fbs_res, &a_ecn_hdp,
 			sizeof(a_ecn_hdp.ecn_hdr) + sizeof(a_ecn_hdp.edata));
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
 	/* payload先頭のT_ECN_HDR(ecn_hdr), T_ECN_EDATA_BODY(edata)を読み飛ばす */
 	a_ret = _ecn_fbs_set_rpos(fa_fbs_id, offsetof(T_ECN_EDT_HDR, ecn_prp));
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_fbs_set_rpos() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_set_rpos() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
@@ -1576,7 +1576,7 @@ static void _ecn_tsk_eoj_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_f
 	a_ret = _ecn_tsk_eoj_get_main(fp_obj, fa_eobjatr, fa_forward, fa_access, fa_fbs_id, a_fbs_res,
 		((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.opc, &a_sw_ok);
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_tsk_eoj_get_main() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_eoj_get_main() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
@@ -1600,7 +1600,7 @@ static void _ecn_tsk_eoj_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_f
 	/* 応答送信 */
 	a_ret = _ecn_tsk_snd_mbx(a_fbs_res, false);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "_ecn_tsk_snd_mbx() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_snd_mbx() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	goto lb_finally;
@@ -1633,7 +1633,7 @@ static void _ecn_tsk_eoj_res(ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv,
 	/* 応答電文用メモリの取得 */
 	a_ret = _ecn_fbs_cre(a_size, &a_fbs_res);
 	if (a_ret != E_OK || !a_fbs_res.ptr) { /* 確保失敗 */
-		ECN_DBG_PUT "_ecn_fbs_cre() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_cre() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_finally;
 	}
 
@@ -1646,14 +1646,14 @@ static void _ecn_tsk_eoj_res(ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv,
 	a_ret = _ecn_fbs_add_data_ex(a_fbs_res, &a_ecn_hdp,
 			sizeof(a_ecn_hdp.ecn_hdr) + sizeof(a_ecn_hdp.edata));
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
 	/* payload先頭のT_ECN_HDR(ecn_hdr), T_ECN_EDATA_BODY(edata)を読み飛ばす */
 	a_ret = _ecn_fbs_set_rpos(fa_fbs_id, offsetof(T_ECN_EDT_HDR, ecn_prp));
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_fbs_set_rpos() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_set_rpos() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
@@ -1664,7 +1664,7 @@ static void _ecn_tsk_eoj_res(ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv,
 	a_ret = _ecn_tsk_eoj_res_main(fa_fbs_id, a_fbs_res,
 		((T_EDATA *)fa_fbs_id.ptr)->hdr.edata.opc, &a_sw_ok);
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_tsk_eoj_res_main() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_eoj_res_main() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
@@ -1688,7 +1688,7 @@ static void _ecn_tsk_eoj_res(ECN_FBS_ID fa_fbs_id, ECN_SRV_CODE fa_res_esv,
 	/* 応答送信 */
 	a_ret = _ecn_tsk_snd_mbx(a_fbs_res, false);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "_ecn_tsk_snd_mbx() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_snd_mbx() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	goto lb_finally;
@@ -1717,8 +1717,8 @@ static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t 
 
 	memset(&a_ecn_hdp, 0, sizeof(a_ecn_hdp));
 
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_get() eoj:%06X",
-		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3 ECN_DBG_END;
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_get() eoj:%06X",
+		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3);
 
 	/* 初期取得サイズ */
 	a_size = sizeof(T_ECN_HDR) + sizeof(T_ECN_EDATA_BODY) + sizeof(T_ECN_PRP);
@@ -1760,9 +1760,9 @@ static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t 
 			a_ret);
 		goto lb_except;
 	}
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_get() eoj:%06X _ecn_tsk_eoj_set_main() ok sw_ok:%s",
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_get() eoj:%06X _ecn_tsk_eoj_set_main() ok sw_ok:%s",
 		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3,
-		(a_sw_ok ? "true" : "false") ECN_DBG_END;
+		(a_sw_ok ? "true" : "false"));
 
 	/* 次の件数を読み取る(1byte)						*/
 	/* → ECHONET-Lite_Ver.1.10_02.pdf p.40 [OPCGet]	*/
@@ -1793,9 +1793,9 @@ static void _ecn_tsk_eoj_set_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t 
 			a_ret);
 		goto lb_except;
 	}
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_get() eoj:%06X _ecn_tsk_eoj_get_main() ok sw_ok:%s",
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_get() eoj:%06X _ecn_tsk_eoj_get_main() ok sw_ok:%s",
 		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3,
-		(a_sw_ok ? "true" : "false") ECN_DBG_END;
+		(a_sw_ok ? "true" : "false"));
 
 	/* プロパティ読み込み件数書き込み時のヘッド情報で、読み出し件数を記録 */
 	_ecn_fbs_poke(a_fbs_res, a_rdprp_wrpos, ((T_EDATA *)a_fbs_res.ptr)->hdr.edata.opc);
@@ -1838,8 +1838,8 @@ static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr,
 
 	memset(&a_ecn_hdp, 0, sizeof(a_ecn_hdp));
 
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_get_res() eoj:%06X",
-		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3 ECN_DBG_END;
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_get_res() eoj:%06X",
+		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3);
 
 	/* 初期取得サイズ */
 	a_size = sizeof(T_ECN_HDR) + sizeof(T_ECN_EDATA_BODY) + sizeof(T_ECN_PRP);
@@ -1866,9 +1866,9 @@ static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr,
 			a_ret);
 		goto lb_except;
 	}
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_get_res() eoj:%06X _ecn_tsk_eoj_set_main() ok sw_ok:%s",
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_get_res() eoj:%06X _ecn_tsk_eoj_set_main() ok sw_ok:%s",
 		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3,
-		(a_sw_ok ? "true" : "false") ECN_DBG_END;
+		(a_sw_ok ? "true" : "false"));
 
 	/* 次の件数を読み取る(1byte)						*/
 	/* → ECHONET-Lite_Ver.1.10_02.pdf p.40 [OPCGet]	*/
@@ -1887,9 +1887,9 @@ static void _ecn_tsk_eoj_set_get_res(const EOBJINIB *fp_obj, ATR fa_eobjatr,
 			a_ret);
 		goto lb_except;
 	}
-	ECN_DBG_PUT "_ecn_tsk_eoj_set_get_res() eoj:%06X _ecn_tsk_eoj_get_main() ok sw_ok:%s",
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_get_res() eoj:%06X _ecn_tsk_eoj_get_main() ok sw_ok:%s",
 		fp_obj->eojx1 << 16 | fp_obj->eojx2 << 8 | fp_obj->eojx3,
-		(a_sw_ok ? "true" : "false") ECN_DBG_END;
+		(a_sw_ok ? "true" : "false"));
 
 	goto lb_finally;
 
@@ -1963,14 +1963,14 @@ ER _ecn_tsk_cre_req_fbs(ID sender, uint8_t cmd, ECN_FBS_ID *pk_req)
 
 	ret = _ecn_fbs_cre(1, &req);
 	if (ret != E_OK) {
-		ECN_DBG_PUT "_ecn_tsk_cre_req_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_cre_req_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
 	ret = _ecn_fbs_add_data(req, &cmd, sizeof(cmd));
 	if (ret != E_OK) {
 		_ecn_fbs_del(req);
-		ECN_DBG_PUT "_ecn_tsk_cre_req_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_cre_req_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
@@ -1992,14 +1992,14 @@ ER _ecn_tsk_cre_res_fbs(ECN_FBS_ID req, uint8_t cmd, ECN_FBS_ID *pk_res)
 
 	ret = _ecn_fbs_cre(1, &res);
 	if (ret != E_OK) {
-		ECN_DBG_PUT "_ecn_tsk_cre_res_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_cre_res_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
 	ret = _ecn_fbs_add_data(res, &cmd, sizeof(cmd));
 	if (ret != E_OK) {
 		_ecn_fbs_del(res);
-		ECN_DBG_PUT "_ecn_tsk_cre_res_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_cre_res_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 

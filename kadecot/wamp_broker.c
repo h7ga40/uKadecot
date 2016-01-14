@@ -79,54 +79,139 @@ void wamp_broker_subscribe_options(wamp_broker_t *broker)
 
 void wamp_broker_subscribe_topic(wamp_broker_t *broker, const char *value)
 {
-	static const char topic[] = "com.sonycsl.kadecot.echonetlite.topic.";
+	static const char echonetlite_topic[] = "com.sonycsl.kadecot.echonetlite.topic.";
+	static const char arduino_topic[] = "com.sonycsl.kadecot.arduino.topic.";
+
+	if (strncmp(echonetlite_topic, value, sizeof(echonetlite_topic) - 1) == 0)
+		wamp_broker_subscribe_echonetlite_topic(broker, value, sizeof(echonetlite_topic) - 1);
+	else if (strncmp(arduino_topic, value, sizeof(arduino_topic) - 1) == 0)
+		wamp_broker_subscribe_arduino_topic(broker, value, sizeof(arduino_topic) - 1);
+}
+
+void wamp_broker_subscribe_echonetlite_topic(wamp_broker_t *broker, const char *value, int val_pos)
+{
 	char *pos, *end;
 	wamp_subscription_t *subscription;
+	wamp_echonetlite_subscription_t *echonetlite;
 	uint16_t devType;
 	uint8_t epc;
-
-	if(strncmp(topic, value, sizeof(topic) - 1) != 0)
-		return;
 
 	subscription = wamp_broker_new_subscription(broker);
 	if(subscription == NULL)
 		return;
+	subscription->kind = WAMP_SUBSCRIPTION_KIND_ECHONETLITE;
+	echonetlite = &subscription->echonetlite;
 
-	subscription->deviceName[0] = '\0';
-	strcpy_s(subscription->deviceName, sizeof(subscription->deviceName), &value[sizeof(topic) - 1]);
-	subscription->deviceName[sizeof(subscription->deviceName) - 1] = '\0';
+	echonetlite->deviceName[0] = '\0';
+	strcpy_s(echonetlite->deviceName, sizeof(echonetlite->deviceName), &value[val_pos]);
+	echonetlite->deviceName[sizeof(echonetlite->deviceName) - 1] = '\0';
 
-	end = &subscription->deviceName[sizeof(subscription->deviceName)];
-	for(pos = subscription->deviceName; pos < end; pos++){
+	end = &echonetlite->deviceName[sizeof(echonetlite->deviceName)];
+	for(pos = echonetlite->deviceName; pos < end; pos++){
 		if(*pos != '.')
 			continue;
 
 		*pos = '\0';
-		subscription->proprtyName = pos + 1;
+		echonetlite->proprtyName = pos + 1;
 		break;
 	}
 
-	devType = kadecot_names_get_device_type(subscription->deviceName,
-		strnlen(subscription->deviceName, sizeof(subscription->deviceName)));
+	devType = kadecot_names_get_device_type(echonetlite->deviceName,
+		strnlen(echonetlite->deviceName, sizeof(echonetlite->deviceName)));
 	if(devType == 0){
 		wamp_broker_delete_subscription(broker, subscription);
 		return;
 	}
 
-	epc = kadecot_names_get_property_code(subscription->proprtyName,
-		strnlen(subscription->proprtyName, subscription->proprtyName - subscription->deviceName), devType);
+	epc = kadecot_names_get_property_code(echonetlite->proprtyName,
+		strnlen(echonetlite->proprtyName, echonetlite->proprtyName - echonetlite->deviceName), devType);
 	if(epc == 0){
 		wamp_broker_delete_subscription(broker, subscription);
 		return;
 	}
 
-	subscription->devType = devType;
-	subscription->epc = epc;
+	echonetlite->devType = devType;
+	echonetlite->epc = epc;
+
+	wamp_subscription_t *spos, *send = &broker->subscriptions[sizeof(broker->subscriptions) / sizeof(broker->subscriptions[0])];
+
+	for (spos = broker->subscriptions; spos < send; spos++) {
+		if ((spos == subscription) || (spos->subscriptionId == 0) || (spos->kind != WAMP_SUBSCRIPTION_KIND_ECHONETLITE))
+			continue;
+
+		if ((spos->echonetlite.devType != devType) || (spos->echonetlite.epc != epc))
+			continue;
+
+		wamp_broker_delete_subscription(broker, subscription);
+		subscription = spos;
+		break;
+	}
 
 	broker->current_subscription = subscription;
 }
 
-static void wamp_broker_subscribe_res(wamp_broker_t *broker);
+void wamp_broker_subscribe_arduino_topic(wamp_broker_t *broker, const char *value, int val_pos)
+{
+	char *pos, *end;
+	wamp_subscription_t *subscription;
+	wamp_arduino_subscription_t *arduino;
+	char pinno[40], *threshold = NULL;
+
+	subscription = wamp_broker_new_subscription(broker);
+	if (subscription == NULL)
+		return;
+	subscription->kind = WAMP_SUBSCRIPTION_KIND_ARDUINO;
+	arduino = &subscription->arduino;
+
+	pinno[0] = '\0';
+	strcpy_s(pinno, sizeof(pinno), &value[val_pos]);
+	pinno[sizeof(pinno) - 1] = '\0';
+
+	if (pinno[0] != 'p' || pinno[1] != 'i' || pinno[2] != 'n') {
+		wamp_broker_delete_subscription(broker, subscription);
+		return;
+	}
+
+	end = &pinno[sizeof(pinno)];
+	for (pos = pinno; pos < end; pos++) {
+		if (*pos != '.')
+			continue;
+
+		*pos = '\0';
+		threshold = pos + 1;
+		if (threshold[0] != 't' || threshold[1] != 'h' || threshold[2] != 'r') {
+			threshold = NULL;
+		}
+		break;
+	}
+
+	arduino->pinno = atoi(&pinno[3]);
+	if (threshold != NULL) {
+		arduino->threshold = atoi(&threshold[3]);
+	}
+	else {
+		arduino->threshold = 0;
+	}
+
+	wamp_subscription_t *spos, *send = &broker->subscriptions[sizeof(broker->subscriptions) / sizeof(broker->subscriptions[0])];
+
+	for (spos = broker->subscriptions; spos < send; spos++) {
+		if ((spos == subscription) || (spos->subscriptionId == 0) || (spos->kind != WAMP_SUBSCRIPTION_KIND_ARDUINO))
+			continue;
+
+		if ((spos->arduino.pinno != arduino->pinno) || (spos->arduino.threshold != arduino->threshold))
+			continue;
+
+		wamp_broker_delete_subscription(broker, subscription);
+		subscription = spos;
+		break;
+	}
+
+	broker->current_subscription = subscription;
+}
+
+static void wamp_broker_subscribe_echonetlite_res(wamp_broker_t *broker);
+static void wamp_broker_subscribe_arduino_res(wamp_broker_t *broker);
 
 void wamp_broker_subscribe_close(struct wamp_state *s)
 {
@@ -136,7 +221,18 @@ void wamp_broker_subscribe_close(struct wamp_state *s)
 	broker->error = internal_error;
 
 	// send RESULT
-	wamp_broker_subscribe_res(broker);
+	if (broker->current_subscription != NULL) {
+		switch (broker->current_subscription->kind) {
+		case WAMP_SUBSCRIPTION_KIND_ECHONETLITE:
+			wamp_broker_subscribe_echonetlite_res(broker);
+			break;
+		case WAMP_SUBSCRIPTION_KIND_ARDUINO:
+			wamp_broker_subscribe_arduino_res(broker);
+			break;
+		default:
+			break;
+		}
+	}
 
 	if (broker->error != NULL){
 		ret = wamp_send_error_res(s, WAMP_CODE_SUBSCRIBE, broker->requestId, broker->error);
@@ -147,7 +243,7 @@ void wamp_broker_subscribe_close(struct wamp_state *s)
 	}
 }
 
-static void wamp_broker_subscribe_res(wamp_broker_t *broker)
+static void wamp_broker_subscribe_echonetlite_res(wamp_broker_t *broker)
 {
 	struct wamp_state *s = broker->s;
 	wamp_subscription_t *subscription = broker->current_subscription;
@@ -156,7 +252,7 @@ static void wamp_broker_subscribe_res(wamp_broker_t *broker)
 	ECN_FBS_SSIZE_T pos = 0;
 	ER ret;
 
-	if ((subscription == NULL) || (subscription->devType == 0) || (subscription->epc == 0))
+	if ((subscription == NULL) || (subscription->echonetlite.devType == 0) || (subscription->echonetlite.epc == 0))
 		return;
 
 	ret = _ecn_fbs_cre(1, &buf);
@@ -174,7 +270,45 @@ static void wamp_broker_subscribe_res(wamp_broker_t *broker)
 
 	ret = main_send_message(buf, s->wbsid);
 	if (ret != E_OK) {
-		syslog(LOG_WARNING, "wamp_broker_subscribe_close() : main_send_message() result = %d", ret);
+		syslog(LOG_WARNING, "wamp_broker_subscribe_echonetlite_res() : main_send_message() result = %d", ret);
+		return;
+	}
+
+	broker->error = NULL;
+}
+
+static void wamp_broker_subscribe_arduino_res(wamp_broker_t *broker)
+{
+	struct wamp_state *s = broker->s;
+	wamp_subscription_t *subscription = broker->current_subscription;
+	// send SUBSCRIBED or ERROR
+	ECN_FBS_ID buf;
+	ECN_FBS_SSIZE_T pos = 0;
+	ER ret;
+
+	if ((subscription == NULL)
+		|| ((subscription->arduino.pinno < 0) || (subscription->arduino.pinno > 19)))
+		return;
+
+	if (subscription->arduino.pinno >= 14)
+		main_add_threshold(subscription->subscriptionId, subscription->arduino.pinno, subscription->arduino.threshold);
+
+	ret = _ecn_fbs_cre(1, &buf);
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "_ecn_fbs_cre() result = %d", ret);
+		return;
+	}
+
+	ret = fbs_printf(buf, &pos, "[33,%d,%d]", broker->requestId, subscription->subscriptionId);
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+		_ecn_fbs_del(buf);
+		return;
+	}
+
+	ret = main_send_message(buf, s->wbsid);
+	if (ret != E_OK) {
+		syslog(LOG_WARNING, "wamp_broker_subscribe_arduino_res() : main_send_message() result = %d", ret);
 		return;
 	}
 
@@ -216,6 +350,9 @@ void wamp_broker_unsubscribe_close(struct wamp_state *s)
 
 	if(subscription == NULL)
 		return;
+
+	if (subscription->kind == WAMP_SUBSCRIPTION_KIND_ARDUINO)
+		main_del_threshold(subscription->subscriptionId);
 
 	wamp_broker_delete_subscription(broker, subscription);
 
@@ -317,10 +454,10 @@ void wamp_broker_publish_inf(wamp_broker_t *broker, uint16_t pubId, int deviceId
 	int i;
 
 	for(subscription = broker->subscriptions; subscription < end; subscription++){
-		if (subscription->subscriptionId == 0)
+		if ((subscription->subscriptionId == 0) || (subscription->kind != WAMP_SUBSCRIPTION_KIND_ECHONETLITE))
 			continue;
 
-		if ((subscription->devType != devType) || (subscription->epc != epc))
+		if ((subscription->echonetlite.devType != devType) || (subscription->echonetlite.epc != epc))
 			continue;
 
 		ret = _ecn_fbs_cre(1, &buf);
@@ -338,7 +475,7 @@ void wamp_broker_publish_inf(wamp_broker_t *broker, uint16_t pubId, int deviceId
 		}
 
 		ret = fbs_printf(buf, &pos, "{\"propertyName\":\"%s\",\"propertyValue\":[",
-			subscription->proprtyName);
+			subscription->echonetlite.proprtyName);
 		if (ret != E_OK) {
 			syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
 			_ecn_fbs_del(buf);
@@ -364,6 +501,62 @@ void wamp_broker_publish_inf(wamp_broker_t *broker, uint16_t pubId, int deviceId
 			syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
 			_ecn_fbs_del(buf);
 			break;
+		}
+
+		ret = main_send_message(buf, s->wbsid);
+		if (ret != E_OK) {
+			syslog(LOG_WARNING, "wamp_broker_publish_inf() : main_send_message() result = %d", ret);
+		}
+		break;
+	}
+}
+
+void wamp_broker_publish_pin(wamp_broker_t *broker, uint16_t pubId, int deviceId, int pinno, uint16_t value)
+{
+	struct wamp_state *s = broker->s;
+	wamp_subscription_t *subscription, *end = &broker->subscriptions[sizeof(broker->subscriptions) / sizeof(broker->subscriptions[0])];
+	ECN_FBS_ID buf;
+	ECN_FBS_SSIZE_T pos = 0;
+	ER ret;
+
+	for (subscription = broker->subscriptions; subscription < end; subscription++) {
+		if ((subscription->subscriptionId == 0) || (subscription->kind != WAMP_SUBSCRIPTION_KIND_ARDUINO))
+			continue;
+
+		if (subscription->arduino.pinno != pinno)
+			continue;
+
+		ret = _ecn_fbs_cre(1, &buf);
+		if (ret != E_OK) {
+			syslog(LOG_WARNING, "_ecn_fbs_cre() result = %d", ret);
+			break;
+		}
+
+		ret = fbs_printf(buf, &pos, "[36,%d,%d,{\"deviceId\":%d},[],",
+			subscription->subscriptionId, pubId, deviceId);
+		if (ret != E_OK) {
+			syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+			_ecn_fbs_del(buf);
+			break;
+		}
+
+		if ((pinno >= 0) && (pinno <= 13)) {
+			ret = fbs_printf(buf, &pos, "{\"pin\":%d,\"value\":\"%s\"}]",
+				subscription->arduino.pinno, (value == 0) ? "LOW" : "HIGH");
+			if (ret != E_OK) {
+				syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+				_ecn_fbs_del(buf);
+				break;
+			}
+		}
+		else {
+			ret = fbs_printf(buf, &pos, "{\"pin\":%d,\"value\":%d}]",
+				subscription->arduino.pinno, value);
+			if (ret != E_OK) {
+				syslog(LOG_WARNING, "fbs_printf() result = %d", ret);
+				_ecn_fbs_del(buf);
+				break;
+			}
 		}
 
 		ret = main_send_message(buf, s->wbsid);

@@ -88,6 +88,36 @@
 #endif
 #endif
 
+#define MAX(a, b) ((a > b) ? a : b)
+
+union temp_type_t {
+	char binary[sizeof(http_content_type_binary)];
+	char html[sizeof(http_content_type_html)];
+	char css[sizeof(http_content_type_css)];
+	char js[sizeof(http_content_type_js)];
+	char json[sizeof(http_content_type_json)];
+	char png[sizeof(http_content_type_png)];
+	char gif[sizeof(http_content_type_gif)];
+	char jpg[sizeof(http_content_type_jpg)];
+	char svg[sizeof(http_content_type_svg)];
+	char plain[sizeof(http_content_type_plain)];
+};
+
+struct temp_buf_t{
+	char headers[MAX(sizeof(http_header_404), sizeof(http_header_200))
+		+ sizeof(http_content_encoding_gzip)
+		+ sizeof(union temp_type_t)
+	];
+	char ws_headers[sizeof(http_header_101)
+		+ sizeof(http_upgrade) + sizeof(((struct httpd_state *)0)->message.upgrade) + sizeof(http_crnl)
+		+ sizeof(http_connection) + sizeof(((struct httpd_state *)0)->message.connection) + sizeof(http_crnl)
+		+ sizeof(http_sec_websocket_accept) + sizeof(((struct httpd_state *)0)->message.response_key) + sizeof(http_crnl)
+		+ sizeof(http_sec_websocket_protocol) + sizeof(((struct httpd_state *)0)->message.sec_websocket_protocol) + sizeof(http_crnl)
+		+ sizeof(http_crnl)
+	];
+};
+static char temp_buf[sizeof(struct temp_buf_t)];
+
 int httpd_strnicmp(const char *s1, const char *s2, size_t n)
 {
 	int i;
@@ -158,37 +188,55 @@ PT_THREAD(send_file(struct httpd_state *s))
 static
 PT_THREAD(send_headers(struct httpd_state *s, const char *statushdr))
 {
+  char *pos = temp_buf;
+  int len;
   char *ptr;
 
   PSOCK_BEGIN(&s->sout);
 
-  PSOCK_SEND_STR(&s->sout, statushdr);
+  len = strlen(statushdr);
+  memcpy(pos, statushdr, len); pos += len;
 
-  PSOCK_SEND_STR(&s->sout, http_content_encoding_gzip);
+  len = strlen(http_content_encoding_gzip);
+  memcpy(pos, http_content_encoding_gzip, len); pos += len;
 
   ptr = strrchr(s->message.request_url, ISO_period);
   if (ptr == NULL) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_binary);
+    len = strlen(http_content_type_binary);
+    memcpy(pos, http_content_type_binary, len); pos += len;
   } else if (strncmp(http_html, ptr, 5) == 0 ||
     strncmp(http_shtml, ptr, 6) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_html);
+    len = strlen(http_content_type_html);
+    memcpy(pos, http_content_type_html, len); pos += len;
   } else if (strncmp(http_css, ptr, 4) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_css);
+    len = strlen(http_content_type_css);
+    memcpy(pos, http_content_type_css, len); pos += len;
   } else if (strncmp(http_js, ptr, 3) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_js);
+    len = strlen(http_content_type_js);
+    memcpy(pos, http_content_type_js, len); pos += len;
   } else if (strncmp(http_json, ptr, 5) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_json);
+    len = strlen(http_content_type_json);
+    memcpy(pos, http_content_type_json, len); pos += len;
   } else if (strncmp(http_png, ptr, 4) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_png);
+    len = strlen(http_content_type_png);
+    memcpy(pos, http_content_type_png, len); pos += len;
   } else if (strncmp(http_gif, ptr, 4) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_gif);
+    len = strlen(http_content_type_gif);
+    memcpy(pos, http_content_type_gif, len); pos += len;
   } else if (strncmp(http_jpg, ptr, 4) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_jpg);
+    len = strlen(http_content_type_jpg);
+    memcpy(pos, http_content_type_jpg, len); pos += len;
   } else if (strncmp(http_svg, ptr, 4) == 0) {
-    PSOCK_SEND_STR(&s->sout, http_content_type_svg);
+    len = strlen(http_content_type_svg);
+    memcpy(pos, http_content_type_svg, len); pos += len;
   } else {
-    PSOCK_SEND_STR(&s->sout, http_content_type_plain);
+    len = strlen(http_content_type_plain);
+    memcpy(pos, http_content_type_plain, len); pos += len;
   }
+  *pos = '\0';
+
+  PSOCK_SEND(&s->sout, temp_buf, pos - temp_buf);
+
   PSOCK_END(&s->sout);
 }
 /*---------------------------------------------------------------------------*/
@@ -221,27 +269,47 @@ PT_THREAD(handle_output(struct httpd_state *s))
 static
 PT_THREAD(send_ws_headers(struct httpd_state *s, const char *statushdr))
 {
+  char *pos = temp_buf;
+  int len;
+
   PSOCK_BEGIN(&s->sout);
 
-  PSOCK_SEND_STR(&s->sout, statushdr);
+  len = strlen(statushdr);
+  memcpy(pos, statushdr, len); pos += len;
 
-  PSOCK_SEND_STR(&s->sout, http_upgrade);
-  PSOCK_SEND_STR(&s->sout, s->message.upgrade);
-  PSOCK_SEND_STR(&s->sout, http_crnl);
+  len = strlen(http_upgrade);
+  memcpy(pos, http_upgrade, len); pos += len;
+  len = strlen(s->message.upgrade);
+  memcpy(pos, s->message.upgrade, len); pos += len;
+  len = strlen(http_crnl);
+  memcpy(pos, http_crnl, len); pos += len;
 
-  PSOCK_SEND_STR(&s->sout, http_connection);
-  PSOCK_SEND_STR(&s->sout, s->message.connection);
-  PSOCK_SEND_STR(&s->sout, http_crnl);
+  len = strlen(http_connection);
+  memcpy(pos, http_connection, len); pos += len;
+  len = strlen(s->message.connection);
+  memcpy(pos, s->message.connection, len); pos += len;
+  len = strlen(http_crnl);
+  memcpy(pos, http_crnl, len); pos += len;
 
-  PSOCK_SEND_STR(&s->sout, http_sec_websocket_accept);
-  PSOCK_SEND_STR(&s->sout, s->message.response_key);
-  PSOCK_SEND_STR(&s->sout, http_crnl);
+  len = strlen(http_sec_websocket_accept);
+  memcpy(pos, http_sec_websocket_accept, len); pos += len;
+  len = strlen(s->message.response_key);
+  memcpy(pos, s->message.response_key, len); pos += len;
+  len = strlen(http_crnl);
+  memcpy(pos, http_crnl, len); pos += len;
 
-  PSOCK_SEND_STR(&s->sout, http_sec_websocket_protocol);
-  PSOCK_SEND_STR(&s->sout, s->message.sec_websocket_protocol);
-  PSOCK_SEND_STR(&s->sout, http_crnl);
+  len = strlen(http_sec_websocket_protocol);
+  memcpy(pos, http_sec_websocket_protocol, len); pos += len;
+  len = strlen(s->message.sec_websocket_protocol);
+  memcpy(pos, s->message.sec_websocket_protocol, len); pos += len;
+  len = strlen(http_crnl);
+  memcpy(pos, http_crnl, len); pos += len;
 
-  PSOCK_SEND_STR(&s->sout, http_crnl);
+  len = strlen(http_crnl);
+  memcpy(pos, http_crnl, len); pos += len;
+  *pos = '\0';
+
+  PSOCK_SEND(&s->sout, temp_buf, pos - temp_buf);
 
   PSOCK_END(&s->sout);
 }

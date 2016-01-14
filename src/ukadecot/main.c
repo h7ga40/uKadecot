@@ -1,8 +1,8 @@
 /*
  *  TOPPERS ECHONET Lite Communication Middleware
- * 
+ *
  *  Copyright (C) 2014 Cores Co., Ltd. Japan
- * 
+ *
  *  上記著作権者は，以下の(1)～(4)の条件を満たす場合に限り，本ソフトウェ
  *  ア（本ソフトウェアを改変したものを含む．以下同じ）を使用・複製・改
  *  変・再配布（以下，利用と呼ぶ）することを無償で許諾する．
@@ -25,17 +25,17 @@
  *      また，本ソフトウェアのユーザまたはエンドユーザからのいかなる理
  *      由に基づく請求からも，上記著作権者およびTOPPERSプロジェクトを
  *      免責すること．
- * 
+ *
  *  本ソフトウェアは，無保証で提供されているものである．上記著作権者お
  *  よびTOPPERSプロジェクトは，本ソフトウェアに関して，特定の使用目的
  *  に対する適合性も含めて，いかなる保証も行わない．また，本ソフトウェ
  *  アの利用により直接的または間接的に生じたいかなる損害に関しても，そ
  *  の責任を負わない．
- * 
+ *
  *  @(#) $Id$
  */
 
-/* 
+/*
  *  サンプルプログラム(1)の本体
  */
 
@@ -63,7 +63,7 @@
 #include "arduino.h"
 #include "data_flash.h"
 
-uint8_t mac_addr[6] = { 0x12, 0x34, 0x56, 0x78, 0x9A, 0xB8 };
+uint8_t mac_addr[6] = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xB8};
 bool_t dhcp_enable = true;
 
 #define MAKER_CODE	0x00, 0x00, 0xB3	/* TOPPERSプロジェクト */
@@ -96,12 +96,12 @@ struct controller_t controller_class_data = {
 int onoff_prop_set(const EPRPINIB *item, const void *src, int size, bool_t *anno)
 {
 	/* サイズが１以外は受け付けない */
-	if(size != 1)
+	if (size != 1)
 		return 0;
 
 	*anno = *((uint8_t*)item->exinf) != *((uint8_t*)src);
 
-	switch(*(uint8_t *)src){
+	switch (*(uint8_t *)src) {
 	/* ONの場合 */
 	case 0x30:
 		*((uint8_t *)item->exinf) = *((uint8_t *)src);
@@ -128,15 +128,15 @@ int onoff_prop_set(const EPRPINIB *item, const void *src, int size, bool_t *anno
 int node_profile_object_fault_content_set(const EPRPINIB *item, const void *src, int size, bool_t *anno)
 {
 	/* サイズが2以外は受け付けない */
-	if(size != 2)
+	if (size != 2)
 		return 0;
 
-	if((*(uint16_t *)src >= 0x0) && (*(uint16_t *)src <= 0x3ec)){
+	if ((*(uint16_t *)src >= 0x0) && (*(uint16_t *)src <= 0x3ec)) {
 		*((uint16_t *)item->exinf) = *((uint16_t *)src);
 		/* TODO: このの場合の処理*/
 	}
 	/* 上記以外は受け付けない */
-	else{
+	else {
 		return 0;
 	}
 
@@ -149,12 +149,12 @@ int node_profile_object_fault_content_set(const EPRPINIB *item, const void *src,
 int alarm_prop_set(const EPRPINIB *item, const void *src, int size, bool_t *anno)
 {
 	/* サイズが１以外は受け付けない */
-	if(size != 1)
+	if (size != 1)
 		return 0;
 
 	*anno = *((uint8_t *)item->exinf) != *((uint8_t *)src);
 
-	switch(*(uint8_t *)src){
+	switch (*(uint8_t *)src) {
 	/* 異常発生ありの場合 */
 	case 0x41:
 	/* 異常発生なしの場合 */
@@ -176,7 +176,7 @@ int time_prop_set(const EPRPINIB *item, const void *src, int size, bool_t *anno)
 {
 	uint8_t *p_src;
 
-	if(size != 2)
+	if (size != 2)
 		return 0;
 
 	/* 時刻設定 */
@@ -195,7 +195,7 @@ int time_prop_get(const EPRPINIB *item, void *dst, int size)
 {
 	uint8_t *p_dst;
 
-	if(size != 2)
+	if (size != 2)
 		return 0;
 
 	/* 時刻設定 */
@@ -213,7 +213,7 @@ int date_prop_set(const EPRPINIB *item, const void *src, int size, bool_t *anno)
 {
 	uint8_t *p_src;
 
-	if(size != 4)
+	if (size != 4)
 		return 0;
 
 	/* 年月日設定 */
@@ -233,7 +233,7 @@ int date_prop_get(const EPRPINIB *item, void *dst, int size)
 {
 	uint8_t *p_dst;
 
-	if(size != 4)
+	if (size != 4)
 		return 0;
 
 	p_dst = (uint8_t *)dst;
@@ -304,12 +304,12 @@ PT_THREAD(main_task_pt(void))
 		main_initialize();
 
 	ret2 = get_tim(&now);
-	if (ret2 != E_OK){
+	if (ret2 != E_OK) {
 		syslog(LOG_ERROR, "get_tim");
 		PT_EXIT(&main_pt);
 	}
 
-	for(;;){
+	for (;;) {
 		prev = now;
 
 		/* タイマー取得 */
@@ -319,13 +319,13 @@ PT_THREAD(main_task_pt(void))
 		/* 応答電文待ち */
 		PT_WAIT_UNTIL(&main_pt, (((ret = ecn_prcv_esv(&esv)) == E_OK) || (ret == E_BRK)
 			|| ((ret = timer_expired(&main_pt_timer) ? E_TMOUT : E_WBLK) == E_TMOUT)));
-		if ((ret != E_OK) && (ret != E_BRK) && (ret != E_TMOUT)){
+		if ((ret != E_OK) && (ret != E_BRK) && (ret != E_TMOUT)) {
 			syslog(LOG_ERROR, "ecn_trcv_esv");
 			PT_EXIT(&main_pt);
 		}
 
 		ret2 = get_tim(&now);
-		if (ret2 != E_OK){
+		if (ret2 != E_OK) {
 			syslog(LOG_ERROR, "get_tim");
 			PT_EXIT(&main_pt);
 		}
@@ -340,17 +340,17 @@ PT_THREAD(main_task_pt(void))
 
 			/* 領域解放 */
 			ret = ecn_rel_esv(esv);
-			if (ret != E_OK){
+			if (ret != E_OK) {
 				syslog(LOG_ERROR, "ECNL ecn_rel_esv result = %d", ret);
 				PT_EXIT(&main_pt);
 			}
 		}
 		/* 応答電文待ちの割り込みの場合 */
 		else if (ret == E_BRK) {
-			ECN_FBS_ID msg = { (T_ECN_FST_BLK *)esv };
+			ECN_FBS_ID msg = {(T_ECN_FST_BLK *)esv};
 			bool_t rel_msg = true;
 			switch (msg.ptr->hdr.type) {
-			case 0: 
+			case 0:
 				rel_msg = main_wbs_msg(msg);
 				break;
 			case 1/*ECN_MSG_INTERNAL*/:
@@ -359,7 +359,7 @@ PT_THREAD(main_task_pt(void))
 			case 3/*ECN_MSG_USER_BREAK*/:
 				/* 応答電文待ちの割り込みデータ取得 */
 				ret = ecn_get_brk_dat(esv, brkdat, sizeof(brkdat), &len);
-				if (ret != E_OK){
+				if (ret != E_OK) {
 					syslog(LOG_ERROR, "ecn_get_brk_dat");
 					PT_EXIT(&main_pt);
 				}
@@ -372,7 +372,7 @@ PT_THREAD(main_task_pt(void))
 			/* 領域解放 */
 			if (rel_msg) {
 				ret = ecn_rel_esv(esv);
-				if (ret != E_OK){
+				if (ret != E_OK) {
 					syslog(LOG_ERROR, "BRK ecn_rel_esv msg = %p, type = %d, result = %d", esv, msg.ptr->hdr.type, ret);
 					PT_EXIT(&main_pt);
 				}
@@ -383,7 +383,7 @@ PT_THREAD(main_task_pt(void))
 		main_timeout();
 
 		/* キューに溜まったメッセージを処理 */
-		while(main_wbs_que_msg());
+		while (main_wbs_que_msg());
 	}
 
 	PT_END(&main_pt);
@@ -399,10 +399,31 @@ void main_task_cychdr(intptr_t exinf)
 	(void)iact_tsk((ID)exinf);
 }
 
-bool_t main_btn1_state;
-int main_btn1_count = 0;
-bool_t main_btn2_state;
-int main_btn2_count = 0;
+typedef struct gpio_state {
+	bool_t state;
+	int count;
+} gpio_state_t;
+
+gpio_state_t main_gpio[2/*btn1, btn2*/ + 14/*arduino pin*/];
+
+#define MAIN_GPIO_BTN1 0
+#define MAIN_GPIO_BTN2 1
+#define MAIN_GPIO_ARDUINO_PIN0 2
+#define MAIN_GPIO_COUNT (sizeof(main_gpio) / sizeof(main_gpio[0]))
+
+typedef struct analog_state {
+	int subscriptionId;
+	int pinno;
+	bool_t state;
+	int count;
+	uint16_t threshold;
+} analog_state_t;
+
+analog_state_t main_analog[16];
+
+#define MAIN_ANALOG_COUNT (sizeof(main_analog) / sizeof(main_analog[0]))
+
+int main_gpio_pubid;
 
 enum request_info_state_t {
 	request_info_state_idle,
@@ -429,6 +450,8 @@ typedef struct request_info {
 request_info_t request_infos[1];
 wamp_state_t wamp;
 
+#define MAIN_REQUEST_INFOS_COUNT (sizeof(request_infos) / sizeof(request_infos[0]))
+
 /*
  * 初期化
  */
@@ -447,9 +470,9 @@ static void main_initialize()
 	sil_wrb_mem((uint8_t *)0x0008C02A, 0x00);
 
 	ret = data_flash_init();
-	while(ret == E_OK){
+	while (ret == E_OK) {
 		ret = data_flash_read(0, data);
-		if(ret != E_OK){
+		if (ret != E_OK) {
 			break;
 		}
 
@@ -462,7 +485,7 @@ static void main_initialize()
 		break;
 	}
 
-	for(i = 0, j = 0; i < sizeof(mac_addr); i++){
+	for (i = 0, j = 0; i < sizeof(mac_addr); i++) {
 		c = mac_addr[i] >> 4;
 		data[j++] = (c < 10) ? ('0' + c) : ('A' - 10 + c);
 		c = mac_addr[i] & 0xF;
@@ -488,11 +511,20 @@ static void main_initialize()
 	/* ボタン状態読み込み */
 	btn1 = sil_reb_mem((uint8_t *)0x0008C04A);
 	/*btn1 = sil_reb_mem((uint8_t *)0x0008C040);*/
-	btn2 = sil_reb_mem((uint8_t *) 0x0008C040);
-	main_btn1_state = (btn1 & 0x80/*0x0x20*/) != 0;
-	main_btn2_state = (btn2 & 0x80) != 0;
+	btn2 = sil_reb_mem((uint8_t *)0x0008C040);
+	main_gpio[MAIN_GPIO_BTN1].state = (btn1 & 0x80/*0x0x20*/) != 0;
+	main_gpio[MAIN_GPIO_BTN2].state = (btn2 & 0x80) != 0;
+	for (i = MAIN_GPIO_ARDUINO_PIN0; i < MAIN_GPIO_COUNT; i++) {
+		arduino_digital_value_t dval;
+		arduino_digitalRead(i - MAIN_GPIO_ARDUINO_PIN0, &dval);
+		main_gpio[i].state = dval == ARDUINO_DIGITAL_VALUE_HIGH;
+	}
 
-	for (i = 0; i< sizeof(request_infos) / sizeof(request_infos[0]); i++) {
+	for (i = 0; i < MAIN_ANALOG_COUNT; i++) {
+		main_analog[i].state = true; /* たぶんプルアップされている */
+	}
+
+	for (i = 0; i < MAIN_REQUEST_INFOS_COUNT; i++) {
 		request_infos[i].timer = TMO_FEVR;
 	}
 }
@@ -505,7 +537,7 @@ static TMO main_get_timer()
 	int i;
 	TMO timer = main_timer, temp;
 
-	for (i = 0; i< sizeof(request_infos) / sizeof(request_infos[0]); i++) {
+	for (i = 0; i < sizeof(request_infos) / sizeof(request_infos[0]); i++) {
 		temp = request_infos[i].timer;
 		if (temp != TMO_FEVR) {
 			if ((timer == TMO_FEVR) || (temp < timer)) {
@@ -527,16 +559,16 @@ static void main_progress(TMO interval)
 
 	if (main_timer != TMO_FEVR) {
 		main_timer -= interval;
-		if(main_timer < 0){
+		if (main_timer < 0) {
 			main_timer = 0;
 		}
 	}
 
-	for (i = 0; i< sizeof(request_infos) / sizeof(request_infos[0]); i++) {
+	for (i = 0; i < sizeof(request_infos) / sizeof(request_infos[0]); i++) {
 		temp = request_infos[i].timer;
 		if (temp != TMO_FEVR) {
 			temp -= interval;
-			if(temp < 0){
+			if (temp < 0) {
 				temp = 0;
 			}
 			request_infos[i].timer = temp;
@@ -553,7 +585,7 @@ static void main_recv_esv(T_EDATA *esv)
 {
 	request_info_t *request_info = &request_infos[0];
 
-	switch(esv->hdr.edata.esv){
+	switch (esv->hdr.edata.esv) {
 	case ESV_SET_RES:
 	case ESV_SET_C_SNA:
 		if (request_info->eobjid != ecn_get_eobj(esv)) {
@@ -561,7 +593,7 @@ static void main_recv_esv(T_EDATA *esv)
 			break;
 		}
 
-		switch(request_info->state){
+		switch (request_info->state) {
 		case request_info_state_kadecot_set:
 			main_kadecot_set_res(esv);
 			break;
@@ -577,7 +609,7 @@ static void main_recv_esv(T_EDATA *esv)
 			break;
 		}
 
-		switch(request_info->state){
+		switch (request_info->state) {
 		case request_info_state_kadecot_get:
 			main_kadecot_get_res(esv);
 			break;
@@ -593,7 +625,7 @@ static void main_recv_esv(T_EDATA *esv)
 			break;
 		}
 
-		switch(request_info->state){
+		switch (request_info->state) {
 		case request_info_state_ecnl_setget:
 			main_ecnl_setget_res(esv);
 			break;
@@ -620,7 +652,7 @@ static bool_t main_wbs_msg(ECN_FBS_ID msg)
 		ecn_fbs_enqueue(&wbs_queue, msg.ptr);
 		return false;
 	}
-	
+
 	wamp_put_msg(&wamp, msg, ((ID *)msg.ptr->_gap)[0]);
 	return true;
 }
@@ -659,7 +691,7 @@ static void main_int_msg(ECN_FBS_ID msg)
 		return;
 	}
 
-	switch(cmd){
+	switch (cmd) {
 	case ECN_INM_GET_DEVICE_LIST_RES:
 		main_get_device_list_res(msg);
 		break;
@@ -677,7 +709,7 @@ static void main_int_msg(ECN_FBS_ID msg)
  */
 static void main_break_wait(uint8_t *brkdat, int32_t len)
 {
-	switch(main_state){
+	switch (main_state) {
 	case main_state_start:
 		main_start_service();
 		main_state = main_state_idle;
@@ -699,7 +731,7 @@ void main_set_addr_callback()
 	/* メインタスクに通知 */
 	data[0] = 0x01;
 	ret = ecn_brk_wai(data, sizeof(data));
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_brk_wai");
 	}
 }
@@ -719,7 +751,7 @@ static void main_start_service()
 
 	/* ECHONETミドルウェアを起動 */
 	ret = ecn_sta_svc();
-	if(ret != E_OK)
+	if (ret != E_OK)
 		return;
 }
 
@@ -738,7 +770,7 @@ static void main_timeout()
 		main_btn_timeout();
 	}
 
-	for (i = 0; i< sizeof(request_infos) / sizeof(request_infos[0]); i++) {
+	for (i = 0; i < sizeof(request_infos) / sizeof(request_infos[0]); i++) {
 		temp = request_infos[i].timer;
 		if (temp != 0)
 			continue;
@@ -749,74 +781,173 @@ static void main_timeout()
 
 static void main_btn1_change(bool_t push);
 static void main_btn2_change(bool_t push);
+static void main_gpio_change(int pinno, uint16_t high);
 static ER main_search_device();
 
 static void main_btn_timeout()
 {
-	uint8_t btn1, btn2;
+	gpio_state_t *gpio;
+	analog_state_t *analog;
+	arduino_digital_value_t dval;
+	int aval;
+	bool_t val;
+	int i;
 
-	if(main_timer != 0)
+	if (main_timer != 0)
 		return;
 
-	switch(main_state){
+	switch (main_state) {
 	case main_state_idle:
 		/* 10ms後にボタン状態を確認 */
 		main_timer = 10;
 
 		arduino_tick();
 
-		/* ボタン状態読み込み */
-		btn1 = sil_reb_mem((uint8_t *)0x0008C04A);
-		/*btn1 = sil_reb_mem((uint8_t *)0x0008C040);*/
-		btn2 = sil_reb_mem((uint8_t *) 0x0008C040);
+		for (i = 0; i < MAIN_GPIO_COUNT; i++) {
+			gpio = &main_gpio[i];
 
-		/* ボタン１の処理 */
-		if(((btn1 & 0x80/*0x20*/) != 0) && !main_btn1_state){
-			main_btn1_count++;
-			if(main_btn1_count > 10){
-				main_btn1_count = 0;
-				main_btn1_state = true;
+			/* GPIO状態読み込み */
+			switch (i) {
+			case MAIN_GPIO_BTN1:
+				val = (sil_reb_mem((uint8_t *)0x0008C04A) & 0x80) != 0;
+				/*val = (sil_reb_mem((uint8_t *)0x0008C040) & 0x20) != 0;*/
+				break;
+			case MAIN_GPIO_BTN2:
+				val = (sil_reb_mem((uint8_t *)0x0008C040) & 0x80) != 0;
+				break;
+			default:
+				arduino_digitalRead(i - MAIN_GPIO_ARDUINO_PIN0, &dval);
+				val = dval == ARDUINO_DIGITAL_VALUE_HIGH;
+				break;
+			}
 
-				main_btn1_change(true);
+			if (val && !gpio->state) {
+				gpio->count++;
+				if (gpio->count > 10) {
+					gpio->count = 0;
+					gpio->state = true;
+
+					switch (i) {
+					case MAIN_GPIO_BTN1:
+						main_btn1_change(true);
+						break;
+					case MAIN_GPIO_BTN2:
+						main_btn2_change(true);
+						break;
+					default:
+						main_gpio_change(i - MAIN_GPIO_ARDUINO_PIN0, 1);
+						break;
+					}
+				}
+			}
+			else if (!val && gpio->state) {
+				gpio->count++;
+				if (gpio->count > 10) {
+					gpio->count = 0;
+					gpio->state = false;
+
+					switch (i) {
+					case MAIN_GPIO_BTN1:
+						main_btn1_change(false);
+						break;
+					case MAIN_GPIO_BTN2:
+						main_btn2_change(false);
+						break;
+					default:
+						main_gpio_change(i - MAIN_GPIO_ARDUINO_PIN0, 0);
+						break;
+					}
+				}
+			}
+			else {
+				gpio->count = 0;
 			}
 		}
-		else if(((btn1 & 0x80/*0x20*/) == 0) && main_btn1_state){
-			main_btn1_count++;
-			if(main_btn1_count > 10){
-				main_btn1_count = 0;
-				main_btn1_state = false;
 
-				main_btn1_change(false);
+		for (i = 0; i < MAIN_ANALOG_COUNT; i++) {
+			analog = &main_analog[i];
+
+			if (analog->subscriptionId == 0)
+				continue;
+
+			/* GPIO状態読み込み */
+			arduino_analogRead(analog->pinno, &aval);
+
+			if (analog->state)
+				val = aval < analog->threshold;
+			else
+				val = aval > analog->threshold;
+
+			if (val && !analog->state) {
+				analog->count++;
+				if (analog->count > 10) {
+					analog->count = 0;
+					analog->state = true;
+
+					main_gpio_change(analog->pinno, aval);
+				}
 			}
-		}
-		else{
-			main_btn1_count = 0;
-		}
+			else if (val && analog->state) {
+				analog->count++;
+				if (analog->count > 10) {
+					analog->count = 0;
+					analog->state = false;
 
-		/* ボタン２の処理 */
-		if(((btn2 & 0x80) != 0) && !main_btn2_state){
-			main_btn2_count++;
-			if(main_btn2_count > 10){
-				main_btn2_count = 0;
-				main_btn2_state = true;
-
-				main_btn2_change(true);
+					main_gpio_change(analog->pinno, aval);
+				}
 			}
-		}
-		else if(((btn2 & 0x80) == 0) && main_btn2_state){
-			main_btn2_count++;
-			if(main_btn2_count > 10){
-				main_btn2_count = 0;
-				main_btn2_state = false;
-
-				main_btn2_change(false);
+			else {
+				analog->count = 0;
 			}
-		}
-		else{
-			main_btn2_count = 0;
 		}
 		break;
 	}
+}
+
+ER main_add_threshold(int subscriptionId, int pinno, uint16_t threshold)
+{
+	int i, aval;
+	analog_state_t *analog;
+
+	if ((pinno < 14) || (pinno > 19))
+		return E_PAR;
+
+	for (i = 0; i < MAIN_ANALOG_COUNT; i++) {
+		analog = &main_analog[i];
+		if (analog->subscriptionId != 0)
+			continue;
+
+		analog->subscriptionId = subscriptionId;
+		analog->pinno = pinno;
+		analog->threshold = threshold;
+
+		arduino_analogRead(analog->pinno, &aval);
+
+		analog->state = (aval < analog->threshold);
+		analog->count = 0;
+
+		return E_OK;
+	}
+
+	return E_NOMEM;
+}
+
+ER main_del_threshold(int subscriptionId)
+{
+	int i;
+	analog_state_t *analog;
+
+	for (i = 0; i < MAIN_ANALOG_COUNT; i++) {
+		analog = &main_analog[i];
+		if (analog->subscriptionId != subscriptionId)
+			continue;
+
+		analog->subscriptionId = 0;
+
+		return E_OK;
+	}
+
+	return E_OBJ;
 }
 
 static void main_self_msg(T_EDATA *esv)
@@ -828,13 +959,13 @@ static void main_self_msg(T_EDATA *esv)
 	T_ENUM_EPC enm;
 
 	ret = ecn_itr_ini(&enm, esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_itr_ini");
 		return;
 	}
 
-	for(;;) {
-		while((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
+	for (;;) {
+		while ((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
 			switch (epc) {
 			case 0x80:
 				break;
@@ -842,11 +973,11 @@ static void main_self_msg(T_EDATA *esv)
 				break;
 			}
 		}
-		if(ret != E_BOVR){
+		if (ret != E_BOVR) {
 			syslog(LOG_ERROR, "ecn_itr_nxt");
 			break;
 		}
-		if(enm.is_eof)
+		if (enm.is_eof)
 			break;
 	}
 }
@@ -857,7 +988,7 @@ static void main_self_msg(T_EDATA *esv)
 static void main_btn1_change(bool_t push)
 {
 	/* 押されて戻った時に処理する */
-	if(push)
+	if (push)
 		return;
 
 	/* 機器の検索 */
@@ -872,6 +1003,16 @@ static void main_btn2_change(bool_t push)
 }
 
 /*
+ * GPIO状態変化処理
+ */
+static void main_gpio_change(int pinno, uint16_t value)
+{
+	main_gpio_pubid++;
+
+	wamp_broker_publish_pin(&wamp.broker, main_gpio_pubid, 1, pinno, value);
+}
+
+/*
  * 機器の検索
  */
 static ER main_search_device()
@@ -881,14 +1022,14 @@ static ER main_search_device()
 
 	/* 機器の検索 */
 	ret = ecn_esv_inf_req(&esv, EOBJ_NULL, 0xD6);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_esv_inf_req");
 		return ret;
 	}
 
 	/* 電文送信 */
 	ret = ecn_snd_esv(esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_snd_esv");
 		return ret;
 	}
@@ -905,7 +1046,7 @@ ER main_send_message(ECN_FBS_ID msg, ID wbsid)
 	((ID *)msg.ptr->_gap)[0] = wbsid;
 
 	ret = psnd_dtq(WEBSOCKET_MBXID, (intptr_t)msg.ptr);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "psnd_dtq(WEBSOCKET_MBXID) : result=%d", ret);
 		_ecn_fbs_del(msg);
 		return ret;
@@ -922,12 +1063,12 @@ ER main_get_device_list(unsigned int requestId, struct wamp_dealer *dealer)
 	request_info_t *request_info = &request_infos[0];
 	ER ret;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	/* 機器の検索 */
 	ret = main_search_device();
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		return ret;
 	}
 
@@ -947,7 +1088,7 @@ static void main_search_device_timeout()
 
 	for (;;) {
 		ret = ecn_agent_get_device_list(ECHONET_API_MAILBOX, request_info->requestId, &req);
-		if(ret != E_OK){
+		if (ret != E_OK) {
 			syslog(LOG_ERROR, "ecn_agent_get_device_list");
 			break;
 		}
@@ -1004,11 +1145,11 @@ ER main_get_device_ipaddr(unsigned int requestId, struct wamp_dealer *dealer, EC
 	ER ret;
 	ECN_FBS_ID req;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	ret = ecn_udp_get_ipaddr(ECHONET_API_MAILBOX, requestId, addrid, &req);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		return ret;
 	}
 
@@ -1062,11 +1203,11 @@ ER main_get_device_info(unsigned int requestId, struct wamp_dealer *dealer, ID e
 	ER ret;
 	ECN_FBS_ID req;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	ret = ecn_agent_get_device_info(ECHONET_API_MAILBOX, requestId, eobjid, &req);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		return ret;
 	}
 
@@ -1117,19 +1258,19 @@ ER main_kadecot_get(unsigned int requestId, struct wamp_dealer *dealer, ID eobji
 	ER ret;
 	T_EDATA *esv;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	/* プロパティ取得電文作成 */
 	ret = ecn_esv_get(&esv, eobjid, epc);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_esv_get");
 		return ret;
 	}
 
 	/* 電文送信 */
 	ret = ecn_snd_esv(esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_snd_esv");
 		return ret;
 	}
@@ -1155,7 +1296,7 @@ static void main_kadecot_get_res(T_EDATA *esv)
 	uint8_t p_edt[256];
 	T_ENUM_EPC enm;
 
-	if(request_info->eobjid != eobjid)
+	if (request_info->eobjid != eobjid)
 		return;
 
 	dealer = request_info->dealer;
@@ -1165,22 +1306,22 @@ static void main_kadecot_get_res(T_EDATA *esv)
 	request_info->dealer = NULL;
 
 	ret = ecn_itr_ini(&enm, esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_itr_ini");
 		return;
 	}
 
-	for(;;) {
-		while((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
+	for (;;) {
+		while ((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
 			if (request_info->epc == epc) {
 				wamp_dealer_kadecot_get(dealer, eobjid, epc, pdc, p_edt);
 			}
 		}
-		if(ret != E_BOVR){
+		if (ret != E_BOVR) {
 			syslog(LOG_ERROR, "ecn_itr_nxt");
 			break;
 		}
-		if(enm.is_eof)
+		if (enm.is_eof)
 			break;
 	}
 }
@@ -1192,19 +1333,19 @@ ER main_kadecot_set(unsigned int requestId, struct wamp_dealer *dealer, ID eobji
 	ER ret;
 	T_EDATA *esv;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	/* プロパティ取得電文作成 */
 	ret = ecn_esv_setc(&esv, eobjid, epc, pdc, edt);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_esv_setc");
 		return ret;
 	}
 
 	/* 電文送信 */
 	ret = ecn_snd_esv(esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_snd_esv");
 		return ret;
 	}
@@ -1233,7 +1374,7 @@ static void main_kadecot_set_res(T_EDATA *esv)
 	if (dealer == NULL)
 		return;
 
-	if(request_info->eobjid != eobjid)
+	if (request_info->eobjid != eobjid)
 		return;
 
 	request_info->state = request_info_state_idle;
@@ -1242,22 +1383,22 @@ static void main_kadecot_set_res(T_EDATA *esv)
 	request_info->dealer = NULL;
 
 	ret = ecn_itr_ini(&enm, esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_itr_ini");
 		return;
 	}
 
-	for(;;) {
-		while((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
+	for (;;) {
+		while ((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
 			if (request_info->epc == epc) {
 				wamp_dealer_kadecot_set(dealer, eobjid, epc);
 			}
 		}
-		if(ret != E_BOVR){
+		if (ret != E_BOVR) {
 			syslog(LOG_ERROR, "ecn_itr_nxt");
 			break;
 		}
-		if(enm.is_eof)
+		if (enm.is_eof)
 			break;
 	}
 }
@@ -1267,12 +1408,12 @@ ER main_ecnl_get(unsigned int requestId, struct wamp_dealer *dealer, ID eobjid, 
 	request_info_t *request_info = &request_infos[0];
 	ER ret;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	/* 電文送信 */
 	ret = ecn_snd_esv(esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_snd_esv");
 		return ret;
 	}
@@ -1303,12 +1444,12 @@ ER main_ecnl_set(unsigned int requestId, struct wamp_dealer *dealer, ID eobjid, 
 	request_info_t *request_info = &request_infos[0];
 	ER ret;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	/* 電文送信 */
 	ret = ecn_snd_esv(esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_snd_esv");
 		return ret;
 	}
@@ -1339,12 +1480,12 @@ ER main_ecnl_setget(unsigned int requestId, struct wamp_dealer *dealer, ID eobji
 	request_info_t *request_info = &request_infos[0];
 	ER ret;
 
-	if(request_info->requestId != 0)
+	if (request_info->requestId != 0)
 		return E_QOVR;
 
 	/* 電文送信 */
 	ret = ecn_snd_esv(esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_snd_esv");
 		return ret;
 	}
@@ -1374,7 +1515,7 @@ static void main_request_info_timeout(request_info_t *request_info)
 {
 	struct wamp_dealer *dealer = request_info->dealer;
 
-	switch(request_info->state) {
+	switch (request_info->state) {
 	case request_info_state_search_device:
 		main_search_device_timeout();
 		return;
@@ -1421,21 +1562,21 @@ static void main_publish(T_EDATA *esv)
 	ER ret;
 
 	ret = ecn_itr_ini(&enm, esv);
-	if(ret != E_OK){
+	if (ret != E_OK) {
 		syslog(LOG_ERROR, "ecn_itr_ini");
 		return;
 	}
 
-	for(;;) {
-		while((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
+	for (;;) {
+		while ((ret = ecn_itr_nxt(&enm, &epc, &pdc, p_edt)) == E_OK) {
 			wamp_broker_publish_inf(&wamp.broker, esv->hdr.ecn_hdr.tid, eobjid,
 				devType, epc, pdc, p_edt);
 		}
-		if(ret != E_BOVR){
+		if (ret != E_BOVR) {
 			syslog(LOG_ERROR, "ecn_itr_nxt");
 			break;
 		}
-		if(enm.is_eof)
+		if (enm.is_eof)
 			break;
 	}
 }

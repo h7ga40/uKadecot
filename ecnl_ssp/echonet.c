@@ -234,7 +234,7 @@ ER ecn_trn_set_get(T_EDATA *ppk_esv, int *p_trn_pos)
 	/* 応答電文用メモリにデータ追加・この時点での応答電文中プロパティ件数を記録 */
 	a_ret = _ecn_fbs_add_data_ex(*(ECN_FBS_ID *)&ppk_esv, &ppk_esv->hdr.edata.opc, 1);
 	if (a_ret) {
-		ECN_DBG_PUT "ecn_trn_set_get(): _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("ecn_trn_set_get(): _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 
@@ -263,7 +263,7 @@ ER ecn_end_set_get(T_EDATA *ppk_esv, int fa_trn_pos)
 	/* 応答電文中プロパティ件数(書き込みプロパティ件数)を保存位置から読み取り */
 	a_wr_opc = _ecn_fbs_peek(*(ECN_FBS_ID *)&ppk_esv, fa_trn_pos);
 	if (a_wr_opc < 0) {
-		ECN_DBG_PUT "ecn_end_set_get(): _ecn_fbs_peek() result = %d:%s", a_wr_opc, itron_strerror(a_wr_opc) ECN_DBG_END;
+		ECN_DBG_PUT("ecn_end_set_get(): _ecn_fbs_peek() result = %d:%s", a_wr_opc, itron_strerror(a_wr_opc));
 		return a_wr_opc;
 	}
 
@@ -273,7 +273,7 @@ ER ecn_end_set_get(T_EDATA *ppk_esv, int fa_trn_pos)
 	/* 応答電文中プロパティ件数(読み出しプロパティ件数)を保存位置に書き込み */
 	a_ret = _ecn_fbs_poke(*(ECN_FBS_ID *)&ppk_esv, fa_trn_pos, a_rd_opc);
 	if (a_ret) {
-		ECN_DBG_PUT "ecn_end_set_get(): _ecn_fbs_poke() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("ecn_end_set_get(): _ecn_fbs_poke() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 
@@ -327,18 +327,18 @@ ER ecn_add_edt(T_EDATA *pk_esv, uint8_t fa_epc, uint8_t fa_pdc, const void *p_ed
 	a_ecn_prp.pdc = fa_pdc;
 	a_ret = _ecn_fbs_add_data_ex(a_fbs_id, &a_ecn_prp, sizeof(a_ecn_prp));
 	if (a_ret) {
-		ECN_DBG_PUT "ecn_add_edt(): _ecn_fbs_add_data_ex(*, ecn_prp{epc:0x%02X}, %u) result = %d:%s",
+		ECN_DBG_PUT("ecn_add_edt(): _ecn_fbs_add_data_ex(*, ecn_prp{epc:0x%02X}, %u) result = %d:%s",
 			a_ecn_prp.epc, sizeof(a_ecn_prp),
-			a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	if (0 < fa_pdc) {
 		/* 付随データ追加 */
 		a_ret = _ecn_fbs_add_data_ex(a_fbs_id, p_edt, fa_pdc);
 		if (a_ret) {
-			ECN_DBG_PUT "ecn_add_edt(): _ecn_fbs_add_data_ex(*, ecn_prp{epc:0x%02X} edt, %u) result = %d:%s",
+			ECN_DBG_PUT("ecn_add_edt(): _ecn_fbs_add_data_ex(*, ecn_prp{epc:0x%02X} edt, %u) result = %d:%s",
 				a_ecn_prp.epc, fa_pdc,
-				a_ret, itron_strerror(a_ret) ECN_DBG_END;
+				a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 	}
@@ -522,7 +522,7 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 	a_fbs_id.ptr->hdr.rd = pk_itr->cur;
 
 #ifdef ECN_ENA_ITR_NXT_CARP
-	ECN_CAP_PUT "ecn_itr_nxt() rd.cur=b%dp%d", pk_itr->cur.blk, pk_itr->cur.pos ECN_CAP_PUT;
+	ECN_CAP_PUT("ecn_itr_nxt() rd.cur=b%dp%d", pk_itr->cur.blk, pk_itr->cur.pos ECN_CAP_PUT(;
 #endif
 	if (pk_itr->count <= pk_itr->got_ct && 0 < pk_itr->next_blk_ct) {
 		/* 次ブロックに移動 */
@@ -549,8 +549,8 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 	if (a_ret != E_OK)
 		goto lb_except;
 	if (a_rd_len < sizeof(a_ecn_prp)) {
-		ECN_DBG_PUT "ecn_itr_nxt() ecn_prp read fault." 
-			" rd.cur=%d", pk_itr->cur ECN_DBG_END;
+		ECN_DBG_PUT("ecn_itr_nxt() ecn_prp read fault." 
+			" rd.cur=%d", pk_itr->cur);
 		pk_itr->is_eof = 1;			/* 終端に達した時、非0 */
 		a_ret = E_BOVR;	/* データ終了 */
 		goto lb_finally;
@@ -565,8 +565,8 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 		if (a_ret != E_OK)
 			goto lb_except;
 		if (a_rd_len < (ECN_FBS_SSIZE_T)a_ecn_prp.pdc) {
-			ECN_DBG_PUT "ecn_itr_nxt() edt read fault."
-				" rd.cur=%d,epc=0x%02X,pdc=%u", pk_itr->cur, a_ecn_prp.epc , a_ecn_prp.pdc ECN_DBG_END;
+			ECN_DBG_PUT("ecn_itr_nxt() edt read fault."
+				" rd.cur=%d,epc=0x%02X,pdc=%u", pk_itr->cur, a_ecn_prp.epc , a_ecn_prp.pdc);
 			pk_itr->is_eof = 1;			/* 終端に達した時、非0 */
 			a_ret = E_BOVR;	/* データ終了 */
 			goto lb_finally;
@@ -575,7 +575,7 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 	pk_itr->got_ct++;
 
 #ifdef ECN_ENA_ITR_NXT_CARP
-	ECN_CAP_PUT "ecn_itr_nxt() read: ct=%d/%d", pk_itr->got_ct, pk_itr->count ECN_CAP_PUT;
+	ECN_CAP_PUT("ecn_itr_nxt() read: ct=%d/%d", pk_itr->got_ct, pk_itr->count ECN_CAP_PUT(;
 #endif
 
 lb_finally:
@@ -604,8 +604,8 @@ ER ecn_brk_wai(const void *p_dat, int fa_datsz)
 	/* 割り込み送信 */
 	a_ret = _ecn_tsk_snd_mbx(a_fbs_id, true);
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_tsk_snd_mbx() result = %d:%s",
-			a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_tsk_snd_mbx() result = %d:%s",
+			a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 
@@ -636,16 +636,16 @@ ER ecn_get_brk_dat(T_EDATA *pk_esv, void *p_buf, int fa_bufsz, int *p_datsz)
 
 	a_fbs.ptr = (T_ECN_FST_BLK *)pk_esv;
 	if (a_fbs.ptr->hdr.type != ECN_MSG_USER_BREAK) {
-		ECN_DBG_PUT "ecn_get_brk_dat: fbs-type:%d != ECN_MSG_USER_BREAK",
-			a_fbs.ptr->hdr.type ECN_DBG_END;
+		ECN_DBG_PUT("ecn_get_brk_dat: fbs-type:%d != ECN_MSG_USER_BREAK",
+			a_fbs.ptr->hdr.type);
 		return E_PAR;
 	}
 
 	/* 読み取り位置を先頭に戻す */
 	a_ret = _ecn_fbs_set_rpos(a_fbs, 0);
 	if (a_ret) {
-		ECN_DBG_PUT "_ecn_fbs_set_rpos(*, 0) result = %d:%s",
-			a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_fbs_set_rpos(*, 0) result = %d:%s",
+			a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 
@@ -654,8 +654,8 @@ ER ecn_get_brk_dat(T_EDATA *pk_esv, void *p_buf, int fa_bufsz, int *p_datsz)
 		a_len = 0;
 		a_ret = _ecn_fbs_get_data(a_fbs, p_buf, fa_bufsz, &a_len);
 		if (a_ret || !a_len) {
-			ECN_DBG_PUT "_ecn_fbs_get_data(*, p_buf, fa_bufsz) result = %d:%s",
-				a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_fbs_get_data(*, p_buf, fa_bufsz) result = %d:%s",
+				a_ret, itron_strerror(a_ret));
 			return E_PAR;
 		}
 		*p_datsz = a_len;

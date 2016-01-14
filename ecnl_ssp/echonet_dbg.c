@@ -108,7 +108,7 @@ static ER _ecn_dbg_wai_syslog(void)
 
 /*
  * デバッグ出力
- * 例：		ECN_DBG_PUT "task start" ECN_DBG_END;
+ * 例：		ECN_DBG_PUT("task start");
  */
 int _ecn_dbg_dbgput(const char *fp_srcloc, const char *fp_form, ...)
 {

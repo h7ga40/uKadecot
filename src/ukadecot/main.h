@@ -190,6 +190,8 @@ ER main_kadecot_set(unsigned int requestId, struct wamp_dealer *dealer, ID eobji
 ER main_ecnl_get(unsigned int requestId, struct wamp_dealer *dealer, ID eobjid, T_EDATA *esv);
 ER main_ecnl_set(unsigned int requestId, struct wamp_dealer *dealer, ID eobjid, T_EDATA *esv);
 ER main_ecnl_setget(unsigned int requestId, struct wamp_dealer *dealer, ID eobjid, T_EDATA *esv);
+ER main_add_threshold(int subscriptionId, int pinno, uint16_t threshold);
+ER main_del_threshold(int subscriptionId);
 
 #endif /* TOPPERS_MACRO_ONLY */
 

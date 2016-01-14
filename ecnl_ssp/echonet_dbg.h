@@ -49,22 +49,16 @@ extern "C" {
 #include "echonet.h"
 
 #ifdef ECN_DBG_PUT_ENA
-#define ECN_DBG_PUT syslog(LOG_WARNING,
-#define ECN_DBG_END )
-/* 例：		ECN_DBG_PUT "task start" ECN_DBG_END; */
+#define ECN_DBG_PUT(...) syslog(LOG_WARNING, __VA_ARGS__)
 #else
-#define ECN_DBG_PUT for (;0;
-#define ECN_DBG_END )
+#define ECN_DBG_PUT(...)
 #endif
 
 /* デバッグ出力(CARP) */
 #ifdef ECN_CAP_PUT_ENA
-#define ECN_CAP_PUT syslog(LOG_DEBUG,
-#define ECN_CAP_END )
-/* 例：		ECN_CAP_PUT "task start" ECN_CAP_END; */
+#define ECN_CAP_PUT(syslog(LOG_DEBUG, __VA_ARGS__)
 #else
-#define ECN_CAP_PUT for (;0;
-#define ECN_CAP_END )
+#define ECN_CAP_PUT(...)
 #endif
 
 #ifdef TARGET_KERNEL_SSP

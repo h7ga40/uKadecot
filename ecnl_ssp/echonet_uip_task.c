@@ -107,7 +107,7 @@ ER _ecn_udp2mbx(const uint8_t *buffer, size_t fa_len, const T_IPV4EP *dst)
 	a_rcv_pkt.buffer = buffer;
 	if (	a_rcv_pkt.t_esv->ecn_hdr.ehd1 != ECN_EDH1_ECHONET_LITE	/* ECHONET Lite規格	*/
 	||	a_rcv_pkt.t_esv->ecn_hdr.ehd2 != ECN_EDH2_FORMAT_1			/* 電文形式1		*/) {
-		ECN_DBG_PUT "[UDP ECHO SRV] illegal type (0x%02X,0x%02X)", a_rcv_pkt.t_esv->ecn_hdr.ehd1, a_rcv_pkt.t_esv->ecn_hdr.ehd2 ECN_DBG_END;
+		ECN_DBG_PUT("[UDP ECHO SRV] illegal type (0x%02X,0x%02X)", a_rcv_pkt.t_esv->ecn_hdr.ehd1, a_rcv_pkt.t_esv->ecn_hdr.ehd2);
 		return E_PAR;
 	}
 
@@ -117,12 +117,12 @@ ER _ecn_udp2mbx(const uint8_t *buffer, size_t fa_len, const T_IPV4EP *dst)
 
 	a_ret = _ecn_fbs_cre(fa_len, &a_fbs_id);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "[UDP ECHO SRV] _ecn_fbs_cre() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("[UDP ECHO SRV] _ecn_fbs_cre() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 	a_ret = _ecn_fbs_add_data_ex(a_fbs_id, buffer, fa_len);
 	if (a_ret) {
-		ECN_DBG_PUT "[UDP ECHO SRV] _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("[UDP ECHO SRV] _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	a_fbs_id.ptr->hdr.type = ECN_MSG_ECHONET;
@@ -132,8 +132,8 @@ ER _ecn_udp2mbx(const uint8_t *buffer, size_t fa_len, const T_IPV4EP *dst)
 	/* IPアドレスからリモートECHONETノードへ変換 */
 	a_enod_id = udp_get_id((T_EDATA *)a_fbs_id.ptr, dst->ipaddr, dst->portno);
 	if (a_enod_id < 0 || tnum_enodadr <= a_enod_id) {
-		ECN_DBG_PUT "[UDP ECHO SRV] udp src(%s) echonet-node not found.",
-			ip2str(NULL, dst->ipaddr) ECN_DBG_END;
+		ECN_DBG_PUT("[UDP ECHO SRV] udp src(%s) echonet-node not found.",
+			ip2str(NULL, dst->ipaddr));
 	} else {
 		/* 送信元ECHONETノードを記録 */
 		a_fbs_id.ptr->hdr.sender = a_enod_id;
@@ -143,7 +143,7 @@ ER _ecn_udp2mbx(const uint8_t *buffer, size_t fa_len, const T_IPV4EP *dst)
 	/* echonet_taskに送る */
 	a_ret = psnd_dtq(ecn_svc_mailboxid, (intptr_t)a_fbs_id.ptr);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "[UDP ECHO SRV] psnd_dtq(ecn_svc_mailboxid) result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("[UDP ECHO SRV] psnd_dtq(ecn_svc_mailboxid) result = %d:%s", a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	return a_ret;
@@ -184,34 +184,34 @@ PT_THREAD(echonet_udp_task_pt(void))
 	ccep.callback = callback_nblk_udp;
 
 	uip_gethostaddr(a_src);
-	ECN_DBG_PUT "[UDP TSK:%d] started, IP Address: %s ether_max_len: %u",
+	ECN_DBG_PUT("[UDP TSK:%d] started, IP Address: %s ether_max_len: %u",
 		ecn_udp_taskid,
 		ip2str(NULL, a_src),
-		UIP_BUFSIZE ECN_DBG_END;
+		UIP_BUFSIZE);
 	uip_ipaddr_copy(enodadrb_table[ENOD_LOCAL_ID].ipaddr, a_src);
 
 	UDP_CEPID = udp_acre_cep(&ccep);
 	if (UDP_CEPID == NULL) {
-		ECN_DBG_PUT "udp_acre_cep()" ECN_DBG_END;
+		ECN_DBG_PUT("udp_acre_cep()");
 		PT_EXIT(&pt);
 	}
 
 	/* 周期ハンドラの起動 */
 	a_ret = sta_cyc(ecn_udp_cychdrid);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "sta_cyc() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("sta_cyc() result = %d:%s", a_ret, itron_strerror(a_ret));
 		PT_EXIT(&pt);
 	}
 
 	a_ret = act_tsk(ecn_svc_taskid);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "act_tsk() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("act_tsk() result = %d:%s", a_ret, itron_strerror(a_ret));
 		PT_EXIT(&pt);
 	}
 
 	a_ret = get_tim(&a_now);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "get_tim() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("get_tim() result = %d:%s", a_ret, itron_strerror(a_ret));
 		PT_EXIT(&pt);
 	}
 
@@ -225,13 +225,13 @@ PT_THREAD(echonet_udp_task_pt(void))
 		PT_WAIT_UNTIL(&pt, (((a_ret = prcv_dtq(ecn_udp_mailboxid, &a_mdt.p_msg)) == E_OK)
 			|| ((a_ret = timer_expired(&timer) ? E_TMOUT : E_WBLK) == E_TMOUT)));
 		if ((a_ret != E_OK) && (a_ret != E_TMOUT)) {
-			ECN_DBG_PUT "trcv_dtq() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("trcv_dtq() result = %d:%s", a_ret, itron_strerror(a_ret));
 			PT_EXIT(&pt);
 		}
 
 		a_ret2 = get_tim(&a_now);
 		if (a_ret2 != E_OK) {
-			ECN_DBG_PUT "get_tim() result = %d:%s", a_ret2, itron_strerror(a_ret2) ECN_DBG_END;
+			ECN_DBG_PUT("get_tim() result = %d:%s", a_ret2, itron_strerror(a_ret2));
 			PT_EXIT(&pt);
 		}
 
@@ -242,7 +242,7 @@ PT_THREAD(echonet_udp_task_pt(void))
 			/* 送信データ長を取得 */
 			a_snd_len = _ecn_fbs_get_datalen(a_mdt.fbs_id);
 
-			ECN_DBG_PUT "[UDP TSK] trcv_dtq() mbx recv (%d byte)", a_snd_len ECN_DBG_END;
+			ECN_DBG_PUT("[UDP TSK] trcv_dtq() mbx recv (%d byte)", a_snd_len);
 
 			if (0 < a_snd_len) {
 				switch(a_mdt.fbs_id.ptr->hdr.type){
@@ -288,14 +288,14 @@ static ER _ecn_udp_cre_req_fbs(ID sender, uint8_t cmd, ECN_FBS_ID *pk_req)
 
 	ret = _ecn_fbs_cre(1, &req);
 	if (ret != E_OK) {
-		ECN_DBG_PUT "_ecn_udp_cre_req_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_udp_cre_req_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
 	ret = _ecn_fbs_add_data(req, &cmd, sizeof(cmd));
 	if (ret != E_OK) {
 		_ecn_fbs_del(req);
-		ECN_DBG_PUT "_ecn_udp_cre_req_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_udp_cre_req_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
@@ -317,14 +317,14 @@ static ER _ecn_udp_cre_res_fbs(ECN_FBS_ID req, uint8_t cmd, ECN_FBS_ID *pk_res)
 
 	ret = _ecn_fbs_cre(1, &res);
 	if (ret != E_OK) {
-		ECN_DBG_PUT "_ecn_udp_cre_res_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_udp_cre_res_fbs() : _ecn_fbs_cre() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
 	ret = _ecn_fbs_add_data(res, &cmd, sizeof(cmd));
 	if (ret != E_OK) {
 		_ecn_fbs_del(res);
-		ECN_DBG_PUT "_ecn_udp_cre_res_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_udp_cre_res_fbs() : _ecn_fbs_add_data() result = %d:%s", ret, itron_strerror(ret));
 		return ret;
 	}
 
@@ -352,7 +352,7 @@ void _ecn_int_msg(ECN_FBS_ID fbs_id, ECN_FBS_SSIZE_T a_snd_len)
 
 	a_ret = _ecn_fbs_get_data(fbs_id, &cmd, 1, &len);
 	if (a_ret != E_OK) {
-		ECN_DBG_PUT "[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return;
 	}
 
@@ -367,7 +367,7 @@ void _ecn_int_msg(ECN_FBS_ID fbs_id, ECN_FBS_SSIZE_T a_snd_len)
 		a_snd_len = 0;
 		a_ret = _ecn_fbs_get_data(fbs_id, &msg, sizeof(msg), &a_snd_len);
 		if (a_ret != E_OK) {
-			ECN_DBG_PUT "[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 		}
 
 		if ((msg.enodid < 0) && (msg.enodid >= tnum_enodadr)) {
@@ -383,21 +383,21 @@ void _ecn_int_msg(ECN_FBS_ID fbs_id, ECN_FBS_SSIZE_T a_snd_len)
 		a_ret = _ecn_fbs_add_data_ex(buf, &msg.requestid, offsetof(ecn_udp_msg_get_ipaddr_res_t, enodadrb));
 		if (a_ret != E_OK) {
 			_ecn_fbs_del(buf);
-			ECN_DBG_PUT "_ecn_int_msg() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_int_msg() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 			return;
 		}
 
 		a_ret = _ecn_fbs_add_data_ex(buf, &enodadrb_table[msg.enodid], sizeof(enodadrb_table[msg.enodid]));
 		if (a_ret != E_OK) {
 			_ecn_fbs_del(buf);
-			ECN_DBG_PUT "_ecn_int_msg() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_int_msg() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 			return;
 		}
 
 		a_ret = psnd_dtq(buf.ptr->hdr.target_mbxid, (intptr_t)buf.ptr);
 		if (a_ret != E_OK) {
 			_ecn_fbs_del(buf);
-			ECN_DBG_PUT "_ecn_int_msg() : psnd_dtq() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("_ecn_int_msg() : psnd_dtq() result = %d:%s", a_ret, itron_strerror(a_ret));
 			return;
 		}
 		return;
@@ -413,14 +413,14 @@ void _ecn_int_msg(ECN_FBS_ID fbs_id, ECN_FBS_SSIZE_T a_snd_len)
 	a_ret = _ecn_fbs_add_data_ex(buf, &err, sizeof(err));
 	if (a_ret != E_OK) {
 		_ecn_fbs_del(buf);
-		ECN_DBG_PUT "_ecn_int_msg() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_int_msg() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return;
 	}
 
 	a_ret = psnd_dtq(buf.ptr->hdr.target_mbxid, (intptr_t)buf.ptr);
 	if (a_ret != E_OK) {
 		_ecn_fbs_del(buf);
-		ECN_DBG_PUT "_ecn_int_msg() : psnd_dtq() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("_ecn_int_msg() : psnd_dtq() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return;
 	}
 }
@@ -442,22 +442,22 @@ void _ecn_esv_msg(ECN_FBS_ID fbs_id)
 	/* 送信先IPアドレス */
 	a_ret = udp_get_ip(&a_dst, fbs_id.ptr->hdr.target);
 	if (!a_ret) {
-		ECN_DBG_PUT "[UDP TSK] echonet-node 0x%02X-0x%02X-0x%02X → udp dest(%s)",
+		ECN_DBG_PUT("[UDP TSK] echonet-node 0x%02X-0x%02X-0x%02X → udp dest(%s)",
 			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx1,
 			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx2,
 			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx3,
-			ip2str(NULL, a_dst.ipaddr) ECN_DBG_END;
+			ip2str(NULL, a_dst.ipaddr));
 
 		/* fbsから出力領域にデータを抽出 */
 		a_snd_len = 0;
 		a_ret = _ecn_fbs_get_data(fbs_id, buffer, sizeof(buffer), &a_snd_len);
 		if (a_ret != E_OK) {
-			ECN_DBG_PUT "[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+			ECN_DBG_PUT("[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 		}
 		else if(uip_ipaddr_cmp(a_dst.ipaddr, localhost)) {
 			/* 送信先が127.0.0.1 → mbxに転送 */
-			ECN_DBG_PUT "redirect ecn_udp_mailboxid → ecn_svc_mailboxid (esv:0x%02X)",
-				((T_EDATA *)fbs_id.ptr)->hdr.edata.esv ECN_DBG_END;
+			ECN_DBG_PUT("redirect ecn_udp_mailboxid → ecn_svc_mailboxid (esv:0x%02X)",
+				((T_EDATA *)fbs_id.ptr)->hdr.edata.esv);
 
 			a_ret = _ecn_udp2mbx((const uint8_t *)buffer, a_snd_len, &a_dst);
 			if (a_ret != E_OK) {
@@ -465,27 +465,27 @@ void _ecn_esv_msg(ECN_FBS_ID fbs_id)
 			}
 		}
 		else {
-			ECN_DBG_PUT "[UDP TSK] udp_snd_dat() to:%s %ubyte(s)",
-				ip2str(NULL, a_dst.ipaddr), a_snd_len ECN_DBG_END;
+			ECN_DBG_PUT("[UDP TSK] udp_snd_dat() to:%s %ubyte(s)",
+				ip2str(NULL, a_dst.ipaddr), a_snd_len);
 #ifdef ECN_DBG_PUT_ENA
 			_ecn_dbg_bindmp((const uint8_t *)buffer, a_snd_len);
 #endif
 			/* UDP送信 */
 			a_ret = udp_snd_dat(UDP_CEPID, &a_dst, buffer, a_snd_len);
 			if (a_ret < 0) {
-				ECN_DBG_PUT "[UDP TSK] send, error: %s", itron_strerror(a_ret) ECN_DBG_END;
+				ECN_DBG_PUT("[UDP TSK] send, error: %s", itron_strerror(a_ret));
 			}
 		}
 
 		/* データが長すぎて1パケットに収まらなかった場合 */
 		if (_ecn_fbs_exist_data(fbs_id)) {
-			ECN_DBG_PUT "[UDP TSK] send, data so long: %dbyte(s)", _ecn_fbs_get_datalen(fbs_id) ECN_DBG_END;
+			ECN_DBG_PUT("[UDP TSK] send, data so long: %dbyte(s)", _ecn_fbs_get_datalen(fbs_id));
 		}
 	} else {
-		ECN_DBG_PUT "[UDP TSK] echonet-node 0x%02X-0x%02X-0x%02X not found.",
+		ECN_DBG_PUT("[UDP TSK] echonet-node 0x%02X-0x%02X-0x%02X not found.",
 			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx1,
 			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx2,
-			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx3 ECN_DBG_END;
+			((T_EDATA *)fbs_id.ptr)->hdr.edata.deoj.eojx3);
 	}
 }
 
@@ -504,7 +504,7 @@ PT_THREAD(callback_nblk_udp_pt(void))
 
 	PT_BEGIN(&s.pt);
 
-	/* ECN_CAP_PUT "[UDP ECHO SRV] callback_nblk_udp() recv: %u", *(int *)p_parblk ECN_CAP_END; */
+	/* ECN_CAP_PUT("[UDP ECHO SRV] callback_nblk_udp() recv: %u", *(int *)p_parblk); */
 	memset(buffer, 0, sizeof(buffer));
 
 	PT_WAIT_UNTIL(&s.pt, ((a_len = udp_rcv_dat(UDP_CEPID, &dst, buffer, sizeof(buffer) - 1)) != 0));
@@ -518,8 +518,8 @@ PT_THREAD(callback_nblk_udp_pt(void))
 		PT_EXIT(&s.pt);
 	}
 #endif
-	ECN_CAP_PUT "[UDP ECHO SRV] recv, addr: %s:%d, len: %d, msg: '%s'",
-			ip2str(NULL, dst.ipaddr), dst.portno, a_len, buffer ECN_CAP_END;
+	ECN_CAP_PUT("[UDP ECHO SRV] recv, addr: %s:%d, len: %d, msg: '%s'",
+			ip2str(NULL, dst.ipaddr), dst.portno, a_len, buffer);
 	if ((int)sizeof(buffer) <= a_len)
 		a_len = (int)sizeof(buffer) - 1;
 	if (0 < a_len) {
@@ -582,7 +582,7 @@ bool_t is_match(const EOBJCB *enodcb, T_EDATA *edata, const void *_ipaddr, uint1
 		if (enm.is_eof) {
 			break;
 		}
-		ECN_DBG_PUT "is_match(): ecn_itr_nxt() result: epc=0x%02X, pdc=%d", epc, pdc ECN_DBG_END;
+		ECN_DBG_PUT("is_match(): ecn_itr_nxt() result: epc=0x%02X, pdc=%d", epc, pdc);
 		/* インスタンスリスト通知または自ノードインスタンスリストＳ以外は除外 */
 		if ((epc != 0xD5) && (epc != 0xD6)) {
 			continue;
@@ -640,8 +640,8 @@ ECN_ENOD_ID udp_get_id(T_EDATA *edata, const T_IN4_ADDR ipaddr, uint16_t portno)
 		if (!uip_ipaddr_cmp(ea->ipaddr, ipaddr))
 			continue;
 
-		ECN_CAP_PUT "udp_get_id(): ip-found remote(%d) = %s",
-			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr) ECN_CAP_END;
+		ECN_CAP_PUT("udp_get_id(): ip-found remote(%d) = %s",
+			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr));
 		return (ECN_ENOD_ID)i;
 	}
 
@@ -659,8 +659,8 @@ ECN_ENOD_ID udp_get_id(T_EDATA *edata, const T_IN4_ADDR ipaddr, uint16_t portno)
 		/* 対応するリモートノードがあればIPアドレスを設定 */
 		uip_ipaddr_copy(ea->ipaddr, ipaddr);
 
-		ECN_CAP_PUT "udp_get_id(): enod-found remote(%d) = %s",
-			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr) ECN_CAP_END;
+		ECN_CAP_PUT("udp_get_id(): enod-found remote(%d) = %s",
+			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr));
 		return (ECN_ENOD_ID)i;
 	}
 
@@ -672,8 +672,8 @@ ECN_ENOD_ID udp_get_id(T_EDATA *edata, const T_IN4_ADDR ipaddr, uint16_t portno)
 		ea->inuse = true;
 		uip_ipaddr_copy(ea->ipaddr, ipaddr);
 
-		ECN_CAP_PUT "udp_get_id(): empty-found remote(%d) = %s",
-			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr) ECN_CAP_END;
+		ECN_CAP_PUT("udp_get_id(): empty-found remote(%d) = %s",
+			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr));
 		return (ECN_ENOD_ID)i;
 	}
 
@@ -731,21 +731,21 @@ ER ecn_udp_get_ipaddr(ID sender, int requestid, ECN_ENOD_ID enodid, ECN_FBS_ID *
 	a_ret = _ecn_fbs_add_data_ex(req, &requestid, sizeof(((ecn_udp_msg_get_ipaddr_res_t *)0)->requestid));
 	if (a_ret != E_OK) {
 		_ecn_fbs_del(req);
-		ECN_DBG_PUT "ecn_udp_get_ipaddr() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("ecn_udp_get_ipaddr() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 
 	a_ret = _ecn_fbs_add_data_ex(req, &enodid, sizeof(((ecn_udp_msg_get_ipaddr_res_t *)0)->enodid));
 	if (a_ret != E_OK) {
 		_ecn_fbs_del(req);
-		ECN_DBG_PUT "ecn_udp_get_ipaddr() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("ecn_udp_get_ipaddr() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 
 	a_ret = _ecn_fbs_add_data_ex(req, &enodadrb_table[enodid], sizeof(((ecn_udp_msg_get_ipaddr_res_t *)0)->enodadrb));
 	if (a_ret != E_OK) {
 		_ecn_fbs_del(req);
-		ECN_DBG_PUT "ecn_udp_get_ipaddr() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret) ECN_DBG_END;
+		ECN_DBG_PUT("ecn_udp_get_ipaddr() : _ecn_fbs_add_data_ex() result = %d:%s", a_ret, itron_strerror(a_ret));
 		return a_ret;
 	}
 

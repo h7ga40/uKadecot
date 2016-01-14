@@ -38,15 +38,37 @@
 #ifndef WAMP_BROKER_H
 #define WAMP_BROKER_H
 
+typedef enum wamp_subscription_kind
+{
+	WAMP_SUBSCRIPTION_KIND_NONE,
+	WAMP_SUBSCRIPTION_KIND_ECHONETLITE,
+	WAMP_SUBSCRIPTION_KIND_ARDUINO,
+} wamp_subscription_kind_t;
+
+typedef struct wamp_echonetlite_subscription
+{
+	char deviceName[40];
+	char *proprtyName;
+	uint16_t devType;
+	uint8_t epc;
+} wamp_echonetlite_subscription_t;
+
+typedef struct wamp_arduino_subscription
+{
+	uint8_t pinno;
+	uint16_t threshold;
+} wamp_arduino_subscription_t;
+
 typedef struct wamp_subscription
 {
 	struct wamp_state *s;
 	unsigned int requestId;
 	int subscriptionId;
-	char deviceName[40];
-	char *proprtyName;
-	uint16_t devType;
-	uint8_t epc;
+	wamp_subscription_kind_t kind;
+	union{
+		wamp_echonetlite_subscription_t echonetlite;
+		wamp_arduino_subscription_t arduino;
+	};
 } wamp_subscription_t;
 
 typedef struct wamp_broker
@@ -54,7 +76,7 @@ typedef struct wamp_broker
 	struct wamp_state *s;
 	unsigned int requestId;
 	int subscriptionId;
-	wamp_subscription_t subscriptions[10];
+	wamp_subscription_t subscriptions[30];
 	wamp_subscription_t *current_subscription;
 	const char *error;
 } wamp_broker_t;
@@ -65,6 +87,8 @@ void wamp_broker_subscribe_options_param(wamp_broker_t *broker, jsonsl_action_t 
 	struct jsonsl_state_st *state, const char *buf);
 void wamp_broker_subscribe_options(wamp_broker_t *broker);
 void wamp_broker_subscribe_topic(wamp_broker_t *broker, const char *value);
+void wamp_broker_subscribe_echonetlite_topic(wamp_broker_t *broker, const char *value, int pos);
+void wamp_broker_subscribe_arduino_topic(wamp_broker_t *broker, const char *value, int pos);
 void wamp_broker_subscribe_close(struct wamp_state *s);
 
 void wamp_broker_unsubscribe(wamp_broker_t *broker);
@@ -88,5 +112,7 @@ void wamp_broker_publish_close(struct wamp_state *s);
 
 void wamp_broker_publish_inf(wamp_broker_t *broker, uint16_t pubId, int deviceId,
 	uint16_t devType, uint8_t epc, uint8_t pdc, uint8_t *p_edt);
+void wamp_broker_publish_pin(wamp_broker_t *broker, uint16_t pubId, int deviceId,
+	int pinno, uint16_t value);
 
 #endif // WAMP_BROKER_H
