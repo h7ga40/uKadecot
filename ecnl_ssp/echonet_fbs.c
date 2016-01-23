@@ -351,9 +351,17 @@ int copy_message(T_ECN_FST_BLK *pk_src, int spos, T_ECN_FST_BLK *pk_dst, int dpo
 /* メモリブロック取得 ok:ポインタ NG:NULL */
 void *_ecn_fbs_mbx_get(ECN_FBS_SIZE_T fa_req_size)
 {
-	T_ECN_FST_BLK *result = NULL;
+	void *result;
+	ER ret;
 
-	get_message(&result, fa_req_size);
+	if ((fa_req_size <= 0) || (fa_req_size > ECHONET_MEMPOOL_BLOCK_SIZE))
+		return NULL;
+
+	ret = get_mpf(ecn_mempoolid, &result);
+	if (ret != E_OK)
+		return NULL;
+
+	memset(result, 0, ECHONET_MEMPOOL_BLOCK_SIZE);
 
 	return result;
 }
@@ -361,7 +369,7 @@ void *_ecn_fbs_mbx_get(ECN_FBS_SIZE_T fa_req_size)
 /* メモリブロック解放 */
 ER _ecn_fbs_mbx_rel(void *p)
 {
-	return release_message((T_ECN_FST_BLK *)p);
+	return rel_mpf(ecn_mempoolid, p);
 }
 
 /* 領域確保 */
