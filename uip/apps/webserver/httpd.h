@@ -46,9 +46,10 @@ struct httpd_state {
   struct pt outputpt;
   char inputbuf[50];
   char state;
-  struct httpd_fs_file file;
+  int drv;
+  char *filename;
   int len;
-  unsigned short count;
+  struct httpd_fs_file file;
   int parse_pos;
   int parse_len;
   struct http_parser parser;

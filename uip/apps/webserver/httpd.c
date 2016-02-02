@@ -197,8 +197,10 @@ PT_THREAD(send_headers(struct httpd_state *s, const char *statushdr))
   len = strlen(statushdr);
   memcpy(pos, statushdr, len); pos += len;
 
-  len = strlen(http_content_encoding_gzip);
-  memcpy(pos, http_content_encoding_gzip, len); pos += len;
+  if (s->drv == 0) {
+    len = strlen(http_content_encoding_gzip);
+    memcpy(pos, http_content_encoding_gzip, len); pos += len;
+  }
 
   ptr = strrchr(s->message.request_url, ISO_period);
   if (ptr == NULL) {
@@ -243,12 +245,13 @@ PT_THREAD(send_headers(struct httpd_state *s, const char *statushdr))
 static
 PT_THREAD(handle_output(struct httpd_state *s))
 {
-  char *ptr;
-
   PT_BEGIN(&s->outputpt);
 
-  if (!httpd_fs_open(s->message.request_url, &s->file)) {
-    httpd_fs_open(http_404_html, &s->file);
+  s->file.fs = ((char *)&s[1]) - 64 - 512;
+
+  if (!httpd_fs_open(s->drv, s->filename, &s->file)) {
+    s->drv = 0;
+    httpd_fs_open(s->drv, http_404_html, &s->file);
     strcpy_s(s->message.request_url, sizeof(s->message.request_url), http_404_html);
     PT_WAIT_THREAD(&s->outputpt,
       send_headers(s,
@@ -258,7 +261,6 @@ PT_THREAD(handle_output(struct httpd_state *s))
     PT_WAIT_THREAD(&s->outputpt,
       send_headers(s,
       http_header_200));
-    ptr = strchr(s->message.request_url, ISO_period);
     PT_WAIT_THREAD(&s->outputpt, send_file(s));
   }
 
@@ -405,6 +407,16 @@ PT_THREAD(handle_input(struct httpd_state *s))
   /* ""か"/"なら"index.html"に変更 */
   if ((s->message.request_url[0] == '\0') || ((s->message.request_url[0] == '/') && (s->message.request_url[1] == '\0'))) {
     strncpy_s(s->message.request_url, sizeof(s->message.request_url), http_index_html, sizeof(s->message.request_url));
+    s->filename = s->message.request_url;
+  }
+  /* "/~/"ならSDカードから読み込み */
+  else if ((s->message.request_url[0] == '/') && (s->message.request_url[1] == '~') && (s->message.request_url[2] == '/')) {
+    s->drv = 1;
+    s->filename = &s->message.request_url[2];
+  }
+  else {
+    s->drv = 0;
+    s->filename = s->message.request_url;
   }
 
   /*  httpd_log_file(uip_conn->ripaddr, s->message.request_url);*/

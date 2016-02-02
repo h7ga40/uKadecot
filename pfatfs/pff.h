@@ -23,6 +23,7 @@ extern "C" {
 
 #include "integer.h"
 #include "pffconf.h"
+#include "diskio.h"
 
 #if _PFATFS != _PFFCONF
 #error Wrong configuration file (pffconf.h).
@@ -38,6 +39,9 @@ extern "C" {
 /* File system object structure */
 
 typedef struct {
+	DSTATUS (* disk_get_status)(void);
+	DRESULT (* disk_readp)(BYTE* buff, DWORD sector, UINT offset, UINT count);
+	DRESULT (* disk_writep)(const BYTE* buff, DWORD sc);
 	BYTE	fs_type;	/* FAT sub type */
 	BYTE	flag;		/* File status flags */
 	BYTE	csize;		/* Number of sectors per cluster */
@@ -52,6 +56,9 @@ typedef struct {
 	CLUST	org_clust;	/* File start cluster */
 	CLUST	curr_clust;	/* File current cluster */
 	DWORD	dsect;		/* File current data sector */
+#if _USE_LFN
+	WCHAR LfnBuf[_MAX_LFN + 1];
+#endif
 } FATFS;
 
 

@@ -57,10 +57,6 @@
 
 #define ABORT(err)	{fs->flag = 0; return err;}
 
-#if _USE_LFN
-static WCHAR LfnBuf[_MAX_LFN+1];
-#endif
-
 /*--------------------------------------------------------*/
 /* DBCS code ranges and SBCS extend char conversion table */
 /*--------------------------------------------------------*/
@@ -508,10 +504,10 @@ CLUST get_fat (	/* 1:IO error, Else:Cluster status */
 		bc = (UINT)clst; bc += bc / 2;
 		ofs = bc % 512; bc /= 512;
 		if (ofs != 511) {
-			if (disk_readp(buf, fs->fatbase + bc, ofs, 2)) break;
+			if (fs->disk_readp(buf, fs->fatbase + bc, ofs, 2)) break;
 		} else {
-			if (disk_readp(buf, fs->fatbase + bc, 511, 1)) break;
-			if (disk_readp(buf+1, fs->fatbase + bc + 1, 0, 1)) break;
+			if (fs->disk_readp(buf, fs->fatbase + bc, 511, 1)) break;
+			if (fs->disk_readp(buf+1, fs->fatbase + bc + 1, 0, 1)) break;
 		}
 		wc = LD_WORD(buf);
 		return (clst & 1) ? (wc >> 4) : (wc & 0xFFF);
@@ -519,12 +515,12 @@ CLUST get_fat (	/* 1:IO error, Else:Cluster status */
 #endif
 #if _FS_FAT16
 	case FS_FAT16 :
-		if (disk_readp(buf, fs->fatbase + clst / 256, ((UINT)clst % 256) * 2, 2)) break;
+		if (fs->disk_readp(buf, fs->fatbase + clst / 256, ((UINT)clst % 256) * 2, 2)) break;
 		return LD_WORD(buf);
 #endif
 #if _FS_FAT32
 	case FS_FAT32 :
-		if (disk_readp(buf, fs->fatbase + clst / 128, ((UINT)clst % 128) * 4, 4)) break;
+		if (fs->disk_readp(buf, fs->fatbase + clst / 128, ((UINT)clst % 128) * 4, 4)) break;
 		return LD_DWORD(buf) & 0x0FFFFFFF;
 #endif
 	}
@@ -672,6 +668,7 @@ FRESULT dir_find (
 #if _USE_LFN
 	BYTE a, ord, sum;
 #endif
+	FATFS *fs = dj->fs;
 
 	res = dir_rewind(dj);			/* Rewind directory object */
 	if (res != FR_OK) return res;
@@ -680,7 +677,7 @@ FRESULT dir_find (
 	ord = sum = 0xFF; dj->lfn_idx = 0xFFFF;	/* Reset LFN sequence */
 #endif
 	do {
-		res = disk_readp(dir, dj->sect, (dj->index % 16) * 32, 32)	/* Read an entry */
+		res = fs->disk_readp(dir, dj->sect, (dj->index % 16) * 32, 32)	/* Read an entry */
 			? FR_DISK_ERR : FR_OK;
 		if (res != FR_OK) break;
 		c = dir[DIR_Name];	/* First character */
@@ -734,10 +731,11 @@ FRESULT dir_read (
 #if _USE_LFN
 	BYTE ord = 0xFF, sum = 0xFF;
 #endif
+	FATFS *fs = dj->fs;
 
 	res = FR_NO_FILE;
 	while (dj->sect) {
-		res = disk_readp(dir, dj->sect, (dj->index % 16) * 32, 32)	/* Read an entry */
+		res = fs->disk_readp(dir, dj->sect, (dj->index % 16) * 32, 32)	/* Read an entry */
 			? FR_DISK_ERR : FR_OK;
 		if (res != FR_OK) break;
 		c = dir[DIR_Name];
@@ -1071,14 +1069,14 @@ BYTE check_fs (	/* 0:The FAT boot record, 1:Valid boot record but not an FAT, 2:
 	DWORD sect	/* Sector# (lba) to check if it is an FAT boot record or not */
 )
 {
-	if (disk_readp(buf, sect, 510, 2))		/* Read the boot record */
+	if (fs->disk_readp(buf, sect, 510, 2))		/* Read the boot record */
 		return 3;
 	if (LD_WORD(buf) != 0xAA55)				/* Check record signature */
 		return 2;
 
-	if (!_FS_32ONLY && !disk_readp(buf, sect, BS_FilSysType, 2) && LD_WORD(buf) == 0x4146)	/* Check FAT12/16 */
+	if (!_FS_32ONLY && !fs->disk_readp(buf, sect, BS_FilSysType, 2) && LD_WORD(buf) == 0x4146)	/* Check FAT12/16 */
 		return 0;
-	if (_FS_FAT32 && !disk_readp(buf, sect, BS_FilSysType32, 2) && LD_WORD(buf) == 0x4146)	/* Check FAT32 */
+	if (_FS_FAT32 && !fs->disk_readp(buf, sect, BS_FilSysType32, 2) && LD_WORD(buf) == 0x4146)	/* Check FAT32 */
 		return 0;
 	return 1;
 }
@@ -1105,7 +1103,7 @@ FRESULT pf_mount (
 	BYTE fmt, buf[36];
 	DWORD bsect, fsize, tsect, mclst;
 
-	if (disk_get_status() & STA_NOINIT)	/* Check if the drive is ready or not */
+	if (fs->disk_get_status() & STA_NOINIT)	/* Check if the drive is ready or not */
 		return FR_NOT_READY;
 
 	/* Search FAT partition on the drive */
@@ -1113,7 +1111,7 @@ FRESULT pf_mount (
 	fmt = check_fs(fs, buf, bsect);			/* Check sector 0 as an SFD format */
 	if (fmt == 1) {						/* Not an FAT boot record, it may be FDISK format */
 		/* Check a partition listed in top of the partition table */
-		if (disk_readp(buf, bsect, MBR_Table, 16)) {	/* 1st partition entry */
+		if (fs->disk_readp(buf, bsect, MBR_Table, 16)) {	/* 1st partition entry */
 			fmt = 3;
 		} else {
 			if (buf[4]) {					/* Is the partition existing? */
@@ -1126,7 +1124,7 @@ FRESULT pf_mount (
 	if (fmt) return FR_NO_FILESYSTEM;	/* No valid FAT patition is found */
 
 	/* Initialize the file system object */
-	if (disk_readp(buf, bsect, 13, sizeof (buf))) return FR_DISK_ERR;
+	if (fs->disk_readp(buf, bsect, 13, sizeof (buf))) return FR_DISK_ERR;
 
 	fsize = LD_WORD(buf+BPB_FATSz16-13);				/* Number of sectors per FAT */
 	if (!fsize) fsize = LD_DWORD(buf+BPB_FATSz32-13);
@@ -1186,7 +1184,7 @@ FRESULT pf_open (
 	dj.fs = fs;
 	dj.fn = sp;
 #if _USE_LFN
-	dj.lfn = LfnBuf;
+	dj.lfn = fs->LfnBuf;
 #endif
 	res = follow_path(&dj, dir, path);	/* Follow the file path */
 	if (res != FR_OK) return res;		/* Follow failed */
@@ -1248,7 +1246,7 @@ FRESULT pf_read (
 		}
 		rcnt = 512 - (UINT)fs->fptr % 512;			/* Get partial sector data from sector buffer */
 		if (rcnt > btr) rcnt = btr;
-		dr = disk_readp(!buff ? 0 : rbuff, fs->dsect, (UINT)fs->fptr % 512, rcnt);
+		dr = fs->disk_readp(!buff ? 0 : rbuff, fs->dsect, (UINT)fs->fptr % 512, rcnt);
 		if (dr) ABORT(FR_DISK_ERR);
 		fs->fptr += rcnt; rbuff += rcnt;			/* Update pointers and counters */
 		btr -= rcnt; *br += rcnt;
@@ -1285,7 +1283,7 @@ FRESULT pf_write (
 		return FR_NOT_OPENED;
 
 	if (!btw) {		/* Finalize request */
-		if ((fs->flag & FA__WIP) && disk_writep(0, 0)) ABORT(FR_DISK_ERR);
+		if ((fs->flag & FA__WIP) && fs->disk_writep(0, 0)) ABORT(FR_DISK_ERR);
 		fs->flag &= ~FA__WIP;
 		return FR_OK;
 	} else {		/* Write data request */
@@ -1309,16 +1307,16 @@ FRESULT pf_write (
 			sect = clust2sect(fs, fs->curr_clust);		/* Get current sector */
 			if (!sect) ABORT(FR_DISK_ERR);
 			fs->dsect = sect + cs;
-			if (disk_writep(0, fs->dsect)) ABORT(FR_DISK_ERR);	/* Initiate a sector write operation */
+			if (fs->disk_writep(0, fs->dsect)) ABORT(FR_DISK_ERR);	/* Initiate a sector write operation */
 			fs->flag |= FA__WIP;
 		}
 		wcnt = 512 - (UINT)fs->fptr % 512;			/* Number of bytes to write to the sector */
 		if (wcnt > btw) wcnt = btw;
-		if (disk_writep(p, wcnt)) ABORT(FR_DISK_ERR);	/* Send data to the sector */
+		if (fs->disk_writep(p, wcnt)) ABORT(FR_DISK_ERR);	/* Send data to the sector */
 		fs->fptr += wcnt; p += wcnt;				/* Update pointers and counters */
 		btw -= wcnt; *bw += wcnt;
 		if ((UINT)fs->fptr % 512 == 0) {
-			if (disk_writep(0, 0)) ABORT(FR_DISK_ERR);	/* Finalize the currtent secter write operation */
+			if (fs->disk_writep(0, 0)) ABORT(FR_DISK_ERR);	/* Finalize the currtent secter write operation */
 			fs->flag &= ~FA__WIP;
 		}
 	}
@@ -1400,7 +1398,7 @@ FRESULT pf_opendir (
 	} else {
 		dj->fn = sp;
 #if _USE_LFN
-		dj->lfn = LfnBuf;
+		dj->lfn = fs->LfnBuf;
 #endif
 		res = follow_path(dj, dir, path);		/* Follow the path to the directory */
 		if (res == FR_OK) {						/* Follow completed */

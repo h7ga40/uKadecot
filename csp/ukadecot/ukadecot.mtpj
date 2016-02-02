@@ -492,6 +492,14 @@
       <ParentItem>fba78777-38ea-4ff3-b3f8-b7e7823ae080</ParentItem>
       <Property>de34d294-295e-4251-bd6b-48cc727775f3</Property>
     </Instance>
+    <Instance Guid="d0c23ad0-6fec-42a7-8e61-72b8e19d5edb">
+      <Name>mmc_rspi.c</Name>
+      <Type>File</Type>
+      <RelativePath>..\..\pfatfs\mmc_rspi.c</RelativePath>
+      <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
+      <ParentItem>fba78777-38ea-4ff3-b3f8-b7e7823ae080</ParentItem>
+      <Property>83a38444-6bd9-4d09-acd0-b4b45d3a092e</Property>
+    </Instance>
   </Class>
   <Class Guid="9033e9fb-2b12-4437-a25e-27b28d42582b">
     <Instance Guid="7a554b30-602c-45a8-8757-edc7ca566583">
@@ -673,6 +681,9 @@
     <Instance Guid="de34d294-295e-4251-bd6b-48cc727775f3">
       <MemoCount>0</MemoCount>
     </Instance>
+    <Instance Guid="83a38444-6bd9-4d09-acd0-b4b45d3a092e">
+      <MemoCount>0</MemoCount>
+    </Instance>
   </Class>
   <Class Guid="78a5c5cd-76cb-4bcc-a031-3020011fbc9a">
     <Instance Guid="6a4af79b-634b-4fc8-b53f-c4932d9a9c92">
@@ -840,7 +851,9 @@
       <SourceItemType54>CSource</SourceItemType54>
       <SourceItemGuid55>f80fdc1d-1a42-4612-9e72-6cec4e709c34</SourceItemGuid55>
       <SourceItemType55>CSource</SourceItemType55>
-      <SourceItemCount>56</SourceItemCount>
+      <SourceItemGuid56>d0c23ad0-6fec-42a7-8e61-72b8e19d5edb</SourceItemGuid56>
+      <SourceItemType56>CSource</SourceItemType56>
+      <SourceItemCount>57</SourceItemCount>
       <LastDeviceChangedCounter>0</LastDeviceChangedCounter>
     </Instance>
     <Instance Guid="9e208646-ccba-4100-a676-29b1efe6545f">
@@ -922,13 +935,14 @@
       <GeneralOptionPatch-DefaultValue>None</GeneralOptionPatch-DefaultValue>
       <GeneralOptionSaveAcc-DefaultValue>False</GeneralOptionSaveAcc-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8587688952440286552</TimeTagModified--0>
+      <TimeTagModified--0>-8587472822773086219</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <OutputMessageFormat-0>%TargetFiles%</OutputMessageFormat-0>
       <FormatBuildOptionList-0>%TargetFiles% : %Program% %Options%</FormatBuildOptionList-0>
       <PreBuildCommands-0 />
-      <PostBuildCommands-0 />
+      <PostBuildCommands-0>call ..\flash\ukadecot_cat.bat
+</PostBuildCommands-0>
       <GeneralOptionIsa-0>None</GeneralOptionIsa-0>
       <GeneralOptionOutput-0>LoadModuleFile</GeneralOptionOutput-0>
       <GeneralOptionPic-0>False</GeneralOptionPic-0>
@@ -1020,7 +1034,6 @@
 -include=..\..\ssp\arch
 -include=..\..\ssp\pdic
 -include=..\..\ssp\target\grsakura_ccrx
--include=..\..\ccrx\sim\rx63n
 -include=..\..\uip\uip
 -include=..\..\uip\task
 -include=..\..\uip\apps\dhcpc
@@ -1028,6 +1041,7 @@
 -include=..\..\uip\target\if_rx62n
 -include=..\..\pfatfs
 -include=..\..\ecnl_ssp
+-include=..\..\kadecot
 -include=..\..\src\ukadecot
 -define=__LIT,TARGET_KERNEL_SSP,SUPPORT_UIP,JSONSL_NO_JPR
 -output=obj
@@ -1142,7 +1156,6 @@
 -include=..\..\ssp\arch
 -include=..\..\ssp\pdic
 -include=..\..\ssp\target\grsakura_ccrx
--include=..\..\ccrx\sim\rx63n
 -include=..\..\uip\uip
 -include=..\..\uip\task
 -include=..\..\uip\apps\dhcpc
@@ -1150,6 +1163,7 @@
 -include=..\..\uip\target\if_rx62n
 -include=..\..\pfatfs
 -include=..\..\ecnl_ssp
+-include=..\..\kadecot
 -include=..\..\src\ukadecot
 -define=__LIT,TARGET_KERNEL_SSP,SUPPORT_UIP,JSONSL_NO_JPR
 -output=obj
@@ -1899,6 +1913,10 @@ D_1=R_1
       <ItemAddTime>635681959164315263</ItemAddTime>
       <ItemAddTimeCount>1</ItemAddTimeCount>
     </Instance>
+    <Instance Guid="d0c23ad0-6fec-42a7-8e61-72b8e19d5edb">
+      <ItemAddTime>635899275212434767</ItemAddTime>
+      <ItemAddTimeCount>0</ItemAddTimeCount>
+    </Instance>
     <Instance Guid="a7be515f-f007-45ed-9059-4e1500c0f74d">
       <TimeTagModified-SourceItem0--0>-8587805607317180733</TimeTagModified-SourceItem0--0>
       <SourceItem0-IsLockedByUser>False</SourceItem0-IsLockedByUser>
@@ -2112,6 +2130,10 @@ D_1=R_1
       <SourceItem55-IsLockedByUser>False</SourceItem55-IsLockedByUser>
       <SourceItem55-BuildingTarget-0>True</SourceItem55-BuildingTarget-0>
       <SourceItem55-IndividualCompileOption-0>False</SourceItem55-IndividualCompileOption-0>
+      <TimeTagModified-SourceItem56--0>-8587473085642341041</TimeTagModified-SourceItem56--0>
+      <SourceItem56-IsLockedByUser>False</SourceItem56-IsLockedByUser>
+      <SourceItem56-BuildingTarget-0>True</SourceItem56-BuildingTarget-0>
+      <SourceItem56-IndividualCompileOption-0>False</SourceItem56-IndividualCompileOption-0>
     </Instance>
     <Instance Guid="c20a78d9-8038-46fe-9b87-bc2fa2aa9bdc">
       <TimeTagModified-SourceItem1--0>-8587805587196795353</TimeTagModified-SourceItem1--0>

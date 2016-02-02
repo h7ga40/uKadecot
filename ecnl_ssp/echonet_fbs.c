@@ -88,7 +88,7 @@ ER rel_mpf(mempool_t *mpfid, void *buf)
 {
 	ER ret = E_OK;
 
-	if ((buf < mpfid->blockes[0]) || (buf >= mpfid->blockes[NUM_ECHONET_MEMPOOL_BLOCK]))
+	if ((buf < (void *)&mpfid->blockes[0]) || (buf >= (void *)&mpfid->blockes[NUM_ECHONET_MEMPOOL_BLOCK]))
 		return E_PAR;
 
 	if ((((intptr_t)buf - (intptr_t)mpfid->blockes[0]) % ECHONET_MEMPOOL_BLOCK_SIZE) != 0)

@@ -20,11 +20,8 @@
 #ifndef _MSC_VER
 #define RamDisk		((unsigned char *)0xfff00000)
 #else
-#include <windows.h>
-#include <tchar.h>
-#include <winioctl.h>
-
 unsigned char RamDisk[SZ_RAMDISK * 1024];
+extern void win_disk_initialize(void *ramDisk, int size);
 #endif
 
 typedef struct {
@@ -33,16 +30,16 @@ typedef struct {
 	DWORD wofs;
 	DWORD wip;
 	DWORD n_sectors;
-} STAT;
+} RD_STAT;
 
 static volatile
-STAT Stat[MAX_DRIVES];
+RD_STAT Stat[MAX_DRIVES];
 
 static
 BYTE Buffer[SS_RAMDISK];
 
 static
-int get_status(volatile STAT *stat) {
+int get_status(volatile RD_STAT *stat) {
 	stat->sz_sector = SS_RAMDISK;
 	if(stat->sz_sector < _MIN_SS || stat->sz_sector > _MAX_SS) return 0;
 	stat->n_sectors = SZ_RAMDISK * 1024 / SS_RAMDISK;
@@ -53,18 +50,11 @@ int get_status(volatile STAT *stat) {
 /*-----------------------------------------------------------------------*/
 /* Initialize Disk Drive                                                 */
 /*-----------------------------------------------------------------------*/
-DSTATUS disk_initialize (void)
+DSTATUS ramdisk_initialize (void)
 {
 	DSTATUS sta;
 #ifdef _MSC_VER
-	HANDLE h;
-	DWORD br;
-
-	h = CreateFile(_T("..\\..\\..\\..\\uip\\apps\\webserver\\httpd-fs.bin"), GENERIC_READ, 0, 0, OPEN_EXISTING, 0, 0);
-	if (h != INVALID_HANDLE_VALUE) {
-		ReadFile(h, RamDisk, sizeof(RamDisk), &br, 0);
-		CloseHandle(h);
-	}
+	win_disk_initialize(RamDisk, sizeof(RamDisk));
 #endif
 	get_status(&Stat[0]);
 	sta = Stat[0].status;
@@ -76,7 +66,7 @@ DSTATUS disk_initialize (void)
 /*-----------------------------------------------------------------------*/
 /* Get Disk Status                                                       */
 /*-----------------------------------------------------------------------*/
-DSTATUS disk_get_status (void)
+DSTATUS ramdisk_get_status (void)
 {
 	return Stat[0].status;
 }
@@ -84,7 +74,7 @@ DSTATUS disk_get_status (void)
 /*-----------------------------------------------------------------------*/
 /* Read Partial Sector                                                   */
 /*-----------------------------------------------------------------------*/
-DRESULT disk_readp (
+DRESULT ramdisk_readp (
 	BYTE* buff,		/* Data read buffer */
 	DWORD sector,	/* Sector number (LBA) */
 	UINT offset,	/* Offset in the sector */
@@ -117,7 +107,7 @@ DRESULT disk_readp (
 /*-----------------------------------------------------------------------*/
 /* Write Partial Sector                                                  */
 /*-----------------------------------------------------------------------*/
-DRESULT disk_writep (
+DRESULT ramdisk_writep (
 	const BYTE* buff,	/* Pointer to the write data */
 	DWORD sc			/* Sector number (LBA), Number of bytes to send */
 )

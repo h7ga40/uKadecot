@@ -149,17 +149,17 @@
       <GeneralOptionPatch-DefaultValue>None</GeneralOptionPatch-DefaultValue>
       <GeneralOptionSaveAcc-DefaultValue>False</GeneralOptionSaveAcc-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8587688952440286552</TimeTagModified--0>
+      <TimeTagModified--0>-8587473084430197473</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <OutputMessageFormat-0>%TargetFiles%</OutputMessageFormat-0>
       <FormatBuildOptionList-0>%TargetFiles% : %Program% %Options%</FormatBuildOptionList-0>
       <PreBuildCommands-0>if exist "%OutputDir%\%ProjectName%.syms" del "%OutputDir%\%ProjectName%.syms"
-..\..\..\ssp\cfg\cfg\cfg.exe --pass 1 --kernel ssp --api-table ..\..\..\ssp\kernel\ssp_kernel_api.csv --api-table ..\..\..\ecnl_ssp\echonet_api.csv --cfg1-def-table ..\..\..\ssp\kernel\ssp_kernel_def.csv --cfg1-def-table ..\..\..\ssp\syssvc\syssvc_def.csv --cfg1-def-table ..\..\..\ssp\arch\rx630_ccrx\prc_def.csv --cfg1-def-table ..\..\..\ssp\target\grsakura_ccrx\target_def.csv --cfg1-def-table ..\..\..\ecnl_ssp\echonet_def.csv -I ..\..\..\ssp -I ..\..\..\ssp\arch -I ..\..\..\ssp\include -I ..\..\..\ssp\target\grsakura_ccrx -I ..\..\..\uip\task -I ..\..\..\uip\target\if_rx62n -I ..\..\..\ecnl_ssp -I ..\..\..\src\ukadecot ..\..\..\src\ukadecot\main.cfg
+..\..\..\ssp\cfg\cfg\cfg.exe --pass 1 --kernel ssp --api-table ..\..\..\ssp\kernel\ssp_kernel_api.csv --api-table ..\..\..\ecnl_ssp\echonet_api.csv --cfg1-def-table ..\..\..\ssp\kernel\ssp_kernel_def.csv --cfg1-def-table ..\..\..\ssp\syssvc\syssvc_def.csv --cfg1-def-table ..\..\..\ssp\arch\rx630_ccrx\prc_def.csv --cfg1-def-table ..\..\..\ssp\target\grsakura_ccrx\target_def.csv --cfg1-def-table ..\..\..\ecnl_ssp\echonet_def.csv -I ..\..\..\ssp -I ..\..\..\ssp\arch -I ..\..\..\ssp\include -I ..\..\..\ssp\target\grsakura_ccrx -I ..\..\..\uip\task -I ..\..\..\uip\target\if_rx62n -I ..\..\..\pfatfs -I ..\..\..\ecnl_ssp -I ..\..\..\src\ukadecot ..\..\..\src\ukadecot\main.cfg
 </PreBuildCommands-0>
       <PostBuildCommands-0>..\..\..\ssp\arch\ccrx\gensyms.exe "%OutputDir%\%ProjectName%.map"
 %WinDir%\cscript //Nologo ..\..\tools\update.js "%OutputDir%\%ProjectName%.mot" cfg1_out.srec
-..\..\..\ssp\cfg\cfg\cfg.exe --pass 2 --kernel ssp --api-table ..\..\..\ssp\kernel\ssp_kernel_api.csv --api-table ..\..\..\ecnl_ssp\echonet_api.csv --cfg1-def-table ..\..\..\ssp\kernel\ssp_kernel_def.csv --cfg1-def-table ..\..\..\ssp\syssvc\syssvc_def.csv --cfg1-def-table ..\..\..\ssp\arch\rx630_ccrx\prc_def.csv --cfg1-def-table ..\..\..\ssp\target\grsakura_ccrx\target_def.csv --cfg1-def-table ..\..\..\ecnl_ssp\echonet_def.csv -I ..\..\..\ssp -I ..\..\..\ssp\arch -I ..\..\..\ssp\arch\rx630_ccrx -I ..\..\..\ssp\include -I ..\..\..\ssp\kernel -I ..\..\..\ssp\target\grsakura_ccrx -I ..\..\..\uip\task -I ..\..\..\uip\target\if_rx62n -I ..\..\..\ecnl_ssp -I ..\..\..\src\ukadecot --template-file ..\..\..\ssp\target\grsakura_ccrx\target_echonet.tf ..\..\..\src\ukadecot\main.cfg
+..\..\..\ssp\cfg\cfg\cfg.exe --pass 2 --kernel ssp --api-table ..\..\..\ssp\kernel\ssp_kernel_api.csv --api-table ..\..\..\ecnl_ssp\echonet_api.csv --cfg1-def-table ..\..\..\ssp\kernel\ssp_kernel_def.csv --cfg1-def-table ..\..\..\ssp\syssvc\syssvc_def.csv --cfg1-def-table ..\..\..\ssp\arch\rx630_ccrx\prc_def.csv --cfg1-def-table ..\..\..\ssp\target\grsakura_ccrx\target_def.csv --cfg1-def-table ..\..\..\ecnl_ssp\echonet_def.csv -I ..\..\..\ssp -I ..\..\..\ssp\arch -I ..\..\..\ssp\arch\rx630_ccrx -I ..\..\..\ssp\include -I ..\..\..\ssp\kernel -I ..\..\..\ssp\target\grsakura_ccrx -I ..\..\..\uip\task -I ..\..\..\uip\target\if_rx62n -I ..\..\..\pfatfs -I ..\..\..\ecnl_ssp -I ..\..\..\src\ukadecot --template-file ..\..\..\ssp\target\grsakura_ccrx\target_echonet.tf ..\..\..\src\ukadecot\main.cfg
 %WinDir%\cscript //Nologo ..\..\tools\cmp_update.js kernel_cfg.c ..\kernel_cfg.c
 %WinDir%\cscript //Nologo ..\..\tools\cmp_update.js kernel_cfg.h ..\kernel_cfg.h
 %WinDir%\cscript //Nologo ..\..\tools\cmp_update.js kernel_cfg_asm.src ..\kernel_cfg_asm.src
@@ -251,6 +251,7 @@
       <COptionSectionC-DefaultValue>C</COptionSectionC-DefaultValue>
       <COptionShowExpansions-DefaultValue>False</COptionShowExpansions-DefaultValue>
       <COptionCommandLine-DefaultValue>-cpu=rx600
+-fpu
 -include=.
 -include=..\..\..\ssp
 -include=..\..\..\ssp\include
@@ -261,13 +262,13 @@
 -include=..\..\..\ssp\target\grsakura_ccrx
 -include=..\..\..\uip\task
 -include=..\..\..\uip\target\if_rx62n
+-include=..\..\..\pfatfs
 -include=..\..\..\ecnl_ssp
 -include=..\..\..\src\ukadecot
 -define=TARGET_KERNEL_SSP,SUPPORT_UIP
 -output=obj
 -obj_path=%BuildModeName%
 -debug
--fpu
 -nologo
 </COptionCommandLine-DefaultValue>
       <COptionDefine-DefaultValue />
@@ -322,7 +323,7 @@
       <COptionFloatOrder-DefaultValue>False</COptionFloatOrder-DefaultValue>
       <COptionIncode-DefaultValue>Sjis</COptionIncode-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8587805601566661072</TimeTagModified--0>
+      <TimeTagModified--0>-8587473084216714553</TimeTagModified--0>
       <COptionLangC-0>C99</COptionLangC-0>
       <COptionListfile-0>False</COptionListfile-0>
       <COptionLogo-0>False</COptionLogo-0>
@@ -348,6 +349,7 @@
 ..\..\..\ssp\target\grsakura_ccrx
 ..\..\..\uip\task
 ..\..\..\uip\target\if_rx62n
+..\..\..\pfatfs
 ..\..\..\ecnl_ssp
 ..\..\..\src\ukadecot
 </COptionInclude-0>
@@ -368,6 +370,7 @@
       <COptionSectionC-0>C</COptionSectionC-0>
       <COptionShowExpansions-0>False</COptionShowExpansions-0>
       <COptionCommandLine-0>-cpu=rx600
+-fpu
 -include=.
 -include=..\..\..\ssp
 -include=..\..\..\ssp\include
@@ -378,13 +381,13 @@
 -include=..\..\..\ssp\target\grsakura_ccrx
 -include=..\..\..\uip\task
 -include=..\..\..\uip\target\if_rx62n
+-include=..\..\..\pfatfs
 -include=..\..\..\ecnl_ssp
 -include=..\..\..\src\ukadecot
 -define=TARGET_KERNEL_SSP,SUPPORT_UIP
 -output=obj
 -obj_path=%BuildModeName%
 -debug
--fpu
 -nologo
 </COptionCommandLine-0>
       <COptionDefine-0>TARGET_KERNEL_SSP
@@ -455,7 +458,13 @@ SUPPORT_UIP
       <AsmOptionPreAssembleCommands-DefaultValue />
       <AsmOptionPostAssembleCommands-DefaultValue />
       <AsmOptionOtherAdditionalOptions-DefaultValue />
-      <AsmOptionCommandLine-DefaultValue />
+      <AsmOptionCommandLine-DefaultValue>-cpu=rx600
+-fpu
+-output=obj
+-obj_path=%BuildModeName%
+-debug
+-nologo
+</AsmOptionCommandLine-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
       <TimeTagModified--0>-8588053503357851523</TimeTagModified--0>
       <AsmOptionChkpm-0>False</AsmOptionChkpm-0>
@@ -476,7 +485,13 @@ SUPPORT_UIP
       <AsmOptionPreAssembleCommands-0 />
       <AsmOptionPostAssembleCommands-0 />
       <AsmOptionOtherAdditionalOptions-0 />
-      <AsmOptionCommandLine-0 />
+      <AsmOptionCommandLine-0>-cpu=rx600
+-fpu
+-output=obj
+-obj_path=%BuildModeName%
+-debug
+-nologo
+</AsmOptionCommandLine-0>
     </Instance>
     <Instance Guid="dbb16727-3e81-4169-956a-790355cab4a1">
       <LinkOptionCpu-DefaultValue>False</LinkOptionCpu-DefaultValue>

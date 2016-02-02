@@ -42,6 +42,7 @@
 #ifndef TOPPERS_PRC_SIL_H
 #define TOPPERS_PRC_SIL_H
 
+#define TOPPERS_OMIT_SIL_ACCESS
 
 #ifndef TOPPERS_MACRO_ONLY
 #include "prc_insn.h"
@@ -105,7 +106,200 @@ extern void sil_dly_nse( ulong_t dlytim );
 /*
  *  プロセッサのエンディアン
  */
+#ifdef __LIT
 #define SIL_ENDIAN_LITTLE			/* リトルエンディアン */
+#endif
+#ifdef __BIG
+#define SIL_ENDIAN_BIG				/* ビッグエンディアン */
+#endif
 
+
+/*
+ *  8ビット単位の読出し／書込み
+ */
+#ifdef UINT8_MAX
+
+#pragma inline(sil_reb_mem)
+static uint8_t
+sil_reb_mem(const volatile uint8_t __evenaccess *mem)
+{
+	uint8_t	data;
+
+	data = *mem;
+	return(data);
+}
+
+#pragma inline(sil_wrb_mem)
+static void
+sil_wrb_mem(volatile uint8_t __evenaccess *mem, uint8_t data)
+{
+	*mem = data;
+}
+
+#endif /* UINT8_MAX */
+
+/*
+ *  16ビット単位の読出し／書込み
+ */
+
+#pragma inline(sil_reh_mem)
+static uint16_t
+sil_reh_mem(const volatile uint16_t __evenaccess *mem)
+{
+	uint16_t	data;
+
+	data = *mem;
+	return(data);
+}
+
+#pragma inline(sil_wrh_mem)
+static void
+sil_wrh_mem(volatile uint16_t __evenaccess *mem, uint16_t data)
+{
+	*mem = data;
+}
+
+#ifdef SIL_ENDIAN_BIG			/* ビッグエンディアンプロセッサ */
+
+#define	sil_reh_bem(mem)		sil_reh_mem(mem)
+#define	sil_wrh_bem(mem, data)	sil_wrh_mem(mem, data)
+
+#ifndef TOPPERS_OMIT_SIL_REH_LEM
+
+#pragma inline(sil_reh_lem)
+static uint16_t
+sil_reh_lem(const volatile uint16_t __evenaccess *mem)
+{
+	uint16_t	data;
+
+	data = *mem;
+	return(TOPPERS_SIL_REV_ENDIAN_UINT16(data));
+}
+
+#endif /* TOPPERS_OMIT_SIL_REH_LEM */
+#ifndef TOPPERS_OMIT_SIL_WRH_LEM
+
+#pragma inline(sil_wrh_lem)
+static void
+sil_wrh_lem(volatile uint16_t __evenaccess *mem, uint16_t data)
+{
+	*mem = TOPPERS_SIL_REV_ENDIAN_UINT16(data);
+}
+
+#endif /* TOPPERS_OMIT_SIL_WRH_LEM */
+#else /* SIL_ENDIAN_BIG */
+#ifdef SIL_ENDIAN_LITTLE		/* リトルエンディアンプロセッサ */
+
+#define	sil_reh_lem(mem)		sil_reh_mem(mem)
+#define	sil_wrh_lem(mem, data)	sil_wrh_mem(mem, data)
+
+#ifndef TOPPERS_OMIT_SIL_REH_BEM
+
+#pragma inline(sil_reh_bem)
+static uint16_t
+sil_reh_bem(const volatile uint16_t __evenaccess *mem)
+{
+	uint16_t	data;
+
+	data = *mem;
+	return(TOPPERS_SIL_REV_ENDIAN_UINT16(data));
+}
+
+#endif /* TOPPERS_OMIT_SIL_REH_BEM */
+#ifndef TOPPERS_OMIT_SIL_WRH_BEM
+
+#pragma inline(sil_wrh_bem)
+static void
+sil_wrh_bem(volatile uint16_t __evenaccess *mem, uint16_t data)
+{
+	*mem = TOPPERS_SIL_REV_ENDIAN_UINT16(data);
+}
+
+#endif /* TOPPERS_OMIT_SIL_WRH_BEM */
+#else /* SIL_ENDIAN_LITTLE */
+
+#error Neither SIL_ENDIAN_BIG nor SIL_ENDIAN_LITTLE is defined.
+
+#endif /* SIL_ENDIAN_LITTLE */
+#endif /* SIL_ENDIAN_BIG */
+
+/*
+ *  32ビット単位の読出し／書込み
+ */
+
+#pragma inline(sil_rew_mem)
+static uint32_t
+sil_rew_mem(const volatile uint32_t __evenaccess *mem)
+{
+	uint32_t	data;
+
+	data = *mem;
+	return(data);
+}
+
+#pragma inline(sil_wrw_mem)
+static void
+sil_wrw_mem(volatile uint32_t __evenaccess *mem, uint32_t data)
+{
+	*mem = data;
+}
+
+#ifdef SIL_ENDIAN_BIG			/* ビッグエンディアンプロセッサ */
+
+#define	sil_rew_bem(mem)		sil_rew_mem(mem)
+#define	sil_wrw_bem(mem, data)	sil_wrw_mem(mem, data)
+
+#ifndef TOPPERS_OMIT_SIL_REW_LEM
+
+#pragma inline(sil_rew_lem)
+static uint32_t
+sil_rew_lem(const volatile uint32_t __evenaccess *mem)
+{
+	uint32_t	data;
+
+	data = *mem;
+	return(TOPPERS_SIL_REV_ENDIAN_UINT32(data));
+}
+
+#endif /* TOPPERS_OMIT_SIL_REW_LEM */
+#ifndef TOPPERS_OMIT_SIL_WRW_LEM
+
+#pragma inline(sil_wrw_lem)
+static void
+sil_wrw_lem(volatile uint32_t __evenaccess *mem, uint32_t data)
+{
+	*mem = TOPPERS_SIL_REV_ENDIAN_UINT32(data);
+}
+
+#endif /* TOPPERS_OMIT_SIL_WRW_LEM */
+#else /* SIL_ENDIAN_BIG */		/* リトルエンディアンプロセッサ */
+
+#define	sil_rew_lem(mem)		sil_rew_mem(mem)
+#define	sil_wrw_lem(mem, data)	sil_wrw_mem(mem, data)
+
+#ifndef TOPPERS_OMIT_SIL_REW_BEM
+
+#pragma inline(sil_rew_bem)
+static uint32_t
+sil_rew_bem(const volatile uint32_t __evenaccess *mem)
+{
+	uint32_t	data;
+
+	data = *mem;
+	return(TOPPERS_SIL_REV_ENDIAN_UINT32(data));
+}
+
+#endif /* TOPPERS_OMIT_SIL_REW_BEM */
+#ifndef TOPPERS_OMIT_SIL_WRW_BEM
+
+#pragma inline(sil_wrw_bem)
+static void
+sil_wrw_bem(volatile uint32_t __evenaccess *mem, uint32_t data)
+{
+	*mem = TOPPERS_SIL_REV_ENDIAN_UINT32(data);
+}
+
+#endif /* TOPPERS_OMIT_SIL_WRW_BEM */
+#endif /* SIL_ENDIAN_BIG */
 
 #endif /* TOPPERS_PRC_SIL_H */

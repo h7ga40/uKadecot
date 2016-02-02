@@ -13,6 +13,7 @@
 #define	_USE_DIR	1	/* Enable pf_opendir() and pf_readdir() function */
 #define	_USE_LSEEK	1	/* Enable pf_lseek() function */
 #define	_USE_WRITE	1	/* Enable pf_write() function */
+#define	_USE_IOCTL	1	/* Enable pf_ioctl() function */
 
 #define _FS_FAT12	1	/* Enable FAT12 */
 #define _FS_FAT16	1	/* Enable FAT16 */

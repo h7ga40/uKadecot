@@ -37,10 +37,11 @@
 #include "httpd-fs.h"
 #include "pff.h"
 #include "diskio.h"
+#include "mmc_rspi.h"
+#include <string.h>
 
 //#define FILE_DUMP
 #ifdef FILE_DUMP
-#include <string.h>
 char path[256] = "";
 FATFS fs;
 #endif
@@ -97,7 +98,8 @@ httpd_fs_init(void)
 #ifdef FILE_DUMP
 	FRESULT res;
 #endif
-	disk_initialize();
+	ramdisk_initialize();
+	mmc_rspi_initialize();
 #ifdef FILE_DUMP
 	if((res = pf_mount(&fs)) != FR_OK){
 		printf("pf_mount() => %d\n", res);
@@ -111,10 +113,27 @@ httpd_fs_init(void)
 }
 /*-----------------------------------------------------------------------------------*/
 int
-httpd_fs_open(const char *name, struct httpd_fs_file *file)
+httpd_fs_open(int drv, const char *name, struct httpd_fs_file *file)
 {
 	FRESULT res;
-	FATFS *fs = (FATFS *)&file->fs;
+	FATFS *fs = (FATFS *)file->fs;
+
+	file->pos = 0;
+	file->len = 0;
+	file->drv = drv;
+	file->name = name;
+	memset(fs, 0, sizeof(FATFS));
+
+	if (drv == 0) {
+		fs->disk_get_status = ramdisk_get_status;
+		fs->disk_readp = ramdisk_readp;
+		fs->disk_writep = ramdisk_writep;
+	}
+	else {
+		fs->disk_get_status = mmc_rspi_get_status;
+		fs->disk_readp = mmc_rspi_readp;
+		fs->disk_writep = mmc_rspi_writep;
+	}
 
 	if (fs->fs_type == 0){
 		if((res = pf_mount(fs)) != FR_OK){
@@ -124,15 +143,13 @@ httpd_fs_open(const char *name, struct httpd_fs_file *file)
 	}
 
 	if((res = pf_open(fs, name)) != FR_OK){
-		printf("pf_open(%s) => %d\n", name, res);
+		printf("pf_open(%d:%s) => %d\n", drv, name, res);
 		return 0;
 	}
 
-	file->pos = 0;
 	file->len = fs->fsize;
-	file->name = name;
 
-	//printf("httpd_fs_open(%s) %d\n", name, file->len);
+	//printf("httpd_fs_open(%d:%s) %d\n", drv, name, file->len);
 
 	return 1;
 }
@@ -142,23 +159,23 @@ httpd_fs_read(struct httpd_fs_file *file, void *dst, int len)
 {
 	FRESULT ret;
 	UINT rlen;
-	FATFS *fs = (FATFS *)&file->fs;
+	FATFS *fs = (FATFS *)file->fs;
 
 	if((ret = pf_lseek(fs, file->pos)) != FR_OK){
-		printf("pf_lseek(%d) => %d\n", file->pos, ret);
+		printf("pf_lseek(%d:%s, %d) => %d\n", file->drv, file->name, file->pos, ret);
 		return 0;
 	}
 
 	if(file->pos != fs->fptr){
-		printf("pf_lseek(%d) != %d\n", file->pos, fs->fptr);
+		printf("pf_lseek(%d:%s, %d) != %d\n", file->drv, file->name, file->pos, fs->fptr);
 	}
 
 	if((ret = pf_read(fs, dst, len, &rlen)) != FR_OK){
-		printf("pf_read(%x, %d) => %d\n", dst, len, ret);
+		printf("pf_read(%d:%s, 0x%p, %d) => %d\n", file->drv, file->name, dst, len, ret);
 		return 0;
 	}
 
-	//printf("httpd_fs_read(%s, %d, %d) => %d\n", file->name, file->pos, len, rlen);
+	//printf("httpd_fs_read(%d:%s, %d, %d) => %d\n", file->drv, file->name, file->pos, len, rlen);
 
 	return rlen;
 }
