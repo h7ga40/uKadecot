@@ -202,6 +202,19 @@ PT_THREAD(send_headers(struct httpd_state *s, const char *statushdr))
     memcpy(pos, http_content_encoding_gzip, len); pos += len;
   }
 
+  if (s->file.redirect) {
+    len = strlen(http_location);
+    memcpy(pos, http_location, len); pos += len;
+    if (s->drv == 1) {
+      len = 2;
+      memcpy(pos, "/~", len); pos += len;
+    }
+    len = strlen(s->filename);
+    memcpy(pos, s->filename, len); pos += len;
+    len = 2;
+    memcpy(pos, "\r\n", len); pos += len;
+  }
+
   ptr = strrchr(s->message.request_url, ISO_period);
   if (ptr == NULL) {
     len = strlen(http_content_type_binary);
@@ -247,12 +260,10 @@ PT_THREAD(handle_output(struct httpd_state *s))
 {
   PT_BEGIN(&s->outputpt);
 
-  s->file.fs = ((char *)&s[1]) - 64 - 512;
-
-  if (!httpd_fs_open(s->drv, s->filename, &s->file)) {
+  if (!httpd_fs_open(s->drv, s->filename, sizeof(s->filename), &s->file)) {
     s->drv = 0;
-    httpd_fs_open(s->drv, http_404_html, &s->file);
-    strcpy_s(s->message.request_url, sizeof(s->message.request_url), http_404_html);
+    strcpy_s(s->filename, sizeof(s->filename), http_404_html);
+    httpd_fs_open(s->drv, s->filename, sizeof(s->filename), &s->file);
     PT_WAIT_THREAD(&s->outputpt,
       send_headers(s,
       http_header_404));
@@ -260,7 +271,7 @@ PT_THREAD(handle_output(struct httpd_state *s))
   } else {
     PT_WAIT_THREAD(&s->outputpt,
       send_headers(s,
-      http_header_200));
+      s->file.redirect ? http_header_301 : http_header_200));
     PT_WAIT_THREAD(&s->outputpt, send_file(s));
   }
 
@@ -380,6 +391,8 @@ PT_THREAD(handle_input(struct httpd_state *s))
 {
   size_t done;
   const char *data;
+  char *ptr;
+
   PSOCK_BEGIN(&s->sin);
 
   memset(&s->message, 0, sizeof(s->message));
@@ -406,18 +419,22 @@ PT_THREAD(handle_input(struct httpd_state *s))
 
   /* ""か"/"なら"index.html"に変更 */
   if ((s->message.request_url[0] == '\0') || ((s->message.request_url[0] == '/') && (s->message.request_url[1] == '\0'))) {
-    strncpy_s(s->message.request_url, sizeof(s->message.request_url), http_index_html, sizeof(s->message.request_url));
-    s->filename = s->message.request_url;
+    s->drv = 0;
+    strcpy_s(s->filename, sizeof(s->filename), http_index_html);
   }
   /* "/~/"ならSDカードから読み込み */
   else if ((s->message.request_url[0] == '/') && (s->message.request_url[1] == '~') && (s->message.request_url[2] == '/')) {
     s->drv = 1;
-    s->filename = &s->message.request_url[2];
+    strcpy_s(s->filename, sizeof(s->filename), &s->message.request_url[2]);
   }
   else {
     s->drv = 0;
-    s->filename = s->message.request_url;
+    strcpy_s(s->filename, sizeof(s->filename), s->message.request_url);
   }
+
+  ptr = strrchr(s->filename, '?');
+  if (ptr != NULL)
+    ptr[0] = '\0';
 
   /*  httpd_log_file(uip_conn->ripaddr, s->message.request_url);*/
   /*  httpd_log(s->message.referer);*/
@@ -425,6 +442,7 @@ PT_THREAD(handle_input(struct httpd_state *s))
   if (httpd_strnicmp(http_websocket, s->message.upgrade, sizeof(s->message.upgrade)) == 0) {
     s->state = STATE_WS_OUTPUT;
 
+    s->close_req = 0;
     websocket_init(&s->websocket, uip_getid((struct uip_conn *)((intptr_t)s - offsetof(struct uip_conn, appstate))));
     for (;;) {
       if(s->parse_len <= 0){

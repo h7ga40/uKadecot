@@ -46,17 +46,27 @@ struct httpd_state {
   struct pt outputpt;
   char inputbuf[50];
   char state;
-  int drv;
-  char *filename;
-  int len;
-  struct httpd_fs_file file;
-  int parse_pos;
-  int parse_len;
-  struct http_parser parser;
-  struct http_parser_url handle;
-  struct message message;
-  struct websocket websocket;
-  int close_req;
+  union{
+    struct{
+      int parse_pos;
+      int parse_len;
+      struct http_parser parser;
+      struct http_parser_url handle;
+      struct message message;
+    };
+    struct{
+      char _dummy1[340];
+      int drv;
+      char filename[256];
+      int len;
+      struct httpd_fs_file file;
+    };
+    struct{
+      char _dummy2[340];
+      struct websocket websocket;
+      int close_req;
+    };
+  };
 };
 #define get_context(p) (struct httpd_state *)((intptr_t)p - (intptr_t)&((struct httpd_state *)0)->parser)
 

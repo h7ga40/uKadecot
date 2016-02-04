@@ -57,15 +57,15 @@ void arduino_init()
 	/*
 	 * モジュールストップ機能の設定(S12AD)
 	 */
-	sil_wrh_mem((uint16_t *)SYSTEM_PRCR_ADDR, (uint16_t)0xA502);	/* 書込み許可 */
-	sil_wrw_mem((uint32_t *)SYSTEM_MSTPCRA_ADDR,
-		sil_rew_mem((uint32_t *)SYSTEM_MSTPCRA_ADDR) & ~SYSTEM_MSTPCRA_MSTPA17_BIT);
-	sil_wrh_mem((uint16_t *)SYSTEM_PRCR_ADDR, (uint16_t)0xA500);	/* 書込み禁止 */
+	sil_wrh_mem(SYSTEM_PRCR_ADDR, (uint16_t)0xA502);	/* 書込み許可 */
+	sil_wrw_mem(SYSTEM_MSTPCRA_ADDR,
+		sil_rew_mem(SYSTEM_MSTPCRA_ADDR) & ~SYSTEM_MSTPCRA_MSTPA17_BIT);
+	sil_wrh_mem(SYSTEM_PRCR_ADDR, (uint16_t)0xA500);	/* 書込み禁止 */
 
 	/* 12bitADC初期化 */
-	sil_wrh_mem((uint16_t *)S12AD_ADEXICR_ADDR, 0x0000);	/* 温度センサ出力、内部基準電圧非選択 */
-	sil_wrh_mem((uint16_t *)S12AD_ADANS0_ADDR, 0x00FF);		/* 変換ポートAN000～AN007選択、AN008～AN015非選択 */
-	sil_wrh_mem((uint16_t *)S12AD_ADANS1_ADDR, 0x0000);		/* 変換ポートAN016～AN020非選択 */
+	sil_wrh_mem(S12AD_ADEXICR_ADDR, 0x0000);	/* 温度センサ出力、内部基準電圧非選択 */
+	sil_wrh_mem(S12AD_ADANS0_ADDR, 0x00FF);		/* 変換ポートAN000～AN007選択、AN008～AN015非選択 */
+	sil_wrh_mem(S12AD_ADANS1_ADDR, 0x0000);		/* 変換ポートAN016～AN020非選択 */
 
 	/* PWM出力(490Hz) */
 	sil_wrh_mem(SYSTEM_PRCR_ADDR, (uint16_t)0xA502);	/* 書込み許可 */
@@ -156,20 +156,20 @@ static ER change_pin_function(int pin, bool_t gpio)
 	}
 
 	/* 書き込みプロテクトレジスタの設定 PFSWEビットへの書き込みを許可 */
-	sil_wrb_mem((uint8_t *)MPC_PWPR_ADDR, 0x00);
+	sil_wrb_mem(MPC_PWPR_ADDR, 0x00);
 	/* 書き込みプロテクトレジスタの設定 PxxFSレジスタへの書き込みを許可 */
-	sil_wrb_mem((uint8_t *)MPC_PWPR_ADDR, 0x40);
+	sil_wrb_mem(MPC_PWPR_ADDR, 0x40);
 
 	switch(pin){
 	/* P21/TIOCA3 */
 	case 0:
 		if(gpio){
 			/* P21端子機能制御レジスタ P21とする */
-			sil_wrb_mem((uint8_t *)MPC_P21PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P21PFS_ADDR, 0x00);
 		}
 		else{
 			/* P21端子機能制御レジスタ TIOCA3とする */
-			sil_wrb_mem((uint8_t *)MPC_P21PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P21PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -177,11 +177,11 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 1:
 		if(gpio){
 			/* P20端子機能制御レジスタ P20とする */
-			sil_wrb_mem((uint8_t *)MPC_P20PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P20PFS_ADDR, 0x00);
 		}
 		else{
 			/* P20端子機能制御レジスタ TIOCB3とする */
-			sil_wrb_mem((uint8_t *)MPC_P20PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P20PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -189,11 +189,11 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 2:
 		if(gpio){
 			/* P22端子機能制御レジスタ P22とする */
-			sil_wrb_mem((uint8_t *)MPC_P22PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P22PFS_ADDR, 0x00);
 		}
 		else{
 			/* P22端子機能制御レジスタ TIOCC3とする */
-			sil_wrb_mem((uint8_t *)MPC_P22PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P22PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -201,11 +201,11 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 3:
 		if(gpio){
 			/* P23端子機能制御レジスタ P23とする */
-			sil_wrb_mem((uint8_t *)MPC_P23PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P23PFS_ADDR, 0x00);
 		}
 		else{
 			/* P23端子機能制御レジスタ TIOCD3とする */
-			sil_wrb_mem((uint8_t *)MPC_P23PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P23PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -213,11 +213,11 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 4:
 		if(gpio){
 			/* P24端子機能制御レジスタ P24とする */
-			sil_wrb_mem((uint8_t *)MPC_P24PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P24PFS_ADDR, 0x00);
 		}
 		else{
 			/* P24端子機能制御レジスタ TIOCB4とする */
-			sil_wrb_mem((uint8_t *)MPC_P24PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P24PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -225,11 +225,11 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 5:
 		if(gpio){
 			/* P25端子機能制御レジスタ P25とする */
-			sil_wrb_mem((uint8_t *)MPC_P25PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P25PFS_ADDR, 0x00);
 		}
 		else{
 			/* P25端子機能制御レジスタ TIOCA4とする */
-			sil_wrb_mem((uint8_t *)MPC_P25PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P25PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -237,11 +237,11 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 6:
 		if(gpio){
 			/* P32端子機能制御レジスタ P32とする */
-			sil_wrb_mem((uint8_t *)MPC_P32PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P32PFS_ADDR, 0x00);
 		}
 		else{
 			/* P32端子機能制御レジスタ TIOCC0とする */
-			sil_wrb_mem((uint8_t *)MPC_P32PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P32PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
@@ -249,18 +249,18 @@ static ER change_pin_function(int pin, bool_t gpio)
 	case 7:
 		if(gpio){
 			/* P33端子機能制御レジスタ P33とする */
-			sil_wrb_mem((uint8_t *)MPC_P33PFS_ADDR, 0x00);
+			sil_wrb_mem(MPC_P33PFS_ADDR, 0x00);
 		}
 		else{
 			/* P33端子機能制御レジスタ TIOCD0とする */
-			sil_wrb_mem((uint8_t *)MPC_P33PFS_ADDR, 0x03);
+			sil_wrb_mem(MPC_P33PFS_ADDR, 0x03);
 		}
 		result =  E_OK;
 		break;
 	}
 
 	/* 書き込みプロテクトレジスタの設定 書き込みを禁止 */
-	sil_wrb_mem((uint8_t *)MPC_PWPR_ADDR, 0x80);
+	sil_wrb_mem(MPC_PWPR_ADDR, 0x80);
 
 	/* 機能ポートに設定 */
 	if(!gpio){
@@ -313,9 +313,9 @@ static ER change_pin_function(int pin, bool_t gpio)
 	return result;
 }
 
-static ER change_pin_mode(arduino_pin_mode_t mode, volatile uint8_t *pdr, int bit)
+static ER change_pin_mode(arduino_pin_mode_t mode, volatile __evenaccess uint8_t *pdr, int bit)
 {
-	volatile uint8_t *pcr = pdr + (PORT0_PCR_ADDR - PORT0_PDR_ADDR);
+	volatile __evenaccess uint8_t *pcr = pdr + (PORT0_PCR_ADDR - PORT0_PDR_ADDR);
 
 	switch(mode){
 	case ARDUINO_PIN_MODE_INPUT:
@@ -387,7 +387,7 @@ ER arduino_pinMode(int pin, arduino_pin_mode_t mode)
 	return E_PAR;
 }
 
-static ER write_gpio(arduino_digital_value_t value, volatile uint8_t *podr, int bit)
+static ER write_gpio(arduino_digital_value_t value, volatile __evenaccess uint8_t *podr, int bit)
 {
 	switch(value){
 	case ARDUINO_DIGITAL_VALUE_HIGH:
@@ -451,7 +451,7 @@ ER arduino_digitalWrite(int pin, arduino_digital_value_t value)
 	return E_PAR;
 }
 
-static ER read_gpio(volatile uint8_t *pidr, int bit, arduino_digital_value_t *result)
+static ER read_gpio(volatile __evenaccess uint8_t *pidr, int bit, arduino_digital_value_t *result)
 {
 	if ((sil_reb_mem(pidr) & bit) != 0) {
 		*result = ARDUINO_DIGITAL_VALUE_HIGH;
@@ -522,35 +522,35 @@ ER arduino_analogRead(int pin, int *value)
 {
 	switch(pin){
 	case 14:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR0_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR0_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[0] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 15:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR1_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR1_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[1] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 16:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR2_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR2_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[2] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 17:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR3_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR3_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[3] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 18:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR4_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR4_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[4] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 19:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR5_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR5_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[5] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 20:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR6_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR6_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[6] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	case 21:
-		/* *value = sil_reh_mem((uint16_t *)S12AD_ADDR7_ADDR); */
+		/* *value = sil_reh_mem(S12AD_ADDR7_ADDR); */
 		*value = 1023 - (arduino_ad_avelage[7] / (arduino_ad_table_count * 4/*12bit→10bit*/));
 		return E_OK;
 	}
@@ -604,7 +604,7 @@ ER arduino_analogWrite(int pin, int value)
 
 void arduino_tick()
 {
-	static volatile uint16_t *const regs[8] = {
+	static volatile __evenaccess uint16_t *const regs[8] = {
 		S12AD_ADDR0_ADDR,
 		S12AD_ADDR1_ADDR,
 		S12AD_ADDR2_ADDR,
@@ -618,7 +618,7 @@ void arduino_tick()
 	int i;
 
 	/* ADCの変換結果取得 */
-	if((sil_reb_mem((uint8_t *)S12AD_ADCSR_ADDR) & S12AD_ADCSR_ADST_BIT) == 0){
+	if((sil_reb_mem(S12AD_ADCSR_ADDR) & S12AD_ADCSR_ADST_BIT) == 0){
 		for (i = 0; i < 8; i++){
 			arduino_ad_avelage[i] -= arduino_ad_table[i][arduino_ad_pos];
 			ad_value = sil_reh_mem(regs[i]);
@@ -632,6 +632,6 @@ void arduino_tick()
 		}
 
 		/* 変換開始（シングルスキャンモード） */
-		sil_wrb_mem((uint8_t *)S12AD_ADCSR_ADDR, S12AD_ADCSR_ADST_BIT);
+		sil_wrb_mem(S12AD_ADCSR_ADDR, S12AD_ADCSR_ADST_BIT);
 	}
 }

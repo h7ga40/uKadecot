@@ -39,6 +39,13 @@
 #include "diskio.h"
 #include "mmc_rspi.h"
 #include <string.h>
+#include "http-strings.h"
+
+#ifndef _MSC_VER
+#ifndef strcat_s
+#define strcat_s(dst, dsz, src) strcat(dst, src)
+#endif
+#endif
 
 //#define FILE_DUMP
 #ifdef FILE_DUMP
@@ -113,15 +120,18 @@ httpd_fs_init(void)
 }
 /*-----------------------------------------------------------------------------------*/
 int
-httpd_fs_open(int drv, const char *name, struct httpd_fs_file *file)
+httpd_fs_open(int drv, char *name, int len, struct httpd_fs_file *file)
 {
 	FRESULT res;
-	FATFS *fs = (FATFS *)file->fs;
+	FATFS *fs = (FATFS *)&file->fs;
+	FILINFO fno;
+	DIR dir;
 
 	file->pos = 0;
 	file->len = 0;
 	file->drv = drv;
 	file->name = name;
+	file->redirect = 0;
 	memset(fs, 0, sizeof(FATFS));
 
 	if (drv == 0) {
@@ -142,9 +152,30 @@ httpd_fs_open(int drv, const char *name, struct httpd_fs_file *file)
 		}
 	}
 
-	if((res = pf_open(fs, name)) != FR_OK){
-		printf("pf_open(%d:%s) => %d\n", drv, name, res);
-		return 0;
+	if ((res = pf_open(fs, name)) != FR_OK) {
+		dir.fs = fs;
+		if ((res = pf_opendir(&dir, name)) != FR_OK) {
+			printf("pf_opendir(%d:%s) => %d\n", drv, name, res);
+			return 0;
+		}
+
+		if ((res = pf_readdir(&dir, &fno)) != FR_OK) {
+			printf("pf_readdir(%d:%s) => %d\n", drv, name, res);
+			return 0;
+		}
+
+		if (len != 0/*fno.fattrib & AM_DIR*/) {
+			strcat_s(name, len, http_index_html);
+			res = pf_open(fs, name);
+			file->redirect = res == FR_OK;
+		}
+		else
+			res = FR_NO_FILE;
+
+		if (res != FR_OK) {
+			printf("pf_open(%d:%s) => %d %x\n", drv, name, res, fno.fattrib);
+			return 0;
+		}
 	}
 
 	file->len = fs->fsize;
@@ -159,7 +190,7 @@ httpd_fs_read(struct httpd_fs_file *file, void *dst, int len)
 {
 	FRESULT ret;
 	UINT rlen;
-	FATFS *fs = (FATFS *)file->fs;
+	FATFS *fs = (FATFS *)&file->fs;
 
 	if((ret = pf_lseek(fs, file->pos)) != FR_OK){
 		printf("pf_lseek(%d:%s, %d) => %d\n", file->drv, file->name, file->pos, ret);

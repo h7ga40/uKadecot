@@ -42,12 +42,13 @@ struct httpd_fs_file {
   int len;
   int drv;
   const char *name;
-  void *fs;
+  int redirect;
+  char fs[64 + 512/*sizeof(FATFS)*/];
 };
 
 /* file must be allocated by caller and will be filled in
    by the function. */
-int httpd_fs_open(int drv, const char *name, struct httpd_fs_file *file);
+int httpd_fs_open(int drv, char *name, int len, struct httpd_fs_file *file);
 int httpd_fs_read(struct httpd_fs_file *file, void *dst, int len);
 
 #ifdef HTTPD_FS_STATISTICS

@@ -20,6 +20,7 @@ extern const char http_sec_websocket_accept[23];
 extern const char http_sec_websocket_protocol[25];
 extern const char http_header_101[35];
 extern const char http_header_200[77];
+extern const char http_header_301[92];
 extern const char http_header_404[84];
 extern const char http_content_encoding_gzip[25];
 extern const char http_websocket_guid[37];
