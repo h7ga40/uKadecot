@@ -106,6 +106,7 @@ union temp_type_t {
 struct temp_buf_t{
 	char headers[MAX(sizeof(http_header_404), sizeof(http_header_200))
 		+ sizeof(http_content_encoding_gzip)
+		+ sizeof(http_location) + sizeof(((struct httpd_state *)0)->filename) + 2
 		+ sizeof(union temp_type_t)
 	];
 	char ws_headers[sizeof(http_header_101)
@@ -211,11 +212,16 @@ PT_THREAD(send_headers(struct httpd_state *s, const char *statushdr))
     }
     len = strlen(s->filename);
     memcpy(pos, s->filename, len); pos += len;
+    if (s->query != NULL) {
+      pos[0] = '?'; pos++;
+      len = strlen(s->query);
+      memcpy(pos, s->query, len); pos += len;
+    }
     len = 2;
     memcpy(pos, "\r\n", len); pos += len;
   }
 
-  ptr = strrchr(s->message.request_url, ISO_period);
+  ptr = strrchr(s->filename, ISO_period);
   if (ptr == NULL) {
     len = strlen(http_content_type_binary);
     memcpy(pos, http_content_type_binary, len); pos += len;
@@ -417,10 +423,19 @@ PT_THREAD(handle_input(struct httpd_state *s))
     PSOCK_CLOSE_EXIT(&s->sin);
   }
 
+  ptr = strrchr(s->message.request_url, '?');
+  if (ptr != NULL){
+    ptr[0] = '\0';
+    s->query = &ptr[1];
+  }
+  else
+    s->query = NULL;
+
   /* ""か"/"なら"index.html"に変更 */
   if ((s->message.request_url[0] == '\0') || ((s->message.request_url[0] == '/') && (s->message.request_url[1] == '\0'))) {
     s->drv = 0;
     strcpy_s(s->filename, sizeof(s->filename), http_index_html);
+    s->file.redirect = 1;
   }
   /* "/~/"ならSDカードから読み込み */
   else if ((s->message.request_url[0] == '/') && (s->message.request_url[1] == '~') && (s->message.request_url[2] == '/')) {
@@ -431,10 +446,6 @@ PT_THREAD(handle_input(struct httpd_state *s))
     s->drv = 0;
     strcpy_s(s->filename, sizeof(s->filename), s->message.request_url);
   }
-
-  ptr = strrchr(s->filename, '?');
-  if (ptr != NULL)
-    ptr[0] = '\0';
 
   /*  httpd_log_file(uip_conn->ripaddr, s->message.request_url);*/
   /*  httpd_log(s->message.referer);*/

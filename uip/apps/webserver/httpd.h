@@ -59,6 +59,7 @@ struct httpd_state {
       int drv;
       char filename[256];
       int len;
+      char *query;
       struct httpd_fs_file file;
     };
     struct{
