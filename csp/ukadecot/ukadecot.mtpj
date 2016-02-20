@@ -159,7 +159,7 @@
     <Instance Guid="4e012b1a-8795-42f3-b39c-61d26949c471">
       <Name>psock.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\psock.c</RelativePath>
+      <RelativePath>..\..\uip\net\ip\psock.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>20018d79-920c-43d6-bd84-347000a47e0a</Property>
@@ -167,7 +167,7 @@
     <Instance Guid="85f63bab-6a98-40fd-a7a3-554f50ba0bda">
       <Name>timer.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\timer.c</RelativePath>
+      <RelativePath>..\..\uip\sys\timer.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>24f5f0de-962d-4248-83ef-26c54c123be1</Property>
@@ -175,7 +175,7 @@
     <Instance Guid="bf1def42-49c6-47f9-8469-024fce72c520">
       <Name>uip.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\uip.c</RelativePath>
+      <RelativePath>..\..\uip\net\ipv4\uip.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>519f7d7d-8770-4308-8539-27c22fcd29c3</Property>
@@ -183,7 +183,7 @@
     <Instance Guid="1237608f-20f3-48ff-bb64-fa91866be8ff">
       <Name>uip_arp.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\uip_arp.c</RelativePath>
+      <RelativePath>..\..\uip\net\ipv4\uip_arp.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>18c25f2d-4f1e-47f5-a718-54cc506d285f</Property>
@@ -191,7 +191,7 @@
     <Instance Guid="18854485-3e8d-45c6-af26-3c91fb86ab27">
       <Name>uip-fw.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\uip-fw.c</RelativePath>
+      <RelativePath>..\..\uip\net\ipv4\uip-fw.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>8fec4e19-fb0c-4084-9098-d3235c642c72</Property>
@@ -199,7 +199,7 @@
     <Instance Guid="3c45dc57-e843-4d8a-843b-9ba60af3b64c">
       <Name>uiplib.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\uiplib.c</RelativePath>
+      <RelativePath>..\..\uip\net\ip\uiplib.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>c83321d4-7af1-4344-8eaa-d0f3c80061e4</Property>
@@ -207,7 +207,7 @@
     <Instance Guid="c2f52a1a-5ece-44e6-a507-0a3b745cdc25">
       <Name>uip-neighbor.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\uip-neighbor.c</RelativePath>
+      <RelativePath>..\..\uip\net\ipv4\uip-neighbor.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>2a21747e-b8f9-480e-b810-d01ef7b42a8f</Property>
@@ -215,7 +215,7 @@
     <Instance Guid="4ca9d7d2-101e-4576-a66d-44d31d3313b6">
       <Name>uip-split.c</Name>
       <Type>File</Type>
-      <RelativePath>..\..\uip\uip\uip-split.c</RelativePath>
+      <RelativePath>..\..\uip\net\ip\uip-split.c</RelativePath>
       <TreeImageGuid>941832c1-fc3b-4e1b-94e8-01ea17128b42</TreeImageGuid>
       <ParentItem>07edd6aa-1254-4772-97df-f1e1d4b198bd</ParentItem>
       <Property>9e852822-ba69-46bf-a0a0-69cc8f9a2e35</Property>
@@ -1034,7 +1034,9 @@
 -include=..\..\ssp\arch
 -include=..\..\ssp\pdic
 -include=..\..\ssp\target\grsakura_ccrx
--include=..\..\uip\uip
+-include=..\..\uip\net\ip
+-include=..\..\uip\net\ipv4
+-include=..\..\uip\sys
 -include=..\..\uip\task
 -include=..\..\uip\apps\dhcpc
 -include=..\..\uip\apps\webserver
@@ -1123,7 +1125,9 @@
 ..\..\ssp\arch
 ..\..\ssp\pdic
 ..\..\ssp\target\grsakura_ccrx
-..\..\uip\uip
+..\..\uip\net\ip
+..\..\uip\net\ipv4
+..\..\uip\sys
 ..\..\uip\task
 ..\..\uip\apps\dhcpc
 ..\..\uip\apps\webserver
@@ -1156,7 +1160,9 @@
 -include=..\..\ssp\arch
 -include=..\..\ssp\pdic
 -include=..\..\ssp\target\grsakura_ccrx
--include=..\..\uip\uip
+-include=..\..\uip\net\ip
+-include=..\..\uip\net\ipv4
+-include=..\..\uip\sys
 -include=..\..\uip\task
 -include=..\..\uip\apps\dhcpc
 -include=..\..\uip\apps\webserver
