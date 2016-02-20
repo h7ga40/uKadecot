@@ -44,7 +44,7 @@
 #include "kernel_cfg.h"
 #include "kernel/kernel_impl.h"
 #include "uip_target_config.h"
-#include "uip_arp.h"
+#include "net/ipv4/uip_arp.h"
 #include "if_rx62n.h"
 #include "ether_phy.h"
 

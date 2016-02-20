@@ -53,7 +53,7 @@ int httpd_fs_read(struct httpd_fs_file *file, void *dst, int len);
 
 #ifdef HTTPD_FS_STATISTICS
 #if HTTPD_FS_STATISTICS == 1
-u16_t httpd_fs_count(char *name);
+uint16_t httpd_fs_count(char *name);
 #endif /* HTTPD_FS_STATISTICS */
 #endif /* HTTPD_FS_STATISTICS */
 

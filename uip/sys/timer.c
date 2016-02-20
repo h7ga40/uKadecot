@@ -45,8 +45,8 @@
  * $Id$
  */
 
-#include "clock.h"
-#include "timer.h"
+#include "sys/clock.h"
+#include "sys/timer.h"
 
 /*---------------------------------------------------------------------------*/
 /**

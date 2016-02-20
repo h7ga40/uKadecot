@@ -46,7 +46,7 @@
 #include <stdlib.h>
 #include <t_syslog.h>
 #include <sil.h>
-#include <uip.h>
+#include <net/ip/uip.h>
 #include "uip_adpt.h"
 
 #include "syssvc/serial.h"

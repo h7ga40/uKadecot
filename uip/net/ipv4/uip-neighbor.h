@@ -42,7 +42,7 @@
 #ifndef __UIP_NEIGHBOR_H__
 #define __UIP_NEIGHBOR_H__
 
-#include "uip.h"
+#include "net/ip/uip.h"
 
 struct uip_neighbor_addr {
 #if UIP_NEIGHBOR_CONF_ADDRTYPE

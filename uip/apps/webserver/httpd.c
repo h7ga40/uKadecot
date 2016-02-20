@@ -55,7 +55,7 @@
  * $Id$
  */
 
-#include "uip.h"
+#include "net/ip/uip.h"
 #include "httpd.h"
 #include "httpd-fs.h"
 #include "http-strings.h"

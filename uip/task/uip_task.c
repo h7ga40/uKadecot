@@ -37,9 +37,9 @@
 
 #include <string.h>
 #include <kernel.h>
-#include "uip.h"
-#include "uip_arp.h"
-#include "timer.h"
+#include "net/ip/uip.h"
+#include "net/ipv4/uip_arp.h"
+#include "sys/timer.h"
 #include "uip_task.h"
 #include "uip_nic_config.h"
 #include "kernel_cfg.h"
@@ -56,14 +56,14 @@ struct uip_task_t {
 	struct pt pt;
 	struct uip_timer periodic_timer, arp_timer;
 	clock_time_t timer;
-	u8_t uip_buf[UIP_BUFSIZE + 2];
+	uint8_t uip_buf[UIP_BUFSIZE + 2];
 };
 
 struct uip_task_t uiptsk = {
 	UIP_TASK
 };
 
-u8_t *uip_buf = uiptsk.uip_buf;
+uint8_t *uip_buf = uiptsk.uip_buf;
 
 typedef struct _uip_out_buf_t
 {
@@ -72,18 +72,18 @@ typedef struct _uip_out_buf_t
 		struct uip_udp_conn *udp;
 	} cepid;
 	uip_ipaddr_t ripaddr;
-	u16_t rport;
+	uint16_t rport;
 	int len;
-	u8_t data[UIP_BUFSIZE + 2];
+	uint8_t data[UIP_BUFSIZE + 2];
 } UIP_OUT_BUF_T;
 
 #define UIP_BUF_COUNT 6
 UIP_OUT_BUF_T uip_out_buf[UIP_BUF_COUNT];
 int uip_out_wpos = 0;
 int uip_out_rpos = 0;
-u8_t my_ip[4] = { IPV4_ADDR_LOCAL };
-u8_t my_netmask[4] = { IPV4_ADDR_LOCAL_MASK };
-u8_t my_default_router[4] = { IPV4_ADDR_DEFAULT_GW };
+uint8_t my_ip[4] = { IPV4_ADDR_LOCAL };
+uint8_t my_netmask[4] = { IPV4_ADDR_LOCAL_MASK };
+uint8_t my_default_router[4] = { IPV4_ADDR_DEFAULT_GW };
 int ws_out_req;
 int ws_out_res;
 #ifdef __DHCPC_H__

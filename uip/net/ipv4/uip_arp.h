@@ -52,7 +52,7 @@
 #ifndef __UIP_ARP_H__
 #define __UIP_ARP_H__
 
-#include "uip.h"
+#include "net/ip/uip.h"
 
 #ifdef __RX
 #pragma pack
@@ -68,7 +68,7 @@ extern struct uip_eth_addr uip_ethaddr;
 struct uip_eth_hdr {
   struct uip_eth_addr dest;
   struct uip_eth_addr src;
-  u16_t type;
+  uint16_t type;
 };
 
 #ifdef __RX

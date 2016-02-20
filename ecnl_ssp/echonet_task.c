@@ -49,7 +49,7 @@
 #include "syssvc/serial.h"
 #include "syssvc/syslog.h"
 
-#include "uip.h"
+#include "net/ip/uip.h"
 
 #include "echonet.h"
 #include "echonet_fbs.h"

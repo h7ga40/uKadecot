@@ -39,7 +39,7 @@
 
 #include "ether_phy.h"
 #include <kernel.h>
-#include "uip.h"
+#include "net/ip/uip.h"
 #include <sil.h>
 
 #define PHY_CONTROL_REGISTER	0x00

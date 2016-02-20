@@ -36,7 +36,7 @@
  */
 
 #include <kernel.h>
-#include "uip.h"
+#include "net/ip/uip.h"
 #include "uip_adpt.h"
 #include "t_syslog.h"
 #include "kernel_cfg.h"

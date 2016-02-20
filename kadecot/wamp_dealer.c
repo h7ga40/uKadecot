@@ -45,7 +45,7 @@
 #include "echonet_agent.h"
 #include "arduino.h"
 #include "data_flash.h"
-#include "uip.h"
+#include "net/ip/uip.h"
 #include "uip_adpt.h"
 
 #ifndef _MSC_VER

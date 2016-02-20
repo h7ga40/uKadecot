@@ -37,7 +37,7 @@
 
 #include <string.h>
 #include "websocket.h"
-#include "uip.h"
+#include "net/ip/uip.h"
 #include "kernel.h"
 #include "kernel_cfg.h"
 
@@ -68,7 +68,7 @@ void websocket_destroy(struct websocket *ws)
 int websocket_input(struct websocket *ws, const void *data, int len)
 {
 	ws_state_t *s = &ws->rstate;
-	const u8_t *pos = (const u8_t *)data, *end = &((const u8_t *)data)[len];
+	const uint8_t *pos = (const uint8_t *)data, *end = &((const uint8_t *)data)[len];
 
 	for(; pos < end; pos++){
 		switch (s->state)
@@ -191,7 +191,7 @@ bool_t websocket_newdata(struct websocket *ws)
 int websocket_output(struct websocket *ws, void *data, int len)
 {
 	ws_state_t *s = &ws->wstate;
-	u8_t *pos = (u8_t *)data, *end = &((u8_t *)data)[len];
+	uint8_t *pos = (uint8_t *)data, *end = &((uint8_t *)data)[len];
 
 	for(; pos < end; pos++){
 		switch (s->state)

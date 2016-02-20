@@ -54,7 +54,7 @@ extern "C" {
 
 typedef struct t_ipv4ep {
 	T_IN4_ADDR	ipaddr;		/* IPv4アドレス		*/
-	u16_t		portno;		/* ポート番号		*/
+	uint16_t		portno;		/* ポート番号		*/
 } T_IPV4EP;
 
 #define MAKE_IPV4_ADDR(a,b,c,d) a,b,c,d
@@ -62,8 +62,8 @@ typedef struct t_ipv4ep {
 typedef struct t_tcp_ccep
 {
 	T_IN4_ADDR	ripaddr;		/* リモートIPv4アドレス		*/
-	u16_t		rport;			/* リモートポート番号		*/
-	u16_t		lport;			/* ローカルポート番号		*/
+	uint16_t		rport;			/* リモートポート番号		*/
+	uint16_t		lport;			/* ローカルポート番号		*/
 	void(*callback)(struct uip_conn *uip_conn, int fncd, void *p_parblk);
 } T_TCP_CCEP;
 
@@ -74,8 +74,8 @@ int tcp_rcv_dat(struct uip_conn *cepid, T_IPV4EP *p_srcaddr, void *data, int len
 typedef struct t_udp_ccep
 {
 	T_IN4_ADDR	ripaddr;		/* リモートIPv4アドレス		*/
-	u16_t		rport;			/* リモートポート番号		*/
-	u16_t		lport;			/* ローカルポート番号		*/
+	uint16_t		rport;			/* リモートポート番号		*/
+	uint16_t		lport;			/* ローカルポート番号		*/
 	void (*callback)(struct uip_udp_conn *uip_udp_conn, int fncd, void *p_parblk);
 } T_UDP_CCEP;
 

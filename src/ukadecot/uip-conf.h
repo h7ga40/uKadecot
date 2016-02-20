@@ -62,7 +62,7 @@
  *
  * \hideinitializer
  */
-typedef unsigned char u8_t;
+typedef unsigned char uint8_t;
 
 /**
  * 16 bit datatype
@@ -71,7 +71,7 @@ typedef unsigned char u8_t;
  *
  * \hideinitializer
  */
-typedef unsigned short u16_t;
+typedef unsigned short uint16_t;
 
 /**
  * Statistics datatype
@@ -180,14 +180,14 @@ extern void syslog(unsigned int prio, const char *format, ...);
 /*#include "smtp.h"*/
 /*#include "hello-world.h"*/
 /*#include "telnetd.h"*/
-#include "webserver.h"
-#include "dhcpc.h"
+#include "webserver/webserver.h"
+#include "dhcpc/dhcpc.h"
 /*#include "resolv.h"*/
 /*#include "webclient.h"*/
 /*#include "httpd.h"*/
 
-#include "timer.h"
-#include "pt.h"
+#include "sys/timer.h"
+#include "sys/pt.h"
 
 struct ecnl_state {
 	struct pt pt;

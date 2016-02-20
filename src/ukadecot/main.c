@@ -52,8 +52,8 @@
 #else
 #include "rx630_msvc/rx630.h"
 #endif
-#include <uip.h>
-#include <pt.h>
+#include <net/ip/uip.h>
+#include <sys/pt.h>
 #include "uip_adpt.h"
 #include "wamp.h"
 // TODO:コントローラ向けヘッダーファイルを作成する
@@ -457,9 +457,9 @@ wamp_state_t wamp;
  */
 static void main_initialize()
 {
-	extern u8_t my_ip[4];
-	extern u8_t my_netmask[4];
-	extern u8_t my_default_router[4];
+	extern uint8_t my_ip[4];
+	extern uint8_t my_netmask[4];
+	extern uint8_t my_default_router[4];
 	uint8_t btn1, btn2;
 	uint8_t data[32], c;
 	int i, j;

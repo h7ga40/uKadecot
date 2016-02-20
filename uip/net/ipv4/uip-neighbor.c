@@ -39,7 +39,7 @@
  *         Adam Dunkels <adam@sics.se>
  */
 
-#include "uip-neighbor.h"
+#include "net/ipv4/uip-neighbor.h"
 
 #include <string.h>
 
@@ -54,7 +54,7 @@
 struct neighbor_entry {
   uip_ipaddr_t ipaddr;
   struct uip_neighbor_addr addr;
-  u8_t time;
+  uint8_t time;
 };
 static struct neighbor_entry entries[ENTRIES];
 
@@ -85,7 +85,7 @@ void
 uip_neighbor_add(uip_ipaddr_t ipaddr, struct uip_neighbor_addr *addr)
 {
   int i, oldest;
-  u8_t oldest_time;
+  uint8_t oldest_time;
 
   printf("Adding neighbor with link address %02x:%02x:%02x:%02x:%02x:%02x\n",
          addr->addr.addr[0], addr->addr.addr[1], addr->addr.addr[2], addr->addr.addr[3],

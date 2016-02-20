@@ -35,7 +35,7 @@
 #ifndef __HTTPD_H__
 #define __HTTPD_H__
 
-#include "psock.h"
+#include "net/ip/psock.h"
 #include "httpd-fs.h"
 #include "http_pcb.h"
 #include "websocket.h"
@@ -75,6 +75,6 @@ void httpd_init(void);
 void httpd_appcall(void);
 
 void httpd_log(char *msg);
-void httpd_log_file(u16_t *requester, char *file);
+void httpd_log_file(uint16_t *requester, char *file);
 
 #endif /* __HTTPD_H__ */
