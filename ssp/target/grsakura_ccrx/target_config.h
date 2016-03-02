@@ -62,8 +62,8 @@
  *  ラベルの位置にある.blkb命令のサイズと, 以下DEFAULT_ISTKSZの
  *  サイズを合わせて同じ値に変更すること.
  */
-#define DEFAULT_ISTKSZ		( 0x2000U )
-#define DEFAULT_ISTK		(STK_T *)(0x18000 - DEFAULT_ISTKSZ)
+#define DEFAULT_ISTKSZ		( 0x800U )
+#define DEFAULT_ISTK		(STK_T *)(0x800 - DEFAULT_ISTKSZ)
 
 
 /*
