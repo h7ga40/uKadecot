@@ -433,7 +433,7 @@ ecn_node_t *ecn_agent_create_node(ecn_agent_t *agent, T_EDATA *esv)
 
 			memset(result, 0, sizeof(*result));
 			node = &result->node;
-			node->enodId = ((T_ECN_FST_BLK *)esv)->hdr.sender;
+			node->enodId = ((T_ECN_FST_BLK *)esv)->hdr.sender.id;
 			node->base.eobjId = tmax_eobjid + 1 + (((intptr_t)result - (intptr_t)agent->blockes) / sizeof(agent->blockes[0]));
 			node->base.inib.enodid = 0;
 			node->base.inib.eobjatr = EOBJ_SYNC_REMOTE_NODE;
@@ -569,7 +569,7 @@ static ER ecn_agent_proc_get_device_list(ecn_agent_t *agent, ECN_FBS_ID req)
 		}
 	}
 
-	ret = psnd_dtq(res.ptr->hdr.target_mbxid, (intptr_t)res.ptr);
+	ret = psnd_dtq(res.ptr->hdr.target.mbxid, (intptr_t)res.ptr);
 	if (ret != E_OK) {
 		_ecn_fbs_del(res);
 		return ret;
@@ -633,7 +633,7 @@ static ER ecn_agent_proc_get_device_info(ecn_agent_t *agent, ECN_FBS_ID req)
 		return ret;
 	}
 
-	ret = psnd_dtq(res.ptr->hdr.target_mbxid, (intptr_t)res.ptr);
+	ret = psnd_dtq(res.ptr->hdr.target.mbxid, (intptr_t)res.ptr);
 	if (ret != E_OK) {
 		_ecn_fbs_del(res);
 		return ret;

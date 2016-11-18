@@ -110,17 +110,17 @@ typedef struct
 	uint16_t	length;			/* メッセージ長 */
 	uint16_t	type;			/* メッセージタイプ */
 	union{
-		ECN_ENOD_ID sender;		/* 送信元ノードID（ECHONET電文） */
-		ID sender_mbxid;		/* 送信元メールボックスID（内部メッセージ） */
-	};
+		ECN_ENOD_ID id;			/* 送信元ノードID（ECHONET電文） */
+		ID mbxid;				/* 送信元メールボックスID（内部メッセージ） */
+	}sender;
 	union{
-		ECN_ENOD_ID target;		/* 送信先ノードID（ECHONET電文） */
-		ID target_mbxid;		/* 送信先メールボックスID（内部メッセージ） */
-	};
+		ECN_ENOD_ID id;			/* 送信先ノードID（ECHONET電文） */
+		ID mbxid;				/* 送信先メールボックスID（内部メッセージ） */
+	}target;
 	union{
-		ECN_ENOD_ID reply;		/* 返信先ノードID（ECHONET電文） */
-		ID reply_mbxid;			/* 返信先メールボックスID（内部メッセージ） */
-	};
+		ECN_ENOD_ID id;			/* 返信先ノードID（ECHONET電文） */
+		ID mbxid;				/* 返信先メールボックスID（内部メッセージ） */
+	}reply;
 
 	int			rd;				/*	読み取りヘッド情報	*/
 	int			wr;				/*	書き込みヘッド情報	*/

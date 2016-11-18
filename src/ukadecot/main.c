@@ -1093,7 +1093,7 @@ static void main_search_device_timeout()
 			break;
 		}
 
-		ret = psnd_dtq(req.ptr->hdr.target_mbxid, (intptr_t)req.ptr);
+		ret = psnd_dtq(req.ptr->hdr.target.mbxid, (intptr_t)req.ptr);
 		if (ret != E_OK) {
 			syslog(LOG_ERROR, "psnd_dtq");
 			_ecn_fbs_del(req);
@@ -1153,7 +1153,7 @@ ER main_get_device_ipaddr(unsigned int requestId, struct wamp_dealer *dealer, EC
 		return ret;
 	}
 
-	ret = psnd_dtq(req.ptr->hdr.target_mbxid, (intptr_t)req.ptr);
+	ret = psnd_dtq(req.ptr->hdr.target.mbxid, (intptr_t)req.ptr);
 	if (ret != E_OK) {
 		syslog(LOG_ERROR, "psnd_dtq");
 		_ecn_fbs_del(req);
@@ -1211,7 +1211,7 @@ ER main_get_device_info(unsigned int requestId, struct wamp_dealer *dealer, ID e
 		return ret;
 	}
 
-	ret = psnd_dtq(req.ptr->hdr.target_mbxid, (intptr_t)req.ptr);
+	ret = psnd_dtq(req.ptr->hdr.target.mbxid, (intptr_t)req.ptr);
 	if (ret != E_OK) {
 		syslog(LOG_ERROR, "psnd_dtq");
 		_ecn_fbs_del(req);

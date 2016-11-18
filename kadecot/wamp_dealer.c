@@ -290,6 +290,7 @@ void wamp_dealer_call_procedure(wamp_dealer_t *dealer, const char *value, int le
 		static const char ecnlSetGet[] = "procedure.setget";
 		static const char setInitParams[] = "procedure.setInitParams";
 		static const char getInitParams[] = "procedure.getInitParams";
+		value = &value[sizeof(jpToppersEcnl) - 1];
 
 		if (strncmp(getDeviceInfo, value, sizeof(getDeviceInfo) - 1) == 0) {
 			dealer->procedure = WAMP_DEALER_PROCEDURE_GET_DEVICEINFO;

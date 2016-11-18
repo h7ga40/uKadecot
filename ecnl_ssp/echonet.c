@@ -328,8 +328,7 @@ ER ecn_add_edt(T_EDATA *pk_esv, uint8_t fa_epc, uint8_t fa_pdc, const void *p_ed
 	a_ret = _ecn_fbs_add_data_ex(a_fbs_id, &a_ecn_prp, sizeof(a_ecn_prp));
 	if (a_ret) {
 		ECN_DBG_PUT("ecn_add_edt(): _ecn_fbs_add_data_ex(*, ecn_prp{epc:0x%02X}, %u) result = %d:%s",
-			a_ecn_prp.epc, sizeof(a_ecn_prp),
-			a_ret, itron_strerror(a_ret));
+			a_ecn_prp.epc, sizeof(a_ecn_prp), a_ret, itron_strerror(a_ret));
 		goto lb_except;
 	}
 	if (0 < fa_pdc) {
@@ -337,8 +336,7 @@ ER ecn_add_edt(T_EDATA *pk_esv, uint8_t fa_epc, uint8_t fa_pdc, const void *p_ed
 		a_ret = _ecn_fbs_add_data_ex(a_fbs_id, p_edt, fa_pdc);
 		if (a_ret) {
 			ECN_DBG_PUT("ecn_add_edt(): _ecn_fbs_add_data_ex(*, ecn_prp{epc:0x%02X} edt, %u) result = %d:%s",
-				a_ecn_prp.epc, fa_pdc,
-				a_ret, itron_strerror(a_ret));
+				a_ecn_prp.epc, fa_pdc, a_ret, itron_strerror(a_ret));
 			goto lb_except;
 		}
 	}
@@ -408,7 +406,7 @@ ID ecn_get_enod(T_EDATA *pk_esv)
 	T_ECN_EDT_HDR	*p_esv;
 
 	p_esv = &pk_esv->hdr;
-	p_snod = _ecn_eno_fnd(((T_ECN_FST_BLK *)pk_esv)->hdr.sender);
+	p_snod = _ecn_eno_fnd(((T_ECN_FST_BLK *)pk_esv)->hdr.sender.id);
 	if (p_snod != NULL) {
 		p_sobj = p_snod->profile;
 	}
@@ -432,7 +430,7 @@ ID ecn_get_eobj(T_EDATA *pk_esv)
 	T_ECN_EDT_HDR	*p_esv;
 
 	p_esv = &pk_esv->hdr;
-	p_snod = _ecn_eno_fnd(((T_ECN_FST_BLK *)pk_esv)->hdr.sender);
+	p_snod = _ecn_eno_fnd(((T_ECN_FST_BLK *)pk_esv)->hdr.sender.id);
 	if (p_snod != NULL) {
 		/* ノードプロファイルの場合 */
 		if ((p_esv->edata.seoj.eojx1 == EOJ_X1_PROFILE)
@@ -502,15 +500,12 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 		return E_PAR;
 	if (!p_pdc)
 		return E_PAR;
-	if (!p_edt)
-		return E_PAR;
 	if (!pk_itr->pk_esv)
 		return E_PAR;
 
 	if (pk_itr->is_eof)
 		return E_BOVR; /* データ終了 */
-	if (	pk_itr->count <= pk_itr->got_ct
-	&&	pk_itr->next_blk_ct < 1) {
+	if (pk_itr->count <= pk_itr->got_ct && pk_itr->next_blk_ct < 1) {
 		pk_itr->is_eof = 1;			/* 終端に達した時、非0 */
 		return E_BOVR; /* データ終了 */
 	}
@@ -522,7 +517,7 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 	a_fbs_id.ptr->hdr.rd = pk_itr->cur;
 
 #ifdef ECN_ENA_ITR_NXT_CARP
-	ECN_CAP_PUT("ecn_itr_nxt() rd.cur=b%dp%d", pk_itr->cur.blk, pk_itr->cur.pos ECN_CAP_PUT(;
+	ECN_CAP_PUT("ecn_itr_nxt() rd.cur=b%dp%d", pk_itr->cur.blk, pk_itr->cur.pos);
 #endif
 	if (pk_itr->count <= pk_itr->got_ct && 0 < pk_itr->next_blk_ct) {
 		/* 次ブロックに移動 */
@@ -549,8 +544,7 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 	if (a_ret != E_OK)
 		goto lb_except;
 	if (a_rd_len < sizeof(a_ecn_prp)) {
-		ECN_DBG_PUT("ecn_itr_nxt() ecn_prp read fault." 
-			" rd.cur=%d", pk_itr->cur);
+		ECN_DBG_PUT("ecn_itr_nxt() ecn_prp read fault. rd.cur=%d", pk_itr->cur);
 		pk_itr->is_eof = 1;			/* 終端に達した時、非0 */
 		a_ret = E_BOVR;	/* データ終了 */
 		goto lb_finally;
@@ -559,23 +553,30 @@ ER ecn_itr_nxt(T_ENUM_EPC *pk_itr, uint8_t *p_epc, uint8_t *p_pdc, void *p_edt)
 	*p_pdc = a_ecn_prp.pdc;
 
 	if (0 < a_ecn_prp.pdc) {
-		/* 付随データを読み取る */
-		a_rd_len = 0;
-		a_ret = _ecn_fbs_get_data(a_fbs_id, p_edt, a_ecn_prp.pdc, &a_rd_len);
-		if (a_ret != E_OK)
-			goto lb_except;
-		if (a_rd_len < (ECN_FBS_SSIZE_T)a_ecn_prp.pdc) {
-			ECN_DBG_PUT("ecn_itr_nxt() edt read fault."
-				" rd.cur=%d,epc=0x%02X,pdc=%u", pk_itr->cur, a_ecn_prp.epc , a_ecn_prp.pdc);
-			pk_itr->is_eof = 1;			/* 終端に達した時、非0 */
-			a_ret = E_BOVR;	/* データ終了 */
-			goto lb_finally;
+		if (p_edt == NULL) {
+			a_ret = _ecn_fbs_seek_rpos(a_fbs_id, a_ecn_prp.pdc);
+			if (a_ret != E_OK)
+				goto lb_except;
+		}
+		else {
+			/* 付随データを読み取る */
+			a_rd_len = 0;
+			a_ret = _ecn_fbs_get_data(a_fbs_id, p_edt, a_ecn_prp.pdc, &a_rd_len);
+			if (a_ret != E_OK)
+				goto lb_except;
+			if (a_rd_len < (ECN_FBS_SSIZE_T)a_ecn_prp.pdc) {
+				ECN_DBG_PUT("ecn_itr_nxt() edt read fault. rd.cur=%d,epc=0x%02X,pdc=%u",
+					pk_itr->cur, a_ecn_prp.epc , a_ecn_prp.pdc);
+				pk_itr->is_eof = 1;			/* 終端に達した時、非0 */
+				a_ret = E_BOVR;	/* データ終了 */
+				goto lb_finally;
+			}
 		}
 	}
 	pk_itr->got_ct++;
 
 #ifdef ECN_ENA_ITR_NXT_CARP
-	ECN_CAP_PUT("ecn_itr_nxt() read: ct=%d/%d", pk_itr->got_ct, pk_itr->count ECN_CAP_PUT(;
+	ECN_CAP_PUT("ecn_itr_nxt() read: ct=%d/%d", pk_itr->got_ct, pk_itr->count);
 #endif
 
 lb_finally:

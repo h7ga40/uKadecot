@@ -86,7 +86,7 @@ ER _ecn_tsk_snd_mbx(ECN_FBS_ID fa_rsp_fbs, bool_t from_app)
 	ER	a_ret;
 	intptr_t msg = (intptr_t)fa_rsp_fbs.ptr;
 	ID mbxid = ecn_udp_mailboxid;
-	ECN_ENOD_ID target = fa_rsp_fbs.ptr->hdr.target;
+	ECN_ENOD_ID target = fa_rsp_fbs.ptr->hdr.target.id;
 #ifdef ECN_DBG_PUT_ENA
 	intptr_t a_fbs_sub1 = (intptr_t)fa_rsp_fbs.ptr->lnk.p_sub[0];
 #endif
@@ -411,12 +411,12 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 		}
 	}
 	if (fa_deoj == 0) {
-		ECN_DBG_PUT("%s", "マルチキャスト");
+		ECN_DBG_PUT("マルチキャスト");
 		/* fa_deoj == 0 : マルチキャスト */
 		((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1 = EOJ_X1_PROFILE;
 		((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx2 = EOJ_X2_NODE_PROFILE;
 		((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx3 = 0x01;
-		a_fbs_id.ptr->hdr.target = ENOD_MULTICAST_ID;
+		a_fbs_id.ptr->hdr.target.id = ENOD_MULTICAST_ID;
 	}
 	else if (fa_deoj <= tmax_eobjid) {
 		ECN_DBG_PUT("fa_deoj = %d", fa_deoj);
@@ -426,12 +426,12 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 			sizeof(((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj));
 
 		/* テーブルから検索 */
-		a_fbs_id.ptr->hdr.target = ENOD_NOT_MATCH_ID;
+		a_fbs_id.ptr->hdr.target.id = ENOD_NOT_MATCH_ID;
 		a_enodid = (a_eobj->enodid == 0) ? fa_deoj : a_eobj->enodid;
 		a_enod = &eobjinib_table[a_enodid - 1];
 		if ((a_enod->eobjatr == EOBJ_LOCAL_NODE)
 			|| ((a_enod->eobjatr == EOBJ_ASYNC_REMOTE_NODE) && (fa_esv == ESV_GET))) {
-			a_fbs_id.ptr->hdr.target = ENOD_LOCAL_ID;
+			a_fbs_id.ptr->hdr.target.id = ENOD_LOCAL_ID;
 		}
 		else{
 			for (i = 1; i < tnum_enodid; i++) {
@@ -439,11 +439,11 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 				if (a_enod != temp->profile)
 					continue;
 
-				a_fbs_id.ptr->hdr.target = (ECN_ENOD_ID)(i + ENOD_REMOTE_ID - 1);
+				a_fbs_id.ptr->hdr.target.id = (ECN_ENOD_ID)(i + ENOD_REMOTE_ID - 1);
 				break;
 			}
 		}
-		if (a_fbs_id.ptr->hdr.target == ENOD_NOT_MATCH_ID) {
+		if (a_fbs_id.ptr->hdr.target.id == ENOD_NOT_MATCH_ID) {
 			goto lb_except;
 			ECN_DBG_PUT("deoj = %02X %02X %02x : enod not match",
 				((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj.eojx1,
@@ -469,7 +469,7 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 		if(ecn_agent_get_eoj_enodid(fa_deoj, &eoj, &enodid)){
 			memcpy(&((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj, &eoj,
 				sizeof(((T_EDATA *)a_fbs_id.ptr)->hdr.edata.deoj));
-			a_fbs_id.ptr->hdr.target = enodid;
+			a_fbs_id.ptr->hdr.target.id = enodid;
 		}
 		else {
 			goto lb_except;
@@ -490,13 +490,13 @@ ER _ecn_tsk_mk_esv(ECN_FBS_ID *fp_fbs_id, ID fa_seoj, ID fa_deoj,
 	}
 #endif
 	a_fbs_id.ptr->hdr.type = ECN_MSG_ECHONET;
-	a_fbs_id.ptr->hdr.sender = ENOD_API_ID;
+	a_fbs_id.ptr->hdr.sender.id = ENOD_API_ID;
 	if (fa_esv == ESV_INFC)
-		a_fbs_id.ptr->hdr.reply = a_fbs_id.ptr->hdr.target;
+		a_fbs_id.ptr->hdr.reply.id = a_fbs_id.ptr->hdr.target.id;
 	else if (fa_esv == ESV_INF_REQ)
-		a_fbs_id.ptr->hdr.reply = ENOD_MULTICAST_ID;
+		a_fbs_id.ptr->hdr.reply.id = ENOD_MULTICAST_ID;
 	else
-		a_fbs_id.ptr->hdr.reply = ENOD_API_ID;
+		a_fbs_id.ptr->hdr.reply.id = ENOD_API_ID;
 
 	/* 正常終了 */
 	*fp_fbs_id = a_fbs_id;
@@ -602,9 +602,9 @@ ER _ecn_tsk_ntf_inl(intptr_t fa_exinf)
 				goto lb_except;
 
 			a_fbs.ptr->hdr.type = ECN_MSG_ECHONET;
-			a_fbs.ptr->hdr.sender = ENOD_LOCAL_ID;
-			a_fbs.ptr->hdr.target = ENOD_MULTICAST_ID;
-			a_fbs.ptr->hdr.reply = ENOD_LOCAL_ID;
+			a_fbs.ptr->hdr.sender.id = ENOD_LOCAL_ID;
+			a_fbs.ptr->hdr.target.id = ENOD_MULTICAST_ID;
+			a_fbs.ptr->hdr.reply.id = ENOD_LOCAL_ID;
 			((T_EDATA *)a_fbs.ptr)->hdr.ecn_prp.pdc = 1;	/* 件数 */
 			/* 件数を格納 */
 			a_count = (uint8_t)(enod->eobjcnt - i);
@@ -710,6 +710,45 @@ const EOBJINIB *_ecn_eoj_fnd(const EOBJCB *fp_nod, const T_ECN_EOJ *fp_eoj)
 	return 0;
 }
 
+/*
+ * 電文の構成要素数とサイズのチェックを行う
+ */
+static bool_t _ecn_tsk_check_format(T_EDATA *edata, int len)
+{
+	ER ret;
+	T_ENUM_EPC enm;
+	int opc;
+	uint8_t epc;
+	uint8_t pdc;
+
+	len -= sizeof(T_ECN_HDR) + sizeof(T_ECN_EDATA_BODY);
+
+	ret = ecn_itr_ini(&enm, edata);
+	if (ret != E_OK) {
+		return false;
+	}
+	opc = enm.count;
+	for (;;) {
+		ret = ecn_itr_nxt(&enm, &epc, &pdc, NULL);
+		if (enm.is_eof)
+			break;
+		if (ret == E_BOVR){
+			if (opc != 0)
+				return false;
+			opc = enm.count;
+			len -= 1;
+			continue;
+		}
+		if (ret != E_OK)
+			break;
+
+		opc--;
+		len -= sizeof(T_ECN_PRP) + pdc;
+	}
+
+	return (opc == 0) && (len == 0);
+}
+
 static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, ATR eobjatr,
 	const EOBJINIB *p_sobj, ATR sobjatr);
 
@@ -738,14 +777,42 @@ static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 
 	if (p_esv->ecn_hdr.ehd1 != ECN_EDH1_ECHONET_LITE
 	||	p_esv->ecn_hdr.ehd2 != ECN_EDH2_FORMAT_1) {
-		syslog(LOG_WARNING, "_ecn_tsk_ecn_msg() format fault: 0x%02X,0x%02X", p_esv->ecn_hdr.ehd1, p_esv->ecn_hdr.ehd2);
+		ECN_DBG_PUT("_ecn_tsk_ecn_msg() format fault: 0x%02X,0x%02X", p_esv->ecn_hdr.ehd1, p_esv->ecn_hdr.ehd2);
+		return;
+	}
+
+	if (p_esv->edata.deoj.eojx3 > 0x7F) {
+		ECN_DBG_PUT("_ecn_tsk_ecn_msg() format fault: deoj %06X",
+			p_esv->edata.deoj.eojx1 << 16 | p_esv->edata.deoj.eojx2 << 8 | p_esv->edata.deoj.eojx3);
+		return;
+	}
+
+	if ((p_esv->edata.seoj.eojx3 > 0x7F) || (p_esv->edata.seoj.eojx3 == 0x00)) {
+		ECN_DBG_PUT("_ecn_tsk_ecn_msg() format fault: seoj %06X",
+			p_esv->edata.seoj.eojx1 << 16 | p_esv->edata.seoj.eojx2 << 8 | p_esv->edata.seoj.eojx3);
+		return;
+	}
+
+	if ((p_esv->edata.esv & 0xC0) != 0x40) {
+		ECN_DBG_PUT("_ecn_tsk_ecn_msg() format fault: esv 0x%02X", p_esv->edata.esv);
+		return;
+	}
+
+	if (p_esv->edata.opc == 0x00) {
+		ECN_DBG_PUT("_ecn_tsk_ecn_msg() format fault: opc 0x%02X", p_esv->edata.opc);
+		return;
+	}
+
+	/* 電文の構成要素数とサイズのチェックを行う */
+	if (!_ecn_tsk_check_format((T_EDATA *)fa_fbs_id.ptr, fa_fbs_id.ptr->hdr.length)) {
+		ECN_DBG_PUT("_ecn_tsk_ecn_msg() format fault");
 		return;
 	}
 
 	/* 送信宛からノードを検索 */
-	p_nod = _ecn_eno_fnd(fa_fbs_id.ptr->hdr.target);
+	p_nod = _ecn_eno_fnd(fa_fbs_id.ptr->hdr.target.id);
 	/* 送信元からノードを検索 */
-	sender = fa_fbs_id.ptr->hdr.sender;
+	sender = fa_fbs_id.ptr->hdr.sender.id;
 	p_snod = _ecn_eno_fnd(sender);
 	if (p_snod != NULL) {
 		sobjatr = p_snod->profile->eobjatr;
@@ -781,7 +848,7 @@ static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 					a_fwd = true;
 				a_prc = true;
 			}
-			/* 0x74 プロパティ値通知（応答要）の場合処理したことにする */
+			/* 0x74 プロパティ値通知（応答要）の場合の場合は電文破棄 */
 			else if (p_esv->edata.esv == ESV_INFC) {
 				a_prc = true;
 			}
@@ -814,6 +881,11 @@ static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 					a_fwd = true;
 				a_prc = true;
 			}
+
+			/* 機器オブジェクトが見つからず、0x74 プロパティ値通知（応答要）の場合は電文破棄 */
+			if (!a_prc && (p_esv->edata.esv == ESV_INFC)) {
+				a_prc = true;
+			}
 		}
 	}
 	/* 機器オブジェクトが見つからない場合でも */
@@ -831,7 +903,7 @@ static void _ecn_tsk_ecn_msg(intptr_t fa_exinf, ECN_FBS_ID fa_fbs_id)
 
 		ECN_CAP_PUT("redirect ecn_svc_mailboxid → ecn_api_mailboxid (esv:0x%02X)",
 			p_esv->edata.esv);
-		fa_fbs_id.ptr->hdr.target = ENOD_API_ID;
+		fa_fbs_id.ptr->hdr.target.id = ENOD_API_ID;
 		a_ret = psnd_dtq(ecn_api_mailboxid, (intptr_t)fa_fbs_id.ptr);
 		if (a_ret != E_OK) {
 			syslog(LOG_WARNING, "_ecn_tsk_ecn_msg() : psnd_dtq() result = %d:%s", a_ret, itron_strerror(a_ret));
@@ -898,7 +970,7 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 			result = -1;
 			break;
 		}
-		fa_fbs_id.ptr->hdr.reply = ENOD_MULTICAST_ID;
+		fa_fbs_id.ptr->hdr.reply.id = ENOD_MULTICAST_ID;
 		_ecn_tsk_eoj_get(p_obj, eobjatr, false, (EPC_RULE_GET|EPC_RULE_ANNO), fa_fbs_id, ESV_INF, ESV_INF_SNA); /* 0x73; 0x53 */
 		result = 0;
 		break;
@@ -918,11 +990,14 @@ static int _ecn_tsk_ecn_msg_main(ECN_FBS_ID fa_fbs_id, const EOBJINIB *p_obj, AT
 	/* 0x74 プロパティ値通知（応答要） */
 	case ESV_INFC:
 		if (!p_sobj)
-			_ecn_tsk_eoj_res(fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES); /* 0x74; 0 */
+			/* 送信元が未知の他ノードであった場合、応答を返す */
+			_ecn_tsk_eoj_res(fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES); /* 0x7A; 0x7A */
 		else if (fromapp)
+			/* アプリケーションからの要求の場合、プロパティ値通知（応答要）を送信する */
 			_ecn_tsk_eoj_get(p_sobj, sobjatr, true, (EPC_RULE_GET|EPC_RULE_ANNO), fa_fbs_id, ESV_INFC, ESV_NOP); /* 0x74; 0 */
 		else
-			_ecn_tsk_eoj_set(p_sobj, sobjatr, fromapp, true, fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES, &a_fbs_anno); /* 0x7A; 0 */
+			/* 送信元が既知の他ノードであった場合、プロパティ値を更新し応答を返す */
+			_ecn_tsk_eoj_set(p_sobj, sobjatr, fromapp, true, fa_fbs_id, ESV_INFC_RES, ESV_INFC_RES, &a_fbs_anno); /* 0x7A; 0x7A */
 		result = 0;
 		break;
 
@@ -1029,8 +1104,7 @@ static const EPRPINIB *_ecn_tsk_eoj_get_property(const EOBJINIB *fp_obj, uint8_t
 		return p;
 	}
 	ECN_DBG_PUT("_ecn_tsk_eoj_get_property(0x%02X-0x%02X-0x%02X, epc:0x%02X) not found.",
-		fp_obj->eojx1, fp_obj->eojx2, fp_obj->eojx3,
-		fa_epc);
+		fp_obj->eojx1, fp_obj->eojx2, fp_obj->eojx3, fa_epc);
 
 	return NULL;
 }
@@ -1043,8 +1117,7 @@ static int _ecn_tsk_eoj_set_edt(const EPRPINIB *fp_prp, void *fp_src, int fa_src
 	if (!fp_prp->eprpset)
 		return -1;
 
-	ECN_DBG_PUT("_ecn_tsk_eoj_set_edt(epc:0x%02X) call eprpset()",
-		fp_prp->eprpcd);
+	ECN_DBG_PUT("_ecn_tsk_eoj_set_edt(epc:0x%02X) call eprpset()", fp_prp->eprpcd);
 
 	return fp_prp->eprpset(fp_prp, fp_src, fa_srcsz, fa_anno);
 }
@@ -1057,8 +1130,7 @@ static int _ecn_tsk_eoj_get_edt(const EPRPINIB *fp_prp, void *fp_dst, int fa_dst
 	if (!fp_prp->eprpget)
 		return -1;
 
-	ECN_DBG_PUT("_ecn_tsk_eoj_get_edt(epc:0x%02X) call eprpget()",
-		fp_prp->eprpcd);
+	ECN_DBG_PUT("_ecn_tsk_eoj_get_edt(epc:0x%02X) call eprpget()", fp_prp->eprpcd);
 
 	return fp_prp->eprpget(fp_prp, fp_dst, fp_prp->eprpsz);
 }
@@ -1427,9 +1499,9 @@ static void _ecn_tsk_set_rsp_fbs(ECN_FBS_ID fa_rsp_fbs, T_ECN_FST_BLK const *fp_
 static void _ecn_tsk_set_rsp_fbs(ECN_FBS_ID fa_rsp_fbs, T_ECN_FST_BLK const *fp_req_ptr)
 {
 	fa_rsp_fbs.ptr->hdr.type = ECN_MSG_ECHONET;
-	fa_rsp_fbs.ptr->hdr.sender = ENOD_LOCAL_ID;
-	fa_rsp_fbs.ptr->hdr.target = fp_req_ptr->hdr.reply;
-	fa_rsp_fbs.ptr->hdr.reply = ENOD_LOCAL_ID;
+	fa_rsp_fbs.ptr->hdr.sender.id = ENOD_LOCAL_ID;
+	fa_rsp_fbs.ptr->hdr.target.id = fp_req_ptr->hdr.reply.id;
+	fa_rsp_fbs.ptr->hdr.reply.id = ENOD_LOCAL_ID;
 }
 
 /* プロパティ値書き込み要求	*/
@@ -1596,6 +1668,11 @@ static void _ecn_tsk_eoj_get(const EOBJINIB *fp_obj, ATR fa_eobjatr, bool_t fa_f
 		}
 		/* 設定処理失敗 */
 		((T_EDATA *)a_fbs_res.ptr)->hdr.edata.esv = fa_sna_esv;
+
+		/* 不可応答の場合は個別送信する */
+		if (a_fbs_res.ptr->hdr.target.id == ENOD_MULTICAST_ID) {
+			a_fbs_res.ptr->hdr.target.id = fa_fbs_id.ptr->hdr.sender.id;
+		}
 	}
 	/* 応答送信 */
 	a_ret = _ecn_tsk_snd_mbx(a_fbs_res, false);
@@ -1927,9 +2004,9 @@ ER _ecn_mk_brk_wai(ECN_FBS_ID *pk_fbs_id, const void *p_dat, size_t fa_size)
 
 	/* 要求電文設定 */
 	a_fbs_id.ptr->hdr.type = ECN_MSG_USER_BREAK;
-	a_fbs_id.ptr->hdr.sender = ENOD_API_ID;
-	a_fbs_id.ptr->hdr.target = ENOD_API_ID;
-	a_fbs_id.ptr->hdr.reply = ENOD_API_ID;
+	a_fbs_id.ptr->hdr.sender.id = ENOD_API_ID;
+	a_fbs_id.ptr->hdr.target.id = ENOD_API_ID;
+	a_fbs_id.ptr->hdr.reply.id = ENOD_API_ID;
 
 	if (0 < fa_size && p_dat) {
 		/* 付随データ追加 */
@@ -1975,9 +2052,9 @@ ER _ecn_tsk_cre_req_fbs(ID sender, uint8_t cmd, ECN_FBS_ID *pk_req)
 	}
 
 	req.ptr->hdr.type = ECN_MSG_INTERNAL;
-	req.ptr->hdr.sender_mbxid = sender;
-	req.ptr->hdr.target_mbxid = ecn_svc_mailboxid;
-	req.ptr->hdr.reply_mbxid = sender;
+	req.ptr->hdr.sender.mbxid = sender;
+	req.ptr->hdr.target.mbxid = ecn_svc_mailboxid;
+	req.ptr->hdr.reply.mbxid = sender;
 
 	*pk_req = req;
 
@@ -2004,9 +2081,9 @@ ER _ecn_tsk_cre_res_fbs(ECN_FBS_ID req, uint8_t cmd, ECN_FBS_ID *pk_res)
 	}
 
 	res.ptr->hdr.type = ECN_MSG_INTERNAL;
-	res.ptr->hdr.sender_mbxid = ecn_svc_mailboxid;
-	res.ptr->hdr.target_mbxid = req.ptr->hdr.reply_mbxid;
-	res.ptr->hdr.reply_mbxid = ecn_svc_mailboxid;
+	res.ptr->hdr.sender.mbxid = ecn_svc_mailboxid;
+	res.ptr->hdr.target.mbxid = req.ptr->hdr.reply.mbxid;
+	res.ptr->hdr.reply.mbxid = ecn_svc_mailboxid;
 
 	*pk_res = res;
 
