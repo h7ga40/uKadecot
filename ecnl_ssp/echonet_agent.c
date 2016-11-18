@@ -791,7 +791,10 @@ void ecn_agent_proc_ecn_msg(const EOBJCB **ppk_snod, const EOBJINIB **ppk_sobj, 
 	}
 
 	*ppk_snod = &snod->eobj;
-	*ppk_sobj = &sobj->inib;
+	if(sobj == NULL)
+		*ppk_sobj = NULL;
+	else
+		*ppk_sobj = &sobj->inib;
 
 	agent->current_node = snod;
 	agent->msg_proced = false;
