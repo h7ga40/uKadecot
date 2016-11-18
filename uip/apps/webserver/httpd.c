@@ -544,7 +544,7 @@ httpd_appcall(void)
 void
 httpd_init(void)
 {
-  uip_listen(HTONS(41314));
+  uip_listen(UIP_HTONS(41314));
 
   httpd_fs_init();
   kadecot_names_init();

@@ -105,9 +105,9 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 	IF_ETHER_NIC_PROBE(ic);
 	IF_ETHER_NIC_INIT(ic);
 
-	uip_sethostaddr(my_ip);
-	uip_setnetmask(my_netmask);
-	uip_setdraddr(my_default_router);
+	uip_sethostaddr((uip_ipaddr_t *)&my_ip);
+	uip_setnetmask((uip_ipaddr_t *)&my_netmask);
+	uip_setdraddr((uip_ipaddr_t *)&my_default_router);
 
 	timer_set(&uiptsk->periodic_timer, CLOCK_SECOND / 2);
 	timer_set(&uiptsk->arp_timer, CLOCK_SECOND * 10);
@@ -115,7 +115,7 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 	uip_init();
 #ifdef __DHCPC_H__
 	if(dhcp_enable){
-		dhcpc = dhcpc_init(uip_ethaddr.addr, sizeof(uip_ethaddr.addr));
+		dhcpc = dhcpc_init(uip_lladdr.addr, sizeof(uip_lladdr.addr));
 	}
 #endif
 	uip_task_init((intptr_t)uiptsk);
@@ -171,7 +171,7 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 			uip_buf = uiptsk->uip_buf;
 			uip_len = IF_ETHER_NIC_READ(ic, (void **)&uip_buf);
 			if ((uip_len > 0) && (uip_buf != NULL)){
-				if (((struct uip_eth_hdr *)uip_buf)->type == htons(UIP_ETHTYPE_IP)) {
+				if (((struct uip_eth_hdr *)uip_buf)->type == uip_htons(UIP_ETHTYPE_IP)) {
 					uip_arp_ipin();
 					uip_input();
 					/* If the above function invocation resulted in data that
@@ -189,7 +189,7 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 						continue;
 					}
 				}
-				else if (((struct uip_eth_hdr *)uip_buf)->type == htons(UIP_ETHTYPE_ARP)) {
+				else if (((struct uip_eth_hdr *)uip_buf)->type == uip_htons(UIP_ETHTYPE_ARP)) {
 					uip_arp_arpin();
 					/* If the above function invocation resulted in data that
 					   should be sent out on the network, the global variable
@@ -214,14 +214,14 @@ PT_THREAD(uip_task_pt(struct uip_task_t *uiptsk))
 
 			sil_wrb_mem((uint8_t *)0x0008C02A, sil_reb_mem((uint8_t *)0x0008C02A) | 0x02);
 
-			uip_ipaddr_copy(cepid->ripaddr, buf->ripaddr);
+			uip_ipaddr_copy(&cepid->ripaddr, &buf->ripaddr);
 			cepid->rport = buf->rport;
 			uip_buf = buf->data;
 			uip_udp_send(buf->len);
 
 			uip_udp_conn = cepid;
 			uip_process(UIP_UDP_SEND_CONN);
-			uip_ipaddr(cepid->ripaddr, 0, 0, 0, 0);
+			uip_ipaddr(&cepid->ripaddr, 0, 0, 0, 0);
 			cepid->rport = 0;
 			uip_arp_out();
 			for (;;) {
@@ -345,7 +345,7 @@ tcp_acre_cep(const T_TCP_CCEP *pk_ccep)
 {
 	struct uip_conn *cepid;
 
-	cepid = uip_connect((uip_ipaddr_t *)&pk_ccep->ripaddr, htons(pk_ccep->rport));
+	cepid = uip_connect((uip_ipaddr_t *)&pk_ccep->ripaddr, uip_htons(pk_ccep->rport));
 	if (cepid != NULL) {
 		//cepid->appstate.tcp_callback = pk_ccep->callback;
 	}
@@ -360,8 +360,8 @@ tcp_snd_dat(struct uip_conn *cepid, T_IPV4EP *p_dstaddr, void *data, int len)
 
 	if (buf->len == 0) {
 		buf->cepid.tcp = cepid;
-		uip_ipaddr_copy(buf->ripaddr, p_dstaddr->ipaddr);
-		buf->rport = htons(p_dstaddr->portno);
+		uip_ipaddr_copy(&buf->ripaddr, &p_dstaddr->ipaddr);
+		buf->rport = uip_htons(p_dstaddr->portno);
 		memcpy(&buf->data[UIP_IPTCPH_LEN + UIP_LLH_LEN], data, len);
 		uip_out_buf[uip_out_wpos].len = len;
 		uip_out_wpos++;
@@ -388,8 +388,8 @@ tcp_rcv_dat(struct uip_conn *cepid, T_IPV4EP *p_srcaddr, void *data, int len)
 	if (rlen > len)
 		rlen = len;
 
-	uip_ipaddr_copy(p_srcaddr->ipaddr, ((struct uip_tcpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcipaddr);
-	p_srcaddr->portno = ntohs(((struct uip_tcpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcport);
+	uip_ipaddr_copy(&p_srcaddr->ipaddr, &((struct uip_tcpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcipaddr);
+	p_srcaddr->portno = uip_ntohs(((struct uip_tcpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcport);
 	memcpy(data, uip_appdata, rlen);
 
 	return rlen;
@@ -407,10 +407,10 @@ udp_acre_cep(const T_UDP_CCEP *pk_ccep)
 {
 	struct uip_udp_conn *cepid;
 
-	cepid = uip_udp_new((uip_ipaddr_t *)&pk_ccep->ripaddr, htons(pk_ccep->rport));
+	cepid = uip_udp_new((uip_ipaddr_t *)&pk_ccep->ripaddr, uip_htons(pk_ccep->rport));
 	if (cepid != NULL) {
 		cepid->appstate.udp_callback = pk_ccep->callback;
-		uip_udp_bind(cepid, htons(pk_ccep->lport));
+		uip_udp_bind(cepid, uip_htons(pk_ccep->lport));
 	}
 
 	return cepid;
@@ -423,8 +423,8 @@ udp_snd_dat(struct uip_udp_conn *cepid, T_IPV4EP *p_dstaddr, void *data, int len
 
 	if (buf->len == 0) {
 		buf->cepid.udp = cepid;
-		uip_ipaddr_copy(buf->ripaddr, p_dstaddr->ipaddr);
-		buf->rport = htons(p_dstaddr->portno);
+		uip_ipaddr_copy(&buf->ripaddr, &p_dstaddr->ipaddr);
+		buf->rport = uip_htons(p_dstaddr->portno);
 		memcpy(&buf->data[UIP_IPUDPH_LEN + UIP_LLH_LEN], data, len);
 		uip_out_buf[uip_out_wpos].len = len;
 		uip_out_wpos++;
@@ -451,8 +451,8 @@ udp_rcv_dat(struct uip_udp_conn *cepid, T_IPV4EP *p_srcaddr, void *data, int len
 	if (rlen > len)
 		rlen = len;
 
-	uip_ipaddr_copy(p_srcaddr->ipaddr, ((struct uip_udpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcipaddr);
-	p_srcaddr->portno = ntohs(((struct uip_udpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcport);
+	uip_ipaddr_copy(&p_srcaddr->ipaddr, &((struct uip_udpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcipaddr);
+	p_srcaddr->portno = uip_ntohs(((struct uip_udpip_hdr *)&uip_buf[UIP_LLH_LEN])->srcport);
 	memcpy(data, uip_appdata, rlen);
 
 	return rlen;
@@ -475,9 +475,9 @@ void
 dhcpc_configured(const struct dhcpc_state *s)
 {
 	sil_wrb_mem((uint8_t *)0x0008C02A, sil_reb_mem((uint8_t *)0x0008C02A) & ~0x04);
-	uip_sethostaddr(s->ipaddr);
-	uip_setnetmask(s->netmask);
-	uip_setdraddr(s->default_router);
+	uip_sethostaddr((uip_ipaddr_t *)&s->ipaddr);
+	uip_setnetmask((uip_ipaddr_t *)&s->netmask);
+	uip_setdraddr((uip_ipaddr_t *)&s->default_router);
 	// resolv_conf(s->dnsaddr);
 	DHCP4_CLI_SET_ADDR_CALLBACK();
 }

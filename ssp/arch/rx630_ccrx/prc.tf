@@ -335,11 +335,15 @@ $TAB$ .section FVECT, ROMDATA$NL$
 $NL$
 fvector_table:$NL$$NL$
 
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; Endian Select Register (little)$NL$
+$TAB$ .offset$TAB$ 008H$NL$
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; OFS1$NL$
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; OFS0$NL$
 $TAB$ .offset$TAB$ 020H$NL$
-$TAB$ .lword$TAB$ 00000000 $TAB$ ; 制御コード, IDコード1 - 3$NL$
-$TAB$ .lword$TAB$ 00000000 $TAB$ ; IDコード4 - 7$NL$
-$TAB$ .lword$TAB$ 00000000 $TAB$ ; IDコード8 - 11$NL$
-$TAB$ .lword$TAB$ 00000000 $TAB$ ; IDコード12 - 15$NL$$NL$
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; 制御コード, IDコード1 - 3$NL$
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; IDコード4 - 7$NL$
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; IDコード8 - 11$NL$
+$TAB$ .lword$TAB$ 0FFFFFFFFH $TAB$ ; IDコード12 - 15$NL$$NL$
 
 $TAB$ .offset$TAB$ 050H$NL$
 $TAB$ .lword$TAB$ _$EXCHDR[20]$ $TAB$ $TAB$ ;$SPC$ 20:特権命令例外 $SPC$$NL$

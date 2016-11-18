@@ -90,13 +90,13 @@ char *ip2str(char *buf, const T_IN4_ADDR ipaddr)
 	char *start;
 
 	start = buf;
-	buf += convert_hexdigit(buf, (uint_t)((ipaddr[0] >> 0) & 0xff), 10, 0, ' ');
+	buf += convert_hexdigit(buf, (uint_t)((ipaddr.u16[0] >> 0) & 0xff), 10, 0, ' ');
 	*(buf ++) = '.';
-	buf += convert_hexdigit(buf, (uint_t)((ipaddr[0] >> 8) & 0xff), 10, 0, ' ');
+	buf += convert_hexdigit(buf, (uint_t)((ipaddr.u16[0] >> 8) & 0xff), 10, 0, ' ');
 	*(buf ++) = '.';
-	buf += convert_hexdigit(buf, (uint_t)((ipaddr[1] >> 0) & 0xff), 10, 0, ' ');
+	buf += convert_hexdigit(buf, (uint_t)((ipaddr.u16[1] >> 0) & 0xff), 10, 0, ' ');
 	*(buf ++) = '.';
-	buf += convert_hexdigit(buf, (uint_t)((ipaddr[1] >> 8) & 0xff), 10, 0, ' ');
+	buf += convert_hexdigit(buf, (uint_t)((ipaddr.u16[1] >> 8) & 0xff), 10, 0, ' ');
 	*buf = '\0';
 
 	return start;

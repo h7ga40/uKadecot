@@ -175,20 +175,20 @@ PT_THREAD(echonet_udp_task_pt(void))
 
 	PT_BEGIN(&pt);
 
-	uip_ipaddr(localhost, 127, 0, 0, 1);
-	uip_ipaddr(multicast, 224, 0, 23, 0);
-	uip_ipaddr(zeroaddr, 0, 0, 0, 0);
-	uip_ipaddr(ccep.ripaddr, 0, 0, 0, 0);
+	uip_ipaddr(&localhost, 127, 0, 0, 1);
+	uip_ipaddr(&multicast, 224, 0, 23, 0);
+	uip_ipaddr(&zeroaddr, 0, 0, 0, 0);
+	uip_ipaddr(&ccep.ripaddr, 0, 0, 0, 0);
 	ccep.rport = 0;
 	ccep.lport = 3610;
 	ccep.callback = callback_nblk_udp;
 
-	uip_gethostaddr(a_src);
+	uip_gethostaddr(&a_src);
 	ECN_DBG_PUT("[UDP TSK:%d] started, IP Address: %s ether_max_len: %u",
 		ecn_udp_taskid,
 		ip2str(NULL, a_src),
 		UIP_BUFSIZE);
-	uip_ipaddr_copy(enodadrb_table[ENOD_LOCAL_ID].ipaddr, a_src);
+	uip_ipaddr_copy((T_IN4_ADDR *)&enodadrb_table[ENOD_LOCAL_ID].ipaddr, &a_src);
 
 	UDP_CEPID = udp_acre_cep(&ccep);
 	if (UDP_CEPID == NULL) {
@@ -437,7 +437,7 @@ void _ecn_esv_msg(ECN_FBS_ID fbs_id)
 	ECN_FBS_SSIZE_T a_snd_len;
 	static SYSTIM a_prev, a_now;
 
-	uip_ipaddr(a_dst.ipaddr, 0,0,0,0);
+	uip_ipaddr(&a_dst.ipaddr, 0,0,0,0);
 	a_dst.portno = 0;
 	/* 送信先IPアドレス */
 	a_ret = udp_get_ip(&a_dst, fbs_id.ptr->hdr.target);
@@ -454,7 +454,7 @@ void _ecn_esv_msg(ECN_FBS_ID fbs_id)
 		if (a_ret != E_OK) {
 			ECN_DBG_PUT("[UDP TSK] _ecn_fbs_get_data() result = %d:%s", a_ret, itron_strerror(a_ret));
 		}
-		else if(uip_ipaddr_cmp(a_dst.ipaddr, localhost)) {
+		else if(uip_ipaddr_cmp(&a_dst.ipaddr, &localhost)) {
 			/* 送信先が127.0.0.1 → mbxに転送 */
 			ECN_DBG_PUT("redirect ecn_udp_mailboxid → ecn_svc_mailboxid (esv:0x%02X)",
 				((T_EDATA *)fbs_id.ptr)->hdr.edata.esv);
@@ -628,16 +628,16 @@ ECN_ENOD_ID udp_get_id(T_EDATA *edata, const T_IN4_ADDR ipaddr, uint16_t portno)
 	T_ENOD_ADDR	*ea;
 	int			i;
 
-	if (uip_ipaddr_cmp(ipaddr, localhost))
+	if (uip_ipaddr_cmp(&ipaddr, &localhost))
 		return ENOD_LOCAL_ID;
-	if (uip_ipaddr_cmp(ipaddr, multicast))
+	if (uip_ipaddr_cmp(&ipaddr, &multicast))
 		return ENOD_MULTICAST_ID;
 
 	/* IPアドレスの同じものを検索 */
 	for (i = 0, ea = enodadrb_table; i < tnum_enodadr; i++, ea++) {
 		if (!ea->inuse)
 			continue;
-		if (!uip_ipaddr_cmp(ea->ipaddr, ipaddr))
+		if (!uip_ipaddr_cmp((T_IN4_ADDR *)&ea->ipaddr, &ipaddr))
 			continue;
 
 		ECN_CAP_PUT("udp_get_id(): ip-found remote(%d) = %s",
@@ -651,13 +651,13 @@ ECN_ENOD_ID udp_get_id(T_EDATA *edata, const T_IN4_ADDR ipaddr, uint16_t portno)
 			continue;
 		if ((i - ENOD_REMOTE_ID + 1) >= tnum_enodid)
 			break;
-		if (uip_ipaddr_cmp(ea->ipaddr, zeroaddr))
+		if (uip_ipaddr_cmp((T_IN4_ADDR *)&ea->ipaddr, &zeroaddr))
 			continue;
-		if (!ECHONET_NODE_MATCH(&eobjcb_table[i - ENOD_REMOTE_ID + 1], edata, ipaddr, portno))
+		if (!ECHONET_NODE_MATCH(&eobjcb_table[i - ENOD_REMOTE_ID + 1], edata, &ipaddr, portno))
 			continue;
 
 		/* 対応するリモートノードがあればIPアドレスを設定 */
-		uip_ipaddr_copy(ea->ipaddr, ipaddr);
+		uip_ipaddr_copy((T_IN4_ADDR *)&ea->ipaddr, &ipaddr);
 
 		ECN_CAP_PUT("udp_get_id(): enod-found remote(%d) = %s",
 			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr));
@@ -670,7 +670,7 @@ ECN_ENOD_ID udp_get_id(T_EDATA *edata, const T_IN4_ADDR ipaddr, uint16_t portno)
 			continue;
 
 		ea->inuse = true;
-		uip_ipaddr_copy(ea->ipaddr, ipaddr);
+		uip_ipaddr_copy((T_IN4_ADDR *)&ea->ipaddr, &ipaddr);
 
 		ECN_CAP_PUT("udp_get_id(): empty-found remote(%d) = %s",
 			i - ENOD_REMOTE_ID, ip2str(NULL, ipaddr));
@@ -694,13 +694,13 @@ int udp_get_ip(T_IPV4EP *fp_ipep, ECN_ENOD_ID fa_enodid)
 
 	if (fa_enodid == ENOD_MULTICAST_ID) {
 		/* targetがENOD_MULTICAST_IDの場合、マルチキャストを行う */
-		uip_ipaddr_copy(fp_ipep->ipaddr, multicast);
+		uip_ipaddr_copy(&fp_ipep->ipaddr, &multicast);
 		return 0;	/* ok */
 	}
 
 	if (fa_enodid < ENOD_REMOTE_ID) {
 		/* targetが未定義・LOCAL・APIの場合、ローカル配送を行う */
-		uip_ipaddr_copy(fp_ipep->ipaddr, localhost);
+		uip_ipaddr_copy(&fp_ipep->ipaddr, &localhost);
 		return 0;	/* ok */
 	}
 
@@ -711,10 +711,10 @@ int udp_get_ip(T_IPV4EP *fp_ipep, ECN_ENOD_ID fa_enodid)
 	if (!ea->inuse)
 		return -1;	/* NG */
 
-	if (uip_ipaddr_cmp(ea->ipaddr, zeroaddr))
+	if (uip_ipaddr_cmp((T_IN4_ADDR *)&ea->ipaddr, &zeroaddr))
 		return -1;	/* NG */
 
-	uip_ipaddr_copy(fp_ipep->ipaddr, ea->ipaddr);
+	uip_ipaddr_copy(&fp_ipep->ipaddr, (T_IN4_ADDR *)&ea->ipaddr);
 	return 0;	/* ok */
 }
 

@@ -1,9 +1,9 @@
 <CubeSuiteProject>
-  <ProductVersion>4.02.00.00</ProductVersion>
+  <ProductVersion>6.00.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>4.2</FileVersion>
+      <FileVersion>6.0</FileVersion>
       <ProjectGuid>c170030b-b19d-470a-99cb-00eb1a66ac6b</ProjectGuid>
       <ProjectItemGuid>e7b5b09e-b638-4529-91de-eb34915bbeb7</ProjectItemGuid>
       <FileCategoryGuid>479fec8d-854b-4e39-83c6-c84e8b20ea01</FileCategoryGuid>
@@ -20,6 +20,7 @@
   </Class>
   <Class Guid="fb98844b-2c27-4275-9804-f6e63e204da0">
     <Instance Guid="2a349cb6-b982-4ade-adcd-104b883ad81c">
+      <UseStandardLicenseOnly>True</UseStandardLicenseOnly>
       <MemoCount>0</MemoCount>
     </Instance>
   </Class>
@@ -31,6 +32,7 @@
   <Class Guid="8fb9c1f6-d351-4d10-8d99-bf5b3015b84c">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <UsingPlatformGuid>500ba51a-4219-4828-b4be-80f54d6d3551</UsingPlatformGuid>
+      <UsingPlatformTypeGuid>f96683fa-8de4-4c6d-a1ab-925d7f232c09</UsingPlatformTypeGuid>
     </Instance>
   </Class>
   <Class Guid="c325714f-8f51-484b-9e96-b4b59c0fb263">
@@ -60,7 +62,7 @@
   </Class>
   <Class Guid="3a79707d-5977-45f7-ac11-19c35e333132">
     <Instance Guid="3a79707d-5977-45f7-ac11-19c35e333132">
-      <DataFormatVersion>1.2</DataFormatVersion>
+      <DataFormatVersion>1.3</DataFormatVersion>
       <BuildModeCount>1</BuildModeCount>
       <BuildMode0>RABlAGYAYQB1AGwAdABCAHUAaQBsAGQA</BuildMode0>
       <BatchBuildFlag0>False</BatchBuildFlag0>
@@ -88,22 +90,24 @@
       <CompilerVersion-DefaultValue>
 
 0</CompilerVersion-DefaultValue>
-      <DependencyFileExistCheckingType-DefaultValue>Rebuild</DependencyFileExistCheckingType-DefaultValue>
       <FormatBuildOptionList-DefaultValue>%TargetFiles% : %Program% %Options%</FormatBuildOptionList-DefaultValue>
       <GeneralOptionCpu-DefaultValue>RX600</GeneralOptionCpu-DefaultValue>
+      <GeneralOptionEnableParallelBuilding-DefaultValue>False</GeneralOptionEnableParallelBuilding-DefaultValue>
       <GeneralOptionOutputFolder-DefaultValue>%BuildModeName%</GeneralOptionOutputFolder-DefaultValue>
       <GeneralOptionPid-DefaultValue>None</GeneralOptionPid-DefaultValue>
       <HexOptionForm-DefaultValue>Stype</HexOptionForm-DefaultValue>
       <LinkOptionDebug-DefaultValue>Debug</LinkOptionDebug-DefaultValue>
+      <SetAllBuildModeValue-DefaultValue>False</SetAllBuildModeValue-DefaultValue>
       <AsmOptionDefine-DefaultValue />
       <COptionDefine-DefaultValue />
-      <EnsureCompatibilityOfPathAndLinkageOrder-DefaultValue>False</EnsureCompatibilityOfPathAndLinkageOrder-DefaultValue>
+      <DependencyFileExistCheckingType-DefaultValue>Rebuild</DependencyFileExistCheckingType-DefaultValue>
       <GeneralOptionFpu-DefaultValue>Auto</GeneralOptionFpu-DefaultValue>
       <GeneralOptionNousePidRegister-DefaultValue>True</GeneralOptionNousePidRegister-DefaultValue>
       <LinkOptionConvertFolder-DefaultValue>%BuildModeName%</LinkOptionConvertFolder-DefaultValue>
       <LinkOptionOptimize-DefaultValue>None</LinkOptionOptimize-DefaultValue>
       <AsmOptionDebug-DefaultValue>True</AsmOptionDebug-DefaultValue>
       <COptionDebug-DefaultValue>True</COptionDebug-DefaultValue>
+      <EnsureCompatibilityOfPathAndLinkageOrder-DefaultValue>False</EnsureCompatibilityOfPathAndLinkageOrder-DefaultValue>
       <GeneralOptionEndian-DefaultValue>Little</GeneralOptionEndian-DefaultValue>
       <LinkOptionConvertFileName-DefaultValue>%ProjectName%.mot</LinkOptionConvertFileName-DefaultValue>
       <LinkOptionOptimizeSymbolDelete-DefaultValue>False</LinkOptionOptimizeSymbolDelete-DefaultValue>
@@ -149,11 +153,12 @@
       <GeneralOptionPatch-DefaultValue>None</GeneralOptionPatch-DefaultValue>
       <GeneralOptionSaveAcc-DefaultValue>False</GeneralOptionSaveAcc-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8587688969117379814</TimeTagModified--0>
+      <TimeTagModified--0>-8587221721751169518</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <OutputMessageFormat-0>%TargetFiles%</OutputMessageFormat-0>
       <FormatBuildOptionList-0>%TargetFiles% : %Program% %Options%</FormatBuildOptionList-0>
+      <SetAllBuildModeValue-0>False</SetAllBuildModeValue-0>
       <PreBuildCommands-0>if exist "%OutputDir%\%ProjectName%.syms" del "%OutputDir%\%ProjectName%.syms"
 ..\..\..\ssp\cfg\cfg\cfg.exe --pass 1 --kernel ssp --api-table ..\..\..\ssp\kernel\ssp_kernel_api.csv --cfg1-def-table ..\..\..\ssp\kernel\ssp_kernel_def.csv --cfg1-def-table ..\..\..\ssp\syssvc\syssvc_def.csv --cfg1-def-table ..\..\..\ssp\arch\rx630_ccrx\prc_def.csv --cfg1-def-table ..\..\..\ssp\target\grsakura_ccrx\target_def.csv -I ..\..\..\ssp -I ..\..\..\ssp\arch -I ..\..\..\ssp\include -I ..\..\..\ssp\target\grsakura_ccrx ..\dummy.cfg
 </PreBuildCommands-0>
@@ -176,14 +181,15 @@
       <CompilerVersion-0>
 
 0</CompilerVersion-0>
-      <DependencyFileExistCheckingType-0>Rebuild</DependencyFileExistCheckingType-0>
       <GeneralOptionCpu-0>RX600</GeneralOptionCpu-0>
+      <GeneralOptionEnableParallelBuilding-0>False</GeneralOptionEnableParallelBuilding-0>
       <GeneralOptionOutputFolder-0>%BuildModeName%</GeneralOptionOutputFolder-0>
       <GeneralOptionPid-0>None</GeneralOptionPid-0>
-      <EnsureCompatibilityOfPathAndLinkageOrder-0>False</EnsureCompatibilityOfPathAndLinkageOrder-0>
+      <DependencyFileExistCheckingType-0>Rebuild</DependencyFileExistCheckingType-0>
       <GeneralOptionFpu-0>Fpu</GeneralOptionFpu-0>
       <GeneralOptionNousePidRegister-0>True</GeneralOptionNousePidRegister-0>
       <LinkOptionConvertFolder-0>%BuildModeName%</LinkOptionConvertFolder-0>
+      <EnsureCompatibilityOfPathAndLinkageOrder-0>False</EnsureCompatibilityOfPathAndLinkageOrder-0>
       <GeneralOptionEndian-0>Little</GeneralOptionEndian-0>
       <LinkOptionConvertFileName-0>%ProjectName%.mot</LinkOptionConvertFileName-0>
       <AsmOptionGoptimize-0>False</AsmOptionGoptimize-0>
@@ -218,37 +224,38 @@
       <GeneralOptionBaseAddressRegister-0>None</GeneralOptionBaseAddressRegister-0>
       <GeneralOptionPatch-0>None</GeneralOptionPatch-0>
       <GeneralOptionSaveAcc-0>False</GeneralOptionSaveAcc-0>
-      <LastCompilerVersion-0>V2.02.00</LastCompilerVersion-0>
+      <LastCompilerVersion-0>V2.05.00</LastCompilerVersion-0>
     </Instance>
     <Instance Guid="95a63257-4aa7-40c0-a74a-7991543b099b">
       <COptionLangC-DefaultValue>C</COptionLangC-DefaultValue>
       <COptionListfile-DefaultValue>False</COptionListfile-DefaultValue>
       <COptionLogo-DefaultValue>False</COptionLogo-DefaultValue>
-      <COptionMisra2004-DefaultValue>None</COptionMisra2004-DefaultValue>
+      <COptionMisra-DefaultValue>Misra2012</COptionMisra-DefaultValue>
       <COptionOptimize-DefaultValue>Level2</COptionOptimize-DefaultValue>
       <COptionOutput-DefaultValue>Object</COptionOutput-DefaultValue>
       <COptionOutputAssembly-DefaultValue>False</COptionOutputAssembly-DefaultValue>
+      <COptionStackProtector-DefaultValue>None</COptionStackProtector-DefaultValue>
       <COptionGoptimize-DefaultValue>False</COptionGoptimize-DefaultValue>
       <COptionLangCpp-DefaultValue>Cpp</COptionLangCpp-DefaultValue>
-      <COptionMisra2004RuleFile-DefaultValue />
+      <COptionMisra2004-DefaultValue>None</COptionMisra2004-DefaultValue>
       <COptionOutputFolder-DefaultValue>%BuildModeName%</COptionOutputFolder-DefaultValue>
       <COptionOutputPreprocessed-DefaultValue>None</COptionOutputPreprocessed-DefaultValue>
       <COptionShowSource-DefaultValue>False</COptionShowSource-DefaultValue>
       <COptionXcref-DefaultValue>False</COptionXcref-DefaultValue>
       <COptionDebug-DefaultValue>True</COptionDebug-DefaultValue>
       <COptionInclude-DefaultValue />
-      <COptionMisra2004RuleNumberApply-DefaultValue />
+      <COptionMisra2004RuleFile-DefaultValue />
       <COptionPreCompileCommands-DefaultValue />
       <COptionShowConditionals-DefaultValue>False</COptionShowConditionals-DefaultValue>
       <COptionSpeedAndSize-DefaultValue>Size</COptionSpeedAndSize-DefaultValue>
       <COptionLoop-DefaultValue>Auto</COptionLoop-DefaultValue>
-      <COptionMisra2004RuleNumberIgnore-DefaultValue />
+      <COptionMisra2004RuleNumberApply-DefaultValue />
       <COptionPostCompileCommands-DefaultValue />
       <COptionSectionP-DefaultValue>P</COptionSectionP-DefaultValue>
       <COptionShowDefinitions-DefaultValue>False</COptionShowDefinitions-DefaultValue>
       <COptionSystemInclude-DefaultValue />
       <COptionLoopValue-DefaultValue>2</COptionLoopValue-DefaultValue>
-      <COptionMisra2004RuleNumberRequiredAdd-DefaultValue />
+      <COptionMisra2004RuleNumberIgnore-DefaultValue />
       <COptionOtherAdditionalOptions-DefaultValue />
       <COptionPreinclude-DefaultValue />
       <COptionSectionC-DefaultValue>C</COptionSectionC-DefaultValue>
@@ -272,35 +279,42 @@
 </COptionCommandLine-DefaultValue>
       <COptionDefine-DefaultValue />
       <COptionInline-DefaultValue>Auto</COptionInline-DefaultValue>
-      <COptionMisra2004RuleNumberRequiredRemove-DefaultValue />
+      <COptionMisra2004RuleNumberRequiredAdd-DefaultValue />
       <COptionSectionD-DefaultValue>D</COptionSectionD-DefaultValue>
-      <COptionIgnoreFilesMisra-DefaultValue />
       <COptionInlineValue-DefaultValue>100</COptionInlineValue-DefaultValue>
+      <COptionMisra2004RuleNumberRequiredRemove-DefaultValue />
       <COptionSectionB-DefaultValue>B</COptionSectionB-DefaultValue>
       <COptionUndefine-DefaultValue />
-      <COptionCheckLanguageExtension-DefaultValue>False</COptionCheckLanguageExtension-DefaultValue>
       <COptionFileInline-DefaultValue />
       <COptionMessage-DefaultValue>False</COptionMessage-DefaultValue>
+      <COptionMisra2012-DefaultValue>None</COptionMisra2012-DefaultValue>
       <COptionSectionL-DefaultValue>L</COptionSectionL-DefaultValue>
       <COptionCase-DefaultValue>Auto</COptionCase-DefaultValue>
       <COptionMessage2-DefaultValue>False</COptionMessage2-DefaultValue>
+      <COptionMisra2012RuleFile-DefaultValue />
       <COptionSectionW-DefaultValue>W</COptionSectionW-DefaultValue>
+      <COptionMisra2012RuleNumberApply-DefaultValue />
       <COptionNoMessageErrorNumber-DefaultValue />
       <COptionNostuffB-DefaultValue>False</COptionNostuffB-DefaultValue>
       <COptionVolatile-DefaultValue>False</COptionVolatile-DefaultValue>
       <COptionConstCopy-DefaultValue>Auto</COptionConstCopy-DefaultValue>
+      <COptionMisra2012RuleNumberIgnore-DefaultValue />
       <COptionNoMessageErrorNumber2-DefaultValue />
       <COptionNostuffD-DefaultValue>False</COptionNostuffD-DefaultValue>
       <COptionChangeMessageInformation-DefaultValue>No</COptionChangeMessageInformation-DefaultValue>
       <COptionConstDiv-DefaultValue>Auto</COptionConstDiv-DefaultValue>
+      <COptionMisra2012RuleNumberRequiredAdd-DefaultValue />
       <COptionNostuffC-DefaultValue>False</COptionNostuffC-DefaultValue>
       <COptionChangeMessageInformationNumber-DefaultValue />
       <COptionLibrary-DefaultValue>Intrinsic</COptionLibrary-DefaultValue>
+      <COptionMisra2012RuleNumberRequiredRemove-DefaultValue />
       <COptionNostuffW-DefaultValue>False</COptionNostuffW-DefaultValue>
       <COptionChangeMessageInformationNumber2-DefaultValue />
+      <COptionIgnoreFilesMisra-DefaultValue />
       <COptionInstalign-DefaultValue>Noinstalign</COptionInstalign-DefaultValue>
       <COptionScope-DefaultValue>Auto</COptionScope-DefaultValue>
       <COptionChangeMessageWarning-DefaultValue>No</COptionChangeMessageWarning-DefaultValue>
+      <COptionCheckLanguageExtension-DefaultValue>False</COptionCheckLanguageExtension-DefaultValue>
       <COptionNouseDiv-DefaultValue>True</COptionNouseDiv-DefaultValue>
       <COptionSchedule-DefaultValue>Auto</COptionSchedule-DefaultValue>
       <COptionChangeMessageWarningNumber-DefaultValue />
@@ -326,13 +340,14 @@
       <COptionLangC-0>C99</COptionLangC-0>
       <COptionListfile-0>False</COptionListfile-0>
       <COptionLogo-0>False</COptionLogo-0>
-      <COptionMisra2004-0>None</COptionMisra2004-0>
+      <COptionMisra-0>Misra2012</COptionMisra-0>
       <COptionOptimize-0>Level2</COptionOptimize-0>
       <COptionOutput-0>Object</COptionOutput-0>
       <COptionOutputAssembly-0>False</COptionOutputAssembly-0>
+      <COptionStackProtector-0>None</COptionStackProtector-0>
       <COptionGoptimize-0>False</COptionGoptimize-0>
       <COptionLangCpp-0>Cpp</COptionLangCpp-0>
-      <COptionMisra2004RuleFile-0 />
+      <COptionMisra2004-0>None</COptionMisra2004-0>
       <COptionOutputFolder-0>%BuildModeName%</COptionOutputFolder-0>
       <COptionOutputPreprocessed-0>None</COptionOutputPreprocessed-0>
       <COptionShowSource-0>False</COptionShowSource-0>
@@ -349,18 +364,18 @@
 ..\..\..\ssp\target\grsakura_ccrx
 ..
 </COptionInclude-0>
-      <COptionMisra2004RuleNumberApply-0 />
+      <COptionMisra2004RuleFile-0 />
       <COptionPreCompileCommands-0 />
       <COptionShowConditionals-0>False</COptionShowConditionals-0>
       <COptionSpeedAndSize-0>Size</COptionSpeedAndSize-0>
       <COptionLoop-0>Auto</COptionLoop-0>
-      <COptionMisra2004RuleNumberIgnore-0 />
+      <COptionMisra2004RuleNumberApply-0 />
       <COptionPostCompileCommands-0 />
       <COptionSectionP-0>P</COptionSectionP-0>
       <COptionShowDefinitions-0>False</COptionShowDefinitions-0>
       <COptionSystemInclude-0 />
       <COptionLoopValue-0>2</COptionLoopValue-0>
-      <COptionMisra2004RuleNumberRequiredAdd-0 />
+      <COptionMisra2004RuleNumberIgnore-0 />
       <COptionOtherAdditionalOptions-0 />
       <COptionPreinclude-0 />
       <COptionSectionC-0>C</COptionSectionC-0>
@@ -384,32 +399,39 @@
 </COptionCommandLine-0>
       <COptionDefine-0 />
       <COptionInline-0>Auto</COptionInline-0>
-      <COptionMisra2004RuleNumberRequiredRemove-0 />
+      <COptionMisra2004RuleNumberRequiredAdd-0 />
       <COptionSectionD-0>D</COptionSectionD-0>
-      <COptionIgnoreFilesMisra-0 />
       <COptionInlineValue-0>100</COptionInlineValue-0>
+      <COptionMisra2004RuleNumberRequiredRemove-0 />
       <COptionSectionB-0>B</COptionSectionB-0>
       <COptionUndefine-0 />
-      <COptionCheckLanguageExtension-0>False</COptionCheckLanguageExtension-0>
       <COptionFileInline-0 />
       <COptionMessage-0>False</COptionMessage-0>
+      <COptionMisra2012-0>None</COptionMisra2012-0>
       <COptionSectionL-0>L</COptionSectionL-0>
       <COptionCase-0>Auto</COptionCase-0>
+      <COptionMisra2012RuleFile-0 />
       <COptionSectionW-0>W</COptionSectionW-0>
+      <COptionMisra2012RuleNumberApply-0 />
       <COptionNoMessageErrorNumber-0 />
       <COptionNostuffB-0>False</COptionNostuffB-0>
       <COptionVolatile-0>False</COptionVolatile-0>
       <COptionConstCopy-0>Auto</COptionConstCopy-0>
+      <COptionMisra2012RuleNumberIgnore-0 />
       <COptionNostuffD-0>False</COptionNostuffD-0>
       <COptionChangeMessageInformation-0>No</COptionChangeMessageInformation-0>
       <COptionConstDiv-0>Auto</COptionConstDiv-0>
+      <COptionMisra2012RuleNumberRequiredAdd-0 />
       <COptionNostuffC-0>False</COptionNostuffC-0>
       <COptionChangeMessageInformationNumber-0 />
       <COptionLibrary-0>Intrinsic</COptionLibrary-0>
+      <COptionMisra2012RuleNumberRequiredRemove-0 />
       <COptionNostuffW-0>False</COptionNostuffW-0>
+      <COptionIgnoreFilesMisra-0 />
       <COptionInstalign-0>Noinstalign</COptionInstalign-0>
       <COptionScope-0>Auto</COptionScope-0>
       <COptionChangeMessageWarning-0>No</COptionChangeMessageWarning-0>
+      <COptionCheckLanguageExtension-0>False</COptionCheckLanguageExtension-0>
       <COptionNouseDiv-0>True</COptionNouseDiv-0>
       <COptionSchedule-0>Auto</COptionSchedule-0>
       <COptionChangeMessageWarningNumber-0 />
@@ -440,6 +462,7 @@
       <AsmOptionShowConditionals-DefaultValue>False</AsmOptionShowConditionals-DefaultValue>
       <AsmOptionSystemInclude-DefaultValue />
       <AsmOptionChkdsp-DefaultValue>False</AsmOptionChkdsp-DefaultValue>
+      <AsmOptionCreateUnfilledArea-DefaultValue>False</AsmOptionCreateUnfilledArea-DefaultValue>
       <AsmOptionDefine-DefaultValue />
       <AsmOptionShowDefinitions-DefaultValue>False</AsmOptionShowDefinitions-DefaultValue>
       <AsmOptionInCode-DefaultValue>SJIS</AsmOptionInCode-DefaultValue>
@@ -466,6 +489,7 @@
       <AsmOptionShowConditionals-0>False</AsmOptionShowConditionals-0>
       <AsmOptionSystemInclude-0 />
       <AsmOptionChkdsp-0>False</AsmOptionChkdsp-0>
+      <AsmOptionCreateUnfilledArea-0>False</AsmOptionCreateUnfilledArea-0>
       <AsmOptionDefine-0 />
       <AsmOptionShowDefinitions-0>False</AsmOptionShowDefinitions-0>
       <AsmOptionInCode-0>SJIS</AsmOptionInCode-0>
@@ -528,29 +552,30 @@
       <LinkOptionShowVector-DefaultValue>False</LinkOptionShowVector-DefaultValue>
       <LinkOptionChangeMessageWarningNumber-DefaultValue />
       <LinkOptionEntryPoint-DefaultValue />
+      <LinkOptionMsgUnused-DefaultValue>False</LinkOptionMsgUnused-DefaultValue>
       <LinkOptionMultiConvertFileName-DefaultValue />
-      <LinkOptionNoMessageErrorNumber-DefaultValue />
       <LinkOptionSymbolForbid-DefaultValue />
       <LinkOptionChangeMessageError-DefaultValue>None</LinkOptionChangeMessageError-DefaultValue>
+      <LinkOptionNoMessageErrorNumber-DefaultValue />
       <LinkOptionNoPrelink-DefaultValue>Auto</LinkOptionNoPrelink-DefaultValue>
-      <LinkOptionPadding-DefaultValue>False</LinkOptionPadding-DefaultValue>
       <LinkOptionSameCodeForbid-DefaultValue />
       <LinkOptionSpace-DefaultValue>None</LinkOptionSpace-DefaultValue>
       <LinkOptionChangeMessageErrorNumber-DefaultValue />
+      <LinkOptionPadding-DefaultValue>False</LinkOptionPadding-DefaultValue>
       <LinkOptionSectionForbid-DefaultValue />
       <LinkOptionSpaceValue-DefaultValue>FF</LinkOptionSpaceValue-DefaultValue>
-      <LinkOptionVectN-DefaultValue />
       <LinkOptionAbsoluteForbid-DefaultValue />
       <LinkOptionByteCount-DefaultValue>False</LinkOptionByteCount-DefaultValue>
       <LinkOptionHide-DefaultValue>False</LinkOptionHide-DefaultValue>
-      <LinkOptionVect-DefaultValue />
+      <LinkOptionVectN-DefaultValue />
       <LinkOptionByteCountValue-DefaultValue>FF</LinkOptionByteCountValue-DefaultValue>
-      <LinkOptionJumpEntriesForPic-DefaultValue>False</LinkOptionJumpEntriesForPic-DefaultValue>
       <LinkOptionTotalSize-DefaultValue>False</LinkOptionTotalSize-DefaultValue>
+      <LinkOptionVect-DefaultValue />
       <LinkOptionCrc-DefaultValue>None</LinkOptionCrc-DefaultValue>
-      <LinkOptionJumpEntriesForPicSectionName-DefaultValue />
+      <LinkOptionJumpEntriesForPic-DefaultValue>False</LinkOptionJumpEntriesForPic-DefaultValue>
       <LinkOptionLogo-DefaultValue>False</LinkOptionLogo-DefaultValue>
       <LinkOptionCrcOutputAddress-DefaultValue>0</LinkOptionCrcOutputAddress-DefaultValue>
+      <LinkOptionJumpEntriesForPicSectionName-DefaultValue />
       <LinkOptionPreLinkCommands-DefaultValue />
       <LinkOptionCrcCalculationRange-DefaultValue />
       <LinkOptionPostLinkCommands-DefaultValue />
@@ -614,29 +639,30 @@
       <LinkOptionShowVector-0>False</LinkOptionShowVector-0>
       <LinkOptionChangeMessageWarningNumber-0 />
       <LinkOptionEntryPoint-0 />
+      <LinkOptionMsgUnused-0>False</LinkOptionMsgUnused-0>
       <LinkOptionMultiConvertFileName-0 />
-      <LinkOptionNoMessageErrorNumber-0 />
       <LinkOptionSymbolForbid-0 />
       <LinkOptionChangeMessageError-0>None</LinkOptionChangeMessageError-0>
+      <LinkOptionNoMessageErrorNumber-0 />
       <LinkOptionNoPrelink-0>Auto</LinkOptionNoPrelink-0>
-      <LinkOptionPadding-0>False</LinkOptionPadding-0>
       <LinkOptionSameCodeForbid-0 />
       <LinkOptionSpace-0>None</LinkOptionSpace-0>
       <LinkOptionChangeMessageErrorNumber-0 />
+      <LinkOptionPadding-0>False</LinkOptionPadding-0>
       <LinkOptionSectionForbid-0 />
       <LinkOptionSpaceValue-0>FF</LinkOptionSpaceValue-0>
-      <LinkOptionVectN-0 />
       <LinkOptionAbsoluteForbid-0 />
       <LinkOptionByteCount-0>False</LinkOptionByteCount-0>
       <LinkOptionHide-0>False</LinkOptionHide-0>
-      <LinkOptionVect-0 />
+      <LinkOptionVectN-0 />
       <LinkOptionByteCountValue-0>FF</LinkOptionByteCountValue-0>
-      <LinkOptionJumpEntriesForPic-0>False</LinkOptionJumpEntriesForPic-0>
       <LinkOptionTotalSize-0>False</LinkOptionTotalSize-0>
+      <LinkOptionVect-0 />
       <LinkOptionCrc-0>None</LinkOptionCrc-0>
-      <LinkOptionJumpEntriesForPicSectionName-0 />
+      <LinkOptionJumpEntriesForPic-0>False</LinkOptionJumpEntriesForPic-0>
       <LinkOptionLogo-0>False</LinkOptionLogo-0>
       <LinkOptionCrcOutputAddress-0>0</LinkOptionCrcOutputAddress-0>
+      <LinkOptionJumpEntriesForPicSectionName-0 />
       <LinkOptionPreLinkCommands-0 />
       <LinkOptionCrcCalculationRange-0 />
       <LinkOptionPostLinkCommands-0 />
@@ -656,6 +682,27 @@
     <Instance Guid="df74c69e-635e-42d9-845e-14128ba4d48a">
       <HexOptionForm-DefaultValue>Stype</HexOptionForm-DefaultValue>
       <HexOptionOutput-DefaultValue>True</HexOptionOutput-DefaultValue>
+      <HexOptionSameLinkMessage-DefaultValue>True</HexOptionSameLinkMessage-DefaultValue>
+      <HexOptionMessage-DefaultValue>NoMessage</HexOptionMessage-DefaultValue>
+      <LinkOptionConvertFolder-DefaultValue>%BuildModeName%</LinkOptionConvertFolder-DefaultValue>
+      <LinkOptionRecordH-DefaultValue>None</LinkOptionRecordH-DefaultValue>
+      <HexOptionNoMessageNumber-DefaultValue />
+      <LinkOptionConvertFileName-DefaultValue>%ProjectName%.mot</LinkOptionConvertFileName-DefaultValue>
+      <LinkOptionRecordS-DefaultValue>None</LinkOptionRecordS-DefaultValue>
+      <HexOptionChangeMessageInformation-DefaultValue>None</HexOptionChangeMessageInformation-DefaultValue>
+      <LinkOptionMultiConvertFileName-DefaultValue />
+      <LinkOptionSpace-DefaultValue>None</LinkOptionSpace-DefaultValue>
+      <HexOptionChangeMessageInformationNumber-DefaultValue />
+      <LinkOptionSpaceValue-DefaultValue>FF</LinkOptionSpaceValue-DefaultValue>
+      <HexOptionChangeMessageWarning-DefaultValue>None</HexOptionChangeMessageWarning-DefaultValue>
+      <LinkOptionByteCount-DefaultValue>False</LinkOptionByteCount-DefaultValue>
+      <HexOptionChangeMessageWarningNumber-DefaultValue />
+      <LinkOptionByteCountValue-DefaultValue>FF</LinkOptionByteCountValue-DefaultValue>
+      <HexOptionChangeMessageError-DefaultValue>None</HexOptionChangeMessageError-DefaultValue>
+      <LinkOptionCrc-DefaultValue>None</LinkOptionCrc-DefaultValue>
+      <HexOptionChangeMessageErrorNumber-DefaultValue />
+      <LinkOptionCrc2-DefaultValue>False</LinkOptionCrc2-DefaultValue>
+      <LinkOptionCrcOutputAddress-DefaultValue>0</LinkOptionCrcOutputAddress-DefaultValue>
       <LinkOptionOtherAdditionalOptionsForConvertFile-DefaultValue />
       <HexOptionCommandLine-DefaultValue>-end
 -input=%BuildModeName%\%ProjectName%.abs
@@ -663,23 +710,37 @@
 -output=%BuildModeName%\%ProjectName%.mot
 -exit
 </HexOptionCommandLine-DefaultValue>
-      <LinkOptionConvertFolder-DefaultValue>%BuildModeName%</LinkOptionConvertFolder-DefaultValue>
-      <LinkOptionRecordH-DefaultValue>None</LinkOptionRecordH-DefaultValue>
-      <LinkOptionConvertFileName-DefaultValue>%ProjectName%.mot</LinkOptionConvertFileName-DefaultValue>
-      <LinkOptionRecordS-DefaultValue>None</LinkOptionRecordS-DefaultValue>
-      <LinkOptionMultiConvertFileName-DefaultValue />
-      <LinkOptionSpace-DefaultValue>None</LinkOptionSpace-DefaultValue>
-      <LinkOptionSpaceValue-DefaultValue>FF</LinkOptionSpaceValue-DefaultValue>
-      <LinkOptionByteCount-DefaultValue>False</LinkOptionByteCount-DefaultValue>
-      <LinkOptionByteCountValue-DefaultValue>FF</LinkOptionByteCountValue-DefaultValue>
-      <LinkOptionCrc-DefaultValue>None</LinkOptionCrc-DefaultValue>
-      <LinkOptionCrcOutputAddress-DefaultValue>0</LinkOptionCrcOutputAddress-DefaultValue>
       <LinkOptionCrcCalculationRange-DefaultValue />
+      <HexOptionCrcType-DefaultValue>Ccitt</HexOptionCrcType-DefaultValue>
+      <HexOptionCrcInitialValue-DefaultValue />
+      <HexOptionCrcEndian-DefaultValue>None</HexOptionCrcEndian-DefaultValue>
       <LinkOptionS9-DefaultValue>False</LinkOptionS9-DefaultValue>
+      <HexOptionCreateUnfilledArea-DefaultValue>False</HexOptionCreateUnfilledArea-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
       <TimeTagModified--0>-8588053514216073187</TimeTagModified--0>
       <HexOptionForm-0>Stype</HexOptionForm-0>
       <HexOptionOutput-0>True</HexOptionOutput-0>
+      <HexOptionSameLinkMessage-0>True</HexOptionSameLinkMessage-0>
+      <HexOptionMessage-0>NoMessage</HexOptionMessage-0>
+      <LinkOptionConvertFolder-0>%BuildModeName%</LinkOptionConvertFolder-0>
+      <LinkOptionRecordH-0>None</LinkOptionRecordH-0>
+      <HexOptionNoMessageNumber-0 />
+      <LinkOptionConvertFileName-0>%ProjectName%.mot</LinkOptionConvertFileName-0>
+      <LinkOptionRecordS-0>None</LinkOptionRecordS-0>
+      <HexOptionChangeMessageInformation-0>None</HexOptionChangeMessageInformation-0>
+      <LinkOptionMultiConvertFileName-0 />
+      <LinkOptionSpace-0>None</LinkOptionSpace-0>
+      <HexOptionChangeMessageInformationNumber-0 />
+      <LinkOptionSpaceValue-0>FF</LinkOptionSpaceValue-0>
+      <HexOptionChangeMessageWarning-0>None</HexOptionChangeMessageWarning-0>
+      <LinkOptionByteCount-0>False</LinkOptionByteCount-0>
+      <HexOptionChangeMessageWarningNumber-0 />
+      <LinkOptionByteCountValue-0>FF</LinkOptionByteCountValue-0>
+      <HexOptionChangeMessageError-0>None</HexOptionChangeMessageError-0>
+      <LinkOptionCrc-0>None</LinkOptionCrc-0>
+      <HexOptionChangeMessageErrorNumber-0 />
+      <LinkOptionCrc2-0>False</LinkOptionCrc2-0>
+      <LinkOptionCrcOutputAddress-0>0</LinkOptionCrcOutputAddress-0>
       <LinkOptionOtherAdditionalOptionsForConvertFile-0 />
       <HexOptionCommandLine-0>-end
 -input=%BuildModeName%\%ProjectName%.abs
@@ -687,19 +748,12 @@
 -output=%BuildModeName%\%ProjectName%.mot
 -exit
 </HexOptionCommandLine-0>
-      <LinkOptionConvertFolder-0>%BuildModeName%</LinkOptionConvertFolder-0>
-      <LinkOptionRecordH-0>None</LinkOptionRecordH-0>
-      <LinkOptionConvertFileName-0>%ProjectName%.mot</LinkOptionConvertFileName-0>
-      <LinkOptionRecordS-0>None</LinkOptionRecordS-0>
-      <LinkOptionMultiConvertFileName-0 />
-      <LinkOptionSpace-0>None</LinkOptionSpace-0>
-      <LinkOptionSpaceValue-0>FF</LinkOptionSpaceValue-0>
-      <LinkOptionByteCount-0>False</LinkOptionByteCount-0>
-      <LinkOptionByteCountValue-0>FF</LinkOptionByteCountValue-0>
-      <LinkOptionCrc-0>None</LinkOptionCrc-0>
-      <LinkOptionCrcOutputAddress-0>0</LinkOptionCrcOutputAddress-0>
       <LinkOptionCrcCalculationRange-0 />
+      <HexOptionCrcType-0>Ccitt</HexOptionCrcType-0>
+      <HexOptionCrcInitialValue-0 />
+      <HexOptionCrcEndian-0>None</HexOptionCrcEndian-0>
       <LinkOptionS9-0>False</LinkOptionS9-0>
+      <HexOptionCreateUnfilledArea-0>False</HexOptionCreateUnfilledArea-0>
     </Instance>
     <Instance Guid="fff50d2e-74da-44ea-90a8-c47756029e83">
       <LibOptionForm-DefaultValue>LibraryU</LibOptionForm-DefaultValue>
@@ -771,125 +825,131 @@
       <LbgOptionLanguage-DefaultValue>C</LbgOptionLanguage-DefaultValue>
       <LbgOptionLibraryMode-DefaultValue>MakeOptionChanged</LbgOptionLibraryMode-DefaultValue>
       <LbgOptionLogo-DefaultValue>False</LbgOptionLogo-DefaultValue>
-      <LbgOptionOptimize-DefaultValue>Level2</LbgOptionOptimize-DefaultValue>
       <LbgOptionOutputFolder-DefaultValue>%BuildModeName%</LbgOptionOutputFolder-DefaultValue>
-      <LbgOptionGoptimize-DefaultValue>False</LbgOptionGoptimize-DefaultValue>
+      <LbgOptionUseSameOptimizeRelatedSettingsAsCompileOptions-DefaultValue>False</LbgOptionUseSameOptimizeRelatedSettingsAsCompileOptions-DefaultValue>
       <LbgOptionHead-DefaultValue>Custom</LbgOptionHead-DefaultValue>
+      <LbgOptionOptimize-DefaultValue>Level2</LbgOptionOptimize-DefaultValue>
       <LbgOptionOutputFileName-DefaultValue>%ProjectName%.lib</LbgOptionOutputFileName-DefaultValue>
       <LbgOptionPreLibraryGenerateCommands-DefaultValue />
       <LbgOptionFunctionalCutdown-DefaultValue>None</LbgOptionFunctionalCutdown-DefaultValue>
+      <LbgOptionGoptimize-DefaultValue>False</LbgOptionGoptimize-DefaultValue>
       <LbgOptionHeadRuntime-DefaultValue>True</LbgOptionHeadRuntime-DefaultValue>
       <LbgOptionPostLibraryGenerateCommands-DefaultValue />
-      <LbgOptionSpeedAndSize-DefaultValue>Size</LbgOptionSpeedAndSize-DefaultValue>
       <LbgOptionHeadCtypeH-DefaultValue>False</LbgOptionHeadCtypeH-DefaultValue>
-      <LbgOptionLoop-DefaultValue>Auto</LbgOptionLoop-DefaultValue>
       <LbgOptionOtherAdditionalOptions-DefaultValue />
       <LbgOptionReent-DefaultValue>False</LbgOptionReent-DefaultValue>
+      <LbgOptionSpeedAndSize-DefaultValue>Size</LbgOptionSpeedAndSize-DefaultValue>
       <LbgOptionCommandLine-DefaultValue />
       <LbgOptionHeadMathH-DefaultValue>False</LbgOptionHeadMathH-DefaultValue>
-      <LbgOptionLoopValue-DefaultValue>2</LbgOptionLoopValue-DefaultValue>
-      <LbgOptionSectionP-DefaultValue>P</LbgOptionSectionP-DefaultValue>
+      <LbgOptionLoop-DefaultValue>Auto</LbgOptionLoop-DefaultValue>
+      <LbgOptionSecureMalloc-DefaultValue>False</LbgOptionSecureMalloc-DefaultValue>
       <LbgOptionHeadMathfH-DefaultValue>False</LbgOptionHeadMathfH-DefaultValue>
-      <LbgOptionInline-DefaultValue>Auto</LbgOptionInline-DefaultValue>
-      <LbgOptionSectionC-DefaultValue>C</LbgOptionSectionC-DefaultValue>
+      <LbgOptionLoopValue-DefaultValue>2</LbgOptionLoopValue-DefaultValue>
+      <LbgOptionUseSameObjectRelatedSettingsAsCompileOptions-DefaultValue>False</LbgOptionUseSameObjectRelatedSettingsAsCompileOptions-DefaultValue>
       <LbgOptionHeadStdargH-DefaultValue>False</LbgOptionHeadStdargH-DefaultValue>
-      <LbgOptionInlineValue-DefaultValue>100</LbgOptionInlineValue-DefaultValue>
-      <LbgOptionSectionD-DefaultValue>D</LbgOptionSectionD-DefaultValue>
-      <LbgOptionFileInline-DefaultValue />
+      <LbgOptionInline-DefaultValue>Auto</LbgOptionInline-DefaultValue>
+      <LbgOptionSectionP-DefaultValue>P</LbgOptionSectionP-DefaultValue>
       <LbgOptionHeadStdioH-DefaultValue>True</LbgOptionHeadStdioH-DefaultValue>
-      <LbgOptionSectionB-DefaultValue>B</LbgOptionSectionB-DefaultValue>
-      <LbgOptionCase-DefaultValue>Auto</LbgOptionCase-DefaultValue>
+      <LbgOptionInlineValue-DefaultValue>100</LbgOptionInlineValue-DefaultValue>
+      <LbgOptionSectionC-DefaultValue>C</LbgOptionSectionC-DefaultValue>
+      <LbgOptionFileInline-DefaultValue />
       <LbgOptionHeadStdlibH-DefaultValue>True</LbgOptionHeadStdlibH-DefaultValue>
-      <LbgOptionSectionL-DefaultValue>L</LbgOptionSectionL-DefaultValue>
+      <LbgOptionSectionD-DefaultValue>D</LbgOptionSectionD-DefaultValue>
+      <LbgOptionCase-DefaultValue>Auto</LbgOptionCase-DefaultValue>
       <LbgOptionHeadStringH-DefaultValue>True</LbgOptionHeadStringH-DefaultValue>
-      <LbgOptionSectionW-DefaultValue>W</LbgOptionSectionW-DefaultValue>
+      <LbgOptionSectionB-DefaultValue>B</LbgOptionSectionB-DefaultValue>
+      <LbgOptionHeadIos-DefaultValue>False</LbgOptionHeadIos-DefaultValue>
+      <LbgOptionSectionL-DefaultValue>L</LbgOptionSectionL-DefaultValue>
       <LbgOptionVolatile-DefaultValue>False</LbgOptionVolatile-DefaultValue>
       <LbgOptionConstCopy-DefaultValue>Auto</LbgOptionConstCopy-DefaultValue>
-      <LbgOptionHeadIos-DefaultValue>False</LbgOptionHeadIos-DefaultValue>
-      <LbgOptionNostuffB-DefaultValue>False</LbgOptionNostuffB-DefaultValue>
-      <LbgOptionConstDiv-DefaultValue>Auto</LbgOptionConstDiv-DefaultValue>
       <LbgOptionHeadNew-DefaultValue>True</LbgOptionHeadNew-DefaultValue>
-      <LbgOptionNostuffD-DefaultValue>False</LbgOptionNostuffD-DefaultValue>
+      <LbgOptionSectionW-DefaultValue>W</LbgOptionSectionW-DefaultValue>
+      <LbgOptionConstDiv-DefaultValue>Auto</LbgOptionConstDiv-DefaultValue>
       <LbgOptionHeadComplex-DefaultValue>False</LbgOptionHeadComplex-DefaultValue>
-      <LbgOptionLibrary-DefaultValue>Intrinsic</LbgOptionLibrary-DefaultValue>
-      <LbgOptionNostuffC-DefaultValue>False</LbgOptionNostuffC-DefaultValue>
+      <LbgOptionNostuffB-DefaultValue>False</LbgOptionNostuffB-DefaultValue>
       <LbgOptionHeadString-DefaultValue>False</LbgOptionHeadString-DefaultValue>
-      <LbgOptionNostuffW-DefaultValue>False</LbgOptionNostuffW-DefaultValue>
-      <LbgOptionScope-DefaultValue>Auto</LbgOptionScope-DefaultValue>
+      <LbgOptionLibrary-DefaultValue>Intrinsic</LbgOptionLibrary-DefaultValue>
+      <LbgOptionNostuffD-DefaultValue>False</LbgOptionNostuffD-DefaultValue>
       <LbgOptionHeadComplexH-DefaultValue>False</LbgOptionHeadComplexH-DefaultValue>
-      <LbgOptionInstalign-DefaultValue>Noinstalign</LbgOptionInstalign-DefaultValue>
+      <LbgOptionNostuffC-DefaultValue>False</LbgOptionNostuffC-DefaultValue>
+      <LbgOptionScope-DefaultValue>Auto</LbgOptionScope-DefaultValue>
+      <LbgOptionHeadFenvH-DefaultValue>False</LbgOptionHeadFenvH-DefaultValue>
+      <LbgOptionNostuffW-DefaultValue>False</LbgOptionNostuffW-DefaultValue>
       <LbgOptionSchedule-DefaultValue>Auto</LbgOptionSchedule-DefaultValue>
       <LbgOptionApproxdiv-DefaultValue>False</LbgOptionApproxdiv-DefaultValue>
-      <LbgOptionHeadFenvH-DefaultValue>False</LbgOptionHeadFenvH-DefaultValue>
-      <LbgOptionNouseDiv-DefaultValue>True</LbgOptionNouseDiv-DefaultValue>
-      <LbgOptionEnableRegister-DefaultValue>False</LbgOptionEnableRegister-DefaultValue>
       <LbgOptionHeadInttypesH-DefaultValue>False</LbgOptionHeadInttypesH-DefaultValue>
+      <LbgOptionInstalign-DefaultValue>Noinstalign</LbgOptionInstalign-DefaultValue>
+      <LbgOptionEnableRegister-DefaultValue>False</LbgOptionEnableRegister-DefaultValue>
       <LbgOptionHeadWcharH-DefaultValue>False</LbgOptionHeadWcharH-DefaultValue>
+      <LbgOptionNouseDiv-DefaultValue>True</LbgOptionNouseDiv-DefaultValue>
+      <LbgOptionHeadWctypeH-DefaultValue>False</LbgOptionHeadWctypeH-DefaultValue>
       <LbgOptionSimpleFloatConv-DefaultValue>False</LbgOptionSimpleFloatConv-DefaultValue>
       <LbgOptionFpu-DefaultValue>Fpu</LbgOptionFpu-DefaultValue>
-      <LbgOptionHeadWctypeH-DefaultValue>False</LbgOptionHeadWctypeH-DefaultValue>
       <LbgOptionFloatOrder-DefaultValue>False</LbgOptionFloatOrder-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
       <TimeTagModified--0>-8588053514216073187</TimeTagModified--0>
       <LbgOptionLanguage-0>C</LbgOptionLanguage-0>
       <LbgOptionLibraryMode-0>MakeOptionChanged</LbgOptionLibraryMode-0>
       <LbgOptionLogo-0>False</LbgOptionLogo-0>
-      <LbgOptionOptimize-0>Level2</LbgOptionOptimize-0>
       <LbgOptionOutputFolder-0>%BuildModeName%</LbgOptionOutputFolder-0>
-      <LbgOptionGoptimize-0>False</LbgOptionGoptimize-0>
+      <LbgOptionUseSameOptimizeRelatedSettingsAsCompileOptions-0>False</LbgOptionUseSameOptimizeRelatedSettingsAsCompileOptions-0>
       <LbgOptionHead-0>Custom</LbgOptionHead-0>
+      <LbgOptionOptimize-0>Level2</LbgOptionOptimize-0>
       <LbgOptionOutputFileName-0>%ProjectName%.lib</LbgOptionOutputFileName-0>
       <LbgOptionPreLibraryGenerateCommands-0 />
       <LbgOptionFunctionalCutdown-0>None</LbgOptionFunctionalCutdown-0>
+      <LbgOptionGoptimize-0>False</LbgOptionGoptimize-0>
       <LbgOptionPostLibraryGenerateCommands-0 />
-      <LbgOptionSpeedAndSize-0>Size</LbgOptionSpeedAndSize-0>
       <LbgOptionHeadCtypeH-0>False</LbgOptionHeadCtypeH-0>
-      <LbgOptionLoop-0>Auto</LbgOptionLoop-0>
       <LbgOptionOtherAdditionalOptions-0 />
       <LbgOptionReent-0>False</LbgOptionReent-0>
+      <LbgOptionSpeedAndSize-0>Size</LbgOptionSpeedAndSize-0>
       <LbgOptionCommandLine-0 />
       <LbgOptionHeadMathH-0>False</LbgOptionHeadMathH-0>
-      <LbgOptionLoopValue-0>2</LbgOptionLoopValue-0>
-      <LbgOptionSectionP-0>P</LbgOptionSectionP-0>
+      <LbgOptionLoop-0>Auto</LbgOptionLoop-0>
+      <LbgOptionSecureMalloc-0>False</LbgOptionSecureMalloc-0>
       <LbgOptionHeadMathfH-0>False</LbgOptionHeadMathfH-0>
-      <LbgOptionInline-0>Auto</LbgOptionInline-0>
-      <LbgOptionSectionC-0>C</LbgOptionSectionC-0>
+      <LbgOptionLoopValue-0>2</LbgOptionLoopValue-0>
+      <LbgOptionUseSameObjectRelatedSettingsAsCompileOptions-0>False</LbgOptionUseSameObjectRelatedSettingsAsCompileOptions-0>
       <LbgOptionHeadStdargH-0>False</LbgOptionHeadStdargH-0>
-      <LbgOptionInlineValue-0>100</LbgOptionInlineValue-0>
-      <LbgOptionSectionD-0>D</LbgOptionSectionD-0>
-      <LbgOptionFileInline-0 />
+      <LbgOptionInline-0>Auto</LbgOptionInline-0>
+      <LbgOptionSectionP-0>P</LbgOptionSectionP-0>
       <LbgOptionHeadStdioH-0>True</LbgOptionHeadStdioH-0>
-      <LbgOptionSectionB-0>B</LbgOptionSectionB-0>
-      <LbgOptionCase-0>Auto</LbgOptionCase-0>
+      <LbgOptionInlineValue-0>100</LbgOptionInlineValue-0>
+      <LbgOptionSectionC-0>C</LbgOptionSectionC-0>
+      <LbgOptionFileInline-0 />
       <LbgOptionHeadStdlibH-0>True</LbgOptionHeadStdlibH-0>
-      <LbgOptionSectionL-0>L</LbgOptionSectionL-0>
+      <LbgOptionSectionD-0>D</LbgOptionSectionD-0>
+      <LbgOptionCase-0>Auto</LbgOptionCase-0>
       <LbgOptionHeadStringH-0>True</LbgOptionHeadStringH-0>
-      <LbgOptionSectionW-0>W</LbgOptionSectionW-0>
+      <LbgOptionSectionB-0>B</LbgOptionSectionB-0>
+      <LbgOptionHeadIos-0>False</LbgOptionHeadIos-0>
+      <LbgOptionSectionL-0>L</LbgOptionSectionL-0>
       <LbgOptionVolatile-0>False</LbgOptionVolatile-0>
       <LbgOptionConstCopy-0>Auto</LbgOptionConstCopy-0>
-      <LbgOptionHeadIos-0>False</LbgOptionHeadIos-0>
-      <LbgOptionNostuffB-0>False</LbgOptionNostuffB-0>
-      <LbgOptionConstDiv-0>Auto</LbgOptionConstDiv-0>
       <LbgOptionHeadNew-0>True</LbgOptionHeadNew-0>
-      <LbgOptionNostuffD-0>False</LbgOptionNostuffD-0>
+      <LbgOptionSectionW-0>W</LbgOptionSectionW-0>
+      <LbgOptionConstDiv-0>Auto</LbgOptionConstDiv-0>
       <LbgOptionHeadComplex-0>False</LbgOptionHeadComplex-0>
-      <LbgOptionLibrary-0>Intrinsic</LbgOptionLibrary-0>
-      <LbgOptionNostuffC-0>False</LbgOptionNostuffC-0>
+      <LbgOptionNostuffB-0>False</LbgOptionNostuffB-0>
       <LbgOptionHeadString-0>False</LbgOptionHeadString-0>
-      <LbgOptionNostuffW-0>False</LbgOptionNostuffW-0>
-      <LbgOptionScope-0>Auto</LbgOptionScope-0>
+      <LbgOptionLibrary-0>Intrinsic</LbgOptionLibrary-0>
+      <LbgOptionNostuffD-0>False</LbgOptionNostuffD-0>
       <LbgOptionHeadComplexH-0>False</LbgOptionHeadComplexH-0>
-      <LbgOptionInstalign-0>Noinstalign</LbgOptionInstalign-0>
+      <LbgOptionNostuffC-0>False</LbgOptionNostuffC-0>
+      <LbgOptionScope-0>Auto</LbgOptionScope-0>
+      <LbgOptionHeadFenvH-0>False</LbgOptionHeadFenvH-0>
+      <LbgOptionNostuffW-0>False</LbgOptionNostuffW-0>
       <LbgOptionSchedule-0>Auto</LbgOptionSchedule-0>
       <LbgOptionApproxdiv-0>False</LbgOptionApproxdiv-0>
-      <LbgOptionHeadFenvH-0>False</LbgOptionHeadFenvH-0>
-      <LbgOptionNouseDiv-0>True</LbgOptionNouseDiv-0>
-      <LbgOptionEnableRegister-0>False</LbgOptionEnableRegister-0>
       <LbgOptionHeadInttypesH-0>False</LbgOptionHeadInttypesH-0>
+      <LbgOptionInstalign-0>Noinstalign</LbgOptionInstalign-0>
+      <LbgOptionEnableRegister-0>False</LbgOptionEnableRegister-0>
       <LbgOptionHeadWcharH-0>False</LbgOptionHeadWcharH-0>
+      <LbgOptionNouseDiv-0>True</LbgOptionNouseDiv-0>
+      <LbgOptionHeadWctypeH-0>False</LbgOptionHeadWctypeH-0>
       <LbgOptionSimpleFloatConv-0>False</LbgOptionSimpleFloatConv-0>
       <LbgOptionFpu-0>Fpu</LbgOptionFpu-0>
-      <LbgOptionHeadWctypeH-0>False</LbgOptionHeadWctypeH-0>
       <LbgOptionFloatOrder-0>False</LbgOptionFloatOrder-0>
     </Instance>
     <Instance Guid="2663a3a4-1aa9-423b-8114-929eeb0f323e">
@@ -1146,6 +1206,10 @@
       <DebuggerProperty-HookProperty-HookTransaction-Connected-Length>0</DebuggerProperty-HookProperty-HookTransaction-Connected-Length>
       <DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>0</DebuggerProperty-HookProperty-HookTransaction-Disconnecting-Length>
       <DebuggerProperty-DownloadProperty-DebugInformation-MaxLoaderMemorySize>500</DebuggerProperty-DownloadProperty-DebugInformation-MaxLoaderMemorySize>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>True</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-IsDefaultItem>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DefaultItemProjectGuid>c170030b-b19d-470a-99cb-00eb1a66ac6b</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-DefaultItemProjectGuid>
+      <DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-CompilerType>Auto</DebuggerProperty-DownloadProperty-DebugInformation-DownloadFiles-DownloadItem0-CompilerType>
+      <DebuggerProperty-DownloadProperty-None-DefaultDownloadItemSupported>True</DebuggerProperty-DownloadProperty-None-DefaultDownloadItemSupported>
     </Instance>
   </Class>
   <Class Guid="2a2c2a43-ecdb-4e88-80bd-e75f3e33db90">

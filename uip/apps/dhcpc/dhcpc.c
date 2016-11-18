@@ -159,9 +159,9 @@ create_msg(struct dhcpc_state *s, struct dhcp_msg *m)
   m->hops = 0;
   memcpy(m->xid, xid, sizeof(m->xid));
   m->secs = 0;
-  m->flags = HTONS(BOOTP_BROADCAST); /*  Broadcast bit. */
-  /*  uip_ipaddr_copy(m->ciaddr, uip_hostaddr);*/
-  memcpy(m->ciaddr, uip_hostaddr, sizeof(m->ciaddr));
+  m->flags = UIP_HTONS(BOOTP_BROADCAST); /*  Broadcast bit. */
+  /*  uip_ipaddr_copy(&m->ciaddr, &uip_hostaddr);*/
+  memcpy(m->ciaddr, &uip_hostaddr, sizeof(m->ciaddr));
   memset(m->yiaddr, 0, sizeof(m->yiaddr));
   memset(m->siaddr, 0, sizeof(m->siaddr));
   memset(m->giaddr, 0, sizeof(m->giaddr));
@@ -328,7 +328,7 @@ PT_THREAD(handle_dhcp(struct dhcpc_state *s))
          uip_ipaddr1(s->default_router), uip_ipaddr2(s->default_router),
          uip_ipaddr3(s->default_router), uip_ipaddr4(s->default_router));
   printf("Lease expires in %ld seconds\n",
-         ntohs(s->lease_time[0])*65536ul + ntohs(s->lease_time[1]));
+         uip_ntohs(s->lease_time[0])*65536ul + uip_ntohs(s->lease_time[1]));
 #endif
 
   dhcpc_configured(s);
@@ -355,8 +355,8 @@ dhcpc_init(const void *mac_addr, int mac_len)
   struct dhcpc_state *s;
   uip_ipaddr_t addr;
 
-  uip_ipaddr(addr, 255,255,255,255);
-  conn = uip_udp_new(&addr, HTONS(DHCPC_SERVER_PORT));
+  uip_ipaddr(&addr, 255,255,255,255);
+  conn = uip_udp_new(&addr, UIP_HTONS(DHCPC_SERVER_PORT));
   if(conn != NULL) {
     s = &conn->appstate.parblk.dhcpc;
     s->conn = conn;
@@ -366,7 +366,7 @@ dhcpc_init(const void *mac_addr, int mac_len)
     s->state = STATE_INITIAL;
     s->conn->appstate.udp_callback = dhcpc_appcall;
 
-    uip_udp_bind(conn, HTONS(DHCPC_CLIENT_PORT));
+    uip_udp_bind(conn, UIP_HTONS(DHCPC_CLIENT_PORT));
 
     PT_INIT(&s->pt);
 
@@ -385,11 +385,11 @@ dhcpc_appcall(struct uip_udp_conn *uip_udp_conn, int fncd, void *p_parblk)
 void
 dhcpc_request(struct dhcpc_state *s)
 {
-  uint16_t ipaddr[2];
+  uip_ipaddr_t ipaddr;
 
   s->state = STATE_REQUEST;
-  uip_ipaddr(ipaddr, 0,0,0,0);
-  uip_sethostaddr(ipaddr);
+  uip_ipaddr(&ipaddr, 0,0,0,0);
+  uip_sethostaddr(&ipaddr);
   uip_udp_conn = s->conn;
   uip_process(UIP_UDP_TIMER);
 }

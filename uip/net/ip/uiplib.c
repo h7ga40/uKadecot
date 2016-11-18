@@ -39,8 +39,8 @@
 
 
 /*-----------------------------------------------------------------------------------*/
-unsigned char
-uiplib_ipaddrconv(char *addrstr, unsigned char *ipaddr)
+int
+uiplib_ipaddrconv(const char *addrstr, uip_ipaddr_t *ipaddr)
 {
   unsigned char tmp;
   char c;
@@ -57,8 +57,7 @@ uiplib_ipaddrconv(char *addrstr, unsigned char *ipaddr)
         return 0;
       }
       if(c == '.' || c == 0) {
-        *ipaddr = tmp;
-        ++ipaddr;
+        ipaddr->u8[i] = tmp;
         tmp = 0;
       } else if(c >= '0' && c <= '9') {
         tmp = (tmp * 10) + (c - '0');

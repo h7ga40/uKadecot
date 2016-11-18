@@ -250,7 +250,7 @@ rx62n_probe (T_IF_SOFTC *ic)
 	/* ターゲット依存部のバスの初期化 */
 	rx62n_bus_init();
 
-	memcpy(uip_ethaddr.addr, mac_addr, sizeof(uip_ethaddr.addr));
+	memcpy(uip_lladdr.addr, mac_addr, sizeof(uip_lladdr.addr));
 }
 
 /*

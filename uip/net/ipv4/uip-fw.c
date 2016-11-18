@@ -85,8 +85,7 @@ struct tcpip_hdr {
   uint8_t ttl,
     proto;
   uint16_t ipchksum;
-  uint16_t srcipaddr[2],
-    destipaddr[2];
+  uip_ipaddr_t srcipaddr, destipaddr;
   
   /* TCP header. */
   uint16_t srcport,
@@ -111,8 +110,7 @@ struct icmpip_hdr {
     ttl,
     proto;
   uint16_t ipchksum;
-  uint16_t srcipaddr[2],
-    destipaddr[2];
+  uip_ipaddr_t srcipaddr, destipaddr;
   /* ICMP (echo) header. */
   uint8_t type, icode;
   uint16_t icmpchksum;
@@ -143,8 +141,8 @@ struct icmpip_hdr {
 struct fwcache_entry {
   uint16_t timer;
   
-  uint16_t srcipaddr[2];
-  uint16_t destipaddr[2];
+  uip_ipaddr_t srcipaddr;
+  uip_ipaddr_t destipaddr;
   uint16_t ipid;
   uint8_t proto;
   uint8_t unused;
@@ -216,10 +214,12 @@ uip_fw_init(void)
  */
 /*------------------------------------------------------------------------------*/
 static unsigned char
-ipaddr_maskcmp(uint16_t *ipaddr, uint16_t *netipaddr, uint16_t *netmask)
+ipaddr_maskcmp(uip_ipaddr_t *ipaddr,
+               uip_ipaddr_t *netipaddr,
+               uip_ipaddr_t *netmask)
 {
-  return (ipaddr[0] & netmask [0]) == (netipaddr[0] & netmask[0]) &&
-    (ipaddr[1] & netmask[1]) == (netipaddr[1] & netmask[1]);
+  return (ipaddr->u16[0] & netmask->u16[0]) == (netipaddr->u16[0] & netmask->u16[0]) &&
+    (ipaddr->u16[1] & netmask->u16[1]) == (netipaddr->u16[1] & netmask->u16[1]);
 }
 /*------------------------------------------------------------------------------*/
 /**
@@ -253,22 +253,16 @@ time_exceeded(void)
 
   /* Set the IP destination address to be the source address of the
      original packet. */
-  tmp16= BUF->destipaddr[0];
-  BUF->destipaddr[0] = BUF->srcipaddr[0];
-  BUF->srcipaddr[0] = tmp16;
-  tmp16 = BUF->destipaddr[1];
-  BUF->destipaddr[1] = BUF->srcipaddr[1];
-  BUF->srcipaddr[1] = tmp16;
+  uip_ipaddr_copy(&BUF->destipaddr, &BUF->srcipaddr);
 
   /* Set our IP address as the source address. */
-  BUF->srcipaddr[0] = uip_hostaddr[0];
-  BUF->srcipaddr[1] = uip_hostaddr[1];
+  uip_ipaddr_copy(&BUF->srcipaddr, &uip_hostaddr);
 
   /* The size of the ICMP time exceeded packet is 36 + the size of the
      IP header (20) = 56. */
   uip_len = 56;
   ICMPBUF->len[0] = 0;
-  ICMPBUF->len[1] = uip_len;
+  ICMPBUF->len[1] = (uint8_t)uip_len;
 
   /* Fill in the other fields in the IP header. */
   ICMPBUF->vhl = 0x45;
@@ -312,10 +306,8 @@ fwcache_register(void)
 
   fw->timer = FW_TIME;
   fw->ipid = BUF->ipid;
-  fw->srcipaddr[0] = BUF->srcipaddr[0];
-  fw->srcipaddr[1] = BUF->srcipaddr[1];
-  fw->destipaddr[0] = BUF->destipaddr[0];
-  fw->destipaddr[1] = BUF->destipaddr[1];
+  uip_ipaddr_copy(&fw->srcipaddr, &BUF->srcipaddr);
+  uip_ipaddr_copy(&fw->destipaddr, &BUF->destipaddr);
   fw->proto = BUF->proto;
 #if notdef
   fw->payload[0] = BUF->srcport;
@@ -339,8 +331,8 @@ find_netif(void)
   
   /* Walk through every network interface to check for a match. */
   for(netif = netifs; netif != NULL; netif = netif->next) {
-    if(ipaddr_maskcmp(BUF->destipaddr, netif->ipaddr,
-                      netif->netmask)) {
+    if(ipaddr_maskcmp(&BUF->destipaddr, &netif->ipaddr,
+                      &netif->netmask)) {
       /* If there was a match, we break the loop. */
       return netif;
     }
@@ -370,6 +362,9 @@ uint8_t
 uip_fw_output(void)
 {
   struct uip_fw_netif *netif;
+#if UIP_BROADCAST
+  const struct uip_udpip_hdr *udp = (void *)BUF;
+#endif /* UIP_BROADCAST */
 
   if(uip_len == 0) {
     return UIP_FW_ZEROLEN;
@@ -379,9 +374,7 @@ uip_fw_output(void)
 
 #if UIP_BROADCAST
   /* Link local broadcasts go out on all interfaces. */
-  if(/*BUF->proto == UIP_PROTO_UDP &&*/
-     BUF->destipaddr[0] == 0xffff &&
-     BUF->destipaddr[1] == 0xffff) {
+  if(uip_ipaddr_cmp(&udp->destipaddr, &uip_broadcast_addr)) {
     if(defaultnetif != NULL) {
       defaultnetif->output();
     }
@@ -421,15 +414,14 @@ uip_fw_forward(void)
 
   /* First check if the packet is destined for ourselves and return 0
      to indicate that the packet should be processed locally. */
-  if(BUF->destipaddr[0] == uip_hostaddr[0] &&
-     BUF->destipaddr[1] == uip_hostaddr[1]) {
+  if(uip_ipaddr_cmp(&BUF->destipaddr, &uip_hostaddr)) {
     return UIP_FW_LOCAL;
   }
 
   /* If we use ping IP address configuration, and our IP address is
      not yet configured, we should intercept all ICMP echo packets. */
 #if UIP_PINGADDRCONF
-  if((uip_hostaddr[0] | uip_hostaddr[1]) == 0 &&
+  if(uip_ipaddr_cmp(&uip_hostaddr, &uip_all_zeroes_addr) &&
      BUF->proto == UIP_PROTO_ICMP &&
      ICMPBUF->type == ICMP_ECHO) {
     return UIP_FW_LOCAL;
@@ -446,10 +438,8 @@ uip_fw_forward(void)
        fw->offset == BUF->ipoffset &&
 #endif
        fw->ipid == BUF->ipid &&
-       fw->srcipaddr[0] == BUF->srcipaddr[0] &&
-       fw->srcipaddr[1] == BUF->srcipaddr[1] &&
-       fw->destipaddr[0] == BUF->destipaddr[0] &&
-       fw->destipaddr[1] == BUF->destipaddr[1] &&
+       uip_ipaddr_cmp(&fw->srcipaddr, &BUF->srcipaddr) &&
+       uip_ipaddr_cmp(&fw->destipaddr, &BUF->destipaddr) &&
 #if notdef
        fw->payload[0] == BUF->srcport &&
        fw->payload[1] == BUF->destport &&
@@ -463,9 +453,10 @@ uip_fw_forward(void)
   /* If the TTL reaches zero we produce an ICMP time exceeded message
      in the uip_buf buffer and forward that packet back to the sender
      of the packet. */
+
   if(BUF->ttl <= 1) {
     /* No time exceeded for broadcasts and multicasts! */
-    if(BUF->destipaddr[0] == 0xffff && BUF->destipaddr[1] == 0xffff) {
+    if(uip_ipaddr_cmp(&BUF->destipaddr, &uip_broadcast_addr)) {
       return UIP_FW_LOCAL;
     }
     time_exceeded();
@@ -475,10 +466,10 @@ uip_fw_forward(void)
   BUF->ttl = BUF->ttl - 1;
   
   /* Update the IP checksum. */
-  if(BUF->ipchksum >= HTONS(0xffff - 0x0100)) {
-    BUF->ipchksum = BUF->ipchksum + HTONS(0x0100) + 1;
+  if(BUF->ipchksum >= UIP_HTONS(0xffff - 0x0100)) {
+    BUF->ipchksum = BUF->ipchksum + UIP_HTONS(0x0100) + 1;
   } else {
-    BUF->ipchksum = BUF->ipchksum + HTONS(0x0100);
+    BUF->ipchksum = BUF->ipchksum + UIP_HTONS(0x0100);
   }
 
   if(uip_len > 0) {
@@ -487,7 +478,7 @@ uip_fw_forward(void)
   }
 
 #if UIP_BROADCAST
-  if(BUF->destipaddr[0] == 0xffff && BUF->destipaddr[1] == 0xffff) {
+  if(uip_ipaddr_cmp(&BUF->destipaddr, &uip_broadcast_addr)) {
     return UIP_FW_LOCAL;
   }
 #endif /* UIP_BROADCAST */
