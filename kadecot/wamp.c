@@ -1337,7 +1337,7 @@ static void wamp_proc_call_state(wamp_state_t *s, jsonsl_action_t action,
 	case WAMP_PARAM_STATE_PROCEDURE_URI:
 		if ((action == JSONSL_ACTION_POP)
 			&& (state->type == JSONSL_T_STRING)) {
-			wamp_dealer_call_procedure(&s->dealer, s->jsn_buf);
+			wamp_dealer_call_procedure(&s->dealer, s->jsn_buf, strnlen(s->jsn_buf, sizeof(s->jsn_buf)));
 			s->prmst = WAMP_PARAM_STATE_ARGUMENTS_LIST;
 			s->state = WAMP_PARSE_STATE_LIST_PUSH;
 		}

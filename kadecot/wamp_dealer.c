@@ -181,98 +181,157 @@ void wamp_dealer_call_options_param(wamp_dealer_t *dealer, jsonsl_action_t actio
 	}
 }
 
-void wamp_dealer_call_procedure(wamp_dealer_t *dealer, const char *value)
+void wamp_dealer_call_procedure(wamp_dealer_t *dealer, const char *value, int length)
 {
-	static const char getDeviceList[] = "com.sonycsl.kadecot.provider.procedure.getDeviceList";
-	static const char kadecotGet[] = "com.sonycsl.kadecot.echonetlite.procedure.get";
-	static const char kadecotSet[] = "com.sonycsl.kadecot.echonetlite.procedure.set";
-	static const char getDeviceInfo[] = "jp.toppers.ecnl.procedure.getDeviceInfo";
-	static const char ecnlSet[] = "jp.toppers.ecnl.procedure.set";
-	static const char ecnlGet[] = "jp.toppers.ecnl.procedure.get";
-	static const char ecnlSetGet[] = "jp.toppers.ecnl.procedure.setget";
-	static const char pinMode[] = "com.sonycsl.kadecot.arduino.pinMode";
-	static const char digitalWrite[] = "com.sonycsl.kadecot.arduino.digitalWrite";
-	static const char digitalRead[] = "com.sonycsl.kadecot.arduino.digitalRead";
-	static const char analogRead[] = "com.sonycsl.kadecot.arduino.analogRead";
-	static const char analogWrite[] = "com.sonycsl.kadecot.arduino.analogWrite";
-	static const char setInitParams[] = "jp.toppers.ecnl.procedure.setInitParams";
-	static const char getInitParams[] = "jp.toppers.ecnl.procedure.getInitParams";
+	static const char comSonycslKadecot[] = "com.sonycsl.kadecot.";
+	static const char jpToppersEcnl[] = "jp.toppers.ecnl.";
+	const char *start = value;
 
-	if(strcmp(getDeviceList, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_GET_DEVICELIST;
-		dealer->args_parse = wamp_dealer_call_dummy_param;
-		dealer->call_close = wamp_dealer_get_devicelist_close;
+	if (strncmp(comSonycslKadecot, value, sizeof(comSonycslKadecot) - 1) == 0) {
+		static const char provider[] = "provider.procedure.";
+		static const char echonetlite[] = "echonetlite.procedure.";
+		static const char arduino[] = "arduino.";
+		value = &value[sizeof(comSonycslKadecot) - 1];
+
+		if (strncmp(provider, value, sizeof(provider) - 1) == 0) {
+			static const char getDeviceList[] = "getDeviceList";
+			value = &value[sizeof(provider) - 1];
+
+			if (strncmp(getDeviceList, value, sizeof(getDeviceList) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_GET_DEVICELIST;
+				dealer->args_parse = wamp_dealer_call_dummy_param;
+				dealer->call_close = wamp_dealer_get_devicelist_close;
+				return;
+			}
+		}
+		else if (strncmp(echonetlite, value, sizeof(echonetlite) - 1) == 0) {
+			static const char kadecotGet[] = "get";
+			static const char kadecotSet[] = "set";
+			value = &value[sizeof(echonetlite) - 1];
+
+			if (strncmp(kadecotGet, value, sizeof(kadecotGet) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_KADECOT_GET;
+				dealer->args_parse = wamp_dealer_call_kadecot_param;
+				dealer->call_close = wamp_dealer_kadecot_get_close;
+				return;
+			}
+			else if (strncmp(kadecotSet, value, sizeof(kadecotSet) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_KADECOT_SET;
+				dealer->args_parse = wamp_dealer_call_kadecot_param;
+				dealer->call_close = wamp_dealer_kadecot_set_close;
+				return;
+			}
+
+			for (int i = value - start; i < length; i++) {
+				if (*value == '.' || *value == '\0') {
+					value++;
+					break;
+				}
+				value++;
+			}
+
+			if (strncmp(kadecotGet, value, sizeof(kadecotGet) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_KADECOT_GET;
+				dealer->args_parse = wamp_dealer_call_kadecot_param;
+				dealer->call_close = wamp_dealer_kadecot_get_close;
+				return;
+			}
+			else if (strncmp(kadecotSet, value, sizeof(kadecotSet) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_KADECOT_SET;
+				dealer->args_parse = wamp_dealer_call_kadecot_param;
+				dealer->call_close = wamp_dealer_kadecot_set_close;
+				return;
+			}
+		}
+		else if (strncmp(arduino, value, sizeof(arduino) - 1) == 0) {
+			static const char pinMode[] = "pinMode";
+			static const char digitalWrite[] = "digitalWrite";
+			static const char digitalRead[] = "digitalRead";
+			static const char analogRead[] = "analogRead";
+			static const char analogWrite[] = "analogWrite";
+			value = &value[sizeof(arduino) - 1];
+
+			if (strncmp(pinMode, value, sizeof(pinMode) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_PIN_MODE;
+				dealer->args_parse = wamp_dealer_call_arduino_param;
+				dealer->call_close = wamp_dealer_pin_mode_close;
+				return;
+			}
+			else if (strncmp(digitalWrite, value, sizeof(digitalWrite) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_DIGITAL_WRITE;
+				dealer->args_parse = wamp_dealer_call_arduino_param;
+				dealer->call_close = wamp_dealer_digital_write_close;
+				return;
+			}
+			else if (strncmp(digitalRead, value, sizeof(digitalRead) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_DIGITAL_READ;
+				dealer->args_parse = wamp_dealer_call_arduino_param;
+				dealer->call_close = wamp_dealer_digital_read_close;
+				return;
+			}
+			else if (strncmp(analogRead, value, sizeof(analogRead) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_ANALOG_READ;
+				dealer->args_parse = wamp_dealer_call_arduino_param;
+				dealer->call_close = wamp_dealer_analog_read_close;
+				return;
+			}
+			else if (strncmp(analogWrite, value, sizeof(analogWrite) - 1) == 0) {
+				dealer->procedure = WAMP_DEALER_PROCEDURE_ANALOG_WRITE;
+				dealer->args_parse = wamp_dealer_call_arduino_param;
+				dealer->call_close = wamp_dealer_analog_write_close;
+				return;
+			}
+		}
 	}
-	else if(strcmp(kadecotGet, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_KADECOT_GET;
-		dealer->args_parse = wamp_dealer_call_kadecot_param;
-		dealer->call_close = wamp_dealer_kadecot_get_close;
+	else if (strncmp(jpToppersEcnl, value, sizeof(jpToppersEcnl) - 1) == 0) {
+		static const char getDeviceInfo[] = "procedure.getDeviceInfo";
+		static const char ecnlSet[] = "procedure.set";
+		static const char ecnlGet[] = "procedure.get";
+		static const char ecnlSetGet[] = "procedure.setget";
+		static const char setInitParams[] = "procedure.setInitParams";
+		static const char getInitParams[] = "procedure.getInitParams";
+
+		if (strncmp(getDeviceInfo, value, sizeof(getDeviceInfo) - 1) == 0) {
+			dealer->procedure = WAMP_DEALER_PROCEDURE_GET_DEVICEINFO;
+			dealer->args_parse = wamp_dealer_call_dummy_param;
+			dealer->call_close = wamp_dealer_get_deviceinfo_close;
+			return;
+		}
+		else if (strncmp(ecnlSet, value, sizeof(ecnlSet) - 1) == 0) {
+			dealer->procedure = WAMP_DEALER_PROCEDURE_ECNL_SET;
+			dealer->args_parse = wamp_dealer_call_ecnl_param;
+			dealer->call_close = wamp_dealer_ecnl_set_close;
+			return;
+		}
+		else if (strncmp(ecnlGet, value, sizeof(ecnlGet) - 1) == 0) {
+			dealer->procedure = WAMP_DEALER_PROCEDURE_ECNL_GET;
+			dealer->args_parse = wamp_dealer_call_ecnl_param;
+			dealer->call_close = wamp_dealer_ecnl_get_close;
+			return;
+		}
+		else if (strncmp(ecnlSetGet, value, sizeof(ecnlSetGet) - 1) == 0) {
+			dealer->procedure = WAMP_DEALER_PROCEDURE_ECNL_SETGET;
+			dealer->args_parse = wamp_dealer_call_ecnl_param;
+			dealer->call_close = wamp_dealer_ecnl_setget_close;
+			return;
+		}
+		else if (strncmp(setInitParams, value, sizeof(setInitParams) - 1) == 0) {
+			dealer->procedure = WAMP_DEALER_PROCEDURE_SET_INIT_PARAMS;
+			dealer->args_parse = wamp_dealer_call_init_params_param;
+			dealer->call_close = wamp_dealer_set_init_params_close;
+			return;
+		}
+		else if (strncmp(getInitParams, value, sizeof(getInitParams) - 1) == 0) {
+			dealer->procedure = WAMP_DEALER_PROCEDURE_GET_INIT_PARAMS;
+			dealer->args_parse = wamp_dealer_call_init_params_param;
+			dealer->call_close = wamp_dealer_get_init_params_close;
+			return;
+		}
 	}
-	else if(strcmp(kadecotSet, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_KADECOT_SET;
-		dealer->args_parse = wamp_dealer_call_kadecot_param;
-		dealer->call_close = wamp_dealer_kadecot_set_close;
-	}
-	else if(strcmp(getDeviceInfo, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_GET_DEVICEINFO;
-		dealer->args_parse = wamp_dealer_call_dummy_param;
-		dealer->call_close = wamp_dealer_get_deviceinfo_close;
-	}
-	else if(strcmp(ecnlSet, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_ECNL_SET;
-		dealer->args_parse = wamp_dealer_call_ecnl_param;
-		dealer->call_close = wamp_dealer_ecnl_set_close;
-	}
-	else if(strcmp(ecnlGet, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_ECNL_GET;
-		dealer->args_parse = wamp_dealer_call_ecnl_param;
-		dealer->call_close = wamp_dealer_ecnl_get_close;
-	}
-	else if(strcmp(ecnlSetGet, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_ECNL_SETGET;
-		dealer->args_parse = wamp_dealer_call_ecnl_param;
-		dealer->call_close = wamp_dealer_ecnl_setget_close;
-	}
-	else if(strcmp(pinMode, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_PIN_MODE;
-		dealer->args_parse = wamp_dealer_call_arduino_param;
-		dealer->call_close = wamp_dealer_pin_mode_close;
-	}
-	else if(strcmp(digitalWrite, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_DIGITAL_WRITE;
-		dealer->args_parse = wamp_dealer_call_arduino_param;
-		dealer->call_close = wamp_dealer_digital_write_close;
-	}
-	else if(strcmp(digitalRead, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_DIGITAL_READ;
-		dealer->args_parse = wamp_dealer_call_arduino_param;
-		dealer->call_close = wamp_dealer_digital_read_close;
-	}
-	else if(strcmp(analogRead, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_ANALOG_READ;
-		dealer->args_parse = wamp_dealer_call_arduino_param;
-		dealer->call_close = wamp_dealer_analog_read_close;
-	}
-	else if(strcmp(analogWrite, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_ANALOG_WRITE;
-		dealer->args_parse = wamp_dealer_call_arduino_param;
-		dealer->call_close = wamp_dealer_analog_write_close;
-	}
-	else if(strcmp(setInitParams, value) == 0){
-		dealer->procedure = WAMP_DEALER_PROCEDURE_SET_INIT_PARAMS;
-		dealer->args_parse = wamp_dealer_call_init_params_param;
-		dealer->call_close = wamp_dealer_set_init_params_close;
-	}
-	else if (strcmp(getInitParams, value) == 0) {
-		dealer->procedure = WAMP_DEALER_PROCEDURE_GET_INIT_PARAMS;
-		dealer->args_parse = wamp_dealer_call_init_params_param;
-		dealer->call_close = wamp_dealer_get_init_params_close;
-	}
-	else{
-		dealer->procedure = WAMP_DEALER_PROCEDURE_NONE;
-		dealer->args_parse = wamp_dealer_call_dummy_param;
-		dealer->call_close = wamp_dealer_none_close;
-	}
+
+	dealer->procedure = WAMP_DEALER_PROCEDURE_NONE;
+	dealer->args_parse = wamp_dealer_call_dummy_param;
+	dealer->call_close = wamp_dealer_none_close;
 }
 
 void wamp_dealer_call_arguments(wamp_dealer_t *dealer, const char *value)

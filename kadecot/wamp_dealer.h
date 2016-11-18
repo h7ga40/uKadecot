@@ -174,7 +174,7 @@ void wamp_dealer_call_request_id(wamp_dealer_t *dealer, const char *value);
 void wamp_dealer_call_options(wamp_dealer_t *dealer, const char *value);
 void wamp_dealer_call_options_param(wamp_dealer_t *dealer, jsonsl_action_t action,
 	struct jsonsl_state_st *state, const char *buf);
-void wamp_dealer_call_procedure(wamp_dealer_t *dealer, const char *value);
+void wamp_dealer_call_procedure(wamp_dealer_t *dealer, const char *value, int length);
 void wamp_dealer_call_arguments(wamp_dealer_t *dealer, const char *value);
 void wamp_dealer_call_arguments_param(wamp_dealer_t *dealer, jsonsl_action_t action,
 	struct jsonsl_state_st *state, const char *buf);
