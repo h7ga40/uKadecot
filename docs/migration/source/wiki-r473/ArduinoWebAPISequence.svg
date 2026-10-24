@@ -1,0 +1,561 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Microsoft Visio 11.0、SVG Export v1.0 により生成 ArduinoWebAPISequence.svg ページ - 1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="7.57332in" height="10.6542in"
+		viewBox="0 0 545.279 767.104" xml:space="preserve" color-interpolation-filters="sRGB" class="st11">
+	<v:documentProperties v:langID="1041" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {fill:#000000;font-family:メイリオ;font-size:0.833336em}
+		.st3 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st4 {marker-end:url(#mrkr4-18);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st6 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st7 {marker-end:url(#mrkr4-18);marker-start:url(#mrkr4-33);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st8 {font-size:1em}
+		.st9 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st10 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.24}
+		.st11 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-18" class="st5" v:arrowType="4" v:arrowSize="2" v:setback="8.72" refX="-8.72" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
+		</marker>
+		<marker id="mrkr4-33" class="st5" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(4.36) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>ページ - 1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<g id="shape1-1" v:mID="1" v:groupContext="shape" transform="translate(56.9329,-738.008)">
+			<title>シート.1</title>
+			<desc>GR-SAKURA</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="49.6063" cy="752.931" width="99.22" height="28.3465"/>
+			<rect x="0" y="738.758" width="99.2126" height="28.3465" class="st1"/>
+			<text x="20.04" y="755.93" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>GR-SAKURA</text>		</g>
+		<g id="shape2-4" v:mID="2" v:groupContext="shape" transform="translate(368.744,-738.008)">
+			<title>シート.2</title>
+			<desc>Webアプリ</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="49.6063" cy="752.931" width="99.22" height="28.3465"/>
+			<rect x="0" y="738.758" width="99.2126" height="28.3465" class="st1"/>
+			<text x="23.67" y="755.93" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>Webアプリ</text>		</g>
+		<g id="shape3-7" v:mID="3" v:groupContext="shape" transform="translate(873.644,29.0965) rotate(90)">
+			<title>シート.3</title>
+			<path d="M0 767.1 L737.01 767.1" class="st3"/>
+		</g>
+		<g id="shape4-10" v:mID="4" v:groupContext="shape" transform="translate(1185.45,29.0965) rotate(90)">
+			<title>シート.4</title>
+			<path d="M0 767.1 L737.01 767.1" class="st3"/>
+		</g>
+		<g id="shape5-13" v:mID="5" v:groupContext="shape" transform="translate(418.35,881.24) rotate(180)">
+			<title>シート.5</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape6-19" v:mID="6" v:groupContext="shape" transform="translate(113.626,-652.969)">
+			<title>シート.6</title>
+			<desc>[HELLO, &#34;default&#34;, {&#34;roles&#34;:{&#34;caller&#34;:{},&#34;subscriber&#34;:{}}}]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="4.87" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[HELLO, &#34;default&#34;, {&#34;roles&#34;:{&#34;caller&#34;:{},&#34;subscriber&#34;:{}}}]</text>		</g>
+		<g id="shape7-22" v:mID="7" v:groupContext="shape" transform="translate(106.539,-709.661)">
+			<title>シート.7</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape8-27" v:mID="8" v:groupContext="shape" transform="translate(106.539,-681.315)">
+			<title>シート.8</title>
+			<path d="M6.18 767.1 L6.54 767.1 L305.27 767.1" class="st7"/>
+		</g>
+		<g id="shape9-35" v:mID="9" v:groupContext="shape" transform="translate(113.626,-709.661)">
+			<title>シート.9</title>
+			<desc>HTTP/コントローラー.html</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="85.72" y="763.02" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>HTTP/コントローラー.html</text>		</g>
+		<g id="shape10-38" v:mID="10" v:groupContext="shape" transform="translate(113.626,-681.315)">
+			<title>シート.10</title>
+			<desc>WebSocket</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="121.67" y="763.02" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>WebSocket</text>		</g>
+		<g id="shape11-41" v:mID="11" v:groupContext="shape" transform="translate(106.539,-624.622)">
+			<title>シート.11</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape12-46" v:mID="12" v:groupContext="shape" transform="translate(113.626,-624.622)">
+			<title>シート.12</title>
+			<desc>[WELCOME, Session|id, Details|dict]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="59.97" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[WELCOME, Session|id, Details|dict]</text>		</g>
+		<g id="shape15-49" v:mID="15" v:groupContext="shape" transform="translate(418.35,952.106) rotate(180)">
+			<title>シート.15</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape16-54" v:mID="16" v:groupContext="shape" transform="translate(113.626,-582.102)">
+			<title>シート.16</title>
+			<desc>[CALL, Request|id, {}, “~.getDeviceList”, []]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="39.07" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[CALL, Request|id, <tspan
+						class="st8" v:langID="1041">{}</tspan>, <tspan class="st8" v:langID="1041">“</tspan><tspan class="st8"
+						v:langID="1041">~</tspan><tspan class="st8" v:langID="1041">.</tspan>getDeviceList<tspan class="st8"
+						v:langID="1041">”</tspan>, <tspan class="st8" v:langID="1041">[]</tspan>]</text>		</g>
+		<g id="shape19-63" v:mID="19" v:groupContext="shape" transform="translate(106.539,-553.756)">
+			<title>シート.19</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape20-68" v:mID="20" v:groupContext="shape" transform="translate(113.626,-497.063)">
+			<title>シート.20</title>
+			<desc>[RESULT, CALL.Request|id, {}, [], {&#34;deviceList&#34;:[{&#34;descriptio...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197" v:verticalAlign="0"/>
+			<v:textRect cx="148.819" cy="731.671" width="297.64" height="70.8661"/>
+			<rect x="0" y="696.238" width="297.638" height="70.8661" class="st6"/>
+			<text x="64.6" y="709.24" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[RESULT, CALL.Request|id, <tspan
+						class="st8" v:langID="1041">{}</tspan>, [], <tspan x="7.41" dy="1.2em" class="st8">{</tspan>&#34;deviceList&#34;:[{&#34;description&#34;:&#34;G<tspan
+						class="st8" v:langID="1041">R</tspan><tspan class="st8" v:langID="1041">-</tspan><tspan class="st8"
+						v:langID="1041">SAKURA</tspan>&#34;, &#34;deviceId&#34;:1, <tspan x="13.52" dy="1.2em" class="st8">&#34;</tspan>deviceType&#34;:<tspan
+						class="st8" v:langID="1041">”</tspan><tspan class="st8" v:langID="1041">G</tspan>r<tspan class="st8"
+						v:langID="1041">S</tspan>akura<tspan class="st8" v:langID="1041">”</tspan>, &#34;ip_addr&#34;:&#34;192.168.10.209&#34;, <tspan
+						x="30.33" dy="1.2em" class="st8">&#34;</tspan>nickname&#34;:&#34;G<tspan class="st8" v:langID="1041">R</tspan><tspan
+						class="st8" v:langID="1041">-</tspan><tspan class="st8" v:langID="1041">SAKURA</tspan>&#34;, &#34;protocol&#34;:&#34;arduino&#34;, <tspan
+						x="107.09" dy="1.2em" class="st8">&#34;</tspan>status&#34;:true}]}]</text>		</g>
+		<g id="shape25-86" v:mID="25" v:groupContext="shape" transform="translate(418.35,1490.69) rotate(180)">
+			<title>シート.25</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape26-91" v:mID="26" v:groupContext="shape" transform="translate(113.626,-43.5197)">
+			<title>シート.26</title>
+			<desc>[GOODBYE, Details|dict, Reason|uri]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="59.16" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[GOODBYE, Details|dict, Reason|uri]</text>		</g>
+		<g id="shape27-94" v:mID="27" v:groupContext="shape" transform="translate(106.539,-15.1732)">
+			<title>シート.27</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape28-99" v:mID="28" v:groupContext="shape" transform="translate(113.626,-15.1732)">
+			<title>シート.28</title>
+			<desc>[GOODBYE, Details|dict, Reason|uri]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="59.16" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[GOODBYE, Details|dict, Reason|uri]</text>		</g>
+		<g id="shape33-102" v:mID="33" v:groupContext="shape" transform="translate(418.35,1150.53) rotate(180)">
+			<title>シート.33</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape34-107" v:mID="34" v:groupContext="shape" transform="translate(113.626,-355.331)">
+			<title>シート.34</title>
+			<desc>[CALL, Request|id, {&#34;deviceId&#34;:1}, “com.sonycsl.kadecot.ardui...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="745.844" width="297.64" height="42.5197"/>
+			<rect x="0" y="724.585" width="297.638" height="42.5197" class="st6"/>
+			<text x="63.21" y="736.84" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[CALL, Request|id, {&#34;deviceId&#34;:1}, <tspan
+						x="10.98" dy="1.2em" class="st8">“</tspan>com.sonycsl.kadecot.arduino.digitalWrite”, []<tspan class="st8"
+						v:langID="1041">, </tspan>{&#34;pin&#34;:<tspan class="st8" v:langID="1041">1</tspan><tspan class="st8"
+						v:langID="1041">, </tspan><tspan x="106.43" dy="1.2em" class="st8" v:langID="1041">“</tspan><tspan
+						class="st8" v:langID="1041">value</tspan><tspan class="st8" v:langID="1041">”</tspan><tspan class="st8"
+						v:langID="1041">:</tspan><tspan class="st8" v:langID="1041">”</tspan><tspan class="st8" v:langID="1041">HIGH</tspan><tspan
+						class="st8" v:langID="1041">”</tspan>}]</text>		</g>
+		<g id="shape35-121" v:mID="35" v:groupContext="shape" transform="translate(106.539,-341.157)">
+			<title>シート.35</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape36-126" v:mID="36" v:groupContext="shape" transform="translate(113.626,-341.157)">
+			<title>シート.36</title>
+			<desc>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {}]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="24.45" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {}]</text>		</g>
+		<g id="shape37-129" v:mID="37" v:groupContext="shape" transform="translate(-327.494,170.829) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠</title>
+			<desc>機器一覧の取得</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L93.54 767.1 A5.6692 5.6692 -180 0 0 99.21 761.44 L99.21 760.02" class="st9"/>
+			<text x="787.77" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1041"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>機器一覧の取得</text>		</g>
+		<g id="shape38-133" v:mID="38" v:groupContext="shape" transform="translate(-327.494,369.254) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠.40</title>
+			<desc>digitalWrite</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L65.2 767.1 A5.6692 5.6692 -180 0 0 70.87 761.44 L70.87 760.02" class="st9"/>
+			<text x="794.97" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1041"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>digitalWrite</text>		</g>
+		<g id="shape44-137" v:mID="44" v:groupContext="shape" transform="translate(-327.494,99.9626) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠.44</title>
+			<desc>セッション開始</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L51.02 767.1 A5.6692 5.6692 -180 0 0 56.69 761.44 L56.69 760.02" class="st9"/>
+			<text x="787.77" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1041"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>セッション開始</text>		</g>
+		<g id="shape46-141" v:mID="46" v:groupContext="shape" transform="translate(-327.494,709.411) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠.46</title>
+			<desc>セッション終了</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L51.02 767.1 A5.6692 5.6692 -180 0 0 56.69 761.44 L56.69 760.02" class="st9"/>
+			<text x="787.77" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1041"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>セッション終了</text>		</g>
+		<g id="shape13-145" v:mID="13" v:groupContext="shape" transform="translate(418.35,1065.49) rotate(180)">
+			<title>シート.13</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape14-150" v:mID="14" v:groupContext="shape" transform="translate(113.626,-438.953)">
+			<title>シート.14</title>
+			<desc>[CALL, Request|id, {&#34;deviceId&#34;:1}, “com.sonycsl.kadecot.ardui...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="745.136" width="297.64" height="43.937"/>
+			<rect x="0" y="723.167" width="297.638" height="43.937" class="st6"/>
+			<text x="63.21" y="736.14" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[CALL, Request|id, {&#34;deviceId&#34;:1}, <tspan
+						x="18.33" dy="1.2em" class="st8">“</tspan>com.sonycsl.kadecot.arduino.pinMode”, []<tspan class="st8"
+						v:langID="1041">, </tspan>{&#34;pin&#34;:<tspan class="st8" v:langID="1041">1</tspan><tspan class="st8"
+						v:langID="1041">, </tspan><tspan x="98.36" dy="1.2em" class="st8" v:langID="1041">“</tspan><tspan
+						class="st8" v:langID="1041">mode</tspan><tspan class="st8" v:langID="1041">”</tspan><tspan class="st8"
+						v:langID="1041">:</tspan><tspan class="st8" v:langID="1041">”</tspan><tspan class="st8" v:langID="1041">OUTPUT</tspan><tspan
+						class="st8" v:langID="1041">”</tspan>}]</text>		</g>
+		<g id="shape17-164" v:mID="17" v:groupContext="shape" transform="translate(106.539,-426.197)">
+			<title>シート.17</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape18-169" v:mID="18" v:groupContext="shape" transform="translate(115.043,-425.488)">
+			<title>シート.18</title>
+			<desc>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {}]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="759.309" width="297.64" height="15.5906"/>
+			<rect x="0" y="751.514" width="297.638" height="15.5906" class="st6"/>
+			<text x="24.45" y="762.31" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {}]</text>		</g>
+		<g id="shape21-172" v:mID="21" v:groupContext="shape" transform="translate(-327.494,284.215) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠.21</title>
+			<desc>pinMode</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L65.2 767.1 A5.6692 5.6692 -180 0 0 70.87 761.44 L70.87 760.02" class="st9"/>
+			<text x="802.32" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1033"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>pinMode</text>		</g>
+		<g id="shape22-176" v:mID="22" v:groupContext="shape" transform="translate(418.35,1235.57) rotate(180)">
+			<title>シート.22</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape23-181" v:mID="23" v:groupContext="shape" transform="translate(113.626,-284.465)">
+			<title>シート.23</title>
+			<desc>[CALL, Request|id, {&#34;deviceId&#34;:1}, “com.sonycsl.kadecot.ardui...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="752.931" width="297.64" height="28.3465"/>
+			<rect x="0" y="738.758" width="297.638" height="28.3465" class="st6"/>
+			<text x="63.21" y="749.93" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[CALL, Request|id, {&#34;deviceId&#34;:1}, <tspan
+						x="8.41" dy="1.2em" class="st8">“</tspan>com.sonycsl.kadecot.arduino.digitalRead”, []<tspan class="st8"
+						v:langID="1041">, </tspan>{&#34;pin&#34;:<tspan class="st8" v:langID="1041">1</tspan>}]</text>		</g>
+		<g id="shape24-187" v:mID="24" v:groupContext="shape" transform="translate(106.539,-256.118)">
+			<title>シート.24</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape29-192" v:mID="29" v:groupContext="shape" transform="translate(113.626,-249.031)">
+			<title>シート.29</title>
+			<desc>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {&#34;pin&#34;:1, “valu...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="10.75" y="757.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {&#34;pin&#34;:<tspan
+						class="st8" v:langID="1041">1</tspan><tspan class="st8" v:langID="1041">, </tspan><tspan x="106.43"
+						dy="1.2em" class="st8" v:langID="1041">“</tspan><tspan class="st8" v:langID="1041">value</tspan><tspan
+						class="st8" v:langID="1041">”</tspan><tspan class="st8" v:langID="1041">:</tspan><tspan class="st8"
+						v:langID="1041">”</tspan><tspan class="st8" v:langID="1041">HIGH</tspan><tspan class="st8" v:langID="1041">”</tspan>}]</text>		</g>
+		<g id="shape30-204" v:mID="30" v:groupContext="shape" transform="translate(-327.494,454.293) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠.30</title>
+			<desc>digitalRead</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L65.2 767.1 A5.6692 5.6692 -180 0 0 70.87 761.44 L70.87 760.02" class="st9"/>
+			<text x="795.85" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1033"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>digitalRead</text>		</g>
+		<g id="shape31-208" v:mID="31" v:groupContext="shape" transform="translate(418.35,1405.65) rotate(180)">
+			<title>シート.31</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape32-213" v:mID="32" v:groupContext="shape" transform="translate(113.626,-100.213)">
+			<title>シート.32</title>
+			<desc>[CALL, Request|id, {&#34;deviceId&#34;:1}, “com.sonycsl.kadecot.ardui...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="745.844" width="297.64" height="42.5197"/>
+			<rect x="0" y="724.585" width="297.638" height="42.5197" class="st6"/>
+			<text x="63.21" y="736.84" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[CALL, Request|id, {&#34;deviceId&#34;:1}, <tspan
+						x="9.5" dy="1.2em" class="st8">“</tspan>com.sonycsl.kadecot.arduino.<tspan class="st8" v:langID="1041">analog</tspan>Write”, []<tspan
+						class="st8" v:langID="1041">, </tspan>{&#34;pin&#34;:<tspan class="st8" v:langID="1041">1</tspan><tspan
+						class="st8" v:langID="1041">, </tspan><tspan x="114.69" dy="1.2em" class="st8" v:langID="1041">“</tspan><tspan
+						class="st8" v:langID="1041">value</tspan><tspan class="st8" v:langID="1041">”</tspan><tspan class="st8"
+						v:langID="1041">:</tspan><tspan class="st8" v:langID="1041">125</tspan>}]</text>		</g>
+		<g id="shape39-226" v:mID="39" v:groupContext="shape" transform="translate(106.539,-86.0394)">
+			<title>シート.39</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape40-231" v:mID="40" v:groupContext="shape" transform="translate(113.626,-86.0394)">
+			<title>シート.40</title>
+			<desc>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {}]</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="24.45" y="763.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {}]</text>		</g>
+		<g id="shape41-234" v:mID="41" v:groupContext="shape" transform="translate(-327.494,624.372) rotate(-90) scale(-1,1)">
+			<title>右波かっこ付きテキスト枠.41</title>
+			<desc>analogWrite</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L65.2 767.1 A5.6692 5.6692 -180 0 0 70.87 761.44 L70.87 760.02" class="st9"/>
+			<text x="793.49" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1041"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>analogWrite</text>		</g>
+		<g id="shape42-238" v:mID="42" v:groupContext="shape" transform="translate(418.35,1320.61) rotate(180)">
+			<title>シート.42</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape43-243" v:mID="43" v:groupContext="shape" transform="translate(113.626,-199.425)">
+			<title>シート.43</title>
+			<desc>[CALL, Request|id, {&#34;deviceId&#34;:1}, “com.sonycsl.kadecot.ardui...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="752.931" width="297.64" height="28.3465"/>
+			<rect x="0" y="738.758" width="297.638" height="28.3465" class="st6"/>
+			<text x="63.21" y="749.93" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[CALL, Request|id, {&#34;deviceId&#34;:1}, <tspan
+						x="6.93" dy="1.2em" class="st8">“</tspan>com.sonycsl.kadecot.arduino.<tspan class="st8" v:langID="1041">analog</tspan>Read”, []<tspan
+						class="st8" v:langID="1041">, </tspan>{&#34;pin&#34;:<tspan class="st8" v:langID="1041">1</tspan>}]</text>		</g>
+		<g id="shape45-250" v:mID="45" v:groupContext="shape" transform="translate(106.539,-171.079)">
+			<title>シート.45</title>
+			<path d="M0 767.1 L305.27 767.1" class="st4"/>
+		</g>
+		<g id="shape47-255" v:mID="47" v:groupContext="shape" transform="translate(113.626,-163.992)">
+			<title>シート.47</title>
+			<desc>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {&#34;pin&#34;:1, “valu...</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="148.819" cy="760.018" width="297.64" height="14.1732"/>
+			<rect x="0" y="752.931" width="297.638" height="14.1732" class="st6"/>
+			<text x="10.75" y="757.02" class="st2" v:langID="1033"><v:paragraph v:horizAlign="1"/><v:tabList/>[RESULT, CALL.Request|id, {&#34;deviceId&#34;:1}, [], {&#34;pin&#34;:<tspan
+						class="st8" v:langID="1041">1</tspan><tspan class="st8" v:langID="1041">, </tspan><tspan x="111.59"
+						dy="1.2em" class="st8" v:langID="1041">“</tspan><tspan class="st8" v:langID="1041">value</tspan><tspan
+						class="st8" v:langID="1041">”</tspan><tspan class="st8" v:langID="1041">:</tspan><tspan class="st8"
+						v:langID="1041">1000</tspan>}]</text>		</g>
+		<g id="shape48-265" v:mID="48" v:groupContext="shape" transform="translate(-327.494,539.333) rotate(-90) scale(-1,1)">
+			<title>Side brace.48</title>
+			<desc>analogRead</desc>
+			<v:userDefs>
+				<v:ud v:nameU="TxtW" v:val="VT0(1.3888888888889):29"/>
+				<v:ud v:nameU="TxtA" v:val="VT0(1.5707963267949):37"/>
+				<v:ud v:nameU="TxtAState" v:val="VT0(0):26"/>
+				<v:ud v:nameU="TxtWState" v:val="VT0(1):26"/>
+				<v:ud v:nameU="MaxRadius" v:val="VT0(0.098425196850398):1"/>
+				<v:ud v:nameU="PosCH1" v:prompt="Constrains X postion of Control Handle #1" v:val="VT0(0):26"/>
+				<v:ud v:nameU="PosCH2" v:prompt="Constrains Y postion of Control Handle #2" v:val="VT0(0):26"/>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="822.774" width="100.01" height="20.0036" transform="rotate(90)"/>
+			<path d="M0 760.02 L0 761.44 A5.6692 5.6692 -180 0 0 5.67 767.1 L22.68 767.1 A5.6692 5.6692 0 0 1 28.35 772.77 A5.6692
+						 5.6692 0 0 1 34.02 767.1 L65.2 767.1 A5.6692 5.6692 -180 0 0 70.87 761.44 L70.87 760.02" class="st9"/>
+			<text x="794.37" y="31.35" transform="rotate(-90) scale(-1,1)" class="st2" v:langID="1041"><v:paragraph
+						v:horizAlign="1"/><v:tabList/>analog<tspan class="st8" v:langID="1033">Read</tspan></text>		</g>
+		<g id="shape49-270" v:mID="49" v:groupContext="shape" transform="translate(14.4132,-397.85)">
+			<title>吹き出し (2-D).49</title>
+			<desc>ポート入出力の変更 013</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="745.844" width="70.87" height="42.5197"/>
+			<path d="M0 740.53 L0 724.58 L26.57 724.58 L85.04 710.41 L44.29 724.58 L70.87 724.58 L70.87 740.53 L70.87 745.84 L70.87
+						 751.16 L70.87 767.1 L44.29 767.1 L35.43 767.1 L26.57 767.1 L0 767.1 L0 751.16 L0 745.84 L0 740.53 Z"
+					class="st10"/>
+			<text x="6.87" y="736.84" class="st2" v:langID="1041"><v:paragraph v:horizAlign="2"/><v:tabList/>ポート入出力<tspan x="36.87"
+						dy="1.2em" class="st8">の</tspan>変更<v:newlineChar/><tspan x="18.23" dy="1.2em" class="st8">（</tspan>0～13）</text>		</g>
+		<g id="shape50-275" v:mID="50" v:groupContext="shape" transform="translate(14.4132,-312.811)">
+			<title>吹き出し (2-D).50</title>
+			<desc>GPIO出力 013</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="745.844" width="70.87" height="42.5197"/>
+			<path d="M0 740.53 L0 724.58 L26.57 724.58 L85.04 710.41 L44.29 724.58 L70.87 724.58 L70.87 740.53 L70.87 745.84 L70.87
+						 751.16 L70.87 767.1 L44.29 767.1 L35.43 767.1 L26.57 767.1 L0 767.1 L0 751.16 L0 745.84 L0 740.53 Z"
+					class="st10"/>
+			<text x="21.97" y="742.84" class="st2" v:langID="1041"><v:paragraph v:horizAlign="2"/><v:tabList/>GPIO出力<v:newlineChar/><tspan
+						x="18.23" dy="1.2em" class="st8">（</tspan>0～13）</text>		</g>
+		<g id="shape51-279" v:mID="51" v:groupContext="shape" transform="translate(14.4132,-227.772)">
+			<title>2-D word balloon.51</title>
+			<desc>GPIO入力 013</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="745.844" width="70.87" height="42.5197"/>
+			<path d="M0 740.53 L0 724.58 L26.57 724.58 L85.04 710.41 L44.29 724.58 L70.87 724.58 L70.87 740.53 L70.87 745.84 L70.87
+						 751.16 L70.87 767.1 L44.29 767.1 L35.43 767.1 L26.57 767.1 L0 767.1 L0 751.16 L0 745.84 L0 740.53 Z"
+					class="st10"/>
+			<text x="21.97" y="742.84" class="st2" v:langID="1041"><v:paragraph v:horizAlign="2"/><v:tabList/>GPIO入力<v:newlineChar/><tspan
+						x="18.23" dy="1.2em" class="st8">（</tspan>0～13）</text>		</g>
+		<g id="shape52-283" v:mID="52" v:groupContext="shape" transform="translate(14.4132,-142.732)">
+			<title>2-D word balloon.52</title>
+			<desc>アナログ入力 1419</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="745.844" width="70.87" height="42.5197"/>
+			<path d="M0 740.53 L0 724.58 L26.57 724.58 L85.04 710.41 L44.29 724.58 L70.87 724.58 L70.87 740.53 L70.87 745.84 L70.87
+						 751.16 L70.87 767.1 L44.29 767.1 L35.43 767.1 L26.57 767.1 L0 767.1 L0 751.16 L0 745.84 L0 740.53 Z"
+					class="st10"/>
+			<text x="6.87" y="742.84" class="st2" v:langID="1041"><v:paragraph v:horizAlign="2"/><v:tabList/>アナログ入力<v:newlineChar/><tspan
+						x="12.02" dy="1.2em" class="st8">（</tspan>14～19）</text>		</g>
+		<g id="shape53-287" v:mID="53" v:groupContext="shape" transform="translate(14.4132,-57.6929)">
+			<title>2-D word balloon.53</title>
+			<desc>PWM出力 07</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="35.4331" cy="745.844" width="70.87" height="42.5197"/>
+			<path d="M0 740.53 L0 724.58 L26.57 724.58 L85.04 710.41 L44.29 724.58 L70.87 724.58 L70.87 740.53 L70.87 745.84 L70.87
+						 751.16 L70.87 767.1 L44.29 767.1 L35.43 767.1 L26.57 767.1 L0 767.1 L0 751.16 L0 745.84 L0 740.53 Z"
+					class="st10"/>
+			<text x="22.59" y="742.84" class="st2" v:langID="1041"><v:paragraph v:horizAlign="2"/><v:tabList/>PWM出力<v:newlineChar/><tspan
+						x="24.44" dy="1.2em" class="st8">（</tspan>0～7）</text>		</g>
+		<g id="shape54-291" v:mID="54" v:groupContext="shape" transform="translate(0.24,-482.89)">
+			<title>吹き出し (2-D).54</title>
+			<desc>deviceIdの1をGR-SAKURAに固定</desc>
+			<v:userDefs>
+				<v:ud v:nameU="Scale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="AntiScale" v:val="VT0(1):26"/>
+				<v:ud v:nameU="visVersion" v:val="VT0(14):26"/>
+			</v:userDefs>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="42.5197" cy="745.844" width="85.04" height="42.5197"/>
+			<path d="M0 740.53 L0 724.58 L31.89 724.58 L99.21 710.41 L53.15 724.58 L85.04 724.58 L85.04 740.53 L85.04 745.84 L85.04
+						 751.16 L85.04 767.1 L53.15 767.1 L42.52 767.1 L31.89 767.1 L0 767.1 L0 751.16 L0 745.84 L0 740.53 Z"
+					class="st10"/>
+			<text x="13.82" y="736.84" class="st2" v:langID="1041"><v:paragraph v:horizAlign="2"/><v:tabList/>deviceIdの1を<tspan
+						x="11.91" dy="1.2em" class="st8">GR</tspan>-SAKURAに<tspan x="61.04" dy="1.2em" class="st8">固定</tspan></text>		</g>
+	</g>
+</svg>

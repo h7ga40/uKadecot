@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Microsoft Visio 11.0、SVG Export v1.0 により生成 KadecotApps.svg Page-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/" width="6.50648in" height="1.79249in"
+		viewBox="0 0 468.467 129.059" xml:space="preserve" color-interpolation-filters="sRGB" class="st12">
+	<v:documentProperties v:langID="1041" v:metric="true" v:viewMarkup="false"/>
+
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#fdda99;stroke:#fba606;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st2 {fill:#000000;font-family:メイリオ;font-size:0.833336em}
+		.st3 {font-size:1em}
+		.st4 {fill:#d8d8d8;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st5 {fill:#ebf1df;stroke:#789440;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st6 {marker-end:url(#mrkr4-18);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st7 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.22935779816514}
+		.st8 {marker-end:url(#mrkr4-18);marker-start:url(#mrkr4-25);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st9 {fill:#dbeef3;stroke:#31859b;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st10 {fill:#c0cfe2;stroke:#548bd4;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st11 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st12 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-18" class="st7" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="-8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-4.36,-4.36) "/>
+		</marker>
+		<marker id="mrkr4-25" class="st7" v:arrowType="4" v:arrowSize="2" v:setback="8.24" refX="8.24" orient="auto"
+				markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(4.36) "/>
+		</marker>
+	</defs>
+	<g v:mID="0" v:index="1" v:groupContext="foregroundPage">
+		<title>Page-1</title>
+		<v:pageProperties v:drawingScale="0.0393701" v:pageScale="0.0393701" v:drawingUnits="24" v:shadowOffsetX="8.50394"
+				v:shadowOffsetY="-8.50394"/>
+		<g id="shape39-1" v:mID="39" v:groupContext="shape" transform="translate(0.75,-85.7894)">
+			<title>シート.39</title>
+			<desc>Kadecot Apps kadecot.net</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="49.6063" cy="107.799" width="99.22" height="42.5197"/>
+			<rect x="0" y="86.5394" width="99.2126" height="42.5197" rx="5.66929" ry="5.66929" class="st1"/>
+			<text x="16.42" y="104.8" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>Kadecot Apps<v:newlineChar/><tspan
+						x="11.01" dy="1.2em" class="st3">（</tspan>kadecot.net）</text>		</g>
+		<g id="shape40-5" v:mID="40" v:groupContext="shape" transform="translate(0.75,-0.75)">
+			<title>シート.40</title>
+			<desc>Webブラウザ</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="49.6063" cy="107.799" width="99.22" height="42.5197"/>
+			<rect x="0" y="86.5394" width="99.2126" height="42.5197" rx="5.66929" ry="5.66929" class="st4"/>
+			<text x="18.67" y="110.8" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>Webブラウザ</text>		</g>
+		<g id="shape41-8" v:mID="41" v:groupContext="shape" transform="translate(355.081,-29.0965)">
+			<title>シート.41</title>
+			<desc>ECHONET Lite ホーム ネットワーク</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="56.6929" cy="86.5394" width="113.39" height="85.0394"/>
+			<path d="M26.93 129.06 L86.46 129.06 A5.66929 5.66929 -180 0 0 92.13 123.39 L92.13 92.21 A5.66929 5.66929 0 0 1 97.8
+						 86.54 L97.8 86.54 A5.19685 5.19685 -180 0 0 100.91 77.19 L60.09 46.57 A5.66929 5.66929 -180 0 0 53.29 46.57
+						 L8.5 80.16 A3.54331 3.54331 -180 0 0 10.63 86.54 L15.59 86.54 A5.66929 5.66929 0 0 1 21.26 92.21 L21.26
+						 123.39 A5.66929 5.66929 -180 0 0 26.93 129.06 Z" class="st5"/>
+			<text x="22.21" y="83.54" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/><v:newlineChar/>ECHONET Lite<v:newlineChar/><tspan
+						x="41.69" dy="1.2em" class="st3">ホーム<v:newlineChar/></tspan><tspan x="26.69" dy="1.2em" class="st3">ネットワーク</tspan></text>		</g>
+		<g id="shape42-13" v:mID="42" v:groupContext="shape" transform="translate(99.9626,-29.0965)">
+			<title>シート.42</title>
+			<path d="M-0 44.02 A70.8661 42.5197 0 0 1 70.87 86.54 A70.8661 42.5197 0 0 1 6.54 128.88 L6.18 128.89" class="st6"/>
+		</g>
+		<g id="shape43-19" v:mID="43" v:groupContext="shape" transform="translate(99.9626,-14.9232)">
+			<title>シート.43</title>
+			<path d="M6.18 129.03 L6.54 129.03 A141.732 28.3465 -180 0 0 141.73 100.71 A134.646 14.1732 0 0 1 269.84 86.56 L270.2
+						 86.56" class="st8"/>
+		</g>
+		<g id="shape38-27" v:mID="38" v:groupContext="shape" transform="translate(114.136,-71.6161)">
+			<title>シート.38</title>
+			<desc>インターネット</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="49.6063" cy="100.713" width="99.22" height="56.6929"/>
+			<path d="M90.71 104.27 A30.315 28.3465 -180 0 0 34.19 86.85 A22.7362 21.2598 -180 0 0 7.85 104.54 A13.7795 12.8848 -180
+						 0 0 16.54 128.8 L16.54 129.06 L30.31 129.06 L60.63 129.06 L85.43 129.06 A13.7795 12.8848 -180 0 0 90.71
+						 104.27 Z" class="st9"/>
+			<text x="14.61" y="109.71" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/><v:newlineChar/>インターネット</text>		</g>
+		<g id="shape44-30" v:mID="44" v:groupContext="shape" transform="translate(227.522,-0.75)">
+			<title>シート.44</title>
+			<desc>uKadecot (GR-SAKURA)</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="42.5197" cy="93.626" width="85.04" height="70.8661"/>
+			<rect x="0" y="58.1929" width="85.0394" height="70.8661" rx="5.66929" ry="5.66929" class="st10"/>
+			<text x="19.9" y="90.63" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>uKadecot<v:newlineChar/><tspan
+						x="8.56" dy="1.2em" class="st3">(</tspan>GR-SAKURA)</text>		</g>
+		<g id="shape46-34" v:mID="46" v:groupContext="shape" transform="translate(128.309,-0.75)">
+			<title>シート.46</title>
+			<desc>WebSocket</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="42.5197" cy="121.972" width="85.04" height="14.1732"/>
+			<rect x="0" y="114.886" width="85.0394" height="14.1732" class="st11"/>
+			<text x="15.37" y="124.97" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>WebSocket</text>		</g>
+		<g id="shape47-37" v:mID="47" v:groupContext="shape" transform="translate(114.136,-50.3563)">
+			<title>シート.47</title>
+			<desc>HTTP</desc>
+			<v:textBlock v:margins="rect(4,4,4,4)" v:tabSpace="42.5197"/>
+			<v:textRect cx="28.3465" cy="121.972" width="56.7" height="14.1732"/>
+			<rect x="0" y="114.886" width="56.6929" height="14.1732" class="st11"/>
+			<text x="15.29" y="124.97" class="st2" v:langID="1041"><v:paragraph v:horizAlign="1"/><v:tabList/>HTTP</text>		</g>
+	</g>
+</svg>

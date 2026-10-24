@@ -1,0 +1,5123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<properties>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/KadecotNames/KadecotNames/Program.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/KadecotNames/KadecotNames/Properties/AssemblyInfo.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/KadecotNames/KadecotNames/KadecotNames.csproj">
+<property
+   name="svn:eol-style">CRLF</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/KadecotNames/KadecotNames/DynamicJson.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/KadecotNames/KadecotNames/App.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/deflate.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/zlib.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/zutil.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/deflate.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/zlib.vcxproj">
+<property
+   name="svn:eol-style">CRLF</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/zutil.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/crc32.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inftrees.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/crc32.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inflate.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/trees.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/uncompr.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/zconf.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inftrees.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/trees.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inflate.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/gzguts.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inffast.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/compress.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/adler32.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/infback.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inffast.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/zlib/inffixed.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/ff.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/integer.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/diskio.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/mod_deflate.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/main.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/ffconf.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/ccsbcs.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/cc950.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/cc932.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/unicode.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/cc936.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/syscall.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/option/cc949.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/diskio.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/makefsdata.vcxproj">
+<property
+   name="svn:eol-style">CRLF</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/makefsdata/ff.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/tools/jsmin.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/jQueryMobile.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/WampDeserializer.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/WAMP_MSG_TYPE.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/WampClientCore.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/Web.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/packages.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/EcnlControllerUI.csproj">
+<property
+   name="svn:eol-style">CRLF</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/Control.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/Properties/AssemblyInfo.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/ValueRange.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/Web.Release.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/WampSerializer.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/WebApiData.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/CtrlUI.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/Web.Debug.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/WampClient.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/EchonetLite.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/DeviceController.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlControllerUI/JsonData.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/Web.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0009.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0405.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0029.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0146.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0263.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0283.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0267.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0287.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList000A.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0279.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList002A.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList02.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList001C.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList000E.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList06.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList027A.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03C6.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03B8.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList027E.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0010.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0002.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0022.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0014.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0006.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList0F.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0026.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0143.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0260.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0135.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0018.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0280.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0272.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0139.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0288.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList000B.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList002B.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList03.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList001D.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList000F.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList027B.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03B9.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassGroupList.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList027F.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0011.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0003.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0023.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0015.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0601.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0007.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0027.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0261.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0019.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0281.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0273.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList00.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList001A.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0289.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList000C.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList002C.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList04.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList001E.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03B2.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyListBase.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList027C.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList026E.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0020.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0012.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0004.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0133.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0016.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03BB.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0602.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0008.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0028.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0145.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0290.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0EF0.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0282.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList05FD.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList01.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList02A0.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList001B.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList000D.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList05.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList001F.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03D3.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList026B.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03C5.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList03B7.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList027D.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList026F.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0001.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0021.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0130.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0013.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0005.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/ClassList0E.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0025.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0142.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0134.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/devices/PropertyList0017.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json; charset=UTF-8</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/DynamicJson.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/packages.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/themes/ecn-theme.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/themes/ecn-theme.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/css/ecn_gen.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/Properties/AssemblyInfo.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/information.json">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">application/json</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/favicon.ico">
+<property
+   name="svn:mime-type">image/ico</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/imgs/logo.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/Web.Release.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/EcnlCtrlUI.csproj">
+<property
+   name="svn:eol-style">CRLF</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/Web.Debug.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/index.html">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/html</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile-1.4.5.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery-1.10.2.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.icons-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.inline-svg-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jszip.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/ctrlui.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.inline-png-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/linq.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.theme-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.external-png-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/nisews.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/ajax-loader.gif">
+<property
+   name="svn:mime-type">image/gif</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/eye-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/plus-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/grid-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/mail-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/recycle-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/bars-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/camera-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/edit-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/forbidden-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/power-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/clock-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/navigation-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/minus-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/refresh-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/delete-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/heart-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/back-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/comment-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/forward-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-d-l-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/calendar-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/star-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/cloud-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-d-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/shop-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-d-r-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-d-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/action-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/user-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-l-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-l-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/lock-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-r-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-u-l-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/home-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-u-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-r-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-u-r-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/info-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-u-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/audio-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/search-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/alert-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/phone-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/bullets-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/video-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/location-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/check-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/tag-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/mail-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/gear-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/edit-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/eye-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/plus-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/grid-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/recycle-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/minus-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/clock-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/bars-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/camera-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/refresh-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/forbidden-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/power-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/back-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/comment-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/navigation-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-d-l-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/forward-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/delete-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/cloud-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/heart-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/shop-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-d-r-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-d-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/action-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/star-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/calendar-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/user-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-d-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-l-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-u-l-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-l-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/home-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-r-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/info-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-u-r-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-u-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/lock-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/carat-r-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/arrow-u-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/audio-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/video-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/location-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/search-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/tag-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/alert-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/phone-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/gear-black.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/bullets-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/images/icons-png/check-white.png">
+<property
+   name="svn:mime-type">image/png</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.inline-svg-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.icons-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.structure-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/mscorlib.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery-2.1.1.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.structure-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile-1.4.5.min.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile-1.4.5.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/mscorlib.min.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery-1.10.2.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jszip.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.custom.tires.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jquery.mobile.datebox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.fulloptlist.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.durationbox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.flipbox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.custombox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.core.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.customflip.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.datebox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.id.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.hu.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.zh-CN.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.lt.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.el.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.tr.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.af.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.zh-TW.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.nl.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.th.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.pl.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.id.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.it.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.zh-CN.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.lt.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.el.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ar.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.en.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.bg.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.it.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.nl-BE.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.sv-SE.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.uk.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.pt-PT.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.cs.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.bg.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ko.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ja.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.no.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.fi.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.uk.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ro.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.pt-PT.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.af.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.fr.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.zh-TW.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.nl.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.no.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.vi.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ro.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ar.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.en.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ca.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ru.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.fr.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.hr.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.es-ES.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.nl-BE.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.sv-SE.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ca.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.pt-BR.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.sr.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.da.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.cs.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.tr.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.de.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ko.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ja.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.es-ES.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.he.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.fi.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.pt-BR.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.sr.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.da.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.de.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.hu.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.he.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.vi.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.ru.asc.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.hr.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.pl.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/i18n/jquery.mobile.datebox.i18n.th.utf8.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.calbox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.slidebox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jqm-datebox/jqm-datebox.mode.durationflipbox.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/ctrlui.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.inline-png-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/linq.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.theme-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/jquery.mobile.external-png-1.4.5.css">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/css</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/js/nisews.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/EcnlCtrlUI/webapi.ashx.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/NiseWebSocket.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/Properties/AssemblyInfo.cs">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csharp</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/Web.Release.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/Web.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/packages.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/NiseWebSocket.csproj">
+<property
+   name="svn:eol-style">CRLF</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/tools/EcnlControllerUI/NiseWebSocket/Web.Debug.config">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/srecord/Readme.txt">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/srecord/srec_cmp.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/srecord/srecord-1.62.pdf">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/srecord/Readme-Windows.txt">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/srecord/srec_cat.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/srecord/srec_info.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/mmc_rspi.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/pff.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/integer.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/diskio.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/mmc_rspi.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/pffconf.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/diskio.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/mmc_rspi.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-csrc</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/pfatfs/pff.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/csp/libssp/dummy.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/csp/libssp/dummy.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/csp/libssp/dummy.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/csp/tools/update.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/csp/tools/DefToEqu.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/csp/tools/cmp_update.js">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/javascript</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/logtask.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/banner.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/vasyslog.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/logtask.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/banner.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/serial.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/syslog.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/logtask.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/banner.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/serial.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/syslog.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/banner.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/serial.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/syslog.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/syssvc/log_output.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/time_event.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/eventflag.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/alarm.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/dataqueue.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/time_event.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/cyclic.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/time_manage.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/cyclic.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/eventflag.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/alarm.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/extension/dataqueue.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/ccrx/gensyms.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/ccrx/tool_stddef.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/rx630_config.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_check.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/rx630.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_config.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/rx630_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_rename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_cfg1_out.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_insn.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_stddef.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_unrename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/makeoffset.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/rx630.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_test.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_kernel.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_asm_config.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_sil.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/arch/rx630_ccrx/prc_syssvc.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/cfg/cfg/cfg.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/pdic/rx600/rx630_uart.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/pdic/rx600/rx630_uart.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/kernel_impl.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/kernel.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/task.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/task_manage.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/kernel_rename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/kernel_unrename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/check.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/sys_manage.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/allfunc.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/ssp_kernel_check.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/interrupt.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/exception.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/kernel_int.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/interrupt.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/startup.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/task.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/kernel/exception.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/utils/genrename">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-perl; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/utils/makedep">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-perl; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/utils/applyrename">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-perl; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/utils/makerelease">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-perl; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/configure">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-perl; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/t_syslog.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/queue.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/sil.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/itron.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/t_stddef.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/kernel.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/include/log_output.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_echonet.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_offset.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_stddef.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/grsakura.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_serial.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_timer.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_serial.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_kernel.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_timer.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_serial.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_sil.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_timer.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_msvc.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_check.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/asm_config.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_support.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_cfg1_out.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_rename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_unrename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/uip_target_config.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_test.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/uip_target_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/sectrx.inc">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_asm_config.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_syssvc.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_msvc_echonet.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ssp/target/grsakura_ccrx/target_config.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/fbs_string.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_chk.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_dbg.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_agent.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/fbs_string.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_lcl_task.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_dbg.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_task.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_agent.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_task.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet.tf">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_dbg.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_fbs.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_class.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_rename.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_uip_task.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_fbs.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_ssp.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet_uip_task.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/ecnl_ssp/echonet.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/uip-conf.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/arduino.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/data_flash.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/uip_app_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/main.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/data_flash.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/echonet_app_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/main.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/arduino.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/src/ukadecot/main.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_callee.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_dealer.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_publisher.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/kadecot_names.bin">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_dealer.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_publisher.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_caller.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_subscriber.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_caller.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_subscriber.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/kadecot_names.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/kadecot_names.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_client.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_router.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_client.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_broker.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/jsonsl.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_router.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_callee.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/jsonsl.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/kadecot/wamp_broker.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/Readme.txt">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/clock.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/timer.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/lc-switch.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/lc.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/timer.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/pt.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/sys/lc-addrlabels.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/task/uip_task.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/task/uip_adpt.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/task/uip_adpt.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/task/clock-arch.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/task/uip_task.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/task/uip_task.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/dhcpc/dhcpc.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/dhcpc/dhcpc.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/websocket.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/http_parser.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/sha1.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd-fs.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/makefsdata.exe">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/http_parser.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/sha1.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/http_pcb.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/http-strings.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/http_pcb.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd-fs/index.html">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/html</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd-fs/404.html">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/html</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/webserver.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/http-strings.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd-fs.bin">
+<property
+   name="svn:mime-type">application/octet-stream</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/base64.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/websocket.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/httpd-fs.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/apps/webserver/base64.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/ether_phy.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/if_rx62n.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/nic_ssp.cfg">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/plain; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/ether_phy.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/if_rx62n.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/if_rx62nreg.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/uip_nic_config.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/target/if_rx62n/if_rx62n.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip-fw.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip-neighbor.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip-fw.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip-neighbor.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip_arp.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ipv4/uip_arp.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/psock.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uiplib.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uipopt.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uip-split.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uiplib.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uip-split.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/psock.c">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uip_arch.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+<target
+   path="https://dev.toppers.jp/svn/contrib/uKadecot/trunk/uip/net/ip/uip.h">
+<property
+   name="svn:eol-style">native</property>
+<property
+   name="svn:keywords">Id</property>
+<property
+   name="svn:mime-type">text/x-chdr; charset=SHIFT_JIS</property>
+</target>
+</properties>

@@ -1,0 +1,11 @@
+{
+  "svn_repository_revision": 473,
+  "last_trunk_revision": 265,
+  "verified_commits": 26,
+  "verified_files": 790,
+  "files_requiring_svn_eol_or_keyword_normalization": 525,
+  "trunk_head": "76712403ef3f026a56a3be5ffec7ca807746bb09",
+  "metadata_checks": "authors, dates (whole seconds), messages, unique SVN revisions",
+  "tree_check": "all paths and all file contents; only declared SVN EOL/keyword transformations normalized",
+  "readme_local_links": "passed"
+}
