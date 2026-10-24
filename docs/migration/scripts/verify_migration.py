@@ -31,13 +31,18 @@ rows = []
 for entry in reversed(entries):
     revision = entry.get('revision')
     sha, author, email, date, message = by_revision[revision]
-    assert author == entry.findtext('author'), revision
+    svn_author = entry.findtext('author')
+    assert svn_author == 'coas-nagasima', revision
+    assert author == 'h7ga40', revision
+    assert email == '13964697+h7ga40@users.noreply.github.com', revision
+    committer = git('show', '-s', '--format=%cn%x00%ce', sha).decode().strip()
+    assert committer == author + '\x00' + email, revision
     assert int(date) == int(datetime.fromisoformat(entry.findtext('date')).timestamp()), revision
     assert message == entry.findtext('msg', '').rstrip(), revision
-    rows.append([revision, sha, author, email, entry.findtext('date'), message])
+    rows.append([revision, sha, svn_author, author, email, entry.findtext('date'), message])
 with (DOCS / 'svn-revisions.csv').open('w', encoding='utf-8', newline='') as stream:
     writer = csv.writer(stream)
-    writer.writerow(['svn_revision', 'git_commit', 'svn_author', 'git_email', 'svn_date', 'message'])
+    writer.writerow(['svn_revision', 'git_commit', 'svn_author', 'git_author', 'git_email', 'svn_date', 'message'])
     writer.writerows(rows)
 
 props = {}
@@ -85,7 +90,8 @@ report = {
     'verified_files': len(files),
     'files_requiring_svn_eol_or_keyword_normalization': normalized,
     'trunk_head': commits[-1],
-    'metadata_checks': 'authors, dates (whole seconds), messages, unique SVN revisions',
+    'metadata_checks': 'SVN-to-Git author mapping, noreply email, committers, dates (whole seconds), messages, unique SVN revisions',
+    'author_mapping': {'coas-nagasima': 'h7ga40 <13964697+h7ga40@users.noreply.github.com>'},
     'tree_check': 'all paths and all file contents; only declared SVN EOL/keyword transformations normalized',
     'readme_local_links': 'passed',
 }

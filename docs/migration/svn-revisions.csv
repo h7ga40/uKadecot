@@ -1,41 +1,41 @@
-svn_revision,git_commit,svn_author,git_email,svn_date,message
-91,a35b70136c36afdc0f1d70b409d4bd0c8bc200b6,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-05-26T12:12:53.352798Z,trunkフォルダ追加
-101,3e3d92bb341022a0b1524fa376a968d2ea7da61e,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-02T15:37:23.900935Z,TOPPERS/uKadecotのソースコードを追加
-102,2f74309acaa69908e8821f271aa9ea18d8b1034e,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-03T01:55:04.793011Z,使用しているオープンソースソフトウェアの情報を更新。
-103,f490429725509becf41e07acd5720ea69f86b083,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-03T03:57:30.412214Z,書き込みイメージを追加
-104,92fbb2fc30a9895e6a51d80522617bbfd76dd840,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-03T23:43:48.100565Z,Readme.txtをUTF-8に変更
-105,83f01a17a9ea321f5ca94a3ccbc69220ef28e207,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-07T23:06:22.241120Z,MACアドレスを別の評価基板の物だったのを仮のMACアドレスに変更。
-106,810ce33f4a78b4a85f4518adb690a01a61877b2f,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-09T11:53:11.080508Z,MACアドレスを別の評価基板の物だったのを仮のMACアドレスに変更。
-107,b7369ac0a54d85e8ad5c88bbccaf7735ba0c49bf,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-10T11:40:31.135903Z,SHIFT_JISのコードにcharsetプロパティを付けた
-108,a2a3f2618cf53041820cbd4055e75f00cab859a0,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-11T09:15:46.588926Z,MIMEプロパティの変更
-109,274f5459f7dcfdae0ca00c39b67f0ce61d06a65d,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-06-11T09:37:56.980044Z,MIMEプロパティの変更
-125,90109c41d1ed6d85eac04af75b37c3a4a738abf0,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2015-07-23T06:21:02.890132Z,"ECHONET Lite規格に準拠していない動作を修正。
+svn_revision,git_commit,svn_author,git_author,git_email,svn_date,message
+91,7945215c1485d1f920d0c3bfa558f779a9601128,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-05-26T12:12:53.352798Z,trunkフォルダ追加
+101,c6ba34278211a34c900dd70aeda60597d1b08feb,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-02T15:37:23.900935Z,TOPPERS/uKadecotのソースコードを追加
+102,890aff7fc91d038ca8e5110b405160853b08b758,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-03T01:55:04.793011Z,使用しているオープンソースソフトウェアの情報を更新。
+103,873e9af520df2ff3473d9a78cc285b8d1ec21cf2,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-03T03:57:30.412214Z,書き込みイメージを追加
+104,5f4ad64024cbbe9cbc348f8c7bf84ee35a54536c,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-03T23:43:48.100565Z,Readme.txtをUTF-8に変更
+105,b66695ebd3896c1566704974f7a7a9a85942ea86,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-07T23:06:22.241120Z,MACアドレスを別の評価基板の物だったのを仮のMACアドレスに変更。
+106,91774543f5d625d4038a857350cdd37ae2fc28ec,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-09T11:53:11.080508Z,MACアドレスを別の評価基板の物だったのを仮のMACアドレスに変更。
+107,31950fdbf7bc5464b786b3baec42049f723fadad,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-10T11:40:31.135903Z,SHIFT_JISのコードにcharsetプロパティを付けた
+108,e0220271424ee9858f0d5b78c00fd70951727b23,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-11T09:15:46.588926Z,MIMEプロパティの変更
+109,0af58219e36feab6f71c74cfd54a1bc627da9786,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-06-11T09:37:56.980044Z,MIMEプロパティの変更
+125,3c6bebaa75c90a2add73202c9c1f69d5abf10a08,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2015-07-23T06:21:02.890132Z,"ECHONET Lite規格に準拠していない動作を修正。
 WebSocketの接続先URLを/webapi.ashxから/webapiに変更。
 DHCPのリトライ処理が行われていなかったのを修正。
 DHCPの有効/無効設定を追加し、固定IPアドレスを設定できるよう変更。"
-148,86958b92bec774fb3e5726f6435d7fbb271bb56d,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-01-08T05:35:52.809232Z,"メッセージバッファ領域がなくなったときにWebSocketパケットを誤って処理してしまうのを修正。
+148,7eb7fb1fbd956b05f4ba7a952cf0cba466b4af55,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-01-08T05:35:52.809232Z,"メッセージバッファ領域がなくなったときにWebSocketパケットを誤って処理してしまうのを修正。
 Ethernet送信バッファが取れないときにパケットが送信できなかったのを修正。
 その他、処理の安定性の向上。"
-152,2af8642a90a00c520072d7b0d2c26ece42b9f815,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-01-14T04:17:21.021872Z,"・デジタルPinとアナログPinのWAMPトピックを追加し、PubSubできるように機能追加。
+152,0aba8875fedaa846e0a74e5639b3e4b8093ec5bd,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-01-14T04:17:21.021872Z,"・デジタルPinとアナログPinのWAMPトピックを追加し、PubSubできるように機能追加。
 　デジタルPINのトピックは、
 　「com.sonycsl.kadecot.arduino.topic.pinXX」（XXは0から13）
 　アナログPINのトピックは、
 　「com.sonycsl.kadecot.arduino.topic.pinXX.thrYYY」（XXは14から19、YYYは閾値十進）
 ・デバッグ用の使用していない文字列が、ROM領域に残ってしまうのを修正
 ・WebSocket接続時のHTTPヘッダーを１行ずつNAK応答を待って送信しているのを、一括で送るよう変更"
-153,dea0e827d0f1b73c92aba1d458e3a66f81e7f629,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-01-23T09:04:50.717644Z,作業用のバッファの扱いが間違っているのを修正
-154,377cc1661f6389969fcf3cd6dee369786690f5f1,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-02-02T12:54:35.374216Z,SDカードの中身を/~/でアクセスできるよう変更
-155,b260cd35e6bb1f8eef178ec53491d8c6dd011b54,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-02-04T14:11:09.550534Z,URLがフォルダを指している場合、/index.htmlにリダイレクトするよう変更。
-156,c654b1ad35facf530996394940e1884f6344ce7a,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-02-05T00:06:37.468595Z,クエリー式もリダイレクトアドレスに含めるよう修正
-157,77d3cca04df1faecb0d4f20835088dc649fc71fd,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-02-20T11:16:05.093931Z,フォルダ構成をContikiに合わせて変更
-158,3df2fa687d895036426db4b1562d09b2fecbf479,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-02-20T13:43:32.125309Z,"インクルードのパス指定をContikiに合わせ変更。
+153,ffd4b028262690e470071a32bf7b295c28eaa93f,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-01-23T09:04:50.717644Z,作業用のバッファの扱いが間違っているのを修正
+154,3b84231aa7c8b9d2f3ea0086fd13978c27720491,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-02-02T12:54:35.374216Z,SDカードの中身を/~/でアクセスできるよう変更
+155,e13ace0f0267a6d183d2a2af3cdeee351f8c74fc,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-02-04T14:11:09.550534Z,URLがフォルダを指している場合、/index.htmlにリダイレクトするよう変更。
+156,f931440d02a9f2ab355e82b65ca903e45907fe06,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-02-05T00:06:37.468595Z,クエリー式もリダイレクトアドレスに含めるよう修正
+157,6482aa2bb91ebd496ad347a38ec3b5a089c7f2a7,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-02-20T11:16:05.093931Z,フォルダ構成をContikiに合わせて変更
+158,b741c97fa91502b2bb495f9db0b0a12421ffcf97,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-02-20T13:43:32.125309Z,"インクルードのパス指定をContikiに合わせ変更。
 整数型の型名をContikiに合わせ変更。"
-160,af7e18cb483cd07115bfa29804f89546a2bb0abf,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-03-02T14:42:14.356107Z,カーネルメモリの割り当てが間違っているのを修正
-161,021938e63092a528830f8279c0a9cc9f4565c81d,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-03-02T16:06:53.787502Z,カーネルスタックとSIセクションが連動するよう変更
-248,fd71c8a7afe25c47d344a59cd118735b965b41ff,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-07-12T23:10:39.654455Z,SVNプロパティにUTF-8を付加
-262,f098db24868ae13c008aab0acfbba4df7ab3aec3,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-11-18T05:58:30.421710Z,"uIPを更新
+160,9889bb6d0e80dfb50b22a2dea25a47770c2788ea,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-03-02T14:42:14.356107Z,カーネルメモリの割り当てが間違っているのを修正
+161,652021b78fa5b98e5b76e916267453bf0798a42c,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-03-02T16:06:53.787502Z,カーネルスタックとSIセクションが連動するよう変更
+248,8e8db1e19b288e033eba86f72ffda603ca70618f,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-07-12T23:10:39.654455Z,SVNプロパティにUTF-8を付加
+262,24d0693cf01421afeacb49ace18c46d9ca35a02b,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-11-18T05:58:30.421710Z,"uIPを更新
 プロジェクトファイルを更新"
-263,644dc4b5100456f28efb0108d46d79cc4dfcfadf,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-11-18T06:00:13.578729Z,動的に作成した機器が未完成の時にECHONET Liteの通知が来ると暴走するのを修正。
-264,fffd044e942df5b1264df0be270d7760b0299bb3,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-11-18T06:02:07.260092Z,KadecotAPIの文字列確認の方法を変更
-265,76712403ef3f026a56a3be5ffec7ca807746bb09,coas-nagasima,coas-nagasima@57928105-6641-4540-880c-211d16c16296,2016-11-18T08:30:16.126678Z,"ECNL 1.0.3の修正内容を盛り込み
+263,7e49cccf386920556cab0e865a70c854dd90b360,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-11-18T06:00:13.578729Z,動的に作成した機器が未完成の時にECHONET Liteの通知が来ると暴走するのを修正。
+264,88ddff0105c5f4de8d72c6c27a47baf49c7b5e79,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-11-18T06:02:07.260092Z,KadecotAPIの文字列確認の方法を変更
+265,8880135782ea4538d77fb544f2d1c991750d7272,coas-nagasima,h7ga40,13964697+h7ga40@users.noreply.github.com,2016-11-18T08:30:16.126678Z,"ECNL 1.0.3の修正内容を盛り込み
 内蔵Webアプリで機器が取得できないのを修正"
